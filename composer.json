@@ -16,7 +16,9 @@
         }
     ],
     "require": {
-        "php": "^8.0.2"
+        "php": "^8.0.2",
+        "vlucas/phpdotenv": "^5.0",
+        "cable8mm/array-flatten": "^1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.0|^10.0|^11.0",
@@ -25,7 +27,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Cable8mm\\Xeed\\": "src/"
+            "Cable8mm\\Xeed\\": "src/",
+            "Cable8mm\\Xeed\\Database\\": "database/"
         }
     },
     "autoload-dev": {
@@ -35,6 +38,9 @@
     },
     "minimum-stability": "stable",
     "scripts": {
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
         "test": "./vendor/bin/phpunit tests",
         "lint": "./vendor/bin/pint",
         "inspect": "./vendor/bin/pint --test"
