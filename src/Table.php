@@ -20,4 +20,9 @@ final class Table
 
         $this->columns = $columns;
     }
+
+    public function getColumns(): array
+    {
+        return $this->columns;
+    }
 }

@@ -13,6 +13,8 @@ final class DB extends PDO implements ArrayAccess
      */
     private static $instance = null;
 
+    public const AVAILABLE_DATABASES = ['mysql', 'sqlite'];
+
     /**
      * @var array<Table> Table array.
      */
@@ -84,6 +86,11 @@ final class DB extends PDO implements ArrayAccess
         return $this->tables;
     }
 
+    public function getTable(string $table): ?Table
+    {
+        return $this->tables[$table];
+    }
+
     /* implements ArrayAccess */
 
     public function offsetExists(mixed $offset): bool
@@ -108,5 +115,10 @@ final class DB extends PDO implements ArrayAccess
     public function offsetUnset(mixed $offset): void
     {
         unset($this->tables[$offset]);
+    }
+
+    public function toArray(): array
+    {
+        return $this->tables;
     }
 }

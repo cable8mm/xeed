@@ -26,4 +26,17 @@ final class SqliteProvider implements Provider
             $db[$table] = new Table($table, $columns);
         }
     }
+
+    public static function map(array $column): array
+    {
+        return [
+            'field' => $column['name'],
+            'nullable' => $column['notnull'] == 1,
+            'key' => $column['pk'] == 1,
+            'default' => $column['dflt_value'],
+            'extra' => null,
+            'type' => preg_match('/\(/', $column['type']) ? preg_replace('/\(.+/', '', $column['type']) : $column['type'],
+            'bracket' => preg_match('/\(/', $column['type']) ? (int) preg_replace('/.+\(([0-9]+)\)/', '\\1', $column['type']) : null,
+        ];
+    }
 }
