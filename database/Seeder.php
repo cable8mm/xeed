@@ -12,7 +12,7 @@ class Seeder
 
     public const TOTAL = 100;
 
-    public const TABLE = 'users';
+    public const TABLE = 'phpunit_users';
 
     public function __construct()
     {
@@ -30,7 +30,7 @@ class Seeder
         $this->addItem();
     }
 
-    private function dropTables()
+    public function dropTables()
     {
         $sql = $this->db->prepare('DROP TABLE IF EXISTS '.self::TABLE);
 
