@@ -3,14 +3,16 @@
 [![code-style](https://github.com/cable8mm/xeed/actions/workflows/code-style.yml/badge.svg)](https://github.com/cable8mm/xeed/actions/workflows/code-style.yml)
 [![run-tests](https://github.com/cable8mm/xeed/actions/workflows/run-tests.yml/badge.svg)](https://github.com/cable8mm/xeed/actions/workflows/run-tests.yml)
 
-The Xeed is to generate a new seed file based on data from the existing database table.
+The Xeed is to generate new model, seed, database seed, factory and migration files for Laravel based on data from the existing database table.
 
 ## Features
 
-- [ ] Generate factories
-- [ ] Generate seed files
-- [ ] Generate database seed files
-- [ ] Database testing is supported
+- [x] Database testing is supported
+- [ ] Generate models for Laravel
+- [ ] Generate seed files for Laravel
+- [ ] Generate database seed files for Laravel
+- [ ] Generate factories for Laravel
+- [ ] Generate migrations for Laravel
 
 ## Support & Tested
 
@@ -18,9 +20,9 @@ The Xeed is to generate a new seed file based on data from the existing database
 | :-------: | :---: | :----: |
 | Available |  ✅   |   ✅   |
 
-| Versions  | PHP 8.0.2 | PHP 8.1.\* | PHP 8.2.\* | PHP 8.3.\* |
-| :-------: | :-------: | :--------: | :--------: | :--------: |
-| Available |    ✅     |     ✅     |     ✅     |     ✅     |
+| PHP Versions | 8.0.2+ | 8.1.0+ | 8.2.0+ | 8.3.0+ |
+| :----------: | :----: | :----: | :----: | :----: |
+|  Available   |   ✅   |   ✅   |   ✅   |   ✅   |
 
 ## Installation
 
