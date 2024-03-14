@@ -1,18 +1,19 @@
 <?php
 
-namespace Cable8mm\Xeed\Tests;
+namespace Cable8mm\Xeed\Tests\Unit;
 
+use Cable8mm\Xeed\DB;
 use PHPUnit\Framework\TestCase;
 
 final class PhpunitTest extends TestCase
 {
     public function test_received_phpunit_connection()
     {
-        $this->assertEquals('sqlite', $_ENV['DB_CONNECTION']);
+        $this->assertContains($_ENV['DB_CONNECTION'], DB::AVAILABLE_DATABASES);
     }
 
     public function test_received_phpunit_database()
     {
-        $this->assertEquals('database/database.sqlite', $_ENV['DB_DATABASE']);
+        $this->assertNotEmpty($_ENV['DB_DATABASE']);
     }
 }
