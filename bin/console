@@ -4,6 +4,7 @@
 require __DIR__.'/../vendor/autoload.php';
 
 use Cable8mm\Xeed\Command\GenerateModelsCommand;
+use Cable8mm\Xeed\Command\GenerateSeedersCommand;
 use Symfony\Component\Console\Application;
 
 $application = new Application();
@@ -11,5 +12,6 @@ $application = new Application();
 // ... register commands
 
 $application->add(new GenerateModelsCommand());
+$application->add(new GenerateSeedersCommand());
 
 $application->run();

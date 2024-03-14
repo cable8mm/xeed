@@ -3,7 +3,9 @@
 namespace Cable8mm\Xeed\Generators;
 
 use Cable8mm\Xeed\Interfaces\Generator;
+use Cable8mm\Xeed\Support\Inflector;
 use Cable8mm\Xeed\Support\Path;
+use Cable8mm\Xeed\Table;
 
 /**
  * Generator for `dist/database/seeders/*.php`.
@@ -58,15 +60,20 @@ final class SeederGenerator implements Generator
     /**
      * Factory method.
      *
-     * @param  string  $class  The model class name
+     * @param  string|Table  $class  The model class name
      * @param  string  $namespace  The model namespace
      * @param  string  $dist  The path to the dist folder
      */
     public static function make(
-        string $class,
+        string|Table $class,
         ?string $namespace = null,
         ?string $dist = null
     ): static {
+
+        if ($class instanceof Table) {
+            $class = Inflector::classify($class->name);
+        }
+
         return new self($class, $namespace, $dist);
     }
 }
