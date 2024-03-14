@@ -2,10 +2,9 @@
 
 namespace Cable8mm\Xeed\Generators;
 
-use Cable8mm\Xeed\Interfaces\Generator;
 use Cable8mm\Xeed\Path;
 
-final class SeederGenerator implements Generator
+final class DatabaseSeederGenerator
 {
     /**
      * @var string Stub string from the stubs folder file.
@@ -18,7 +17,7 @@ final class SeederGenerator implements Generator
     private string $seeder;
 
     private function __construct(
-        private string $class,
+        private array $classes,
         private ?string $namespace = null,
         private ?string $dist = null
     ) {
@@ -30,16 +29,24 @@ final class SeederGenerator implements Generator
             $this->namespace = '\App\Models';
         }
 
-        $this->stub = file_get_contents(Path::stub().'Seeder.stub');
+        $this->stub = file_get_contents(Path::stub().'DatabaseSeeder.stub');
 
-        $this->seeder = $this->class.'Seeder';
+        $this->seeder = 'DatabaseSeeder';
     }
 
     public function run(): void
     {
+        $seeder_classes = '';
+
+        foreach ($this->classes as $class) {
+            $seeder_classes .= '            '.$class.'Seeder::class,'.PHP_EOL;
+        }
+
+        $seeder_classes = preg_replace('/\n$/', '', $seeder_classes);
+
         $seederClass = str_replace(
-            ['{class}', '{namespace_class}'],
-            [$this->class, $this->namespace.'\\'.$this->class],
+            ['{seeder_classes}'],
+            [$seeder_classes],
             $this->stub
         );
 
@@ -52,15 +59,15 @@ final class SeederGenerator implements Generator
     /**
      * Factory method.
      *
-     * @param  string  $class  The model class name
+     * @param  array  $classes  The model class name
      * @param  string  $namespace  The model namespace
      * @param  string  $dist  The path to the dist folder
      */
     public static function make(
-        string $class,
+        array $classes,
         ?string $namespace = null,
         ?string $dist = null
     ): static {
-        return new self($class, $namespace, $dist);
+        return new self($classes, $namespace, $dist);
     }
 }
