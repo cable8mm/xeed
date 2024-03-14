@@ -2,7 +2,7 @@
 
 namespace Cable8mm\Xeed\Generators;
 
-use Cable8mm\Xeed\Path;
+use Cable8mm\Xeed\Support\Path;
 
 final class DatabaseSeederGenerator
 {

@@ -4,7 +4,7 @@ namespace Cable8mm\Xeed\Tests\Unit;
 
 use Cable8mm\Xeed\Generators\DatabaseSeederGenerator;
 use Cable8mm\Xeed\Generators\SeederGenerator;
-use Cable8mm\Xeed\Path;
+use Cable8mm\Xeed\Support\Path;
 use PHPUnit\Framework\TestCase;
 
 final class SeederGeneratorTest extends TestCase

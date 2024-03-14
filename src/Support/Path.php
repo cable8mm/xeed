@@ -1,6 +1,6 @@
 <?php
 
-namespace Cable8mm\Xeed;
+namespace Cable8mm\Xeed\Support;
 
 final class Path
 {

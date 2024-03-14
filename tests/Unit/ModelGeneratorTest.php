@@ -3,7 +3,7 @@
 namespace Cable8mm\Xeed\Tests\Unit;
 
 use Cable8mm\Xeed\Generators\ModelGenerator;
-use Cable8mm\Xeed\Path;
+use Cable8mm\Xeed\Support\Path;
 use PHPUnit\Framework\TestCase;
 
 final class ModelGeneratorTest extends TestCase
