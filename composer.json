@@ -18,7 +18,9 @@
     "require": {
         "php": "^8.0.2",
         "vlucas/phpdotenv": "^5.0",
-        "cable8mm/array-flatten": "^1.0"
+        "cable8mm/array-flatten": "^1.0",
+        "symfony/console": "^6.0|^7.0",
+        "doctrine/inflector": "^2.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.0|^10.0|^11.0",
