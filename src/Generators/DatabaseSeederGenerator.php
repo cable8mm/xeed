@@ -4,6 +4,9 @@ namespace Cable8mm\Xeed\Generators;
 
 use Cable8mm\Xeed\Support\Path;
 
+/**
+ * Generator for `dist/database/seeders/DatabaseSeeder.php`.
+ */
 final class DatabaseSeederGenerator
 {
     /**
@@ -34,6 +37,9 @@ final class DatabaseSeederGenerator
         $this->seeder = 'DatabaseSeeder';
     }
 
+    /**
+     * To run the generator logic and save it to a file.
+     */
     public function run(): void
     {
         $seeder_classes = '';

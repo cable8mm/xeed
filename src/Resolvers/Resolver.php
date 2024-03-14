@@ -4,6 +4,9 @@ namespace Cable8mm\Xeed\Resolvers;
 
 use Cable8mm\Xeed\Column;
 
+/**
+ * Abstract resolver class.
+ */
 abstract class Resolver
 {
     abstract protected function fake(): string;

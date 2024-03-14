@@ -6,3 +6,6 @@ composer.lock
 /test.php
 /database/database.sqlite
 /.env
+/build
+/cache
+/doctum.php

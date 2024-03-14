@@ -43,6 +43,7 @@
         ],
         "test": "./vendor/bin/phpunit tests",
         "lint": "./vendor/bin/pint",
-        "inspect": "./vendor/bin/pint --test"
+        "inspect": "./vendor/bin/pint --test",
+        "apidoc": "doctum.phar update doctum.php --output-format=github --no-ansi --no-progress"
     }
 }
