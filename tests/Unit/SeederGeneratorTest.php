@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 
 final class SeederGeneratorTest extends TestCase
 {
-    public function test_it_can_read_stub_file(): void
+    public function test_it_can_can_generate_seeder(): void
     {
         $seederGenerator = SeederGenerator::make(
             'Sample',
