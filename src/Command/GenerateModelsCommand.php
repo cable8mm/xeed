@@ -1,0 +1,41 @@
+<?php
+
+namespace Cable8mm\Xeed\Command;
+
+use Cable8mm\Xeed\DB;
+use Cable8mm\Xeed\Generators\ModelGenerator;
+use Symfony\Component\Console\Attribute\AsCommand;
+use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
+
+#[AsCommand(
+    name: 'generate-models',
+    description: 'Generate models. run `bin/console generate-models`',
+    hidden: false,
+    aliases: ['models']
+)]
+class GenerateModelsCommand extends Command
+{
+    protected function configure()
+    {
+        $dotenv = \Dotenv\Dotenv::createImmutable(getcwd());
+        $dotenv->safeLoad();
+    }
+
+    /**
+     * Generate models.
+     *
+     * Run `bin/console generate-models` or `bin/console models`
+     */
+    protected function execute(InputInterface $input, OutputInterface $output): int
+    {
+        $tables = DB::getInstance()->attach()->getTables();
+
+        foreach ($tables as $table) {
+            ModelGenerator::make($table)->run();
+        }
+
+        return Command::SUCCESS;
+    }
+}

@@ -8,7 +8,7 @@ The Xeed is to generate new model, seed, database seed, factory and migration fi
 ## Features
 
 - [x] Database testing is supported
-- [ ] Generate models for Laravel
+- [x] Generate models for Laravel
 - [ ] Generate seed files for Laravel
 - [ ] Generate database seed files for Laravel
 - [ ] Generate factories for Laravel
@@ -31,6 +31,15 @@ composer create-project cable8mm/xeed
 ```
 
 And edit the `.env` file to configure your own database. You can manually copy `.env.example` to `.env` whenever you need to.
+
+## Usage
+
+### Generate `Model`s
+
+```sh
+bin/console models
+# Generate all models from database in `dist/app/Models` folder
+```
 
 ## How to contribute
 

@@ -3,7 +3,9 @@
 namespace Cable8mm\Xeed\Generators;
 
 use Cable8mm\Xeed\Interfaces\Generator;
+use Cable8mm\Xeed\Support\Inflector;
 use Cable8mm\Xeed\Support\Path;
+use Cable8mm\Xeed\Table;
 
 /**
  * Generator for `dist/app/Models/*.php`.
@@ -57,12 +59,21 @@ final class ModelGenerator implements Generator
      * @param  string  $class  The model class name
      * @param  string  $namespace  The model namespace
      * @param  string  $dist  The path to the dist folder
+     *
+     * @example \Generators\ModelGenerator::make('User')
+     * @example \Generators\ModelGenerator::make('User', 'App\Models')
+     * @example \Generators\ModelGenerator::make('User', 'App\Models', 'dist/app/Models')
      */
     public static function make(
-        string $class,
+        string|Table $class,
         ?string $namespace = null,
         ?string $dist = null
     ): static {
+
+        if ($class instanceof Table) {
+            $class = Inflector::classify($class->name);
+        }
+
         return new self($class, $namespace, $dist);
     }
 }
