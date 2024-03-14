@@ -5,6 +5,9 @@ namespace Cable8mm\Xeed\Generators;
 use Cable8mm\Xeed\Interfaces\Generator;
 use Cable8mm\Xeed\Support\Path;
 
+/**
+ * Generator for `dist/app/Models/*.php`.
+ */
 final class ModelGenerator implements Generator
 {
     /**
@@ -31,6 +34,9 @@ final class ModelGenerator implements Generator
         $this->seeder = $this->class;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function run(): void
     {
         $seederClass = str_replace(

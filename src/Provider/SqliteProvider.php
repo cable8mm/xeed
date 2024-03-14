@@ -8,8 +8,14 @@ use Cable8mm\Xeed\Table;
 
 use function Cable8mm\ArrayFlatten\array_flatten;
 
+/**
+ * SQLite provider can help to retrieve data from sqlite database and marshalling between another fields for SQLite.
+ */
 final class SqliteProvider implements Provider
 {
+    /**
+     * {@inheritDoc}
+     */
     public function attach(DB $db): void
     {
         $query = $db->query("SELECT name FROM sqlite_master WHERE type='table';");
@@ -27,6 +33,9 @@ final class SqliteProvider implements Provider
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public static function map(array $column): array
     {
         return [

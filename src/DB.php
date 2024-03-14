@@ -6,13 +6,19 @@ use ArrayAccess;
 use Cable8mm\Xeed\Interfaces\Provider;
 use PDO;
 
+/**
+ * Database Object.
+ */
 final class DB extends PDO implements ArrayAccess
 {
     /**
-     * @var static Singleton Instance.
+     * Singleton Instance.
      */
     private static $instance = null;
 
+    /**
+     * Array of available databases.
+     */
     public const AVAILABLE_DATABASES = ['mysql', 'sqlite'];
 
     /**
@@ -48,6 +54,11 @@ final class DB extends PDO implements ArrayAccess
         parent::__construct($dns, $username, $password, $options);
     }
 
+    /**
+     * Singleton factory method.
+     *
+     * @return static The current instance
+     */
     public static function getInstance(): static
     {
         if (self::$instance === null) {
@@ -67,6 +78,9 @@ final class DB extends PDO implements ArrayAccess
         return self::$instance;
     }
 
+    /**
+     * To get new instance
+     */
     public static function newGetInstance(): static
     {
         self::$instance = null;
@@ -74,6 +88,9 @@ final class DB extends PDO implements ArrayAccess
         return self::getInstance();
     }
 
+    /**
+     * To attach tables and columns.
+     */
     public function attach(): static
     {
         $this->provider->attach($this);
@@ -81,28 +98,41 @@ final class DB extends PDO implements ArrayAccess
         return $this;
     }
 
+    /**
+     * To get attached tables.
+     */
     public function getTables(): array
     {
         return $this->tables;
     }
 
+    /**
+     * To get a specific attached table.
+     */
     public function getTable(string $table): ?Table
     {
         return $this->tables[$table];
     }
 
-    /* implements ArrayAccess */
-
+    /**
+     * Implements ArrayAccess interface.
+     */
     public function offsetExists(mixed $offset): bool
     {
         return isset($this->tables[$offset]);
     }
 
+    /**
+     * Implements ArrayAccess interface.
+     */
     public function offsetGet(mixed $offset): mixed
     {
         return isset($this->tables[$offset]) ? $this->tables[$offset] : null;
     }
 
+    /**
+     * Implements ArrayAccess interface.
+     */
     public function offsetSet(mixed $offset, mixed $value): void
     {
         if (is_null($offset)) {
@@ -112,11 +142,19 @@ final class DB extends PDO implements ArrayAccess
         }
     }
 
+    /**
+     * Implements ArrayAccess interface.
+     */
     public function offsetUnset(mixed $offset): void
     {
         unset($this->tables[$offset]);
     }
 
+    /**
+     * To get a tables array.
+     *
+     * @return array An array of tables
+     */
     public function toArray(): array
     {
         return $this->tables;

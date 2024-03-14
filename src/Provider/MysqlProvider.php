@@ -8,8 +8,14 @@ use Cable8mm\Xeed\Interfaces\Provider;
 use Cable8mm\Xeed\Table;
 use PDO;
 
+/**
+ * Mysql provider can help to retrieve data from mysql database and marshalling between another fields for MySQL.
+ */
 final class MysqlProvider implements Provider
 {
+    /**
+     * {@inheritDoc}
+     */
     public function attach(DB $db): void
     {
         $tables = $db->query('SHOW TABLES')->fetchAll(PDO::FETCH_COLUMN);
@@ -26,6 +32,9 @@ final class MysqlProvider implements Provider
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public static function map(array $column): array
     {
         return [
