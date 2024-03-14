@@ -3,6 +3,7 @@
 namespace Cable8mm\Xeed\Generators;
 
 use Cable8mm\Xeed\Interfaces\Generator;
+use Cable8mm\Xeed\Path;
 use Cable8mm\Xeed\Traits\SeederGeneratorMakable;
 
 final class SeederGenerator implements Generator
@@ -21,10 +22,18 @@ final class SeederGenerator implements Generator
 
     private function __construct(
         private string $class,
-        private string $namespace,
-        private string $dist
+        private ?string $namespace = null,
+        private ?string $dist = null
     ) {
-        $this->stub = file_get_contents(__DIR__.'/../../stubs/Seeder.stub');
+        if (is_null($dist)) {
+            $this->dist = Path::seeder();
+        }
+
+        if (is_null($namespace)) {
+            $this->namespace = '\App\Models';
+        }
+
+        $this->stub = file_get_contents(Path::stub().'Seeder.stub');
 
         $this->seeder = $this->class.'Seeder';
     }

@@ -14,7 +14,7 @@ trait SeederGeneratorMakable
     public static function make(
         string $class,
         ?string $namespace = null,
-        ?string $dist = __DIR__.'/../../dist/'
+        ?string $dist = null
     ): static {
         return new self($class, $namespace, $dist);
     }
