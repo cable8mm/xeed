@@ -4,12 +4,9 @@ namespace Cable8mm\Xeed\Generators;
 
 use Cable8mm\Xeed\Interfaces\Generator;
 use Cable8mm\Xeed\Path;
-use Cable8mm\Xeed\Traits\SeederGeneratorMakable;
 
 final class ModelGenerator implements Generator
 {
-    use SeederGeneratorMakable;
-
     /**
      * @var string Stub string from the stubs folder file.
      */
@@ -46,5 +43,20 @@ final class ModelGenerator implements Generator
             $this->dist.$this->seeder.'.php',
             $seederClass
         );
+    }
+
+    /**
+     * Factory method.
+     *
+     * @param  string  $class  The model class name
+     * @param  string  $namespace  The model namespace
+     * @param  string  $dist  The path to the dist folder
+     */
+    public static function make(
+        string $class,
+        ?string $namespace = null,
+        ?string $dist = null
+    ): static {
+        return new self($class, $namespace, $dist);
     }
 }
