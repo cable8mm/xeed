@@ -9,8 +9,8 @@ The Xeed is to generate new model, seed, database seed, factory and migration fi
 
 - [x] Database testing is supported
 - [x] Generate models for Laravel
-- [ ] Generate seed files for Laravel
-- [ ] Generate database seed files for Laravel
+- [x] Generate seed files for Laravel
+- [x] Generate database seed files for Laravel
 - [ ] Generate factories for Laravel
 - [ ] Generate migrations for Laravel
 
@@ -39,6 +39,20 @@ And edit the `.env` file to configure your own database. You can manually copy `
 ```sh
 bin/console models
 # Generate all models from database in `dist/app/Models` folder
+```
+
+### Generate `Seeder`s
+
+```sh
+bin/console seeders
+# Generate all seeds from database in `dist/database/seeders` folder
+```
+
+### Generate `DatabaseSeeder`
+
+```sh
+bin/console database
+# Generate database seed from database in `dist/database/seeders` folder
 ```
 
 ## How to contribute
