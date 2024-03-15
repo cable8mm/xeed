@@ -10,11 +10,7 @@ final class ModelGeneratorTest extends TestCase
 {
     public function test_it_can_generate_model(): void
     {
-        $modelGenerator = ModelGenerator::make(
-            'Sample'
-        );
-
-        $modelGenerator->run();
+        ModelGenerator::make('Sample')->run();
 
         $this->assertFileExists(Path::model().'Sample.php');
     }

@@ -45,4 +45,17 @@ final class DBTest extends TestCase
 
         $this->assertNotEmpty($tables);
     }
+
+    public function test_seeder_can_make_seeds(): void
+    {
+        $db = DB::getInstance();
+
+        $sql = 'SELECT * FROM '.Seeder::TABLE;
+
+        $result = $db->query($sql);
+
+        $users = $result->fetchAll();
+
+        $this->assertEquals(Seeder::TOTAL, count($users));
+    }
 }
