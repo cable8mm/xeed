@@ -15,6 +15,12 @@ final class Inflector
      */
     private static ?DoctrineInflector $inflector = null;
 
+    /**
+     * To get Class name as Laravel style.
+     *
+     * @param  string  $string  raw table name
+     * @return string Model class name as Laravel style
+     */
     public static function classify(string $string): string
     {
         if (self::$inflector === null) {
