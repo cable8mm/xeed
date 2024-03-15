@@ -31,4 +31,12 @@ abstract class Resolver
 
         return $migration.';';
     }
+
+    /**
+     *  Reading data from inaccessible (protected or private) or non-existing properties.
+     */
+    public function __get(string $property): mixed
+    {
+        return $this->column->$property;
+    }
 }

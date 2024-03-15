@@ -81,6 +81,89 @@ composer test
 # Run tests
 ```
 
+### Database
+
+For migrations and factories, when you need to execute tests for all database field types, utilize the following command.
+
+```sh
+bin/console xeed
+# Import an 'xeeds' Table into the Database
+
+bin/console xeed drop
+# Drop the 'xeeds' Table from the Database
+```
+
+Utilize migration files for all database field types by referring to the following location `resources/tests` these files are saved in the specified folder.
+
+🔥 SQLite does not yet support the `SET` and `ENUM` field types, so the corresponding lines are commented out. If you are using MySQL, you will need to uncomment the following line.
+
+```php
+Schema::create('xeeds', function (Blueprint $table) {
+    $table->id();
+    $table->bigInteger('big_integer');
+    $table->binary('binary');
+    $table->boolean('boolean');
+    $table->char('char', 100);
+    $table->dateTimeTz('date_time_tz', $precision = 0);
+    $table->dateTime('date_time', $precision = 0);
+    $table->date('date');
+    $table->decimal('decimal', $precision = 8, $scale = 2);
+    $table->double('double', 8, 2);
+    // $table->enum('enum', ['easy', 'hard']);
+    //-> SQLite unsupported
+    $table->float('float', 8, 2);
+    $table->foreignId('foreign_id');
+    $table->foreignUlid('foreign_ulid');
+    $table->foreignUuid('foreign_uuid');
+    $table->geometryCollection('geometry_collection');
+    $table->geometry('geometry');
+    $table->integer('integer');
+    $table->ipAddress('ip_address');
+    $table->json('json');
+    $table->jsonb('jsonb');
+    $table->lineString('line_string');
+    $table->longText('long_text');
+    $table->macAddress('mac_address');
+    $table->mediumInteger('medium_integer');
+    $table->mediumText('medium_text');
+    $table->morphs('morphs');
+    $table->multiLineString('multi_line_string');
+    $table->multiPoint('multi_point');
+    $table->multiPolygon('multi_polygon');
+    $table->nullableMorphs('nullable_morphs');
+    $table->nullableUlidMorphs('nullable_ulid_morphs');
+    $table->nullableUuidMorphs('nullable_uuid_morphs');
+    $table->point('point');
+    $table->polygon('polygon');
+    $table->rememberToken();
+    // $table->set('set', ['strawberry', 'vanilla']);
+    //-> SQLite unsupported
+    $table->smallInteger('small_integer');
+    $table->softDeletesTz($column = 'soft_deletes_tz', $precision = 0);
+    $table->softDeletes($column = 'soft_deletes', $precision = 0);
+    $table->string('string', 100);
+    $table->text('text');
+    $table->timeTz('time_tz', $precision = 0);
+    $table->time('time', $precision = 0);
+    $table->timestampTz('timestamp_tz', $precision = 0);
+    $table->timestamp('timestamp', $precision = 0);
+    $table->timestamps($precision = 0);
+    $table->tinyInteger('tiny_integer');
+    $table->tinyText('tiny_text');
+    $table->unsignedBigInteger('unsigned_big_integer');
+    $table->unsignedDecimal('unsigned_decimal', $precision = 8, $scale = 2);
+    $table->unsignedInteger('unsigned_integer');
+    $table->unsignedMediumInteger('unsigned_medium_integer');
+    $table->unsignedSmallInteger('unsigned_small_integer');
+    $table->unsignedTinyInteger('unsigned_tiny_integer');
+    $table->ulidMorphs('ulid_morphs');
+    $table->uuidMorphs('uuid_morphs');
+    $table->ulid('ulid');
+    $table->uuid('uuid');
+    $table->year('birth_year');
+}
+```
+
 ### Issue a bug report and Pull Request
 
 The opportunity for you to create issues and pull requests makes me happy. Feel free to contribute and submit pull requests whenever you need.

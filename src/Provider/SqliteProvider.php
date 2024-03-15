@@ -2,6 +2,7 @@
 
 namespace Cable8mm\Xeed\Provider;
 
+use Cable8mm\Xeed\Column;
 use Cable8mm\Xeed\DB;
 use Cable8mm\Xeed\Interfaces\Provider;
 use Cable8mm\Xeed\Table;
@@ -27,9 +28,11 @@ final class SqliteProvider implements Provider
         foreach ($tables as $table) {
             $columns = $db->query('SELECT * FROM PRAGMA_TABLE_INFO("'.$table.'");')->fetchAll();
 
-            $columns = array_flatten($columns);
+            foreach ($columns as $column) {
+                $columnObject[] = new Column(...self::map($column));
+            }
 
-            $db[$table] = new Table($table, $columns);
+            $db[$table] = new Table($table, $columnObject);
         }
     }
 
@@ -40,12 +43,12 @@ final class SqliteProvider implements Provider
     {
         return [
             'field' => $column['name'],
+            'type' => preg_match('/\(/', $column['type']) ? preg_replace('/\(.+/', '', $column['type']) : $column['type'],
             'nullable' => $column['notnull'] == 1,
             'key' => $column['pk'] == 1,
+            'bracket' => preg_match('/\(/', $column['type']) ? (int) preg_replace('/.+\(([0-9]+)\)/', '\\1', $column['type']) : null,
             'default' => $column['dflt_value'],
             'extra' => null,
-            'type' => preg_match('/\(/', $column['type']) ? preg_replace('/\(.+/', '', $column['type']) : $column['type'],
-            'bracket' => preg_match('/\(/', $column['type']) ? (int) preg_replace('/.+\(([0-9]+)\)/', '\\1', $column['type']) : null,
         ];
     }
 }

@@ -18,7 +18,7 @@ class YearResolver extends Resolver
 
     public function migration(): string
     {
-        $migration = '$table->year(\''.$this->column->field.'\', '.$this->column->bracket.')';
+        $migration = '$table->year(\''.$this->column->field.'\')';
 
         return $this->last($migration);
     }

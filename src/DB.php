@@ -4,6 +4,8 @@ namespace Cable8mm\Xeed;
 
 use ArrayAccess;
 use Cable8mm\Xeed\Interfaces\Provider;
+use Cable8mm\Xeed\Support\Path;
+use InvalidArgumentException;
 use PDO;
 
 /**
@@ -29,8 +31,8 @@ final class DB extends PDO implements ArrayAccess
     private Provider $provider;
 
     private function __construct(
-        string $driver,
-        string $database,
+        public string $driver,
+        ?string $database = null,
         ?string $host = null,
         ?string $port = null,
         ?string $username = null,
@@ -42,7 +44,7 @@ final class DB extends PDO implements ArrayAccess
         $this->provider = new (__NAMESPACE__.'\\Provider\\'.ucfirst($driver).'Provider');
 
         if ($driver === 'sqlite') {
-            $dns = $driver.':'.$database;
+            $dns = $driver.':'.($database ?? Path::database().'database.sqlite');
 
             parent::__construct($dns, options: $options);
 
@@ -66,11 +68,11 @@ final class DB extends PDO implements ArrayAccess
             $dotenv->safeLoad();
 
             $driver = $_ENV['DB_CONNECTION'];
-            $host = $_ENV['DB_HOST'];
-            $port = $_ENV['DB_PORT'];
-            $database = $_ENV['DB_DATABASE'];
-            $username = $_ENV['DB_USERNAME'];
-            $password = $_ENV['DB_PASSWORD'];
+            $host = $_ENV['DB_HOST'] ?? null;
+            $port = $_ENV['DB_PORT'] ?? null;
+            $database = $_ENV['DB_DATABASE'] ?? null;
+            $username = $_ENV['DB_USERNAME'] ?? null;
+            $password = $_ENV['DB_PASSWORD'] ?? null;
 
             self::$instance = new self($driver, $database, $host, $port, $username, $password);
         }
@@ -81,7 +83,7 @@ final class DB extends PDO implements ArrayAccess
     /**
      * To get new instance
      */
-    public static function newGetInstance(): static
+    public static function getNewInstance(): static
     {
         self::$instance = null;
 
@@ -111,6 +113,10 @@ final class DB extends PDO implements ArrayAccess
      */
     public function getTable(string $table): ?Table
     {
+        if (! isset($this->tables[$table])) {
+            throw new InvalidArgumentException('Table '.$table.' does not exist');
+        }
+
         return $this->tables[$table];
     }
 

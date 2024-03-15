@@ -37,12 +37,14 @@ class ImportXeedCommand extends Command
 
         $drop = $input->getArgument('drop');
 
-        if ($drop) {
-            DB::getInstance()->prepare('DROP TABLE xeeds')->execute();
-        } else {
-            $sql = file_get_contents(Path::resourceTest().'xeeds.sql');
+        $db = DB::getInstance();
 
-            DB::getInstance()->exec($sql);
+        if ($drop) {
+            $db->prepare('DROP TABLE xeeds')->execute();
+        } else {
+            $sql = file_get_contents(Path::resourceTest().'xeeds.'.$db->driver.'.sql');
+
+            $db->exec($sql);
         }
 
         return Command::SUCCESS;

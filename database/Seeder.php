@@ -39,7 +39,9 @@ class Seeder
 
     private function createUserTable(): int|false
     {
-        $schema = 'CREATE TABLE `'.self::TABLE.'` ( id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR(25) NOT NULL, email VARCHAR(100) NOT NULL)';
+        $autoIncrement = $this->db->driver === 'mysql' ? 'AUTO_INCREMENT' : 'AUTOINCREMENT';
+
+        $schema = 'CREATE TABLE `'.self::TABLE.'` ( id INTEGER PRIMARY KEY '.$autoIncrement.', name VARCHAR(25) NOT NULL, email VARCHAR(100) NOT NULL)';
 
         return $this->db->exec($schema);
     }

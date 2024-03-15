@@ -56,6 +56,18 @@ final class Path
     }
 
     /**
+     * To get `database` folder path.
+     *
+     * @return string The database folder path
+     *
+     * @example ./database/
+     */
+    public static function database(): string
+    {
+        return getcwd().DIRECTORY_SEPARATOR.'database'.DIRECTORY_SEPARATOR;
+    }
+
+    /**
      * To get `migration` folder path.
      *
      * @return string The migration folder path
@@ -89,5 +101,17 @@ final class Path
     public static function resourceTest(): string
     {
         return getcwd().DIRECTORY_SEPARATOR.'resources'.DIRECTORY_SEPARATOR.'tests'.DIRECTORY_SEPARATOR;
+    }
+
+    /**
+     * To get `mapper` folder path.
+     *
+     * @return string The mapper folder path
+     *
+     * @example ./src/Mappers/
+     */
+    public static function mapper(): string
+    {
+        return getcwd().DIRECTORY_SEPARATOR.'src'.DIRECTORY_SEPARATOR.'Mappers'.DIRECTORY_SEPARATOR;
     }
 }
