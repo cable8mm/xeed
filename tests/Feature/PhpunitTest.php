@@ -1,6 +1,6 @@
 <?php
 
-namespace Cable8mm\Xeed\Tests\Unit;
+namespace Cable8mm\Xeed\Tests\Feature;
 
 use Cable8mm\Xeed\DB;
 use PHPUnit\Framework\TestCase;
