@@ -66,4 +66,28 @@ final class Path
     {
         return getcwd().DIRECTORY_SEPARATOR.'dist'.DIRECTORY_SEPARATOR.'database'.DIRECTORY_SEPARATOR.'migrations'.DIRECTORY_SEPARATOR;
     }
+
+    /**
+     * To get `resource` folder path.
+     *
+     * @return string The resource folder path
+     *
+     * @example ./resources/
+     */
+    public static function resource(): string
+    {
+        return getcwd().DIRECTORY_SEPARATOR.'resources'.DIRECTORY_SEPARATOR;
+    }
+
+    /**
+     * To get `resource/test` folder path.
+     *
+     * @return string The resource/test folder path
+     *
+     * @example ./resources/tests/
+     */
+    public static function resourceTest(): string
+    {
+        return getcwd().DIRECTORY_SEPARATOR.'resources'.DIRECTORY_SEPARATOR.'tests'.DIRECTORY_SEPARATOR;
+    }
 }
