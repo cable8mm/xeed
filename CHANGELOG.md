@@ -1,5 +1,13 @@
 # Release Notes
 
+## v0.5.1 - 2024-03-15
+
+### What's Changed
+
+* Provide API Documentation on the Web by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/12
+
+**Full Changelog**: https://github.com/cable8mm/xeed/compare/v0.5.0...v0.5.1
+
 ## v0.5.0 - 2024-03-14
 
 ### What's Changed
