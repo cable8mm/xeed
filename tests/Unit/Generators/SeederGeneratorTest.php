@@ -1,6 +1,6 @@
 <?php
 
-namespace Cable8mm\Xeed\Tests\Unit\Generagers;
+namespace Cable8mm\Xeed\Tests\Unit\Generators;
 
 use Cable8mm\Xeed\Generators\SeederGenerator;
 use Cable8mm\Xeed\Support\Path;
