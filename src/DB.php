@@ -4,6 +4,7 @@ namespace Cable8mm\Xeed;
 
 use ArrayAccess;
 use Cable8mm\Xeed\Interfaces\Provider;
+use Cable8mm\Xeed\Support\Path;
 use PDO;
 
 /**
@@ -30,7 +31,7 @@ final class DB extends PDO implements ArrayAccess
 
     private function __construct(
         public string $driver,
-        string $database,
+        ?string $database = null,
         ?string $host = null,
         ?string $port = null,
         ?string $username = null,
@@ -42,7 +43,7 @@ final class DB extends PDO implements ArrayAccess
         $this->provider = new (__NAMESPACE__.'\\Provider\\'.ucfirst($driver).'Provider');
 
         if ($driver === 'sqlite') {
-            $dns = $driver.':'.$database;
+            $dns = $driver.':'.($database ?? Path::database().'database.sqlite');
 
             parent::__construct($dns, options: $options);
 
