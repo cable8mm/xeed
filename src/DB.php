@@ -29,7 +29,7 @@ final class DB extends PDO implements ArrayAccess
     private Provider $provider;
 
     private function __construct(
-        string $driver,
+        public string $driver,
         string $database,
         ?string $host = null,
         ?string $port = null,
@@ -81,7 +81,7 @@ final class DB extends PDO implements ArrayAccess
     /**
      * To get new instance
      */
-    public static function newGetInstance(): static
+    public static function getNewInstance(): static
     {
         self::$instance = null;
 

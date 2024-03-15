@@ -9,3 +9,4 @@ composer.lock
 /build
 /cache
 /doctum.php
+/.phpunit.cache
