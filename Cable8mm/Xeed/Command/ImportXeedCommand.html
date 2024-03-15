@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Cable8mm\Xeed\Provider\SqliteProvider | API</title>
+    <title>Cable8mm\Xeed\Command\ImportXeedCommand | API</title>
 
             <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
 
     </head>
 
-    <body id="class" data-name="class:Cable8mm_Xeed_Provider_SqliteProvider" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
+    <body id="class" data-name="class:Cable8mm_Xeed_Command_ImportXeedCommand" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -75,26 +75,24 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                        <li><a href="../../../Cable8mm.html">Cable8mm</a></li><li class="backslash">\</li><li><a href="../../../Cable8mm/Xeed.html">Xeed</a></li><li class="backslash">\</li><li><a href="../../../Cable8mm/Xeed/Provider.html">Provider</a></li><li class="backslash">\</li><li>SqliteProvider</li>
+                        <li><a href="../../../Cable8mm.html">Cable8mm</a></li><li class="backslash">\</li><li><a href="../../../Cable8mm/Xeed.html">Xeed</a></li><li class="backslash">\</li><li><a href="../../../Cable8mm/Xeed/Command.html">Command</a></li><li class="backslash">\</li><li>ImportXeedCommand</li>
             </ol>
         </div>
                 <div id="page-content">
     <div class="page-header">
-        <h1>SqliteProvider    
+        <h1>ImportXeedCommand    
             </h1>
     </div>
 
     
-    <p>final         class
-    <strong>SqliteProvider</strong>        implements        <a href="../../../Cable8mm/Xeed/Interfaces/Provider.html"><abbr title="Cable8mm\Xeed\Interfaces\Provider">Provider</abbr></a>
+    <p>        class
+    <strong>ImportXeedCommand</strong>        extends <abbr title="Symfony\Component\Console\Command\Command">Command</abbr>
 </p>
 
         
     
         
 
-            <div class="description">
-            <p><p>SQLite provider can help to retrieve data from sqlite database and marshalling between another fields for SQLite.</p></p>                    </div>
             
         
     
@@ -104,22 +102,23 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    void
+                    
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_attach">attach</a>(<a href="../../../Cable8mm/Xeed/DB.html"><abbr title="Cable8mm\Xeed\DB">DB</abbr></a> $db)
+                    <a href="#method_configure">configure</a>()
         
-                                            <p><p>To attach child provider to DB instance.</p></p>                </div>
+                                            <p class="no-description">No description</p>
+                                    </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;array
+                    int
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_map">map</a>(array $column)
+                    <a href="#method_execute">execute</a>(<abbr title="Symfony\Component\Console\Input\InputInterface">InputInterface</abbr> $input, <abbr title="Symfony\Component\Console\Output\OutputInterface">OutputInterface</abbr> $output)
         
-                                            <p><p>Mapping method between another fields for Database.</p></p>                </div>
+                                            <p><p>Generate models.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -129,10 +128,10 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_attach">
-        <div class="location">at line 20</div>
-        <code>                    void
-    <strong>attach</strong>(<a href="../../../Cable8mm/Xeed/DB.html"><abbr title="Cable8mm\Xeed\DB">DB</abbr></a> $db)
+                    <h3 id="method_configure">
+        <div class="location">at line 21</div>
+        <code>            protected        
+    <strong>configure</strong>()
         </code>
     </h3>
     <div class="details">    
@@ -140,29 +139,11 @@
             
 
         <div class="method-description">
-                            <p><p>To attach child provider to DB instance.</p></p>                        
+                            <p class="no-description">No description</p>
+                    
         </div>
         <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../../Cable8mm/Xeed/DB.html"><abbr title="Cable8mm\Xeed\DB">DB</abbr></a></td>
-                <td>$db</td>
-                <td><p>DB instance</p></td>
-            </tr>
-            </table>
-
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>void</td>
-            <td></td>
-        </tr>
-    </table>
-
             
             
             
@@ -171,10 +152,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_map">
-        <div class="location">at line 42</div>
-        <code>        static            array
-    <strong>map</strong>(array $column)
+                    <h3 id="method_execute">
+        <div class="location">at line 35</div>
+        <code>            protected        int
+    <strong>execute</strong>(<abbr title="Symfony\Component\Console\Input\InputInterface">InputInterface</abbr> $input, <abbr title="Symfony\Component\Console\Output\OutputInterface">OutputInterface</abbr> $output)
         </code>
     </h3>
     <div class="details">    
@@ -182,16 +163,21 @@
             
 
         <div class="method-description">
-                            <p><p>Mapping method between another fields for Database.</p></p>                        
+                            <p><p>Generate models.</p></p>                <p><p>Run <code>bin/console generate-seeders</code> or <code>bin/console seeders</code></p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>array</td>
-                <td>$column</td>
-                <td><p>Original column data</p></td>
+                <td><abbr title="Symfony\Component\Console\Input\InputInterface">InputInterface</abbr></td>
+                <td>$input</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="Symfony\Component\Console\Output\OutputInterface">OutputInterface</abbr></td>
+                <td>$output</td>
+                <td></td>
             </tr>
             </table>
 
@@ -200,8 +186,8 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>array</td>
-            <td><p>Mapped column data</p></td>
+            <td>int</td>
+            <td></td>
         </tr>
     </table>
 

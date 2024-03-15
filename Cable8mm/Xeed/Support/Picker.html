@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Cable8mm\Xeed\Resolvers\YearResolver | API</title>
+    <title>Cable8mm\Xeed\Support\Picker | API</title>
 
             <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
 
     </head>
 
-    <body id="class" data-name="class:Cable8mm_Xeed_Resolvers_YearResolver" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
+    <body id="class" data-name="class:Cable8mm_Xeed_Support_Picker" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -75,18 +75,18 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                        <li><a href="../../../Cable8mm.html">Cable8mm</a></li><li class="backslash">\</li><li><a href="../../../Cable8mm/Xeed.html">Xeed</a></li><li class="backslash">\</li><li><a href="../../../Cable8mm/Xeed/Resolvers.html">Resolvers</a></li><li class="backslash">\</li><li>YearResolver</li>
+                        <li><a href="../../../Cable8mm.html">Cable8mm</a></li><li class="backslash">\</li><li><a href="../../../Cable8mm/Xeed.html">Xeed</a></li><li class="backslash">\</li><li><a href="../../../Cable8mm/Xeed/Support.html">Support</a></li><li class="backslash">\</li><li>Picker</li>
             </ol>
         </div>
                 <div id="page-content">
     <div class="page-header">
-        <h1>YearResolver    
+        <h1>Picker    
             </h1>
     </div>
 
     
-    <p>        class
-    <strong>YearResolver</strong>        extends <a href="../../../Cable8mm/Xeed/Resolvers/Resolver.html"><abbr title="Cable8mm\Xeed\Resolvers\Resolver">Resolver</abbr></a>
+    <p>final         class
+    <strong>Picker</strong>
 </p>
 
         
@@ -94,9 +94,7 @@
         
 
             <div class="description">
-            <p>YEAR</p>            <p><p>A year in four-digit format.
-Values allowed in four-digit format: 1901 to 2155, and 0000.
-MySQL 8.0 does not support year in two-digit format.</p></p>        </div>
+            <p><p>Various methods for selecting what you want.</p></p>                    </div>
             
         
     
@@ -106,10 +104,10 @@ MySQL 8.0 does not support year in two-digit format.</p></p>        </div>
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    string
+                    <a href="../../../Cable8mm/Xeed/Support/Picker.html"><abbr title="Cable8mm\Xeed\Support\Picker">Picker</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_fake">fake</a>()
+                    <a href="#method_field">field</a>(string $field)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -117,10 +115,10 @@ MySQL 8.0 does not support year in two-digit format.</p></p>        </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    string
+                    <a href="../../../Cable8mm/Xeed/Support/Picker.html"><abbr title="Cable8mm\Xeed\Support\Picker">Picker</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_migration">migration</a>()
+                    <a href="#method_driver">driver</a>(string $driver)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -128,38 +126,36 @@ MySQL 8.0 does not support year in two-digit format.</p></p>        </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    <abbr title="Cable8mm\Xeed\Support\Cable8mm\Xeed\Column">Column</abbr>|null
                 </div>
                 <div class="col-md-8">
-                    <a href="#method___construct">__construct</a>(<a href="../../../Cable8mm/Xeed/Column.html"><abbr title="Cable8mm\Xeed\Column">Column</abbr></a> $column)
+                    <a href="#method_type">type</a>(string $type)
         
                                             <p class="no-description">No description</p>
                                     </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../Cable8mm/Xeed/Resolvers/Resolver.html#method___construct">
-<abbr title="Cable8mm\Xeed\Resolvers\Resolver">Resolver</abbr></a></small></div>
+                <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    string
+                    <abbr title="Cable8mm\Xeed\Support\Cable8mm\Xeed\Column">Column</abbr>|null
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_last">last</a>($migration)
+                    <a href="#method_get">get</a>()
         
                                             <p class="no-description">No description</p>
                                     </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../Cable8mm/Xeed/Resolvers/Resolver.html#method_last">
-<abbr title="Cable8mm\Xeed\Resolvers\Resolver">Resolver</abbr></a></small></div>
+                <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    mixed
+                    static&nbsp;<a href="../../../Cable8mm/Xeed/Support/Picker.html"><abbr title="Cable8mm\Xeed\Support\Picker">Picker</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method___get">__get</a>(string $property)
+                    <a href="#method_of">of</a>(array $values)
         
-                                            <p><p>Reading data from inaccessible (protected or private) or non-existing properties.</p></p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../Cable8mm/Xeed/Resolvers/Resolver.html#method___get">
-<abbr title="Cable8mm\Xeed\Resolvers\Resolver">Resolver</abbr></a></small></div>
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
             </div>
             </div>
 
@@ -168,10 +164,10 @@ MySQL 8.0 does not support year in two-digit format.</p></p>        </div>
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_fake">
-        <div class="location">at line 14</div>
-        <code>                    string
-    <strong>fake</strong>()
+                    <h3 id="method_field">
+        <div class="location">at line 22</div>
+        <code>                    <a href="../../../Cable8mm/Xeed/Support/Picker.html"><abbr title="Cable8mm\Xeed\Support\Picker">Picker</abbr></a>
+    <strong>field</strong>(string $field)
         </code>
     </h3>
     <div class="details">    
@@ -181,151 +177,6 @@ MySQL 8.0 does not support year in two-digit format.</p></p>        </div>
         <div class="method-description">
                             <p class="no-description">No description</p>
                     
-        </div>
-        <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_migration">
-        <div class="location">at line 19</div>
-        <code>                    string
-    <strong>migration</strong>()
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
-        </div>
-        <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method___construct">
-        <div class="location">in <a href="../../../Cable8mm/Xeed/Resolvers/Resolver.html#method___construct">
-<abbr title="Cable8mm\Xeed\Resolvers\Resolver">Resolver</abbr></a> at line 16</div>
-        <code>                    
-    <strong>__construct</strong>(<a href="../../../Cable8mm/Xeed/Column.html"><abbr title="Cable8mm\Xeed\Column">Column</abbr></a> $column)
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../../Cable8mm/Xeed/Column.html"><abbr title="Cable8mm\Xeed\Column">Column</abbr></a></td>
-                <td>$column</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_last">
-        <div class="location">in <a href="../../../Cable8mm/Xeed/Resolvers/Resolver.html#method_last">
-<abbr title="Cable8mm\Xeed\Resolvers\Resolver">Resolver</abbr></a> at line 22</div>
-        <code>                    string
-    <strong>last</strong>($migration)
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td></td>
-                <td>$migration</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method___get">
-        <div class="location">in <a href="../../../Cable8mm/Xeed/Resolvers/Resolver.html#method___get">
-<abbr title="Cable8mm\Xeed\Resolvers\Resolver">Resolver</abbr></a> at line 38</div>
-        <code>                    mixed
-    <strong>__get</strong>(string $property)
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Reading data from inaccessible (protected or private) or non-existing properties.</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -333,7 +184,7 @@ MySQL 8.0 does not support year in two-digit format.</p></p>        </div>
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
-                <td>$property</td>
+                <td>$field</td>
                 <td></td>
             </tr>
             </table>
@@ -343,7 +194,169 @@ MySQL 8.0 does not support year in two-digit format.</p></p>        </div>
 
                     <table class="table table-condensed">
         <tr>
-            <td>mixed</td>
+            <td><a href="../../../Cable8mm/Xeed/Support/Picker.html"><abbr title="Cable8mm\Xeed\Support\Picker">Picker</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_driver">
+        <div class="location">at line 29</div>
+        <code>                    <a href="../../../Cable8mm/Xeed/Support/Picker.html"><abbr title="Cable8mm\Xeed\Support\Picker">Picker</abbr></a>
+    <strong>driver</strong>(string $driver)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$driver</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Cable8mm/Xeed/Support/Picker.html"><abbr title="Cable8mm\Xeed\Support\Picker">Picker</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_type">
+        <div class="location">at line 36</div>
+        <code>                    <abbr title="Cable8mm\Xeed\Support\Cable8mm\Xeed\Column">Column</abbr>|null
+    <strong>type</strong>(string $type)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$type</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Cable8mm\Xeed\Support\Cable8mm\Xeed\Column">Column</abbr>|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_get">
+        <div class="location">at line 43</div>
+        <code>                    <abbr title="Cable8mm\Xeed\Support\Cable8mm\Xeed\Column">Column</abbr>|null
+    <strong>get</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Cable8mm\Xeed\Support\Cable8mm\Xeed\Column">Column</abbr>|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_of">
+        <div class="location">at line 65</div>
+        <code>        static            <a href="../../../Cable8mm/Xeed/Support/Picker.html"><abbr title="Cable8mm\Xeed\Support\Picker">Picker</abbr></a>
+    <strong>of</strong>(array $values)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$values</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Cable8mm/Xeed/Support/Picker.html"><abbr title="Cable8mm\Xeed\Support\Picker">Picker</abbr></a></td>
             <td></td>
         </tr>
     </table>
