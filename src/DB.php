@@ -5,6 +5,7 @@ namespace Cable8mm\Xeed;
 use ArrayAccess;
 use Cable8mm\Xeed\Interfaces\Provider;
 use Cable8mm\Xeed\Support\Path;
+use InvalidArgumentException;
 use PDO;
 
 /**
@@ -112,6 +113,10 @@ final class DB extends PDO implements ArrayAccess
      */
     public function getTable(string $table): ?Table
     {
+        if (! isset($this->tables[$table])) {
+            throw new InvalidArgumentException('Table '.$table.' does not exist');
+        }
+
         return $this->tables[$table];
     }
 
