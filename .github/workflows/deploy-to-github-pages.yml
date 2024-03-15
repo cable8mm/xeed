@@ -1,0 +1,13 @@
+name: deploy-to-github-pages
+
+on:
+  release:
+    types: [released]
+
+permissions: {}
+
+jobs:
+  publish-pages:
+    permissions:
+      contents: write
+    uses: cable8mm/.github/.github/workflows/deploy-to-github-pages.yml@main
