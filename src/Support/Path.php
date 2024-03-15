@@ -56,6 +56,18 @@ final class Path
     }
 
     /**
+     * To get `database` folder path.
+     *
+     * @return string The database folder path
+     *
+     * @example ./database/
+     */
+    public static function database(): string
+    {
+        return getcwd().DIRECTORY_SEPARATOR.'database'.DIRECTORY_SEPARATOR;
+    }
+
+    /**
      * To get `migration` folder path.
      *
      * @return string The migration folder path
