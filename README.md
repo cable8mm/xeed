@@ -95,6 +95,8 @@ bin/console xeed drop
 
 Utilize migration files for all database field types by referring to the following location `resources/tests` these files are saved in the specified folder.
 
+🔥 SQLite does not yet support the `SET` and `ENUM` field types, so the corresponding lines are commented out. If you are using MySQL, you will need to uncomment the following line.
+
 ```php
 Schema::create('xeeds', function (Blueprint $table) {
     $table->id();
@@ -107,7 +109,8 @@ Schema::create('xeeds', function (Blueprint $table) {
     $table->date('date');
     $table->decimal('decimal', $precision = 8, $scale = 2);
     $table->double('double', 8, 2);
-    $table->enum('enum', ['easy', 'hard']);
+    // $table->enum('enum', ['easy', 'hard']);
+    //-> SQLite unsupported
     $table->float('float', 8, 2);
     $table->foreignId('foreign_id');
     $table->foreignUlid('foreign_ulid');
@@ -133,7 +136,8 @@ Schema::create('xeeds', function (Blueprint $table) {
     $table->point('point');
     $table->polygon('polygon');
     $table->rememberToken();
-    $table->set('set', ['strawberry', 'vanilla']);
+    // $table->set('set', ['strawberry', 'vanilla']);
+    //-> SQLite unsupported
     $table->smallInteger('small_integer');
     $table->softDeletesTz($column = 'soft_deletes_tz', $precision = 0);
     $table->softDeletes($column = 'soft_deletes', $precision = 0);
