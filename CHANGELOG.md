@@ -1,5 +1,15 @@
 # Release Notes
 
+## v0.5.2 - 2024-03-15
+
+### What's Changed
+
+* Align test folder structure with source folder by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/13
+* Create import xeed command for testing by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/14
+* Implementing a year type factory by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/15
+
+**Full Changelog**: https://github.com/cable8mm/xeed/compare/v0.5.1...v0.5.2
+
 ## v0.5.1 - 2024-03-15
 
 ### What's Changed
