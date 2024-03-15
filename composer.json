@@ -1,9 +1,11 @@
 {
     "name": "cable8mm/xeed",
-    "description": "The Xeed is to generate a new seed file based on data from the existing database table.",
+    "description": "The Xeed is to generate new model, seed, database seed, factory and migration files for Laravel based on data from the existing database table.",
     "keywords": [
-        "seed",
         "laravel",
+        "factory",
+        "seed",
+        "migration",
         "generator",
         "xeed"
     ],
