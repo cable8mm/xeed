@@ -10,7 +10,7 @@ namespace Cable8mm\Xeed\Resolvers;
  * Unsigned range is from 0 to 18446744073709551615.
  * The size parameter specifies the maximum display width (which is 255)
  */
-class BigintResolver extends Resolver
+class IdResolver extends Resolver
 {
     public function fake(): string
     {
@@ -19,13 +19,6 @@ class BigintResolver extends Resolver
 
     public function migration(): string
     {
-        // TODO: bigIncrements()
-        // TODO: $table->foreignId('user_id');
-        // TODO: $table->foreignIdFor(User::class);
-        $migration = $this->column->unsigned ?
-            '$table->unsignedBigInteger(\''.$this->column->field.'\')' :
-            '$table->bigInteger(\''.$this->column->field.'\')';
-
-        return $this->last($migration);
+        return '$table->id();';
     }
 }
