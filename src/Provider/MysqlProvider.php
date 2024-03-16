@@ -35,16 +35,30 @@ final class MysqlProvider implements Provider
     /**
      * {@inheritDoc}
      */
-    public static function map(array $column): array
+    public static function map(array $column, ?string $table = null, ?DB $db = null): array
     {
+        $bracket = preg_match('/\(/', $column['Type']) ? preg_replace('/.+\(([^)]+)\)/', '\\1', $column['Type']) : null;
+
+        $primaryKey = isset($column['Key']) && $column['Key'] == 'PRI';
+
+        $autoIncrement = isset($column['Extra']) && preg_match('/auto_increment/', $column['Extra']);
+
+        $notNull = isset($column['Null']) ? ($column['Null'] === 'YES') : false;
+
+        $unsigned = preg_match('/unsigned/', $column['Extra']) !== false;
+
+        $type = preg_replace('/[( ].+/', '', $column['Type']);
+
         return [
             'field' => $column['Field'],
-            'nullable' => isset($column['Null']) ? ($column['Null'] === 'YES') : false,
-            'key' => $column['Key'] != '',
+            'type' => $type,
+            'unsigned' => $unsigned,
+            'autoIncrement' => $autoIncrement,
+            'notNull' => $notNull,
+            'primaryKey' => $primaryKey,
+            'bracket' => $bracket,
             'default' => $column['Default'],
             'extra' => $column['Extra'],
-            'type' => preg_match('/\(/', $column['Type']) ? preg_replace('/\(.+/', '', $column['Type']) : $column['Type'],
-            'bracket' => preg_match('/\(/', $column['Type']) ? (int) preg_replace('/.+\(([0-9]+)\)/', '\\1', $column['Type']) : null,
         ];
     }
 }

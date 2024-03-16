@@ -2,6 +2,8 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
+use PDOException;
+
 /**
  * FLOAT(size, d)
  *
@@ -24,10 +26,24 @@ class FloatResolver extends Resolver
         return '\''.$this->column->field.'\' => fake()->randomFloat(),';
     }
 
+    /**
+     * {@inheritDoc}
+     *
+     * @exception \PDOException
+     */
     public function migration(): string
     {
-        // TODO: $table->float('amount', 8, 2);
-        $migration = '$table->float(\''.$this->column->field.'\')';
+        if ($this->column->bracket) {
+            if (! preg_match('/\d+,\d+/', $this->column->bracket)) {
+                throw new PDOException($this->column->bracket.' have not a length and a decimals.');
+            }
+
+            [$length, $decimals] = explode(',', $this->column->bracket);
+
+            $migration = '$table->float(\''.$this->column->field.'\', '.$length.', '.$decimals.')';
+        } else {
+            $migration = '$table->float(\''.$this->column->field.'\')';
+        }
 
         return $this->last($migration);
     }

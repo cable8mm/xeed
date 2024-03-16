@@ -19,7 +19,7 @@ final class YearResolverTest extends TestCase
             $column = Picker::of($db->attach()
                 ->getTable('xeeds')
                 ->getColumns()
-            )->driver($db->driver)->type('year');
+            )->driver($db->driver)->type('year')->get();
 
             $this->resolver = new YearResolver($column);
         }

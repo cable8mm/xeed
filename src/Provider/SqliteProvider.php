@@ -29,7 +29,7 @@ final class SqliteProvider implements Provider
             $columns = $db->query('SELECT * FROM PRAGMA_TABLE_INFO("'.$table.'");')->fetchAll();
 
             foreach ($columns as $column) {
-                $columnObject[] = new Column(...self::map($column));
+                $columnObject[] = new Column(...self::map($column, $table, $db));
             }
 
             $db[$table] = new Table($table, $columnObject);
@@ -39,13 +39,22 @@ final class SqliteProvider implements Provider
     /**
      * {@inheritDoc}
      */
-    public static function map(array $column): array
+    public static function map(array $column, ?string $table = null, ?DB $db = null): array
     {
+        $authIncrement = false;
+
+        if ($column['pk'] == 1) {
+            $count = $db->query('SELECT COUNT(*) FROM sqlite_sequence WHERE name=\''.$table.'\'');
+            $authIncrement = $count == 1;
+        }
+
         return [
             'field' => $column['name'],
             'type' => preg_match('/\(/', $column['type']) ? preg_replace('/\(.+/', '', $column['type']) : $column['type'],
-            'nullable' => $column['notnull'] == 1,
-            'key' => $column['pk'] == 1,
+            'unsigned' => false,
+            'autoIncrement' => $authIncrement,
+            'notNull' => $column['notnull'] == 1,
+            'primaryKey' => $column['pk'] == 1,
             'bracket' => preg_match('/\(/', $column['type']) ? (int) preg_replace('/.+\(([0-9]+)\)/', '\\1', $column['type']) : null,
             'default' => $column['dflt_value'],
             'extra' => null,

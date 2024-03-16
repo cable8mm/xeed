@@ -2,6 +2,8 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
+use PDOException;
+
 /**
  * DOUBLE(size, d)
  *
@@ -16,10 +18,24 @@ class DoubleResolver extends Resolver
         return '\''.$this->column->field.'\' => fake()->randomFloat(),';
     }
 
+    /**
+     * {@inheritDoc}
+     *
+     * @exception \PDOException
+     */
     public function migration(): string
     {
-        // TODO: $table->double('amount', 8, 2);
-        $migration = '$table->double(\''.$this->column->field.'\')';
+        if ($this->column->bracket) {
+            if (! preg_match('/\d+,\d+/', $this->column->bracket)) {
+                throw new PDOException($this->column->bracket.' have not a length and a decimals.');
+            }
+
+            [$length, $decimals] = explode(',', $this->column->bracket);
+
+            $migration = '$table->double(\''.$this->column->field.'\', '.$length.', '.$decimals.')';
+        } else {
+            $migration = '$table->double(\''.$this->column->field.'\')';
+        }
 
         return $this->last($migration);
     }

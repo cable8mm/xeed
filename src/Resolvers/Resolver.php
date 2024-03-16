@@ -21,7 +21,7 @@ abstract class Resolver
 
     public function last($migration): string
     {
-        if ($this->column->nullable) {
+        if ($this->column->notNull) {
             $migration .= '->nullable()';
         }
 

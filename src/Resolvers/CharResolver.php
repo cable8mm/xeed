@@ -18,7 +18,9 @@ class CharResolver extends Resolver
 
     public function migration(): string
     {
-        $migration = '$table->char(\''.$this->column->field.'\', '.$this->column->bracket.')';
+        $migration = empty($this->column->bracket) ?
+            '$table->char(\''.$this->column->field.'\')' :
+            '$table->char(\''.$this->column->field.'\', '.$this->column->bracket.')';
 
         return $this->last($migration);
     }
