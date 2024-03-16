@@ -7,6 +7,12 @@ use PHPUnit\Framework\TestCase;
 
 final class PhpunitTest extends TestCase
 {
+    protected function setUp(): void
+    {
+        $dotenv = \Dotenv\Dotenv::createImmutable(getcwd());
+        $dotenv->safeLoad();
+    }
+
     public function test_received_phpunit_connection()
     {
         $this->assertContains($_ENV['DB_CONNECTION'], DB::AVAILABLE_DATABASES);

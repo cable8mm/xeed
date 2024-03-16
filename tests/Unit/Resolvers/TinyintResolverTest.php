@@ -12,6 +12,8 @@ final class TinyintResolverTest extends TestCase
 {
     public Column $column;
 
+    public string $driver;
+
     protected function setUp(): void
     {
         $db = DB::getInstance();
@@ -20,6 +22,8 @@ final class TinyintResolverTest extends TestCase
             ->getTable('xeeds')
             ->getColumns()
         )->driver($db->driver)->field('tiny_integer')->get();
+
+        $this->driver = $db->driver;
     }
 
     public function test_column_can_not_null(): void
@@ -45,6 +49,12 @@ final class TinyintResolverTest extends TestCase
     {
         $resolver = new TinyintResolver($this->column);
 
-        $this->assertEquals('$table->tinyInteger(\''.$resolver->field.'\');', $resolver->migration());
+        if ($this->driver == 'mysql') {
+            $this->assertEquals('$table->unsignedTinyInteger(\''.$resolver->field.'\');', $resolver->migration());
+        }
+
+        if ($this->driver == 'sqlite') {
+            $this->assertEquals('$table->tinyInteger(\''.$resolver->field.'\');', $resolver->migration());
+        }
     }
 }

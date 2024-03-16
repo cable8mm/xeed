@@ -43,7 +43,7 @@ final class MysqlProvider implements Provider
 
         $autoIncrement = isset($column['Extra']) && preg_match('/auto_increment/', $column['Extra']);
 
-        $notNull = isset($column['Null']) ? ($column['Null'] === 'YES') : false;
+        $notNull = isset($column['Null']) ? ($column['Null'] === 'NO') : false;
 
         $unsigned = preg_match('/unsigned/', $column['Extra']) !== false;
 

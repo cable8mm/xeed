@@ -12,6 +12,8 @@ final class BigintResolverTest extends TestCase
 {
     public Column $column;
 
+    public string $driver;
+
     protected function setUp(): void
     {
         $db = DB::getInstance();
@@ -20,6 +22,8 @@ final class BigintResolverTest extends TestCase
             ->getTable('xeeds')
             ->getColumns()
         )->driver($db->driver)->field('big_integer')->get();
+
+        $this->driver = $db->driver;
     }
 
     public function test_column_can_not_null(): void
@@ -45,6 +49,12 @@ final class BigintResolverTest extends TestCase
     {
         $resolver = new BigintResolver($this->column);
 
-        $this->assertEquals('$table->bigInteger(\''.$resolver->field.'\');', $resolver->migration());
+        if ($this->driver == 'mysql') {
+            $this->assertEquals('$table->unsignedBigInteger(\''.$resolver->field.'\');', $resolver->migration());
+        }
+
+        if ($this->driver == 'sqlite') {
+            $this->assertEquals('$table->bigInteger(\''.$resolver->field.'\');', $resolver->migration());
+        }
     }
 }

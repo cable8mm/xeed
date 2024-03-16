@@ -4,7 +4,7 @@ namespace Cable8mm\Xeed\Tests\Unit\Resolvers;
 
 use Cable8mm\Xeed\Column;
 use Cable8mm\Xeed\DB;
-use Cable8mm\Xeed\Resolvers\IntResolver;
+use Cable8mm\Xeed\Resolvers\SmallintResolver;
 use Cable8mm\Xeed\Support\Picker;
 use PHPUnit\Framework\TestCase;
 
@@ -33,28 +33,28 @@ final class UnsignedSmallIntegerResolverTest extends TestCase
 
     public function test_resolver_can_be_created(): void
     {
-        $resolver = new IntResolver($this->column);
+        $resolver = new SmallintResolver($this->column);
 
         $this->assertNotNull($resolver);
     }
 
     public function test_fake_method_can_working_well(): void
     {
-        $resolver = new IntResolver($this->column);
+        $resolver = new SmallintResolver($this->column);
 
-        $this->assertEquals('\''.$resolver->field.'\' => fake()->randomNumber(),', $resolver->fake());
+        $this->assertEquals('\''.$resolver->field.'\' => fake()->numberBetween(0, 32767),', $resolver->fake());
     }
 
     public function test_migration_method_can_working_well(): void
     {
-        $resolver = new IntResolver($this->column);
+        $resolver = new SmallintResolver($this->column);
 
         if ($this->driver == 'mysql') {
             $this->assertEquals('$table->unsignedSmallInteger(\''.$resolver->field.'\');', $resolver->migration());
         }
 
         if ($this->driver == 'sqlite') {
-            $this->assertEquals('$table->integer(\''.$resolver->field.'\');', $resolver->migration());
+            $this->assertEquals('$table->smallInteger(\''.$resolver->field.'\');', $resolver->migration());
         }
     }
 }

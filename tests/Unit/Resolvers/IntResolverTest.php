@@ -12,6 +12,8 @@ final class IntResolverTest extends TestCase
 {
     public Column $column;
 
+    public string $driver;
+
     protected function setUp(): void
     {
         $db = DB::getInstance();
@@ -20,6 +22,8 @@ final class IntResolverTest extends TestCase
             ->getTable('xeeds')
             ->getColumns()
         )->driver($db->driver)->field('integer')->type('int')->get();
+
+        $this->driver = $db->driver;
     }
 
     public function test_column_can_not_null(): void
@@ -45,6 +49,12 @@ final class IntResolverTest extends TestCase
     {
         $resolver = new IntResolver($this->column);
 
-        $this->assertEquals('$table->integer(\'integer\');', $resolver->migration());
+        if ($this->driver == 'mysql') {
+            $this->assertEquals('$table->unsignedInteger(\''.$resolver->field.'\');', $resolver->migration());
+        }
+
+        if ($this->driver == 'sqlite') {
+            $this->assertEquals('$table->integer(\''.$resolver->field.'\');', $resolver->migration());
+        }
     }
 }

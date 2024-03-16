@@ -12,6 +12,8 @@ final class DecimalResolverTest extends TestCase
 {
     public Column $column;
 
+    public string $driver;
+
     protected function setUp(): void
     {
         $db = DB::getInstance();
@@ -20,6 +22,8 @@ final class DecimalResolverTest extends TestCase
             ->getTable('xeeds')
             ->getColumns()
         )->driver($db->driver)->field('decimal')->get();
+
+        $this->driver = $db->driver;
     }
 
     public function test_column_can_not_null(): void
@@ -45,6 +49,12 @@ final class DecimalResolverTest extends TestCase
     {
         $resolver = new DecimalResolver($this->column);
 
-        $this->assertEquals('$table->decimal(\''.$resolver->field.'\');', $resolver->migration());
+        if ($this->driver == 'mysql') {
+            $this->assertEquals('$table->unsignedDecimal(\''.$resolver->field.'\');', $resolver->migration());
+        }
+
+        if ($this->driver == 'sqlite') {
+            $this->assertEquals('$table->decimal(\''.$resolver->field.'\');', $resolver->migration());
+        }
     }
 }

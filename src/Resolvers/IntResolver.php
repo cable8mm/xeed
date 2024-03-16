@@ -20,8 +20,9 @@ class IntResolver extends Resolver
     public function migration(): string
     {
         // TODO: $table->increments('id');
-        // TODO: $table->unsignedInteger('votes');
-        $migration = '$table->integer(\''.$this->column->field.'\')';
+        $migration = $this->column->unsigned ?
+            '$table->unsignedInteger(\''.$this->column->field.'\')' :
+            '$table->integer(\''.$this->column->field.'\')';
 
         return $this->last($migration);
     }

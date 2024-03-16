@@ -19,9 +19,13 @@ final class TinyintResolver extends Resolver
 
     public function migration(): string
     {
-        // TODO: $table->tinyIncrements('id');
-        // TODO: $table->unsignedTinyInteger('votes');
-        $migration = '$table->tinyInteger(\''.$this->column->field.'\')';
+        if ($this->column->field == 'id' && $this->column->autoIncrement) {
+            $migration = '$table->tinyIncrements(\''.$this->column->field.'\')';
+        } else {
+            $migration = $this->column->unsigned ?
+                '$table->unsignedTinyInteger(\''.$this->column->field.'\')' :
+                '$table->tinyInteger(\''.$this->column->field.'\')';
+        }
 
         return $this->last($migration);
     }
