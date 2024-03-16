@@ -9,7 +9,7 @@ class UuidResolver extends Resolver
 {
     public function fake(): string
     {
-        return '\''.$this->column->field.'\' => fake()->uuid(),';
+        return '\''.$this->column->field.'\' => fake()->regexify(\'[a-zA-Z0-9]{36}\'),';
     }
 
     public function migration(): string

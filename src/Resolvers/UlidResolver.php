@@ -9,8 +9,7 @@ class UlidResolver extends Resolver
 {
     public function fake(): string
     {
-        // TODO: implement this method for ulid
-        return '';
+        return '\''.$this->column->field.'\' => fake()->regexify(\'[a-zA-Z0-9]{26}\'),';
     }
 
     public function migration(): string
