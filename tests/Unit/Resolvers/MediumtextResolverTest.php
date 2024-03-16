@@ -45,6 +45,6 @@ final class MediumtextResolverTest extends TestCase
     {
         $resolver = new MediumtextResolver($this->column);
 
-        $this->assertEquals('$table->mediumText(\''.$resolver->field.'\')->nullable();', $resolver->migration());
+        $this->assertEquals('$table->mediumText(\''.$resolver->field.'\');', $resolver->migration());
     }
 }

@@ -45,6 +45,6 @@ final class RemembertokenResolverTest extends TestCase
     {
         $resolver = new RemembertokenResolver($this->column);
 
-        $this->assertEquals('$table->rememberToken();', $resolver->migration());
+        $this->assertEquals('$table->rememberToken()->nullable();', $resolver->migration());
     }
 }

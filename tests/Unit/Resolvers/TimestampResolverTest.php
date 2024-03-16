@@ -45,6 +45,6 @@ final class TimestampResolverTest extends TestCase
     {
         $resolver = new TimestampResolver($this->column);
 
-        $this->assertEquals('$table->timestamp(\''.$resolver->field.'\')->nullable();', $resolver->migration());
+        $this->assertEquals('$table->timestamp(\''.$resolver->field.'\');', $resolver->migration());
     }
 }

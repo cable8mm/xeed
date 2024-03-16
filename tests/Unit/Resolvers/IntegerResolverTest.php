@@ -45,6 +45,6 @@ final class IntegerResolverTest extends TestCase
     {
         $resolver = new IntegerResolver($this->column);
 
-        $this->assertEquals('$table->integer(\'integer\')->nullable();', $resolver->migration());
+        $this->assertEquals('$table->integer(\'integer\');', $resolver->migration());
     }
 }

@@ -45,6 +45,6 @@ final class TinytextResolverTest extends TestCase
     {
         $resolver = new TinytextResolver($this->column);
 
-        $this->assertEquals('$table->tinyText(\''.$resolver->field.'\')->nullable();', $resolver->migration());
+        $this->assertEquals('$table->tinyText(\''.$resolver->field.'\');', $resolver->migration());
     }
 }

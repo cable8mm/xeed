@@ -50,11 +50,11 @@ final class UnsignedDecimalResolverTest extends TestCase
         $resolver = new DecimalResolver($this->column);
 
         if ($this->driver == 'mysql') {
-            $this->assertEquals('$table->unsignedDecimal(\''.$resolver->field.'\')->nullable();', $resolver->migration());
+            $this->assertEquals('$table->unsignedDecimal(\''.$resolver->field.'\');', $resolver->migration());
         }
 
         if ($this->driver == 'sqlite') {
-            $this->assertEquals('$table->decimal(\''.$resolver->field.'\')->nullable();', $resolver->migration());
+            $this->assertEquals('$table->decimal(\''.$resolver->field.'\');', $resolver->migration());
         }
     }
 }

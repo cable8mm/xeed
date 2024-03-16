@@ -45,6 +45,6 @@ final class JsonResolverTest extends TestCase
     {
         $resolver = new JsonResolver($this->column);
 
-        $this->assertEquals('$table->json(\''.$resolver->field.'\')->nullable();', $resolver->migration());
+        $this->assertEquals('$table->json(\''.$resolver->field.'\');', $resolver->migration());
     }
 }

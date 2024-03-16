@@ -45,6 +45,6 @@ final class BoolResolverTest extends TestCase
     {
         $resolver = new BoolResolver($this->column);
 
-        $this->assertEquals('$table->boolean(\'boolean\')->nullable();', $resolver->migration());
+        $this->assertEquals('$table->boolean(\'boolean\');', $resolver->migration());
     }
 }

@@ -45,6 +45,6 @@ final class VarcharResolverTest extends TestCase
     {
         $resolver = new VarcharResolver($this->column);
 
-        $this->assertEquals('$table->string(\'string\')->nullable();', $resolver->migration());
+        $this->assertEquals('$table->string(\'string\');', $resolver->migration());
     }
 }

@@ -50,11 +50,11 @@ final class FloatResolverTest extends TestCase
         $resolver = new FloatResolver($this->column);
 
         if ($this->driver === 'mysql') {
-            $this->assertEquals('$table->float(\'float\', 8, 2)->nullable();', $resolver->migration());
+            $this->assertEquals('$table->float(\'float\', 8, 2);', $resolver->migration());
         }
 
         if ($this->driver === 'sqlite') {
-            $this->assertEquals('$table->float(\'float\')->nullable();', $resolver->migration());
+            $this->assertEquals('$table->float(\'float\');', $resolver->migration());
         }
     }
 }

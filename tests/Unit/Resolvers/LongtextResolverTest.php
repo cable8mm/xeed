@@ -45,6 +45,6 @@ final class LongtextResolverTest extends TestCase
     {
         $resolver = new LongtextResolver($this->column);
 
-        $this->assertEquals('$table->longText(\''.$resolver->field.'\')->nullable();', $resolver->migration());
+        $this->assertEquals('$table->longText(\''.$resolver->field.'\');', $resolver->migration());
     }
 }

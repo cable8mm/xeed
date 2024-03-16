@@ -45,6 +45,6 @@ final class TextResolverTest extends TestCase
     {
         $resolver = new TextResolver($this->column);
 
-        $this->assertEquals('$table->text(\''.$resolver->field.'\')->nullable();', $resolver->migration());
+        $this->assertEquals('$table->text(\''.$resolver->field.'\');', $resolver->migration());
     }
 }
