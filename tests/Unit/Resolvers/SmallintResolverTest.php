@@ -12,6 +12,8 @@ final class SmallintResolverTest extends TestCase
 {
     public Column $column;
 
+    public string $driver;
+
     protected function setUp(): void
     {
         $db = DB::getInstance();
@@ -20,6 +22,8 @@ final class SmallintResolverTest extends TestCase
             ->getTable('xeeds')
             ->getColumns()
         )->driver($db->driver)->field('small_integer')->get();
+
+        $this->driver = $db->driver;
     }
 
     public function test_column_can_not_null(): void
@@ -45,6 +49,12 @@ final class SmallintResolverTest extends TestCase
     {
         $resolver = new SmallintResolver($this->column);
 
-        $this->assertEquals('$table->smallInteger(\''.$resolver->field.'\');', $resolver->migration());
+        if ($this->driver == 'mysql') {
+            $this->assertEquals('$table->unsignedSmallInteger(\''.$resolver->field.'\');', $resolver->migration());
+        }
+
+        if ($this->driver == 'sqlite') {
+            $this->assertEquals('$table->smallInteger(\''.$resolver->field.'\');', $resolver->migration());
+        }
     }
 }

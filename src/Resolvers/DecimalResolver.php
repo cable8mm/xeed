@@ -24,7 +24,9 @@ class DecimalResolver extends Resolver
     {
         // TODO: $table->decimal('amount', $precision = 8, $scale = 2);
         // TODO: $table->unsignedDecimal('amount', $precision = 8, $scale = 2);
-        $migration = '$table->decimal(\''.$this->column->field.'\')';
+        $migration = $this->column->unsigned ?
+            '$table->unsignedDecimal(\''.$this->column->field.'\')' :
+            '$table->decimal(\''.$this->column->field.'\')';
 
         return $this->last($migration);
     }

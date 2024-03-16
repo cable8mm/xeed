@@ -50,7 +50,7 @@ final class UnsignedIntegerResolverTest extends TestCase
         $resolver = new IntResolver($this->column);
 
         if ($this->driver == 'mysql') {
-            $this->assertEquals('$table->unsignedBigInteger(\''.$resolver->field.'\');', $resolver->migration());
+            $this->assertEquals('$table->unsignedInteger(\''.$resolver->field.'\');', $resolver->migration());
         }
 
         if ($this->driver == 'sqlite') {

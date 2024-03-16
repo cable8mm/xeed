@@ -23,8 +23,9 @@ class BigintResolver extends Resolver
         // TODO: $table->foreignId('user_id');
         // TODO: $table->foreignIdFor(User::class);
         // TODO: $table->id();
-        // TODO: $table->unsignedBigInteger('votes');
-        $migration = '$table->bigInteger(\''.$this->column->field.'\')';
+        $migration = $this->column->unsigned ?
+            '$table->unsignedBigInteger(\''.$this->column->field.'\')' :
+            '$table->bigInteger(\''.$this->column->field.'\')';
 
         return $this->last($migration);
     }
