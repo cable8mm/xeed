@@ -20,7 +20,9 @@ interface Provider
      * Mapping method between another fields for Database.
      *
      * @param  array  $column  Original column data
+     * @param  string  $table  Table name
+     * @param  DB  $db  Database instance
      * @return array Mapped column data
      */
-    public static function map(array $column): array;
+    public static function map(array $column, ?string $table = null, ?DB $db = null): array;
 }

@@ -12,8 +12,10 @@ final class Column
      *
      * @param  string  $field  Name of the column
      * @param  string  $type  Type of the column
-     * @param  bool  $nullable  Nullable flag
-     * @param  bool  $key  Key of the column
+     * @param  bool  $unsigned  Nullable flag
+     * @param  bool  $autoIncrement  Nullable flag
+     * @param  bool  $notNull  Nullable flag
+     * @param  bool  $primaryKey  Key of the column
      * @param  string|null  $bracket  Length or something of the column
      * @param  string|null  $default  Default value
      * @param  string|null  $extra  Extra information of the column
@@ -21,8 +23,10 @@ final class Column
     public function __construct(
         public string $field,
         public string $type,
-        public bool $nullable,
-        public bool $key,
+        public bool $unsigned = false,
+        public bool $autoIncrement = false,
+        public bool $notNull = false,
+        public bool $primaryKey = false,
         public ?string $bracket = null,
         public ?string $default = null,
         public ?string $extra = null
@@ -40,9 +44,11 @@ final class Column
         return [
             'field' => $this->field,
             'type' => $this->type,
-            'nullable' => $this->nullable,
+            'unsigned' => $this->unsigned,
+            'notNull' => $this->notNull,
+            'autoIncrement' => $this->autoIncrement,
             'bracket' => $this->bracket,
-            'key' => $this->key,
+            'primaryKey' => $this->primaryKey,
             'default' => $this->default,
             'extra' => $this->extra,
         ];
