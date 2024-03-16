@@ -39,8 +39,6 @@ final class BooleanResolverTest extends TestCase
         $resolver = new BooleanResolver($this->column);
 
         $this->assertEquals('\'boolean\' => fake()->boolean(),', $resolver->fake());
-
-        $this->assertTrue(true);
     }
 
     public function test_migration_method_can_working_well(): void
@@ -48,7 +46,5 @@ final class BooleanResolverTest extends TestCase
         $resolver = new BooleanResolver($this->column);
 
         $this->assertEquals('$table->boolean(\'boolean\')->nullable();', $resolver->migration());
-
-        $this->assertTrue(true);
     }
 }

@@ -4,11 +4,11 @@ namespace Cable8mm\Xeed\Tests\Unit\Resolvers;
 
 use Cable8mm\Xeed\Column;
 use Cable8mm\Xeed\DB;
-use Cable8mm\Xeed\Resolvers\CharResolver;
+use Cable8mm\Xeed\Resolvers\IntResolver;
 use Cable8mm\Xeed\Support\Picker;
 use PHPUnit\Framework\TestCase;
 
-final class CharResolverTest extends TestCase
+final class UnsignedTinyIntegerResolverTest extends TestCase
 {
     public Column $column;
 
@@ -21,7 +21,7 @@ final class CharResolverTest extends TestCase
         $this->column = Picker::of($db->attach()
             ->getTable('xeeds')
             ->getColumns()
-        )->driver($db->driver)->field('char')->get();
+        )->driver($db->driver)->field('unsigned_tiny_integer')->get();
 
         $this->driver = $db->driver;
     }
@@ -33,28 +33,28 @@ final class CharResolverTest extends TestCase
 
     public function test_resolver_can_be_created(): void
     {
-        $resolver = new CharResolver($this->column);
+        $resolver = new IntResolver($this->column);
 
         $this->assertNotNull($resolver);
     }
 
     public function test_fake_method_can_working_well(): void
     {
-        $resolver = new CharResolver($this->column);
+        $resolver = new IntResolver($this->column);
 
-        $this->assertEquals('\'char\' => fake()->randomLetter(),', $resolver->fake());
+        $this->assertEquals('\''.$resolver->field.'\' => fake()->randomNumber(),', $resolver->fake());
     }
 
     public function test_migration_method_can_working_well(): void
     {
-        $resolver = new CharResolver($this->column);
+        $resolver = new IntResolver($this->column);
 
-        if ($this->driver === 'mysql') {
-            $this->assertEquals('$table->char(\'char\', 100)->nullable();', $resolver->migration());
+        if ($this->driver == 'mysql') {
+            $this->assertEquals('$table->unsignedTinyInteger(\''.$resolver->field.'\')->nullable();', $resolver->migration());
         }
 
-        if ($this->driver === 'sqlite') {
-            $this->assertEquals('$table->char(\'char\')->nullable();', $resolver->migration());
+        if ($this->driver == 'sqlite') {
+            $this->assertEquals('$table->integer(\''.$resolver->field.'\')->nullable();', $resolver->migration());
         }
     }
 }

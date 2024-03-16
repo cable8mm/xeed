@@ -19,7 +19,9 @@ class TimeResolver extends Resolver
     public function migration(): string
     {
         // TODO: $table->timeTz('sunrise', $precision = 0);
-        $migration = '$table->time(\''.$this->column->field.'\', '.$this->column->bracket.')';
+        $migration = empty($this->column->bracket) ?
+            '$table->time(\''.$this->column->field.'\')' :
+            '$table->time(\''.$this->column->field.'\', '.$this->column->bracket.')';
 
         return $this->last($migration);
     }

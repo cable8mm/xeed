@@ -39,8 +39,6 @@ final class IntResolverTest extends TestCase
         $resolver = new IntResolver($this->column);
 
         $this->assertEquals('\'integer\' => fake()->randomNumber(),', $resolver->fake());
-
-        $this->assertTrue(true);
     }
 
     public function test_migration_method_can_working_well(): void
@@ -48,7 +46,5 @@ final class IntResolverTest extends TestCase
         $resolver = new IntResolver($this->column);
 
         $this->assertEquals('$table->integer(\'integer\')->nullable();', $resolver->migration());
-
-        $this->assertTrue(true);
     }
 }

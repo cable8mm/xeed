@@ -29,7 +29,9 @@ class TimestampResolver extends Resolver
         // TODO: $table->timestampTz('added_at', $precision = 0);
         // TODO: $table->timestampsTz($precision = 0);
         // TODO: $table->timestamps($precision = 0);
-        $migration = '$table->timestamp(\''.$this->column->field.'\', '.$this->column->bracket.')';
+        $migration = empty($this->column->bracket) ?
+            '$table->timestamp(\''.$this->column->field.'\')' :
+            '$table->timestamp(\''.$this->column->field.'\', '.$this->column->bracket.')';
 
         return $this->last($migration);
     }

@@ -39,8 +39,6 @@ final class BigintResolverTest extends TestCase
         $resolver = new BigintResolver($this->column);
 
         $this->assertEquals('\''.$resolver->field.'\' => fake()->numerify(),', $resolver->fake());
-
-        $this->assertTrue(true);
     }
 
     public function test_migration_method_can_working_well(): void
@@ -48,7 +46,5 @@ final class BigintResolverTest extends TestCase
         $resolver = new BigintResolver($this->column);
 
         $this->assertEquals('$table->bigInteger(\''.$resolver->field.'\')->nullable();', $resolver->migration());
-
-        $this->assertTrue(true);
     }
 }
