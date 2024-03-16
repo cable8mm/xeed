@@ -10,7 +10,7 @@ class PointResolver extends Resolver
     public function fake(): string
     {
         // TODO: Implement fake() method.
-        return '';
+        return '\''.$this->column->field.'\' => \'POINT(10 10)\',';
     }
 
     public function migration(): string

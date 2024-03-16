@@ -5,12 +5,11 @@ namespace Cable8mm\Xeed\Resolvers;
 /**
  * MULTIPOINT
  */
-class MorphsResolver extends Resolver
+class MultipointResolver extends Resolver
 {
     public function fake(): string
     {
-        // TODO: Implement fake() method.
-        return '';
+        return '\''.$this->column->field.'\' => \'MULTIPOINT(0 0, 20 20, 60 60)\',';
     }
 
     public function migration(): string
