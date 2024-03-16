@@ -2,6 +2,7 @@
 
 namespace Cable8mm\Xeed\Tests\Unit\Resolvers;
 
+use Cable8mm\Xeed\Column;
 use Cable8mm\Xeed\DB;
 use Cable8mm\Xeed\Resolvers\YearResolver;
 use Cable8mm\Xeed\Support\Picker;
@@ -9,37 +10,51 @@ use PHPUnit\Framework\TestCase;
 
 final class YearResolverTest extends TestCase
 {
-    public ?YearResolver $resolver = null;
+    public Column $column;
+
+    public string $driver;
 
     protected function setUp(): void
     {
         $db = DB::getInstance();
 
-        if ($db->driver === 'mysql') {
-            $column = Picker::of($db->attach()
-                ->getTable('xeeds')
-                ->getColumns()
-            )->driver($db->driver)->type('year')->get();
+        $this->column = Picker::of($db->attach()
+            ->getTable('xeeds')
+            ->getColumns()
+        )->driver($db->driver)->field('birth_year')->get();
 
-            $this->resolver = new YearResolver($column);
-        }
+        $this->driver = $db->driver;
+    }
+
+    public function test_column_can_not_null(): void
+    {
+        $this->assertNotNull($this->column);
+    }
+
+    public function test_resolver_can_be_created(): void
+    {
+        $resolver = new YearResolver($this->column);
+
+        $this->assertNotNull($resolver);
     }
 
     public function test_fake_method_can_working_well(): void
     {
-        if ($this->resolver !== null) {
-            $this->assertEquals('\'birth_year\' => fake()->year(),', $this->resolver->fake());
-        }
+        $resolver = new YearResolver($this->column);
 
-        $this->assertTrue(true);
+        $this->assertEquals('\'birth_year\' => fake()->year(),', $resolver->fake());
     }
 
     public function test_migration_method_can_working_well(): void
     {
-        if ($this->resolver !== null) {
-            $this->assertEquals('$table->year(\'birth_year\');', $this->resolver->migration());
+        $resolver = new YearResolver($this->column);
+
+        if ($this->driver == 'mysql') {
+            $this->assertEquals('$table->year(\''.$resolver->field.'\')->nullable();', $resolver->migration());
         }
 
-        $this->assertTrue(true);
+        if ($this->driver == 'sqlite') {
+            $this->assertEquals('$table->year(\''.$resolver->field.'\')->nullable();', $resolver->migration());
+        }
     }
 }

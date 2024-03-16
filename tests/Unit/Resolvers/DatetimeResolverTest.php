@@ -39,8 +39,6 @@ final class DatetimeResolverTest extends TestCase
         $resolver = new DatetimeResolver($this->column);
 
         $this->assertEquals('\'date_time\' => fake()->dateTime(),', $resolver->fake());
-
-        $this->assertTrue(true);
     }
 
     public function test_migration_method_can_working_well(): void
@@ -48,7 +46,5 @@ final class DatetimeResolverTest extends TestCase
         $resolver = new DatetimeResolver($this->column);
 
         $this->assertEquals('$table->dateTime(\'date_time\')->nullable();', $resolver->migration());
-
-        $this->assertTrue(true);
     }
 }

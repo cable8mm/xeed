@@ -39,8 +39,6 @@ final class VarcharResolverTest extends TestCase
         $resolver = new VarcharResolver($this->column);
 
         $this->assertEquals('\'string\' => fake()->paragraph(),', $resolver->fake());
-
-        $this->assertTrue(true);
     }
 
     public function test_migration_method_can_working_well(): void
@@ -48,7 +46,5 @@ final class VarcharResolverTest extends TestCase
         $resolver = new VarcharResolver($this->column);
 
         $this->assertEquals('$table->string(\'string\')->nullable();', $resolver->migration());
-
-        $this->assertTrue(true);
     }
 }

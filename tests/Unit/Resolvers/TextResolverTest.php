@@ -38,17 +38,13 @@ final class TextResolverTest extends TestCase
     {
         $resolver = new TextResolver($this->column);
 
-        $this->assertEquals('\'text\' => fake()->paragraph(),', $resolver->fake());
-
-        $this->assertTrue(true);
+        $this->assertEquals('\''.$resolver->field.'\' => fake()->paragraph(),', $resolver->fake());
     }
 
     public function test_migration_method_can_working_well(): void
     {
         $resolver = new TextResolver($this->column);
 
-        $this->assertEquals('$table->text(\'text\')->nullable();', $resolver->migration());
-
-        $this->assertTrue(true);
+        $this->assertEquals('$table->text(\''.$resolver->field.'\')->nullable();', $resolver->migration());
     }
 }
