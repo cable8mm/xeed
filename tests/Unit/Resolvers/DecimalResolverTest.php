@@ -45,6 +45,6 @@ final class DecimalResolverTest extends TestCase
     {
         $resolver = new DecimalResolver($this->column);
 
-        $this->assertEquals('$table->decimal(\''.$resolver->field.'\')->nullable();', $resolver->migration());
+        $this->assertEquals('$table->decimal(\''.$resolver->field.'\');', $resolver->migration());
     }
 }

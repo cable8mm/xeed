@@ -45,6 +45,6 @@ final class TinyintResolverTest extends TestCase
     {
         $resolver = new TinyintResolver($this->column);
 
-        $this->assertEquals('$table->tinyInteger(\''.$resolver->field.'\')->nullable();', $resolver->migration());
+        $this->assertEquals('$table->tinyInteger(\''.$resolver->field.'\');', $resolver->migration());
     }
 }

@@ -45,6 +45,6 @@ final class BigintResolverTest extends TestCase
     {
         $resolver = new BigintResolver($this->column);
 
-        $this->assertEquals('$table->bigInteger(\''.$resolver->field.'\')->nullable();', $resolver->migration());
+        $this->assertEquals('$table->bigInteger(\''.$resolver->field.'\');', $resolver->migration());
     }
 }

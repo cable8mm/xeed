@@ -45,6 +45,6 @@ final class MacaddressResolverTest extends TestCase
     {
         $resolver = new MacaddressResolver($this->column);
 
-        $this->assertEquals('$table->macAddress(\''.$resolver->field.'\')->nullable();', $resolver->migration());
+        $this->assertEquals('$table->macAddress(\''.$resolver->field.'\');', $resolver->migration());
     }
 }

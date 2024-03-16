@@ -45,6 +45,6 @@ final class SmallintResolverTest extends TestCase
     {
         $resolver = new SmallintResolver($this->column);
 
-        $this->assertEquals('$table->smallInteger(\''.$resolver->field.'\')->nullable();', $resolver->migration());
+        $this->assertEquals('$table->smallInteger(\''.$resolver->field.'\');', $resolver->migration());
     }
 }

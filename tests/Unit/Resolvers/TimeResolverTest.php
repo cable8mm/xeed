@@ -45,6 +45,6 @@ final class TimeResolverTest extends TestCase
     {
         $resolver = new TimeResolver($this->column);
 
-        $this->assertEquals('$table->time(\''.$resolver->field.'\')->nullable();', $resolver->migration());
+        $this->assertEquals('$table->time(\''.$resolver->field.'\');', $resolver->migration());
     }
 }

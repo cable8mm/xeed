@@ -45,6 +45,6 @@ final class DatetimeResolverTest extends TestCase
     {
         $resolver = new DatetimeResolver($this->column);
 
-        $this->assertEquals('$table->dateTime(\'date_time\')->nullable();', $resolver->migration());
+        $this->assertEquals('$table->dateTime(\'date_time\');', $resolver->migration());
     }
 }

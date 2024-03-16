@@ -45,6 +45,6 @@ final class MediumintResolverTest extends TestCase
     {
         $resolver = new MediumintResolver($this->column);
 
-        $this->assertEquals('$table->mediumInteger(\''.$resolver->field.'\')->nullable();', $resolver->migration());
+        $this->assertEquals('$table->mediumInteger(\''.$resolver->field.'\');', $resolver->migration());
     }
 }

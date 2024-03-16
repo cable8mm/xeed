@@ -55,7 +55,7 @@ final class DoubleResolverTest extends TestCase
         }
 
         if ($this->driver === 'sqlite') {
-            $this->assertEquals('$table->double(\'double\')->nullable();', $resolver->migration());
+            $this->assertEquals('$table->double(\'double\');', $resolver->migration());
         }
     }
 }

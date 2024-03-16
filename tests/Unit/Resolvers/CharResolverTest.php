@@ -50,11 +50,11 @@ final class CharResolverTest extends TestCase
         $resolver = new CharResolver($this->column);
 
         if ($this->driver === 'mysql') {
-            $this->assertEquals('$table->char(\'char\', 100)->nullable();', $resolver->migration());
+            $this->assertEquals('$table->char(\'char\', 100);', $resolver->migration());
         }
 
         if ($this->driver === 'sqlite') {
-            $this->assertEquals('$table->char(\'char\')->nullable();', $resolver->migration());
+            $this->assertEquals('$table->char(\'char\');', $resolver->migration());
         }
     }
 }

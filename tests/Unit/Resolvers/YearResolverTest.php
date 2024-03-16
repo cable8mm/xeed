@@ -50,11 +50,11 @@ final class YearResolverTest extends TestCase
         $resolver = new YearResolver($this->column);
 
         if ($this->driver == 'mysql') {
-            $this->assertEquals('$table->year(\''.$resolver->field.'\')->nullable();', $resolver->migration());
+            $this->assertEquals('$table->year(\''.$resolver->field.'\');', $resolver->migration());
         }
 
         if ($this->driver == 'sqlite') {
-            $this->assertEquals('$table->year(\''.$resolver->field.'\')->nullable();', $resolver->migration());
+            $this->assertEquals('$table->year(\''.$resolver->field.'\');', $resolver->migration());
         }
     }
 }
