@@ -21,15 +21,22 @@ class ImportXeedCommandTest extends TestCase
 
     public function test_execute(): void
     {
-        $this->commandTester->execute(['drop']);
+        $this->commandTester->execute(['argument' => 'import']);
 
         $this->assertEquals('Table was imported.', trim($this->commandTester->getDisplay()));
     }
 
-    // public function test_drop_execute(): void
-    // {
-    //     $this->commandTester->execute(['drop' => 'drop']);
+    public function test_drop_execute(): void
+    {
+        $this->commandTester->execute(['argument' => 'drop']);
 
-    //     $this->assertEquals('Table was dropped.', trim($this->commandTester->getDisplay()));
-    // }
+        $this->assertEquals('Table was dropped.', trim($this->commandTester->getDisplay()));
+    }
+
+    public function test_refresh_execute(): void
+    {
+        $this->commandTester->execute(['argument' => 'refresh']);
+
+        $this->assertEquals('Table was dropped.'.PHP_EOL.'Table was imported.', trim($this->commandTester->getDisplay()));
+    }
 }
