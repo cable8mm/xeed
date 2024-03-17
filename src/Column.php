@@ -95,4 +95,9 @@ final class Column
     {
         return ResolverSelector::of($this)->fake();
     }
+
+    public function migration(): string
+    {
+        return ResolverSelector::of($this)->migration();
+    }
 }
