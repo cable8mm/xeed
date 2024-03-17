@@ -14,13 +14,8 @@ final class DatabaseSeederGenerator
      */
     private string $stub;
 
-    /**
-     * @var string The seeder class name.
-     */
-    private string $seeder;
-
     private function __construct(
-        private array $classes,
+        private array $tables,
         private ?string $namespace = null,
         private ?string $dist = null
     ) {
@@ -33,8 +28,6 @@ final class DatabaseSeederGenerator
         }
 
         $this->stub = file_get_contents(Path::stub().'DatabaseSeeder.stub');
-
-        $this->seeder = 'DatabaseSeeder';
     }
 
     /**
@@ -44,8 +37,8 @@ final class DatabaseSeederGenerator
     {
         $seeder_classes = '';
 
-        foreach ($this->classes as $class) {
-            $seeder_classes .= '            '.$class.'Seeder::class,'.PHP_EOL;
+        foreach ($this->tables as $table) {
+            $seeder_classes .= '            '.$table->model().'Seeder::class,'.PHP_EOL;
         }
 
         $seeder_classes = preg_replace('/\n$/', '', $seeder_classes);
@@ -57,7 +50,7 @@ final class DatabaseSeederGenerator
         );
 
         file_put_contents(
-            $this->dist.$this->seeder.'.php',
+            $this->dist.'DatabaseSeeder.php',
             $seederClass
         );
     }
@@ -65,15 +58,15 @@ final class DatabaseSeederGenerator
     /**
      * Factory method.
      *
-     * @param  array  $classes  The model class name
+     * @param  array<Table>  $tables  The model class name
      * @param  string  $namespace  The model namespace
      * @param  string  $dist  The path to the dist folder
      */
     public static function make(
-        array $classes,
+        array $tables,
         ?string $namespace = null,
         ?string $dist = null
     ): static {
-        return new self($classes, $namespace, $dist);
+        return new self($tables, $namespace, $dist);
     }
 }

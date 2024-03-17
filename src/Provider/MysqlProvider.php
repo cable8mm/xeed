@@ -4,14 +4,14 @@ namespace Cable8mm\Xeed\Provider;
 
 use Cable8mm\Xeed\Column;
 use Cable8mm\Xeed\DB;
-use Cable8mm\Xeed\Interfaces\Provider;
+use Cable8mm\Xeed\Interfaces\ProviderInterface;
 use Cable8mm\Xeed\Table;
 use PDO;
 
 /**
  * Mysql provider can help to retrieve data from mysql database and marshalling between another fields for MySQL.
  */
-final class MysqlProvider implements Provider
+final class MysqlProvider implements ProviderInterface
 {
     /**
      * {@inheritDoc}

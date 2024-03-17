@@ -4,7 +4,7 @@ namespace Cable8mm\Xeed\Provider;
 
 use Cable8mm\Xeed\Column;
 use Cable8mm\Xeed\DB;
-use Cable8mm\Xeed\Interfaces\Provider;
+use Cable8mm\Xeed\Interfaces\ProviderInterface;
 use Cable8mm\Xeed\Table;
 
 use function Cable8mm\ArrayFlatten\array_flatten;
@@ -12,7 +12,7 @@ use function Cable8mm\ArrayFlatten\array_flatten;
 /**
  * SQLite provider can help to retrieve data from sqlite database and marshalling between another fields for SQLite.
  */
-final class SqliteProvider implements Provider
+final class SqliteProvider implements ProviderInterface
 {
     /**
      * {@inheritDoc}

@@ -2,10 +2,12 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
+use Cable8mm\Xeed\Interfaces\ResolverInterface;
+
 /**
  * MULTIPOINT
  */
-class MultipointResolver extends Resolver
+class MultipointResolver extends Resolver implements ResolverInterface
 {
     public function fake(): string
     {

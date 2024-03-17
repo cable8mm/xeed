@@ -2,6 +2,8 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
+use Cable8mm\Xeed\Interfaces\ResolverInterface;
+
 /**
  * DECIMAL(size, d)
  *
@@ -13,7 +15,7 @@ namespace Cable8mm\Xeed\Resolvers;
  * The default value for size is 10.
  * The default value for d is 0.
  */
-class DecimalResolver extends Resolver
+class DecimalResolver extends Resolver implements ResolverInterface
 {
     public function fake(): string
     {

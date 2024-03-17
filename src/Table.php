@@ -2,22 +2,25 @@
 
 namespace Cable8mm\Xeed;
 
+use Cable8mm\Xeed\Support\Inflector;
+use Stringable;
+
 /**
  * Database Table Object.
  */
-final class Table
+final class Table implements Stringable
 {
     /**
      * Table name.
      */
-    public string $name;
+    private string $name;
 
     /**
      * Column array.
      *
      * @var array<Column>
      */
-    public array $columns = [];
+    private array $columns = [];
 
     /**
      * Table constructor.
@@ -25,7 +28,7 @@ final class Table
      * @param  string  $name  Table name
      * @param  array<Table>  $columns  Column array[Table]
      */
-    public function __construct(string $name, array $columns)
+    public function __construct(string $name, array $columns = [])
     {
         $this->name = $name;
 
@@ -40,5 +43,22 @@ final class Table
     public function getColumns(): array
     {
         return $this->columns;
+    }
+
+    /**
+     * To get the model name from table name.
+     *
+     * @return string The ModelName
+     *
+     * @example `User` `Admin`
+     */
+    public function model(): string
+    {
+        return Inflector::classify($this->name);
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 }

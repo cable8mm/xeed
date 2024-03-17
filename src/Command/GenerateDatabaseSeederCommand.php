@@ -10,6 +10,11 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
+/**
+ * Generate database seeder.
+ *
+ * Run `bin/console generate-seeders` or `bin/console seeders`
+ */
 #[AsCommand(
     name: 'generate-database-seeder',
     description: 'Generate seeders. run `bin/console generate-database-seeder`',
@@ -18,16 +23,17 @@ use Symfony\Component\Console\Output\OutputInterface;
 )]
 class GenerateDatabaseSeederCommand extends Command
 {
-    protected function configure()
+    /**
+     * Configure the command.
+     */
+    protected function configure(): void
     {
         $dotenv = \Dotenv\Dotenv::createImmutable(getcwd());
         $dotenv->safeLoad();
     }
 
     /**
-     * Generate models.
-     *
-     * Run `bin/console generate-seeders` or `bin/console seeders`
+     * Run the console command.
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
@@ -36,7 +42,7 @@ class GenerateDatabaseSeederCommand extends Command
         $classes = [];
 
         foreach ($tables as $table) {
-            $classes[] = Inflector::classify($table->name);
+            $classes[] = Inflector::classify($table);
         }
 
         DatabaseSeederGenerator::make($classes)->run();

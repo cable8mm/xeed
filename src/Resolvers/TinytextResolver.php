@@ -2,12 +2,14 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
+use Cable8mm\Xeed\Interfaces\ResolverInterface;
+
 /**
  * TINYTEXT
  *
  * Holds a string with a maximum length of 255 characters
  */
-class TinytextResolver extends Resolver
+class TinytextResolver extends Resolver implements ResolverInterface
 {
     public function fake(): string
     {

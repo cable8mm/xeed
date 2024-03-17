@@ -2,6 +2,8 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
+use Cable8mm\Xeed\Interfaces\ResolverInterface;
+
 /**
  * MEDIUMINT(size)
  *
@@ -10,7 +12,7 @@ namespace Cable8mm\Xeed\Resolvers;
  * Unsigned range is from 0 to 16777215.
  * The size parameter specifies the maximum display width (which is 255)
  */
-final class MediumintResolver extends Resolver
+final class MediumintResolver extends Resolver implements ResolverInterface
 {
     public function fake(): string
     {

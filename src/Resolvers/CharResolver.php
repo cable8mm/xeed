@@ -2,6 +2,8 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
+use Cable8mm\Xeed\Interfaces\ResolverInterface;
+
 /**
  * CHAR(size)
  *
@@ -9,7 +11,7 @@ namespace Cable8mm\Xeed\Resolvers;
  * The size parameter specifies the column length in characters - can be from 0 to 255.
  * Default is 1
  */
-class CharResolver extends Resolver
+class CharResolver extends Resolver implements ResolverInterface
 {
     public function fake(): string
     {

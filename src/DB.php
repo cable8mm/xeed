@@ -3,7 +3,7 @@
 namespace Cable8mm\Xeed;
 
 use ArrayAccess;
-use Cable8mm\Xeed\Interfaces\Provider;
+use Cable8mm\Xeed\Interfaces\ProviderInterface;
 use Cable8mm\Xeed\Support\Path;
 use InvalidArgumentException;
 use PDO;
@@ -28,7 +28,7 @@ final class DB extends PDO implements ArrayAccess
      */
     private array $tables = [];
 
-    private Provider $provider;
+    private ProviderInterface $provider;
 
     private function __construct(
         public string $driver,
@@ -102,6 +102,8 @@ final class DB extends PDO implements ArrayAccess
 
     /**
      * To get attached tables.
+     *
+     * @return array<Table> The attached tables
      */
     public function getTables(): array
     {
@@ -110,6 +112,8 @@ final class DB extends PDO implements ArrayAccess
 
     /**
      * To get a specific attached table.
+     *
+     * @return Table|null The table instance or null
      */
     public function getTable(string $table): ?Table
     {

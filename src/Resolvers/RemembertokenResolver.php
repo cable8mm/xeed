@@ -2,10 +2,12 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
+use Cable8mm\Xeed\Interfaces\ResolverInterface;
+
 /**
  * REMEMBERTOKEN
  */
-class RemembertokenResolver extends Resolver
+class RemembertokenResolver extends Resolver implements ResolverInterface
 {
     public function fake(): string
     {

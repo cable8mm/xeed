@@ -2,10 +2,12 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
+use Cable8mm\Xeed\Interfaces\ResolverInterface;
+
 /**
  * LINESTRING
  */
-class LineStringResolver extends Resolver
+class LineStringResolver extends Resolver implements ResolverInterface
 {
     public function fake(): string
     {

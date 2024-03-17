@@ -1,0 +1,17 @@
+* text=auto eol=lf
+
+*.md diff=markdown
+*.php diff=php
+*.php.test diff=php
+/bin/colsone diff=php
+
+/.github export-ignore
+/dist export-ignore
+/tests export-ignore
+/resources/tests export-ignore
+.editorconfig export-ignore
+.gitattributes export-ignore
+.gitignore export-ignore
+CHANGELOG.md export-ignore
+LICENSE.md export-ignore
+phpunit.xml.dist export-ignore
