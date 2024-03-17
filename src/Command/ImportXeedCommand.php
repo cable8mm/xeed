@@ -34,10 +34,10 @@ class ImportXeedCommand extends Command
         $this
             ->addArgument(
                 'argument',
-                mode: InputArgument::OPTIONAL,
-                description: 'Drop xeeds table?',
-                default: 'import',
-                suggestedValues: ['import', 'drop', 'refresh']
+                InputArgument::OPTIONAL,
+                'Drop xeeds table?',
+                'import',
+                ['import', 'drop', 'refresh']
             );
     }
 
