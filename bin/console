@@ -3,6 +3,7 @@
 
 require __DIR__.'/../vendor/autoload.php';
 
+use Cable8mm\Xeed\Command\CleanCommand;
 use Cable8mm\Xeed\Command\GenerateDatabaseSeederCommand;
 use Cable8mm\Xeed\Command\GenerateModelsCommand;
 use Cable8mm\Xeed\Command\GenerateSeedersCommand;
@@ -17,5 +18,6 @@ $application->add(new GenerateModelsCommand());
 $application->add(new GenerateSeedersCommand());
 $application->add(new GenerateDatabaseSeederCommand());
 $application->add(new ImportXeedCommand());
+$application->add(new CleanCommand());
 
 $application->run();

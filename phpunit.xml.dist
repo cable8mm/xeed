@@ -17,6 +17,9 @@
         <testsuite name="Feature">
             <directory>tests/Feature</directory>
         </testsuite>
+        <testsuite name="Generator">
+            <directory>tests/Unit/Generators</directory>
+        </testsuite>
     </testsuites>
 
     <source>
