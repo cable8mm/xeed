@@ -135,7 +135,6 @@ Schema::create('xeeds', function (Blueprint $table) {
     $table->mediumInteger('medium_integer');
     $table->mediumText('medium_text');
     $table->morphs('morphs');
-    $table->multiLineString('multi_line_string');
     $table->multiPoint('multi_point');
     $table->multiPolygon('multi_polygon');
     $table->nullableMorphs('nullable_morphs');
