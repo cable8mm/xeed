@@ -2,28 +2,22 @@
 
 namespace Cable8mm\Xeed\Generators;
 
-use Cable8mm\Xeed\Interfaces\Generator;
-use Cable8mm\Xeed\Support\Inflector;
+use Cable8mm\Xeed\Interfaces\GeneratorInterface;
 use Cable8mm\Xeed\Support\Path;
 use Cable8mm\Xeed\Table;
 
 /**
  * Generator for `dist/app/Models/*.php`.
  */
-final class ModelGenerator implements Generator
+final class ModelGenerator implements GeneratorInterface
 {
     /**
      * @var string Stub string from the stubs folder file.
      */
     private string $stub;
 
-    /**
-     * @var string The seeder class name.
-     */
-    private string $seeder;
-
     private function __construct(
-        private string $class,
+        private Table $table,
         private ?string $namespace_class,
         private ?string $dist = null
     ) {
@@ -32,8 +26,6 @@ final class ModelGenerator implements Generator
         }
 
         $this->stub = file_get_contents(Path::stub().'Model.stub');
-
-        $this->seeder = $this->class;
     }
 
     /**
@@ -43,12 +35,12 @@ final class ModelGenerator implements Generator
     {
         $seederClass = str_replace(
             ['{model}'],
-            [$this->class],
+            [$this->table->model()],
             $this->stub
         );
 
         file_put_contents(
-            $this->dist.$this->seeder.'.php',
+            $this->dist.$this->table->model().'.php',
             $seederClass
         );
     }
@@ -56,7 +48,7 @@ final class ModelGenerator implements Generator
     /**
      * Factory method.
      *
-     * @param  string  $class  The model class name
+     * @param  Table  $table  The model class name
      * @param  string  $namespace  The model namespace
      * @param  string  $dist  The path to the dist folder
      *
@@ -65,15 +57,10 @@ final class ModelGenerator implements Generator
      * @example \Generators\ModelGenerator::make('User', 'App\Models', 'dist/app/Models')
      */
     public static function make(
-        string|Table $class,
+        Table $table,
         ?string $namespace = null,
         ?string $dist = null
     ): static {
-
-        if ($class instanceof Table) {
-            $class = Inflector::classify($class->name);
-        }
-
-        return new self($class, $namespace, $dist);
+        return new self($table, $namespace, $dist);
     }
 }

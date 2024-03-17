@@ -65,7 +65,7 @@ final class DBTest extends TestCase
 
         $table = $db->getTable(Seeder::TABLE);
 
-        $this->assertEquals(Seeder::TABLE, $table->getName());
+        $this->assertEquals(Seeder::TABLE, $table);
     }
 
     // public function test_getTable_method_can_work_well_for_xeeds_table(): void
@@ -74,6 +74,6 @@ final class DBTest extends TestCase
 
     //     $table = $db->getTable('xeeds');
 
-    //     $this->assertEquals('xeeds', $table->getName());
+    //     $this->assertEquals('xeeds', $table);
     // }
 }

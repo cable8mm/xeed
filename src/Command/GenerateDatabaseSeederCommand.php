@@ -42,7 +42,7 @@ class GenerateDatabaseSeederCommand extends Command
         $classes = [];
 
         foreach ($tables as $table) {
-            $classes[] = Inflector::classify($table->name);
+            $classes[] = Inflector::classify($table);
         }
 
         DatabaseSeederGenerator::make($classes)->run();

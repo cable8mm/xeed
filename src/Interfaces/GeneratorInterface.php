@@ -2,10 +2,12 @@
 
 namespace Cable8mm\Xeed\Interfaces;
 
+use Cable8mm\Xeed\Table;
+
 /**
  * Generator interface.
  */
-interface Generator
+interface GeneratorInterface
 {
     /**
      * To run the generator logic and save it to a file.
@@ -21,7 +23,7 @@ interface Generator
      * @return void
      */
     public static function make(
-        string $class,
+        Table $class,
         ?string $namespace = null,
         ?string $dist = null
     );

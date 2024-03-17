@@ -7,7 +7,7 @@ use Cable8mm\Xeed\DB;
 /**
  * Provider interface.
  */
-interface Provider
+interface ProviderInterface
 {
     /**
      * To attach child provider to DB instance.
