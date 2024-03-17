@@ -1,5 +1,14 @@
 # Release Notes
 
+## v0.6.0 - 2024-03-17
+
+### What's Changed
+
+* Implement Factory Generator by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/21
+* Implement Migration Generator by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/22
+
+**Full Changelog**: https://github.com/cable8mm/xeed/compare/v0.5.3...v0.6.0
+
 ## v0.5.3 - 2024-03-16
 
 ### What's Changed
