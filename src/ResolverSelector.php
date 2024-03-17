@@ -213,6 +213,6 @@ final class ResolverSelector
             return new EnumResolver($column);
         }
 
-        throw new InvalidArgumentException('Unknown column type');
+        throw new InvalidArgumentException($column.' This column cannot be resolved.');
     }
 }
