@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Cable8mm\Xeed\Generators\SeederGenerator | API</title>
+    <title>Cable8mm\Xeed\Command\CleanCommand | API</title>
 
             <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
 
     </head>
 
-    <body id="class" data-name="class:Cable8mm_Xeed_Generators_SeederGenerator" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
+    <body id="class" data-name="class:Cable8mm_Xeed_Command_CleanCommand" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -75,18 +75,18 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                        <li><a href="../../../Cable8mm.html">Cable8mm</a></li><li class="backslash">\</li><li><a href="../../../Cable8mm/Xeed.html">Xeed</a></li><li class="backslash">\</li><li><a href="../../../Cable8mm/Xeed/Generators.html">Generators</a></li><li class="backslash">\</li><li>SeederGenerator</li>
+                        <li><a href="../../../Cable8mm.html">Cable8mm</a></li><li class="backslash">\</li><li><a href="../../../Cable8mm/Xeed.html">Xeed</a></li><li class="backslash">\</li><li><a href="../../../Cable8mm/Xeed/Command.html">Command</a></li><li class="backslash">\</li><li>CleanCommand</li>
             </ol>
         </div>
                 <div id="page-content">
     <div class="page-header">
-        <h1>SeederGenerator    
+        <h1>CleanCommand    
             </h1>
     </div>
 
     
-    <p>final         class
-    <strong>SeederGenerator</strong>        implements        <a href="../../../Cable8mm/Xeed/Interfaces/GeneratorInterface.html"><abbr title="Cable8mm\Xeed\Interfaces\GeneratorInterface">GeneratorInterface</abbr></a>
+    <p>        class
+    <strong>CleanCommand</strong>        extends <abbr title="Symfony\Component\Console\Command\Command">Command</abbr>
 </p>
 
         
@@ -94,7 +94,7 @@
         
 
             <div class="description">
-            <p><p>Generator for <code>dist/database/seeders/*.php</code>.</p></p>                    </div>
+            <p><p>Clean generated files, seeders, models, factories and migration files.</p></p>            <p><p>run <code>bin/console clean</code></p></p>        </div>
             
         
     
@@ -104,22 +104,12 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    void
+                    int
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_run">run</a>()
+                    <a href="#method_execute">execute</a>(<abbr title="Symfony\Component\Console\Input\InputInterface">InputInterface</abbr> $input, <abbr title="Symfony\Component\Console\Output\OutputInterface">OutputInterface</abbr> $output)
         
-                                            <p><p>To run the generator logic and save it to a file.</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    static&nbsp;void
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_make">make</a>(<a href="../../../Cable8mm/Xeed/Table.html"><abbr title="Cable8mm\Xeed\Table">Table</abbr></a> $table, string|null $namespace = null, string|null $dist = null)
-        
-                                            <p><p>Factory method.</p></p>                </div>
+                                            <p><p>Run the console command.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -129,10 +119,10 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_run">
-        <div class="location">at line 38</div>
-        <code>                    void
-    <strong>run</strong>()
+                    <h3 id="method_execute">
+        <div class="location">at line 27</div>
+        <code>            protected        int
+    <strong>execute</strong>(<abbr title="Symfony\Component\Console\Input\InputInterface">InputInterface</abbr> $input, <abbr title="Symfony\Component\Console\Output\OutputInterface">OutputInterface</abbr> $output)
         </code>
     </h3>
     <div class="details">    
@@ -140,58 +130,21 @@
             
 
         <div class="method-description">
-                            <p><p>To run the generator logic and save it to a file.</p></p>                        
-        </div>
-        <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>void</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_make">
-        <div class="location">at line 59</div>
-        <code>        static            void
-    <strong>make</strong>(<a href="../../../Cable8mm/Xeed/Table.html"><abbr title="Cable8mm\Xeed\Table">Table</abbr></a> $table, string|null $namespace = null, string|null $dist = null)
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Factory method.</p></p>                        
+                            <p><p>Run the console command.</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../Cable8mm/Xeed/Table.html"><abbr title="Cable8mm\Xeed\Table">Table</abbr></a></td>
-                <td>$table</td>
-                <td><p>The model class name</p></td>
+                <td><abbr title="Symfony\Component\Console\Input\InputInterface">InputInterface</abbr></td>
+                <td>$input</td>
+                <td></td>
             </tr>
                     <tr>
-                <td>string|null</td>
-                <td>$namespace</td>
-                <td><p>The namespace to be applied to the class</p></td>
-            </tr>
-                    <tr>
-                <td>string|null</td>
-                <td>$dist</td>
-                <td><p>The path to the dist folder</p></td>
+                <td><abbr title="Symfony\Component\Console\Output\OutputInterface">OutputInterface</abbr></td>
+                <td>$output</td>
+                <td></td>
             </tr>
             </table>
 
@@ -200,7 +153,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>void</td>
+            <td>int</td>
             <td></td>
         </tr>
     </table>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Cable8mm\Xeed\Generators\SeederGenerator | API</title>
+    <title>Cable8mm\Xeed\Interfaces\GeneratorInterface | API</title>
 
             <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
 
     </head>
 
-    <body id="class" data-name="class:Cable8mm_Xeed_Generators_SeederGenerator" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
+    <body id="class" data-name="class:Cable8mm_Xeed_Interfaces_GeneratorInterface" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -74,19 +74,19 @@
 
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
-                <li><span class="label label-default">class</span></li>
-                        <li><a href="../../../Cable8mm.html">Cable8mm</a></li><li class="backslash">\</li><li><a href="../../../Cable8mm/Xeed.html">Xeed</a></li><li class="backslash">\</li><li><a href="../../../Cable8mm/Xeed/Generators.html">Generators</a></li><li class="backslash">\</li><li>SeederGenerator</li>
+                <li><span class="label label-default">interface</span></li>
+                        <li><a href="../../../Cable8mm.html">Cable8mm</a></li><li class="backslash">\</li><li><a href="../../../Cable8mm/Xeed.html">Xeed</a></li><li class="backslash">\</li><li><a href="../../../Cable8mm/Xeed/Interfaces.html">Interfaces</a></li><li class="backslash">\</li><li>GeneratorInterface</li>
             </ol>
         </div>
                 <div id="page-content">
     <div class="page-header">
-        <h1>SeederGenerator    
+        <h1>GeneratorInterface    
             </h1>
     </div>
 
     
-    <p>final         class
-    <strong>SeederGenerator</strong>        implements        <a href="../../../Cable8mm/Xeed/Interfaces/GeneratorInterface.html"><abbr title="Cable8mm\Xeed\Interfaces\GeneratorInterface">GeneratorInterface</abbr></a>
+    <p>        interface
+    <strong>GeneratorInterface</strong>
 </p>
 
         
@@ -94,7 +94,7 @@
         
 
             <div class="description">
-            <p><p>Generator for <code>dist/database/seeders/*.php</code>.</p></p>                    </div>
+            <p><p>Generator interface.</p></p>                    </div>
             
         
     
@@ -117,7 +117,7 @@
                     static&nbsp;void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_make">make</a>(<a href="../../../Cable8mm/Xeed/Table.html"><abbr title="Cable8mm\Xeed\Table">Table</abbr></a> $table, string|null $namespace = null, string|null $dist = null)
+                    <a href="#method_make">make</a>(<a href="../../../Cable8mm/Xeed/Table.html"><abbr title="Cable8mm\Xeed\Table">Table</abbr></a> $class, string|null $namespace = null, string|null $dist = null)
         
                                             <p><p>Factory method.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -130,7 +130,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_run">
-        <div class="location">at line 38</div>
+        <div class="location">at line 15</div>
         <code>                    void
     <strong>run</strong>()
         </code>
@@ -162,9 +162,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_make">
-        <div class="location">at line 59</div>
+        <div class="location">at line 25</div>
         <code>        static            void
-    <strong>make</strong>(<a href="../../../Cable8mm/Xeed/Table.html"><abbr title="Cable8mm\Xeed\Table">Table</abbr></a> $table, string|null $namespace = null, string|null $dist = null)
+    <strong>make</strong>(<a href="../../../Cable8mm/Xeed/Table.html"><abbr title="Cable8mm\Xeed\Table">Table</abbr></a> $class, string|null $namespace = null, string|null $dist = null)
         </code>
     </h3>
     <div class="details">    
@@ -180,8 +180,8 @@
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="../../../Cable8mm/Xeed/Table.html"><abbr title="Cable8mm\Xeed\Table">Table</abbr></a></td>
-                <td>$table</td>
-                <td><p>The model class name</p></td>
+                <td>$class</td>
+                <td><p>The name of the class for replacing with stub file</p></td>
             </tr>
                     <tr>
                 <td>string|null</td>

@@ -86,7 +86,7 @@
 
     
     <p>final         class
-    <strong>Column</strong>
+    <strong>Column</strong>        implements        <a target="_blank" rel="noopener" href="https://www.php.net/Stringable">Stringable</a>
 </p>
 
         
@@ -122,6 +122,49 @@
                                             <p><p>To get column information array.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../Cable8mm/Xeed/Column.html"><abbr title="Cable8mm\Xeed\Column">Column</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_make">make</a>(string $field, string $type, bool $unsigned = false, bool $autoIncrement = false, bool $notNull = false, bool $primaryKey = false, string|null $bracket = null, string|null $default = null, string|null $extra = null)
+        
+                                            <p><p>Column factory method.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_fake">fake</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_migration">migration</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___toString">__toString</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
             </div>
 
 
@@ -130,7 +173,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at line 23</div>
+        <div class="location">at line 25</div>
         <code>                    
     <strong>__construct</strong>(string $field, string $type, bool $unsigned = false, bool $autoIncrement = false, bool $notNull = false, bool $primaryKey = false, string|null $bracket = null, string|null $default = null, string|null $extra = null)
         </code>
@@ -203,7 +246,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_toArray">
-        <div class="location">at line 42</div>
+        <div class="location">at line 44</div>
         <code>                    array
     <strong>toArray</strong>()
         </code>
@@ -226,6 +269,178 @@
         </tr>
     </table>
 
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_make">
+        <div class="location">at line 72</div>
+        <code>        static            <a href="../../Cable8mm/Xeed/Column.html"><abbr title="Cable8mm\Xeed\Column">Column</abbr></a>
+    <strong>make</strong>(string $field, string $type, bool $unsigned = false, bool $autoIncrement = false, bool $notNull = false, bool $primaryKey = false, string|null $bracket = null, string|null $default = null, string|null $extra = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Column factory method.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$field</td>
+                <td><p>Name of the column</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$type</td>
+                <td><p>Type of the column</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$unsigned</td>
+                <td><p>Nullable flag</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$autoIncrement</td>
+                <td><p>Nullable flag</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$notNull</td>
+                <td><p>Nullable flag</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$primaryKey</td>
+                <td><p>Key of the column</p></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$bracket</td>
+                <td><p>Length or something of the column</p></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$default</td>
+                <td><p>Default value</p></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$extra</td>
+                <td><p>Extra information of the column</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Cable8mm/Xeed/Column.html"><abbr title="Cable8mm\Xeed\Column">Column</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_fake">
+        <div class="location">at line 96</div>
+        <code>                    string
+    <strong>fake</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_migration">
+        <div class="location">at line 101</div>
+        <code>                    string
+    <strong>migration</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___toString">
+        <div class="location">at line 106</div>
+        <code>                    
+    <strong>__toString</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
             
             
             

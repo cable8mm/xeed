@@ -86,7 +86,7 @@
 
     
     <p>final         class
-    <strong>Table</strong>
+    <strong>Table</strong>        implements        <a target="_blank" rel="noopener" href="https://www.php.net/Stringable">Stringable</a>
 </p>
 
         
@@ -98,29 +98,6 @@
             
         
     
-            <h2>Properties</h2>
-
-            <table class="table table-condensed">
-                    <tr>
-                <td class="type" id="property_name">
-                                                                                
-                                                                                
-                                    </td>
-                <td>$name</td>
-                <td class="last"><p>Table name.</p></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type" id="property_columns">
-                                                                                <a href="../../Cable8mm/Xeed/Column.html"><abbr title="Cable8mm\Xeed\Column">Column</abbr></a>[]
-                                                                                
-                                    </td>
-                <td>$columns</td>
-                <td class="last"><p>Column array.</p></td>
-                <td></td>
-            </tr>
-            </table>
-
     
             <h2>Methods</h2>
 
@@ -130,7 +107,7 @@
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method___construct">__construct</a>(string $name, array $columns)
+                    <a href="#method___construct">__construct</a>(string $name, array $columns = [])
         
                                             <p><p>Table constructor.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -145,6 +122,37 @@
                                             <p><p>To get column array.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_model">model</a>()
+        
+                                            <p><p>To get the model name from table name.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_migration">migration</a>()
+        
+                                            <p><p>To get the migration file name from table name.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___toString">__toString</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
             </div>
 
 
@@ -153,9 +161,9 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at line 28</div>
+        <div class="location">at line 31</div>
         <code>                    
-    <strong>__construct</strong>(string $name, array $columns)
+    <strong>__construct</strong>(string $name, array $columns = [])
         </code>
     </h3>
     <div class="details">    
@@ -191,7 +199,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getColumns">
-        <div class="location">at line 40</div>
+        <div class="location">at line 43</div>
         <code>                    array
     <strong>getColumns</strong>()
         </code>
@@ -214,6 +222,102 @@
         </tr>
     </table>
 
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_model">
+        <div class="location">at line 55</div>
+        <code>                    string
+    <strong>model</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>To get the model name from table name.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td><p>The ModelName</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                            <h4>Examples</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><pre class="examples">`User` `Admin`</pre></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_migration">
+        <div class="location">at line 65</div>
+        <code>                    string
+    <strong>migration</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>To get the migration file name from table name.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td><p>The migration file name.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___toString">
+        <div class="location">at line 70</div>
+        <code>                    
+    <strong>__toString</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
             
             
             

@@ -86,7 +86,7 @@
 
     
     <p>final         class
-    <strong>ModelGenerator</strong>        implements        <a href="../../../Cable8mm/Xeed/Interfaces/Generator.html"><abbr title="Cable8mm\Xeed\Interfaces\Generator">Generator</abbr></a>
+    <strong>ModelGenerator</strong>        implements        <a href="../../../Cable8mm/Xeed/Interfaces/GeneratorInterface.html"><abbr title="Cable8mm\Xeed\Interfaces\GeneratorInterface">GeneratorInterface</abbr></a>
 </p>
 
         
@@ -117,7 +117,7 @@
                     static&nbsp;void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_make">make</a>(string $class, string|null $namespace = null, string|null $dist = null)
+                    <a href="#method_make">make</a>(<a href="../../../Cable8mm/Xeed/Table.html"><abbr title="Cable8mm\Xeed\Table">Table</abbr></a> $table, string|null $namespace = null, string|null $dist = null)
         
                                             <p><p>Factory method.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -130,7 +130,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_run">
-        <div class="location">at line 42</div>
+        <div class="location">at line 34</div>
         <code>                    void
     <strong>run</strong>()
         </code>
@@ -162,9 +162,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_make">
-        <div class="location">at line 67</div>
+        <div class="location">at line 59</div>
         <code>        static            void
-    <strong>make</strong>(string $class, string|null $namespace = null, string|null $dist = null)
+    <strong>make</strong>(<a href="../../../Cable8mm/Xeed/Table.html"><abbr title="Cable8mm\Xeed\Table">Table</abbr></a> $table, string|null $namespace = null, string|null $dist = null)
         </code>
     </h3>
     <div class="details">    
@@ -179,9 +179,9 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string</td>
-                <td>$class</td>
-                <td><p>The name of the class for replacing with stub file</p></td>
+                <td><a href="../../../Cable8mm/Xeed/Table.html"><abbr title="Cable8mm\Xeed\Table">Table</abbr></a></td>
+                <td>$table</td>
+                <td><p>The model class name</p></td>
             </tr>
                     <tr>
                 <td>string|null</td>

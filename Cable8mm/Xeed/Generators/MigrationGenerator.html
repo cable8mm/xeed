@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Cable8mm\Xeed\Resolvers\ResolverSelector | API</title>
+    <title>Cable8mm\Xeed\Generators\MigrationGenerator | API</title>
 
             <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
 
     </head>
 
-    <body id="class" data-name="class:Cable8mm_Xeed_Resolvers_ResolverSelector" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
+    <body id="class" data-name="class:Cable8mm_Xeed_Generators_MigrationGenerator" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -75,24 +75,26 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                        <li><a href="../../../Cable8mm.html">Cable8mm</a></li><li class="backslash">\</li><li><a href="../../../Cable8mm/Xeed.html">Xeed</a></li><li class="backslash">\</li><li><a href="../../../Cable8mm/Xeed/Resolvers.html">Resolvers</a></li><li class="backslash">\</li><li>ResolverSelector</li>
+                        <li><a href="../../../Cable8mm.html">Cable8mm</a></li><li class="backslash">\</li><li><a href="../../../Cable8mm/Xeed.html">Xeed</a></li><li class="backslash">\</li><li><a href="../../../Cable8mm/Xeed/Generators.html">Generators</a></li><li class="backslash">\</li><li>MigrationGenerator</li>
             </ol>
         </div>
                 <div id="page-content">
     <div class="page-header">
-        <h1>ResolverSelector    
+        <h1>MigrationGenerator    
             </h1>
     </div>
 
     
     <p>final         class
-    <strong>ResolverSelector</strong>
+    <strong>MigrationGenerator</strong>        implements        <a href="../../../Cable8mm/Xeed/Interfaces/GeneratorInterface.html"><abbr title="Cable8mm\Xeed\Interfaces\GeneratorInterface">GeneratorInterface</abbr></a>
 </p>
 
         
     
         
 
+            <div class="description">
+            <p><p>Generator for <code>dist/database/migrations/*.php</code>.</p></p>                    </div>
             
         
     
@@ -102,13 +104,22 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;<a href="../../../Cable8mm/Xeed/Resolvers/Resolver.html"><abbr title="Cable8mm\Xeed\Resolvers\Resolver">Resolver</abbr></a>
+                    void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_of">of</a>(<a href="../../../Cable8mm/Xeed/Column.html"><abbr title="Cable8mm\Xeed\Column">Column</abbr></a> $column)
+                    <a href="#method_run">run</a>()
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>To run the generator logic and save it to a file.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_make">make</a>(<a href="../../../Cable8mm/Xeed/Table.html"><abbr title="Cable8mm\Xeed\Table">Table</abbr></a> $table, string|null $namespace = null, string|null $dist = null)
+        
+                                            <p><p>Factory method.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -118,10 +129,10 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_of">
-        <div class="location">at line 9</div>
-        <code>        static            <a href="../../../Cable8mm/Xeed/Resolvers/Resolver.html"><abbr title="Cable8mm\Xeed\Resolvers\Resolver">Resolver</abbr></a>
-    <strong>of</strong>(<a href="../../../Cable8mm/Xeed/Column.html"><abbr title="Cable8mm\Xeed\Column">Column</abbr></a> $column)
+                    <h3 id="method_run">
+        <div class="location">at line 34</div>
+        <code>                    void
+    <strong>run</strong>()
         </code>
     </h3>
     <div class="details">    
@@ -129,17 +140,58 @@
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>To run the generator logic and save it to a file.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_make">
+        <div class="location">at line 64</div>
+        <code>        static            void
+    <strong>make</strong>(<a href="../../../Cable8mm/Xeed/Table.html"><abbr title="Cable8mm\Xeed\Table">Table</abbr></a> $table, string|null $namespace = null, string|null $dist = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Factory method.</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../Cable8mm/Xeed/Column.html"><abbr title="Cable8mm\Xeed\Column">Column</abbr></a></td>
-                <td>$column</td>
-                <td></td>
+                <td><a href="../../../Cable8mm/Xeed/Table.html"><abbr title="Cable8mm\Xeed\Table">Table</abbr></a></td>
+                <td>$table</td>
+                <td><p>The model class name</p></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$namespace</td>
+                <td><p>The namespace to be applied to the class</p></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$dist</td>
+                <td><p>The path to the dist folder</p></td>
             </tr>
             </table>
 
@@ -148,7 +200,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../Cable8mm/Xeed/Resolvers/Resolver.html"><abbr title="Cable8mm\Xeed\Resolvers\Resolver">Resolver</abbr></a></td>
+            <td>void</td>
             <td></td>
         </tr>
     </table>

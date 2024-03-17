@@ -93,6 +93,8 @@
     
         
 
+            <div class="description">
+            <p><p>Import xeed table.</p></p>            <p><p>Run <code>bin/console import-xeed</code> or <code>bin/console xeed</code></p></p>        </div>
             
         
     
@@ -102,13 +104,12 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    void
                 </div>
                 <div class="col-md-8">
                     <a href="#method_configure">configure</a>()
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>Configure the command.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -118,7 +119,7 @@
                 <div class="col-md-8">
                     <a href="#method_execute">execute</a>(<abbr title="Symfony\Component\Console\Input\InputInterface">InputInterface</abbr> $input, <abbr title="Symfony\Component\Console\Output\OutputInterface">OutputInterface</abbr> $output)
         
-                                            <p><p>Generate models.</p></p>                </div>
+                                            <p><p>Run the console command.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -129,8 +130,8 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_configure">
-        <div class="location">at line 21</div>
-        <code>            protected        
+        <div class="location">at line 29</div>
+        <code>            protected        void
     <strong>configure</strong>()
         </code>
     </h3>
@@ -139,11 +140,19 @@
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>Configure the command.</p></p>                        
         </div>
         <div class="tags">
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
             
             
             
@@ -153,7 +162,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_execute">
-        <div class="location">at line 35</div>
+        <div class="location">at line 41</div>
         <code>            protected        int
     <strong>execute</strong>(<abbr title="Symfony\Component\Console\Input\InputInterface">InputInterface</abbr> $input, <abbr title="Symfony\Component\Console\Output\OutputInterface">OutputInterface</abbr> $output)
         </code>
@@ -163,7 +172,7 @@
             
 
         <div class="method-description">
-                            <p><p>Generate models.</p></p>                <p><p>Run <code>bin/console generate-seeders</code> or <code>bin/console seeders</code></p></p>        
+                            <p><p>Run the console command.</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
