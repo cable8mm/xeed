@@ -17,6 +17,7 @@ use Cable8mm\Xeed\Resolvers\GeometrycollectionResolver;
 use Cable8mm\Xeed\Resolvers\GeometryResolver;
 use Cable8mm\Xeed\Resolvers\IdResolver;
 use Cable8mm\Xeed\Resolvers\InetResolver;
+use Cable8mm\Xeed\Resolvers\IntegerResolver;
 use Cable8mm\Xeed\Resolvers\IntResolver;
 use Cable8mm\Xeed\Resolvers\JsonbResolver;
 use Cable8mm\Xeed\Resolvers\JsonResolver;
@@ -25,8 +26,10 @@ use Cable8mm\Xeed\Resolvers\LongtextResolver;
 use Cable8mm\Xeed\Resolvers\MacaddressResolver;
 use Cable8mm\Xeed\Resolvers\MediumintResolver;
 use Cable8mm\Xeed\Resolvers\MediumtextResolver;
+use Cable8mm\Xeed\Resolvers\MultilinestringResolver;
 use Cable8mm\Xeed\Resolvers\MultipointResolver;
 use Cable8mm\Xeed\Resolvers\MultipolygonResolver;
+use Cable8mm\Xeed\Resolvers\NumericResolver;
 use Cable8mm\Xeed\Resolvers\PointResolver;
 use Cable8mm\Xeed\Resolvers\PolygonResolver;
 use Cable8mm\Xeed\Resolvers\RemembertokenResolver;
@@ -101,6 +104,10 @@ final class ResolverSelector
             return new DecimalResolver($column);
         }
 
+        if ($column->type == 'numeric') {
+            return new NumericResolver($column);
+        }
+
         if ($column->type == 'double') {
             return new DoubleResolver($column);
         }
@@ -119,6 +126,10 @@ final class ResolverSelector
 
         if ($column->type == 'int') {
             return new IntResolver($column);
+        }
+
+        if ($column->type == 'integer' || $column->type == 'integer unsigned') {
+            return new IntegerResolver($column);
         }
 
         if ($column->type == 'varchar' && $column->bracket == '45') {
@@ -211,6 +222,14 @@ final class ResolverSelector
 
         if ($column->type == 'enum') {
             return new EnumResolver($column);
+        }
+
+        if ($column->type == 'geometrycollection') {
+            return new GeometrycollectionResolver($column);
+        }
+
+        if ($column->type == 'multilinestring') {
+            return new MultilinestringResolver($column);
         }
 
         throw new InvalidArgumentException($column.' This column cannot be resolved.');

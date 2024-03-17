@@ -48,7 +48,6 @@ CREATE TABLE `xeeds` (
     `medium_text` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
     `morphs_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
     `morphs_id` bigint unsigned NOT NULL,
-    `multi_line_string` multilinestring NOT NULL,
     `multi_point` multipoint NOT NULL,
     `multi_polygon` multipolygon NOT NULL,
     `nullable_morphs_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
