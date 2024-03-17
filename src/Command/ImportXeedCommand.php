@@ -32,7 +32,13 @@ class ImportXeedCommand extends Command
         $dotenv->safeLoad();
 
         $this
-            ->addArgument('drop', InputArgument::OPTIONAL, 'Drop xeeds table?');
+            ->addArgument(
+                'argument',
+                InputArgument::OPTIONAL,
+                'Drop xeeds table?',
+                'import',
+                ['import', 'drop', 'refresh']
+            );
     }
 
     /**
@@ -41,15 +47,19 @@ class ImportXeedCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
 
-        $drop = $input->getArgument('drop');
+        $argument = $input->getArgument('argument');
 
         $db = DB::getInstance();
 
-        if ($drop) {
-            $db->prepare('DROP TABLE xeeds')->execute();
+        if ($argument === 'drop' || $argument === 'refresh') {
+            $sql = file_get_contents(Path::resourceTest().'xeeds.'.$db->driver.'.sql');
+
+            $db->exec($sql);
 
             $output->writeln('Table was dropped.');
-        } else {
+        }
+
+        if ($argument === 'import' || $argument === 'refresh') {
             $sql = file_get_contents(Path::resourceTest().'xeeds.'.$db->driver.'.sql');
 
             $db->exec($sql);
