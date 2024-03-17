@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 final class ModelGeneratorTest extends TestCase
 {
-    public function test_it_can_generate_model(): void
+    public function test_it_can_generate_model_file(): void
     {
         ModelGenerator::make(new Table('samples'))->run();
 

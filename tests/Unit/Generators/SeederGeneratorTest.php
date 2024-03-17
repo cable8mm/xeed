@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 final class SeederGeneratorTest extends TestCase
 {
-    public function test_it_can_can_generate_seeder(): void
+    public function test_it_can_can_generate_seeder_file(): void
     {
         SeederGenerator::make(new Table('samples'))->run();
 
