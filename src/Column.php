@@ -53,4 +53,41 @@ final class Column
             'extra' => $this->extra,
         ];
     }
+
+    /**
+     * Column factory method.
+     *
+     * @param  string  $field  Name of the column
+     * @param  string  $type  Type of the column
+     * @param  bool  $unsigned  Nullable flag
+     * @param  bool  $autoIncrement  Nullable flag
+     * @param  bool  $notNull  Nullable flag
+     * @param  bool  $primaryKey  Key of the column
+     * @param  string|null  $bracket  Length or something of the column
+     * @param  string|null  $default  Default value
+     * @param  string|null  $extra  Extra information of the column
+     */
+    public static function make(
+        string $field,
+        string $type,
+        bool $unsigned = false,
+        bool $autoIncrement = false,
+        bool $notNull = false,
+        bool $primaryKey = false,
+        ?string $bracket = null,
+        ?string $default = null,
+        ?string $extra = null
+    ): static {
+        return new self(
+            $field,
+            $type,
+            $unsigned,
+            $autoIncrement,
+            $notNull,
+            $primaryKey,
+            $bracket,
+            $default,
+            $extra
+        );
+    }
 }
