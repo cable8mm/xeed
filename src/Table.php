@@ -10,14 +10,14 @@ final class Table
     /**
      * Table name.
      */
-    public string $name;
+    private string $name;
 
     /**
      * Column array.
      *
      * @var array<Column>
      */
-    public array $columns = [];
+    private array $columns = [];
 
     /**
      * Table constructor.
@@ -30,6 +30,16 @@ final class Table
         $this->name = $name;
 
         $this->columns = $columns;
+    }
+
+    /**
+     * To get the table name.
+     *
+     * @return string The table name
+     */
+    public function getName(): string
+    {
+        return $this->name;
     }
 
     /**
