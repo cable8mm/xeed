@@ -42,6 +42,8 @@ class GenerateFactoriesCommand extends Command
             FactoryGenerator::make($table)->run();
         }
 
+        $output->writeln('Factories have been generated.');
+
         return Command::SUCCESS;
     }
 }

@@ -63,9 +63,8 @@ class CleanCommand extends Command
 
         foreach ($path as $path) {
             array_map('unlink', array_filter((array) glob($path.'*.php')));
+            $output->writeln($path.' was cleaned. Enjoy it.');
         }
-
-        $output->writeln($path.' was cleaned. Enjoy it.');
 
         return Command::SUCCESS;
     }

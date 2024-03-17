@@ -42,6 +42,8 @@ class GenerateModelsCommand extends Command
             ModelGenerator::make($table)->run();
         }
 
+        $output->writeln('Models have been generated.');
+
         return Command::SUCCESS;
     }
 }

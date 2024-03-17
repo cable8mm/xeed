@@ -4,7 +4,6 @@ namespace Cable8mm\Xeed\Command;
 
 use Cable8mm\Xeed\DB;
 use Cable8mm\Xeed\Generators\DatabaseSeederGenerator;
-use Cable8mm\Xeed\Support\Inflector;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -42,10 +41,12 @@ class GenerateDatabaseSeederCommand extends Command
         $classes = [];
 
         foreach ($tables as $table) {
-            $classes[] = Inflector::classify($table);
+            $classes[] = $table;
         }
 
         DatabaseSeederGenerator::make($classes)->run();
+
+        $output->writeln('Database seeder have been generated.');
 
         return Command::SUCCESS;
     }

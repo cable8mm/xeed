@@ -42,6 +42,8 @@ class GenerateSeedersCommand extends Command
             SeederGenerator::make($table)->run();
         }
 
+        $output->writeln('Seeders have been generated.');
+
         return Command::SUCCESS;
     }
 }

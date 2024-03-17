@@ -42,6 +42,8 @@ class GenerateMigrationsCommand extends Command
             MigrationGenerator::make($table)->run();
         }
 
+        $output->writeln('Migrations have been generated.');
+
         return Command::SUCCESS;
     }
 }
