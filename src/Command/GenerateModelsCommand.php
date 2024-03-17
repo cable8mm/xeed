@@ -9,6 +9,11 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
+/**
+ * Generate models.
+ *
+ * Run `bin/console generate-models` or `bin/console models`
+ */
 #[AsCommand(
     name: 'generate-models',
     description: 'Generate models. run `bin/console generate-models`',
@@ -17,16 +22,17 @@ use Symfony\Component\Console\Output\OutputInterface;
 )]
 class GenerateModelsCommand extends Command
 {
-    protected function configure()
+    /**
+     * Configure the command.
+     */
+    protected function configure(): void
     {
         $dotenv = \Dotenv\Dotenv::createImmutable(getcwd());
         $dotenv->safeLoad();
     }
 
     /**
-     * Generate models.
-     *
-     * Run `bin/console generate-models` or `bin/console models`
+     * Run the console command.
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {

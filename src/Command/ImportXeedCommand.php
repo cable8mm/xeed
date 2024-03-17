@@ -10,6 +10,11 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
+/**
+ * Import xeed table.
+ *
+ * Run `bin/console import-xeed` or `bin/console xeed`
+ */
 #[AsCommand(
     name: 'import-xeed',
     description: 'Import xeed sql for testing. run `bin/console import-xeed`',
@@ -18,7 +23,10 @@ use Symfony\Component\Console\Output\OutputInterface;
 )]
 class ImportXeedCommand extends Command
 {
-    protected function configure()
+    /**
+     * Configure the command.
+     */
+    protected function configure(): void
     {
         $dotenv = \Dotenv\Dotenv::createImmutable(getcwd());
         $dotenv->safeLoad();
@@ -28,9 +36,7 @@ class ImportXeedCommand extends Command
     }
 
     /**
-     * Generate models.
-     *
-     * Run `bin/console generate-seeders` or `bin/console seeders`
+     * Run the console command.
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
