@@ -1,5 +1,17 @@
 # Release Notes
 
+## v0.5.3 - 2024-03-16
+
+### What's Changed
+
+* Expand test coverage significantly for Resolvers and enhance their functionality by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/16
+* Increase test coverage for Laravel migrations by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/17
+* Fix an error related to default values by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/18
+* Test code compatible with MySQL by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/19
+* Implement ResolveSelector class along with testing by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/20
+
+**Full Changelog**: https://github.com/cable8mm/xeed/compare/v0.5.2...v0.5.3
+
 ## v0.5.2 - 2024-03-15
 
 ### What's Changed
