@@ -117,7 +117,7 @@
                     static&nbsp;array
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_map">map</a>(array $column)
+                    <a href="#method_map">map</a>(array $column, string|null $table = null, <abbr title="Cable8mm\Xeed\Interfaces\Cable8mm\Xeed\DB">DB</abbr>|null $db = null)
         
                                             <p><p>Mapping method between another fields for Database.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -174,7 +174,7 @@
                     <h3 id="method_map">
         <div class="location">at line 42</div>
         <code>        static            array
-    <strong>map</strong>(array $column)
+    <strong>map</strong>(array $column, string|null $table = null, <abbr title="Cable8mm\Xeed\Interfaces\Cable8mm\Xeed\DB">DB</abbr>|null $db = null)
         </code>
     </h3>
     <div class="details">    
@@ -192,6 +192,16 @@
                 <td>array</td>
                 <td>$column</td>
                 <td><p>Original column data</p></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$table</td>
+                <td><p>Table name</p></td>
+            </tr>
+                    <tr>
+                <td><abbr title="Cable8mm\Xeed\Interfaces\Cable8mm\Xeed\DB">DB</abbr>|null</td>
+                <td>$db</td>
+                <td><p>Database instance</p></td>
             </tr>
             </table>
 

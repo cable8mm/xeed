@@ -107,7 +107,7 @@
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method___construct">__construct</a>(string $field, string $type, bool $nullable, bool $key, string|null $bracket = null, string|null $default = null, string|null $extra = null)
+                    <a href="#method___construct">__construct</a>(string $field, string $type, bool $unsigned = false, bool $autoIncrement = false, bool $notNull = false, bool $primaryKey = false, string|null $bracket = null, string|null $default = null, string|null $extra = null)
         
                                             <p><p>Column constructor.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -130,9 +130,9 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at line 21</div>
+        <div class="location">at line 23</div>
         <code>                    
-    <strong>__construct</strong>(string $field, string $type, bool $nullable, bool $key, string|null $bracket = null, string|null $default = null, string|null $extra = null)
+    <strong>__construct</strong>(string $field, string $type, bool $unsigned = false, bool $autoIncrement = false, bool $notNull = false, bool $primaryKey = false, string|null $bracket = null, string|null $default = null, string|null $extra = null)
         </code>
     </h3>
     <div class="details">    
@@ -158,12 +158,22 @@
             </tr>
                     <tr>
                 <td>bool</td>
-                <td>$nullable</td>
+                <td>$unsigned</td>
                 <td><p>Nullable flag</p></td>
             </tr>
                     <tr>
                 <td>bool</td>
-                <td>$key</td>
+                <td>$autoIncrement</td>
+                <td><p>Nullable flag</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$notNull</td>
+                <td><p>Nullable flag</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$primaryKey</td>
                 <td><p>Key of the column</p></td>
             </tr>
                     <tr>
@@ -193,7 +203,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_toArray">
-        <div class="location">at line 38</div>
+        <div class="location">at line 42</div>
         <code>                    array
     <strong>toArray</strong>()
         </code>
