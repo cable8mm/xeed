@@ -3,24 +3,24 @@
 namespace Cable8mm\Xeed\Command;
 
 use Cable8mm\Xeed\DB;
-use Cable8mm\Xeed\Generators\ModelGenerator;
+use Cable8mm\Xeed\Generators\MigrationGenerator;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * Generate models.
+ * Generate migrations.
  *
- * Run `bin/console generate-models` or `bin/console models`
+ * Run `bin/console generate-migrations` or `bin/console migrations`
  */
 #[AsCommand(
-    name: 'generate-models',
-    description: 'Generate models. run `bin/console generate-models` or `bin/console models`',
+    name: 'generate-migrations',
+    description: 'Generate migrations. run `bin/console generate-migrations` or `bin/console migrations`',
     hidden: false,
-    aliases: ['models']
+    aliases: ['migrations']
 )]
-class GenerateModelsCommand extends Command
+class GenerateMigrationsCommand extends Command
 {
     /**
      * Configure the command.
@@ -39,10 +39,10 @@ class GenerateModelsCommand extends Command
         $tables = DB::getInstance()->attach()->getTables();
 
         foreach ($tables as $table) {
-            ModelGenerator::make($table)->run();
+            MigrationGenerator::make($table)->run();
         }
 
-        $output->writeln('Models have been generated.');
+        $output->writeln('Migrations have been generated.');
 
         return Command::SUCCESS;
     }

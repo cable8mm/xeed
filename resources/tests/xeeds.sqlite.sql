@@ -45,7 +45,6 @@ CREATE TABLE "xeeds" (
     "medium_text" text not null,
     "morphs_type" varchar not null,
     "morphs_id" integer not null,
-    "multi_line_string" multilinestring not null,
     "multi_point" multipoint not null,
     "multi_polygon" multipolygon not null,
     "nullable_morphs_type" varchar,

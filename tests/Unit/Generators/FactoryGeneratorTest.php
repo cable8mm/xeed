@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 final class FactoryGeneratorTest extends TestCase
 {
-    public function test_it_can_generate_model(): void
+    public function test_it_can_generate_factory_file(): void
     {
         FactoryGenerator::make(new Table('samples', [
             Column::make('id', 'bigint'),

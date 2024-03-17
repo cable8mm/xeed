@@ -46,6 +46,7 @@
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
         "test": "./vendor/bin/phpunit tests",
+        "testgen": "./vendor/bin/phpunit --testsuite Generator",
         "lint": "./vendor/bin/pint",
         "inspect": "./vendor/bin/pint --test",
         "apidoc": "rm -rf build; doctum.phar update doctum.php --output-format=github --no-ansi --no-progress;"

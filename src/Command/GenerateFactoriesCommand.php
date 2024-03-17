@@ -3,24 +3,24 @@
 namespace Cable8mm\Xeed\Command;
 
 use Cable8mm\Xeed\DB;
-use Cable8mm\Xeed\Generators\ModelGenerator;
+use Cable8mm\Xeed\Generators\FactoryGenerator;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * Generate models.
+ * Generate factories.
  *
- * Run `bin/console generate-models` or `bin/console models`
+ * Run `bin/console generate-factories` or `bin/console factories`
  */
 #[AsCommand(
-    name: 'generate-models',
-    description: 'Generate models. run `bin/console generate-models` or `bin/console models`',
+    name: 'generate-factories',
+    description: 'Generate factories. run `bin/console generate-factories` or `bin/console factories`',
     hidden: false,
-    aliases: ['models']
+    aliases: ['factories']
 )]
-class GenerateModelsCommand extends Command
+class GenerateFactoriesCommand extends Command
 {
     /**
      * Configure the command.
@@ -39,10 +39,10 @@ class GenerateModelsCommand extends Command
         $tables = DB::getInstance()->attach()->getTables();
 
         foreach ($tables as $table) {
-            ModelGenerator::make($table)->run();
+            FactoryGenerator::make($table)->run();
         }
 
-        $output->writeln('Models have been generated.');
+        $output->writeln('Factories have been generated.');
 
         return Command::SUCCESS;
     }

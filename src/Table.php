@@ -57,6 +57,16 @@ final class Table implements Stringable
         return Inflector::classify($this->name);
     }
 
+    /**
+     * To get the migration file name from table name.
+     *
+     * @return string The migration file name.
+     */
+    public function migration(): string
+    {
+        return date('Y-m-d-His').'_create_'.$this->name.'_table.php';
+    }
+
     public function __toString()
     {
         return $this->name;

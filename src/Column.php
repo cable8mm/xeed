@@ -2,10 +2,12 @@
 
 namespace Cable8mm\Xeed;
 
+use Stringable;
+
 /**
  * Database Column Object.
  */
-final class Column
+final class Column implements Stringable
 {
     /**
      * Column constructor.
@@ -94,5 +96,15 @@ final class Column
     public function fake(): string
     {
         return ResolverSelector::of($this)->fake();
+    }
+
+    public function migration(): string
+    {
+        return ResolverSelector::of($this)->migration();
+    }
+
+    public function __toString()
+    {
+        return 'Field is '.$this->field.' and type is '.$this->type.'.';
     }
 }

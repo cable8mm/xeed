@@ -63,6 +63,14 @@ bin/console database
 # Generate database seed from database in `dist/database/seeders` folder
 ```
 
+### Generate `Factory`s
+
+\[TODO]
+
+### Generate `migration`
+
+\[TODO]
+
 ## How to contribute
 
 ### Development
@@ -127,7 +135,6 @@ Schema::create('xeeds', function (Blueprint $table) {
     $table->mediumInteger('medium_integer');
     $table->mediumText('medium_text');
     $table->morphs('morphs');
-    $table->multiLineString('multi_line_string');
     $table->multiPoint('multi_point');
     $table->multiPolygon('multi_polygon');
     $table->nullableMorphs('nullable_morphs');
@@ -164,6 +171,23 @@ Schema::create('xeeds', function (Blueprint $table) {
 }
 ```
 
+### Helpful commands
+
+If you are going to test this package yourself, then you would use the following commands to clean up generated files.
+
+```sh
+bin/console clean
+# Clean generated files, seeders, models, factories and migration files.
+#=> Refer the below
+Please select directory for you to want to clean.
+  [0] seeder
+  [1] model
+  [2] factory
+  [3] migration
+  [4] all
+  [5] exit
+```
+
 ### Issue a bug report and Pull Request
 
 The opportunity for you to create issues and pull requests makes me happy. Feel free to contribute and submit pull requests whenever you need.
@@ -184,6 +208,10 @@ It uses the built-in SQLite database, not your own database. It will never cause
 
 ```sh
 composer test
+# All tests
+
+composer testgen
+# All generator tests
 ```
 
 ## License

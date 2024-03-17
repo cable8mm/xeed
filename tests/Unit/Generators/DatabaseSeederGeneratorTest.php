@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 final class DatabaseSeederGeneratorTest extends TestCase
 {
-    public function test_it_can_generate_database_seeder(): void
+    public function test_it_can_generate_database_seeder_file(): void
     {
         DatabaseSeederGenerator::make([
             new Table('one_samples'),
