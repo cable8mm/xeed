@@ -16,7 +16,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 #[AsCommand(
     name: 'generate-seeders',
-    description: 'Generate seeders. run `bin/console generate-seeders`',
+    description: 'Generate seeders. run `bin/console generate-seeders` or `bin/console seeders`',
     hidden: false,
     aliases: ['seeders']
 )]

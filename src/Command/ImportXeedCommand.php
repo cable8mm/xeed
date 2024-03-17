@@ -17,7 +17,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 #[AsCommand(
     name: 'import-xeed',
-    description: 'Import xeed sql for testing. run `bin/console import-xeed`',
+    description: 'Import xeed sql for testing. run `bin/console import-xeed` or `bin/console xeed`',
     hidden: false,
     aliases: ['xeed']
 )]

@@ -16,7 +16,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 #[AsCommand(
     name: 'generate-models',
-    description: 'Generate models. run `bin/console generate-models`',
+    description: 'Generate models. run `bin/console generate-models` or `bin/console models`',
     hidden: false,
     aliases: ['models']
 )]

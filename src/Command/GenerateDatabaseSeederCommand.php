@@ -13,11 +13,11 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * Generate database seeder.
  *
- * Run `bin/console generate-seeders` or `bin/console seeders`
+ * Run `bin/console generate-database-seeders` or `bin/console database`
  */
 #[AsCommand(
     name: 'generate-database-seeder',
-    description: 'Generate seeders. run `bin/console generate-database-seeder`',
+    description: 'Generate seeders. run `bin/console generate-database-seeder` or `bin/console database`',
     hidden: false,
     aliases: ['database']
 )]
