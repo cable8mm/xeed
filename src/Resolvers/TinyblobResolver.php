@@ -2,13 +2,15 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
+use Cable8mm\Xeed\Interfaces\ResolverInterface;
+
 /**
  * TINYBLOB
  *
  * For BLOBs (Binary Large OBjects).
  * Max length: 255 bytes
  */
-final class TinyblobResolver extends Resolver
+final class TinyblobResolver extends Resolver implements ResolverInterface
 {
     public function fake(): string
     {

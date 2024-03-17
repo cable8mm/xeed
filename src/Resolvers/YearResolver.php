@@ -2,6 +2,8 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
+use Cable8mm\Xeed\Interfaces\ResolverInterface;
+
 /**
  * YEAR
  *
@@ -9,7 +11,7 @@ namespace Cable8mm\Xeed\Resolvers;
  * Values allowed in four-digit format: 1901 to 2155, and 0000.
  * MySQL 8.0 does not support year in two-digit format.
  */
-class YearResolver extends Resolver
+class YearResolver extends Resolver implements ResolverInterface
 {
     public function fake(): string
     {

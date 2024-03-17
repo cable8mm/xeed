@@ -1,12 +1,65 @@
 <?php
 
-namespace Cable8mm\Xeed\Resolvers;
+namespace Cable8mm\Xeed;
 
-use Cable8mm\Xeed\Column;
+use Cable8mm\Xeed\Interfaces\ResolverInterface;
+use Cable8mm\Xeed\Resolvers\BigintResolver;
+use Cable8mm\Xeed\Resolvers\BlobResolver;
+use Cable8mm\Xeed\Resolvers\BoolResolver;
+use Cable8mm\Xeed\Resolvers\CharResolver;
+use Cable8mm\Xeed\Resolvers\DateResolver;
+use Cable8mm\Xeed\Resolvers\DatetimeResolver;
+use Cable8mm\Xeed\Resolvers\DecimalResolver;
+use Cable8mm\Xeed\Resolvers\DoubleResolver;
+use Cable8mm\Xeed\Resolvers\EnumResolver;
+use Cable8mm\Xeed\Resolvers\FloatResolver;
+use Cable8mm\Xeed\Resolvers\GeometrycollectionResolver;
+use Cable8mm\Xeed\Resolvers\GeometryResolver;
+use Cable8mm\Xeed\Resolvers\IdResolver;
+use Cable8mm\Xeed\Resolvers\InetResolver;
+use Cable8mm\Xeed\Resolvers\IntResolver;
+use Cable8mm\Xeed\Resolvers\JsonbResolver;
+use Cable8mm\Xeed\Resolvers\JsonResolver;
+use Cable8mm\Xeed\Resolvers\LineStringResolver;
+use Cable8mm\Xeed\Resolvers\LongtextResolver;
+use Cable8mm\Xeed\Resolvers\MacaddressResolver;
+use Cable8mm\Xeed\Resolvers\MediumintResolver;
+use Cable8mm\Xeed\Resolvers\MediumtextResolver;
+use Cable8mm\Xeed\Resolvers\MultipointResolver;
+use Cable8mm\Xeed\Resolvers\MultipolygonResolver;
+use Cable8mm\Xeed\Resolvers\PointResolver;
+use Cable8mm\Xeed\Resolvers\PolygonResolver;
+use Cable8mm\Xeed\Resolvers\RemembertokenResolver;
+use Cable8mm\Xeed\Resolvers\Resolver;
+use Cable8mm\Xeed\Resolvers\SetResolver;
+use Cable8mm\Xeed\Resolvers\SmallintResolver;
+use Cable8mm\Xeed\Resolvers\TextResolver;
+use Cable8mm\Xeed\Resolvers\TimeResolver;
+use Cable8mm\Xeed\Resolvers\TimestampResolver;
+use Cable8mm\Xeed\Resolvers\TinyintResolver;
+use Cable8mm\Xeed\Resolvers\TinytextResolver;
+use Cable8mm\Xeed\Resolvers\UlidResolver;
+use Cable8mm\Xeed\Resolvers\UuidResolver;
+use Cable8mm\Xeed\Resolvers\VarcharResolver;
+use Cable8mm\Xeed\Resolvers\YearResolver;
+use InvalidArgumentException;
 
+/**
+ * To select the resolver for the given column.
+ */
 final class ResolverSelector
 {
-    public static function of(Column $column): Resolver
+    /**
+     * To select the resolver for the given column.
+     *
+     * @param  Column  $column  The column to select the resolver for.
+     * @return ResolverInterface The resolver
+     *
+     * @throws InvalidArgumentException
+     *
+     * @example ResolverSelector::of(Column::make('id', 'bigint'));
+     */
+    public static function of(Column $column): ResolverInterface
     {
         if ($column->field == 'id') {
             return new IdResolver($column);
@@ -155,5 +208,11 @@ final class ResolverSelector
         if ($column->type == 'year') {
             return new YearResolver($column);
         }
+
+        if ($column->type == 'enum') {
+            return new EnumResolver($column);
+        }
+
+        throw new InvalidArgumentException('Unknown column type');
     }
 }

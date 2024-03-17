@@ -2,6 +2,8 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
+use Cable8mm\Xeed\Interfaces\ResolverInterface;
+
 /**
  * MORPHS
  *
@@ -10,7 +12,7 @@ namespace Cable8mm\Xeed\Resolvers;
  *
  * @see https://laravel.com/docs/10.x/migrations#column-method-morphs
  */
-class MorphsResolver extends Resolver
+class MorphsResolver extends Resolver implements ResolverInterface
 {
     public function fake(): string
     {

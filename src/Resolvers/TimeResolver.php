@@ -2,6 +2,8 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
+use Cable8mm\Xeed\Interfaces\ResolverInterface;
+
 /**
  * TIME(fsp)
  *
@@ -9,7 +11,7 @@ namespace Cable8mm\Xeed\Resolvers;
  * Format: hh:mm:ss.
  * The supported range is from '-838:59:59' to '838:59:59'
  */
-class TimeResolver extends Resolver
+class TimeResolver extends Resolver implements ResolverInterface
 {
     public function fake(): string
     {

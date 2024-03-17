@@ -2,12 +2,14 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
+use Cable8mm\Xeed\Interfaces\ResolverInterface;
+
 /**
  * BOOL
  *
  * Zero is considered as false, nonzero values are considered as true.
  */
-class BoolResolver extends Resolver
+class BoolResolver extends Resolver implements ResolverInterface
 {
     public function fake(): string
     {

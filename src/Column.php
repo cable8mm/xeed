@@ -90,4 +90,9 @@ final class Column
             $extra
         );
     }
+
+    public function fake(): string
+    {
+        return ResolverSelector::of($this)->fake();
+    }
 }

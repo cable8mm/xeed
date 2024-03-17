@@ -2,10 +2,12 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
+use Cable8mm\Xeed\Interfaces\ResolverInterface;
+
 /**
  * MACADDRESS
  */
-class MacaddressResolver extends Resolver
+class MacaddressResolver extends Resolver implements ResolverInterface
 {
     public function fake(): string
     {

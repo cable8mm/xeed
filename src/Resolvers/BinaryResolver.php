@@ -2,6 +2,8 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
+use Cable8mm\Xeed\Interfaces\ResolverInterface;
+
 /**
  * BINARY(size)
  *
@@ -9,7 +11,7 @@ namespace Cable8mm\Xeed\Resolvers;
  * The size parameter specifies the column length in bytes.
  * Default is 1
  */
-class BinaryResolver extends Resolver
+class BinaryResolver extends Resolver implements ResolverInterface
 {
     public function fake(): string
     {
