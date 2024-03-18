@@ -20,7 +20,11 @@ class DatetimeResolver extends Resolver
     public function migration(): string
     {
         // TODO: dateTimeTz
-        $migration = '$table->dateTime(\''.$this->column->field.'\')';
+        if (preg_match('/_tz$/', $this->column->field)) {
+            $migration = '$table->dateTimeTz(\''.$this->column->field.'\')';
+        } else {
+            $migration = '$table->dateTime(\''.$this->column->field.'\')';
+        }
 
         return $this->last($migration);
     }

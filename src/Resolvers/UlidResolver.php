@@ -14,7 +14,11 @@ class UlidResolver extends Resolver
 
     public function migration(): string
     {
-        $migration = '$table->ulid(\''.$this->column->field.'\')';
+        if (preg_match('/_ulid$/', $this->column->field)) {
+            $migration = '$table->foreignUlid(\''.$this->column->field.'\')';
+        } else {
+            $migration = '$table->ulid(\''.$this->column->field.'\')';
+        }
 
         return $this->last($migration);
     }

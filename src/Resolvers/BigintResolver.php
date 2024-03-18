@@ -20,11 +20,13 @@ class BigintResolver extends Resolver
     public function migration(): string
     {
         // TODO: bigIncrements()
-        // TODO: $table->foreignId('user_id');
-        // TODO: $table->foreignIdFor(User::class);
-        $migration = $this->column->unsigned ?
+        if ($this->column->unsigned && preg_match('/_id$/', $this->column->field)) {
+            $migration = '$table->foreignId(\''.$this->column->field.'\')';
+        } else {
+            $migration = $this->column->unsigned ?
             '$table->unsignedBigInteger(\''.$this->column->field.'\')' :
             '$table->bigInteger(\''.$this->column->field.'\')';
+        }
 
         return $this->last($migration);
     }

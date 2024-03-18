@@ -14,7 +14,11 @@ class UuidResolver extends Resolver
 
     public function migration(): string
     {
-        $migration = '$table->uuid(\''.$this->column->field.'\')';
+        if (preg_match('/_uuid$/', $this->column->field)) {
+            $migration = '$table->foreignUuid(\''.$this->column->field.'\')';
+        } else {
+            $migration = '$table->uuid(\''.$this->column->field.'\')';
+        }
 
         return $this->last($migration);
     }
