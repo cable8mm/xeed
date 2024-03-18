@@ -90,4 +90,24 @@ final class Path
     {
         return getcwd().DIRECTORY_SEPARATOR.'resources'.DIRECTORY_SEPARATOR;
     }
+
+    /**
+     * To get `root` folder path.
+     *
+     * @return string The root folder path
+     */
+    public static function root(): string
+    {
+        return getcwd().DIRECTORY_SEPARATOR;
+    }
+
+    /**
+     * To get `tests/Bootstrap` folder path.
+     *
+     * @return string The tests/Bootstrap folder path.
+     */
+    public static function testBootstrap(): string
+    {
+        return getcwd().DIRECTORY_SEPARATOR.'tests'.DIRECTORY_SEPARATOR.'Bootstrap'.DIRECTORY_SEPARATOR;
+    }
 }
