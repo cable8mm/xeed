@@ -73,4 +73,19 @@ final class BracketTest extends TestCase
             Bracket::of('(8, 2)')->escape()
         );
     }
+
+    public function test_it_can_process_null(): void
+    {
+        $this->assertNotNull(
+            Bracket::of(null)->to(0)
+        );
+    }
+
+    public function test_unsignedDecimal(): void
+    {
+        $this->assertEquals(
+            '8, 2',
+            Bracket::of('8, 2 unsigned')->escape()
+        );
+    }
 }

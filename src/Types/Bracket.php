@@ -7,13 +7,25 @@ use Stringable;
 
 class Bracket implements Stringable
 {
-    private array|string $parsed;
+    private null|array|string $parsed;
 
     private function __construct(
-        private string $value,
+        private ?string $value,
     ) {
+        // null value
+        if ($value === null) {
+            $this->parsed = null;
+
+            return;
+        }
+
+        // pattern : 8,2 unsigned string(unsignedDecimal)
+        if (preg_match('/([0-9 ]+),([0-9 ]+) unsigned/', $value, $parsed)) {
+            $this->parsed = [0 => $parsed[1], trim($parsed[2])];
+            $this->value = preg_replace('/ unsigned/', '', $value);
+        }
         // pattern : (8, 2)
-        if (preg_match('/\(([0-9 ]+),([0-9 ]+)\)/', $value, $parsed)) {
+        elseif (preg_match('/\(([0-9 ]+),([0-9 ]+)\)/', $value, $parsed)) {
             $this->parsed = [0 => $parsed[1], trim($parsed[2])];
         }
         // pattern : int unsigned
@@ -44,20 +56,27 @@ class Bracket implements Stringable
         return $this->parsed[1];
     }
 
-    public function to(): string|int
+    public function to(?string $default = null): string|int
     {
-        if (! is_string($this->parsed) || (bool) is_int($this->parsed)) {
-            throw new InvalidArgumentException('Right value is not set');
+        if (
+            ! is_string($this->parsed) &&
+            ! is_int($this->parsed) &&
+            ! is_null($this->parsed)
+        ) {
+            throw new InvalidArgumentException('Parsed value is not set');
         }
 
-        return $this->parsed;
+        return $this->parsed ?? $default;
     }
 
     public function escape(): string
     {
-        $value = preg_replace('/[()]/', '', $this->value);
+        return preg_replace('/[()]/', '', $this->value);
+    }
 
-        return preg_replace('/,/', ' ,', $value);
+    public function array(): string
+    {
+        return '['.$this->value.']';
     }
 
     /**
@@ -73,14 +92,14 @@ class Bracket implements Stringable
     /**
      * Factory method to get a Bracket instance.
      *
-     * @param  string  $values  The value of database bracket.
+     * @param  ?string  $values  The value of database bracket.
      * @return static The Bracket instance.
      *
      * @example echo Bracket::of('int unsigned')
      * @example echo Bracket::of('int unsigned')->left
      * @example echo Bracket::of('int unsigned')->right
      */
-    public static function of(string $value): static
+    public static function of(?string $value): static
     {
         return new self(
             $value
