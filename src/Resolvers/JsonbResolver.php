@@ -2,12 +2,10 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
-use Cable8mm\Xeed\Interfaces\ResolverInterface;
-
 /**
  * JSONB
  */
-class JsonbResolver extends Resolver implements ResolverInterface
+class JsonbResolver extends Resolver
 {
     public function fake(): string
     {

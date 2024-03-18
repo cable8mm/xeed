@@ -2,12 +2,10 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
-use Cable8mm\Xeed\Interfaces\ResolverInterface;
-
 /**
  * MULTIPOLYGON
  */
-class MultipolygonResolver extends Resolver implements ResolverInterface
+class MultipolygonResolver extends Resolver
 {
     public function fake(): string
     {

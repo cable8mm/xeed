@@ -2,8 +2,6 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
-use Cable8mm\Xeed\Interfaces\ResolverInterface;
-
 /**
  * ENUM(val1, val2, val3, ...)
  *
@@ -12,7 +10,7 @@ use Cable8mm\Xeed\Interfaces\ResolverInterface;
  * If a value is inserted that is not in the list, a blank value will be inserted.
  * The values are sorted in the order you enter them
  */
-class EnumResolver extends Resolver implements ResolverInterface
+class EnumResolver extends Resolver
 {
     public function fake(): string
     {

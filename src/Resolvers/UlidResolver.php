@@ -2,12 +2,10 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
-use Cable8mm\Xeed\Interfaces\ResolverInterface;
-
 /**
  * ULID
  */
-class UlidResolver extends Resolver implements ResolverInterface
+class UlidResolver extends Resolver
 {
     public function fake(): string
     {

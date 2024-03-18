@@ -2,8 +2,6 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
-use Cable8mm\Xeed\Interfaces\ResolverInterface;
-
 /**
  * TIMESTAMP(fsp)
  *
@@ -13,7 +11,7 @@ use Cable8mm\Xeed\Interfaces\ResolverInterface;
  * The supported range is from '1970-01-01 00:00:01' UTC to '2038-01-09 03:14:07' UTC.
  * Automatic initialization and updating to the current date and time can be specified using DEFAULT CURRENT_TIMESTAMP and ON UPDATE CURRENT_TIMESTAMP in the column definition
  */
-class TimestampResolver extends Resolver implements ResolverInterface
+class TimestampResolver extends Resolver
 {
     public function fake(): string
     {

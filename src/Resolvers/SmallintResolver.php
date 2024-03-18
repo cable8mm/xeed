@@ -2,8 +2,6 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
-use Cable8mm\Xeed\Interfaces\ResolverInterface;
-
 /**
  * SMALLINT(size)
  *
@@ -12,7 +10,7 @@ use Cable8mm\Xeed\Interfaces\ResolverInterface;
  * Unsigned range is from 0 to 65535.
  * The size parameter specifies the maximum display width (which is 255)
  */
-final class SmallintResolver extends Resolver implements ResolverInterface
+final class SmallintResolver extends Resolver
 {
     public function fake(): string
     {

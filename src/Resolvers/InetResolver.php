@@ -2,14 +2,12 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
-use Cable8mm\Xeed\Interfaces\ResolverInterface;
-
 /**
  * INET
  *
  * When using Postgres, an INET column will be created.
  */
-class InetResolver extends Resolver implements ResolverInterface
+class InetResolver extends Resolver
 {
     public function fake(): string
     {

@@ -93,17 +93,32 @@ final class Column implements Stringable
         );
     }
 
+    /**
+     * To get the row string form database factory, then return the string for Seeder class.
+     *
+     * @return string Seeder class row string
+     */
     public function fake(): string
     {
         return ResolverSelector::of($this)->fake();
     }
 
+    /**
+     * To get the row string for migration file, then return the string for migration class.
+     *
+     * @return string Migration class row string
+     */
     public function migration(): string
     {
         return ResolverSelector::of($this)->migration();
     }
 
-    public function __toString()
+    /**
+     * Class magic method to get the instance information for a Exception
+     *
+     * @return string The instance information for a Exception
+     */
+    public function __toString(): string
     {
         return 'Field is '.$this->field.' and type is '.$this->type.'.';
     }

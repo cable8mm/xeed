@@ -3,23 +3,56 @@
 namespace Cable8mm\Xeed\Resolvers;
 
 use Cable8mm\Xeed\Column;
+use Cable8mm\Xeed\Interfaces\ResolverInterface;
+use LogicException;
 
 /**
- * Abstract resolver class.
+ * It is used by parent class of various resolver classes.
  */
-abstract class Resolver
+class Resolver implements ResolverInterface
 {
-    abstract protected function fake(): string;
-
-    abstract protected function migration(): string;
-
+    /**
+     * Constructor.
+     *
+     * @param  \Cable8mm\Xeed\Column  $column  The column.
+     */
     public function __construct(
         protected Column $column
     ) {
 
     }
 
-    public function last($migration): string
+    /**
+     * {@inheritDoc}
+     *
+     * @internal This method should be implemented by child classes.
+     *
+     * @throw LogicException
+     */
+    public function fake(): string
+    {
+        throw new LogicException(__METHOD__.' Method not implemented.');
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @internal This method should be implemented by child classes.
+     *
+     * @throw LogicException
+     */
+    public function migration(): string
+    {
+        throw new LogicException(__METHOD__.' Method not implemented.');
+    }
+
+    /**
+     * Post processing method for resolvers
+     *
+     * @param  string  $migration  The migration payload before post processing
+     * @return string The migration payload after post processing
+     */
+    public function last(string $migration): string
     {
         if (! $this->column->notNull) {
             $migration .= '->nullable()';

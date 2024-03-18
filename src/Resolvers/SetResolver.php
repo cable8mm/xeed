@@ -2,15 +2,13 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
-use Cable8mm\Xeed\Interfaces\ResolverInterface;
-
 /**
  * SET(val1, val2, val3, ...)
  *
  * A string object that can have 0 or more values, chosen from a list of possible values.
  * You can list up to 64 values in a SET list
  */
-class SetResolver extends Resolver implements ResolverInterface
+class SetResolver extends Resolver
 {
     public function fake(): string
     {
