@@ -1,5 +1,17 @@
 # Release Notes
 
+## v0.6.2 - 2024-03-18
+
+### What's Changed
+
+* Debug the functions to make factories by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/26
+* Remove mappers that are slated to be unused by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/27
+* Remove a resource test folder by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/28
+* Refactor test classes and test configuration by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/30
+* Support laravel custom table fields by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/31
+
+**Full Changelog**: https://github.com/cable8mm/xeed/compare/v0.6.1...v0.6.2
+
 ## v0.6.1 - 2024-03-18
 
 ### What's Changed
