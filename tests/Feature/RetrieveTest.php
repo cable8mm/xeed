@@ -3,7 +3,7 @@
 namespace Cable8mm\Xeed\Tests\Feature;
 
 use Cable8mm\Xeed\DB;
-use Cable8mm\Xeed\Tests\Seeder;
+use Cable8mm\Xeed\Tests\Bootstrap\Seeder;
 use PHPUnit\Framework\TestCase;
 
 final class RetrieveTest extends TestCase
