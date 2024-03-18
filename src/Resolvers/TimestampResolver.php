@@ -34,7 +34,11 @@ class TimestampResolver extends Resolver
         $bracket = Bracket::of($this->column->bracket)->to(0);
         // TODO: $table->timeTz('sunrise', $precision = 0);
 
-        $migration = '$table->timestamp(\''.$this->column->field.'\', '.$bracket.')';
+        if ($this->column->field === 'deleted_at' && ! $this->column->notNull) {
+            $migration = '$table->softDeletes(\''.$this->column->field.'\')';
+        } else {
+            $migration = '$table->timestamp(\''.$this->column->field.'\', '.$bracket.')';
+        }
 
         return $this->last($migration);
     }
