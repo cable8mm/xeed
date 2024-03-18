@@ -2,7 +2,7 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
-use PDOException;
+use Cable8mm\Xeed\Types\Bracket;
 
 /**
  * DOUBLE(size, d)
@@ -25,17 +25,11 @@ class DoubleResolver extends Resolver
      */
     public function migration(): string
     {
-        if ($this->column->bracket) {
-            if (! preg_match('/\d+,\d+/', $this->column->bracket)) {
-                throw new PDOException($this->column->bracket.' have not a length and a decimals.');
-            }
+        $bracket = Bracket::of($this->column->bracket)->escape();
 
-            [$length, $decimals] = explode(',', $this->column->bracket);
+        $bracket = empty($bracket) ? '' : ', '.$bracket;
 
-            $migration = '$table->double(\''.$this->column->field.'\', '.$length.', '.$decimals.')';
-        } else {
-            $migration = '$table->double(\''.$this->column->field.'\')';
-        }
+        $migration = '$table->double(\''.$this->column->field.'\''.$bracket.')';
 
         return $this->last($migration);
     }

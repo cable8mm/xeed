@@ -2,6 +2,8 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
+use Cable8mm\Xeed\Types\Bracket;
+
 /**
  * SET(val1, val2, val3, ...)
  *
@@ -18,8 +20,9 @@ class SetResolver extends Resolver
 
     public function migration(): string
     {
-        // TODO: $table->set('flavors', ['strawberry', 'vanilla']);
-        $migration = '$table->set(\''.$this->column->field.'\')';
+        $bracket = Bracket::of($this->column->bracket)->array();
+
+        $migration = '$table->set(\''.$this->column->field.'\', '.$bracket.')';
 
         return $this->last($migration);
     }

@@ -60,16 +60,19 @@ bin/console seeders
 
 ```sh
 bin/console database
-# Generate database seed from database in `dist/database/seeders` folder
+# Generate a database seed from database in `dist/database/seeders` folder
 ```
 
 ### Generate `Factory`s
 
 \[TODO]
 
-### Generate `migration`
+### Generate `Migration`s
 
-\[TODO]
+```sh
+bin/console migration
+# Generate all migrations from database in `dist/database/migrations' folder
+```
 
 ## How to contribute
 

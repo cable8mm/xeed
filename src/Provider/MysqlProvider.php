@@ -45,7 +45,7 @@ final class MysqlProvider implements ProviderInterface
 
         $notNull = isset($column['Null']) ? ($column['Null'] === 'NO') : false;
 
-        $unsigned = preg_match('/unsigned/', $column['Extra']) !== false;
+        $unsigned = (bool) preg_match('/unsigned/', $column['Type']);
 
         $type = preg_replace('/[( ].+/', '', $column['Type']);
 

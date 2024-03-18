@@ -21,7 +21,10 @@ final class MediumintResolver extends Resolver
     {
         // TODO: $table->mediumIncrements('id');
         // TODO: $table->unsignedMediumInteger('votes');
-        $migration = '$table->mediumInteger(\''.$this->column->field.'\')';
+
+        $migration = $this->column->unsigned ?
+            '$table->unsignedMediumInteger(\''.$this->column->field.'\')' :
+            '$table->mediumInteger(\''.$this->column->field.'\')';
 
         return $this->last($migration);
     }
