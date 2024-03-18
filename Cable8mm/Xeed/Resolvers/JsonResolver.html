@@ -86,7 +86,7 @@
 
     
     <p>        class
-    <strong>JsonResolver</strong>        extends <a href="../../../Cable8mm/Xeed/Resolvers/Resolver.html"><abbr title="Cable8mm\Xeed\Resolvers\Resolver">Resolver</abbr></a>        implements        <a href="../../../Cable8mm/Xeed/Interfaces/ResolverInterface.html"><abbr title="Cable8mm\Xeed\Interfaces\ResolverInterface">ResolverInterface</abbr></a>
+    <strong>JsonResolver</strong>        extends <a href="../../../Cable8mm/Xeed/Resolvers/Resolver.html"><abbr title="Cable8mm\Xeed\Resolvers\Resolver">Resolver</abbr></a>
 </p>
 
         
@@ -104,13 +104,23 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___construct">__construct</a>(<a href="../../../Cable8mm/Xeed/Column.html"><abbr title="Cable8mm\Xeed\Column">Column</abbr></a> $column)
+        
+                                            <p>Constructor.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Cable8mm/Xeed/Resolvers/Resolver.html#method___construct">
+<abbr title="Cable8mm\Xeed\Resolvers\Resolver">Resolver</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     string
                 </div>
                 <div class="col-md-8">
                     <a href="#method_fake">fake</a>()
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>To get the row string form database factory, then return the string for Seeder class.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -120,31 +130,17 @@
                 <div class="col-md-8">
                     <a href="#method_migration">migration</a>()
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>To get the row string for migration file, then return the string for migration class.</p></p>                </div>
                 <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-                </div>
-                <div class="col-md-8">
-                    <a href="#method___construct">__construct</a>(<a href="../../../Cable8mm/Xeed/Column.html"><abbr title="Cable8mm\Xeed\Column">Column</abbr></a> $column)
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../Cable8mm/Xeed/Resolvers/Resolver.html#method___construct">
-<abbr title="Cable8mm\Xeed\Resolvers\Resolver">Resolver</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     string
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_last">last</a>($migration)
+                    <a href="#method_last">last</a>(string $migration)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>Post processing method for resolvers</p></p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../Cable8mm/Xeed/Resolvers/Resolver.html#method_last">
 <abbr title="Cable8mm\Xeed\Resolvers\Resolver">Resolver</abbr></a></small></div>
             </div>
@@ -166,8 +162,42 @@
 
             <div id="method-details">
                     <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location">in <a href="../../../Cable8mm/Xeed/Resolvers/Resolver.html#method___construct">
+<abbr title="Cable8mm\Xeed\Resolvers\Resolver">Resolver</abbr></a> at line 19</div>
+        <code>                    
+    <strong>__construct</strong>(<a href="../../../Cable8mm/Xeed/Column.html"><abbr title="Cable8mm\Xeed\Column">Column</abbr></a> $column)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p>Constructor.</p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Cable8mm/Xeed/Column.html"><abbr title="Cable8mm\Xeed\Column">Column</abbr></a></td>
+                <td>$column</td>
+                <td><p>The column.</p></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_fake">
-        <div class="location">at line 12</div>
+        <div class="location">at line 10</div>
         <code>                    string
     <strong>fake</strong>()
         </code>
@@ -177,8 +207,7 @@
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>To get the row string form database factory, then return the string for Seeder class.</p></p>                        
         </div>
         <div class="tags">
             
@@ -187,7 +216,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>string</td>
-            <td></td>
+            <td><p>Seeder class row string</p></td>
         </tr>
     </table>
 
@@ -200,7 +229,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_migration">
-        <div class="location">at line 17</div>
+        <div class="location">at line 15</div>
         <code>                    string
     <strong>migration</strong>()
         </code>
@@ -210,8 +239,7 @@
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>To get the row string for migration file, then return the string for migration class.</p></p>                        
         </div>
         <div class="tags">
             
@@ -220,7 +248,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>string</td>
-            <td></td>
+            <td><p>Migration file row string</p></td>
         </tr>
     </table>
 
@@ -232,46 +260,11 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method___construct">
-        <div class="location">in <a href="../../../Cable8mm/Xeed/Resolvers/Resolver.html#method___construct">
-<abbr title="Cable8mm\Xeed\Resolvers\Resolver">Resolver</abbr></a> at line 16</div>
-        <code>                    
-    <strong>__construct</strong>(<a href="../../../Cable8mm/Xeed/Column.html"><abbr title="Cable8mm\Xeed\Column">Column</abbr></a> $column)
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../../Cable8mm/Xeed/Column.html"><abbr title="Cable8mm\Xeed\Column">Column</abbr></a></td>
-                <td>$column</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_last">
         <div class="location">in <a href="../../../Cable8mm/Xeed/Resolvers/Resolver.html#method_last">
-<abbr title="Cable8mm\Xeed\Resolvers\Resolver">Resolver</abbr></a> at line 22</div>
+<abbr title="Cable8mm\Xeed\Resolvers\Resolver">Resolver</abbr></a> at line 55</div>
         <code>                    string
-    <strong>last</strong>($migration)
+    <strong>last</strong>(string $migration)
         </code>
     </h3>
     <div class="details">    
@@ -279,17 +272,16 @@
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>Post processing method for resolvers</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
+                <td>string</td>
                 <td>$migration</td>
-                <td></td>
+                <td><p>The migration payload before post processing</p></td>
             </tr>
             </table>
 
@@ -299,7 +291,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>string</td>
-            <td></td>
+            <td><p>The migration payload after post processing</p></td>
         </tr>
     </table>
 
@@ -313,7 +305,7 @@
                     <div class="method-item">
                     <h3 id="method___get">
         <div class="location">in <a href="../../../Cable8mm/Xeed/Resolvers/Resolver.html#method___get">
-<abbr title="Cable8mm\Xeed\Resolvers\Resolver">Resolver</abbr></a> at line 38</div>
+<abbr title="Cable8mm\Xeed\Resolvers\Resolver">Resolver</abbr></a> at line 71</div>
         <code>                    mixed
     <strong>__get</strong>(string $property)
         </code>

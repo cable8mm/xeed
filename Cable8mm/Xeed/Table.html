@@ -144,13 +144,12 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    string
                 </div>
                 <div class="col-md-8">
                     <a href="#method___toString">__toString</a>()
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>Class magic method to get the real table name.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -231,7 +230,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_model">
-        <div class="location">at line 55</div>
+        <div class="location">at line 56</div>
         <code>                    string
     <strong>model</strong>()
         </code>
@@ -261,7 +260,8 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">`User` `Admin`</pre></td>
+                <td><pre class="examples">echo (new Table(&#039;users&#039;))-&gt;model();<br />
+//=&gt; User</pre></td>
             </tr>
             </table>
 
@@ -271,7 +271,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_migration">
-        <div class="location">at line 65</div>
+        <div class="location">at line 69</div>
         <code>                    string
     <strong>migration</strong>()
         </code>
@@ -297,14 +297,23 @@
             
             
             
+                            <h4>Examples</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><pre class="examples">echo (new Table(&#039;users&#039;))-&gt;migration();<br />
+//=&gt; 2024_03_18_135821_create_users_table.php</pre></td>
+            </tr>
+            </table>
+
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method___toString">
-        <div class="location">at line 70</div>
-        <code>                    
+        <div class="location">at line 82</div>
+        <code>                    string
     <strong>__toString</strong>()
         </code>
     </h3>
@@ -313,14 +322,31 @@
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>Class magic method to get the real table name.</p></p>                        
         </div>
         <div class="tags">
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td><p>The real table name.</p></td>
+        </tr>
+    </table>
+
             
             
             
+                            <h4>Examples</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><pre class="examples">echo new Table(&#039;users&#039;);<br />
+//=&gt; users</pre></td>
+            </tr>
+            </table>
+
                     </div>
     </div>
 
