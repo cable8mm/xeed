@@ -1,6 +1,6 @@
 <?php
 
-namespace Cable8mm\Xeed\Database;
+namespace Cable8mm\Xeed\Tests;
 
 use Cable8mm\Xeed\DB;
 
