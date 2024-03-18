@@ -107,8 +107,6 @@ final class Picker
             throw new InvalidArgumentException('You must provide a field or a type or both');
         }
 
-        $mapper = require Path::mapper().$driver.'.php';
-
         /* @var Column $value */
         foreach ($this->values as $value) {
             if (
