@@ -26,35 +26,38 @@ class Bracket implements Stringable
         }
     }
 
-    /**
-     * Reading data from inaccessible (protected or private) or non-existing properties.
-     *
-     * @throws InvalidArgumentException
-     */
-    public function __get(string $property): mixed
+    public function left(): string|int
     {
-        switch ($property) {
-            case 'left':
-                if (! is_array($this->parsed) || ! isset($this->parsed[0])) {
-                    throw new InvalidArgumentException('Left value is not set');
-                }
-
-                return $this->parsed[0];
-            case 'right':
-                if (! is_array($this->parsed) || ! isset($this->parsed[1])) {
-                    throw new InvalidArgumentException('Left value is not set');
-                }
-
-                return $this->parsed[1];
-            case 'value':
-                if (! is_string($this->parsed)) {
-                    throw new InvalidArgumentException('Value is not string');
-                }
-
-                return $this->parsed;
+        if (! is_array($this->parsed) || ! isset($this->parsed[0])) {
+            throw new InvalidArgumentException('Left value is not set');
         }
 
-        throw new InvalidArgumentException('Invalid property: '.$property);
+        return $this->parsed[0];
+    }
+
+    public function right(): string|int
+    {
+        if (! is_array($this->parsed) || ! isset($this->parsed[1])) {
+            throw new InvalidArgumentException('Right value is not set');
+        }
+
+        return $this->parsed[1];
+    }
+
+    public function to(): string|int
+    {
+        if (! is_string($this->parsed) || (bool) is_int($this->parsed)) {
+            throw new InvalidArgumentException('Right value is not set');
+        }
+
+        return $this->parsed;
+    }
+
+    public function escape(): string
+    {
+        $value = preg_replace('/[()]/', '', $this->value);
+
+        return preg_replace('/,/', ' ,', $value);
     }
 
     /**
@@ -64,7 +67,7 @@ class Bracket implements Stringable
      */
     public function __toString()
     {
-        return $this->value;
+        return (string) $this->to();
     }
 
     /**

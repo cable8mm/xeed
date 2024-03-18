@@ -14,28 +14,28 @@ final class BracketTest extends TestCase
     {
         $bracket = Bracket::of('(8, 2)');
 
-        $this->assertEquals('8', $bracket->left);
+        $this->assertEquals('8', $bracket->left());
     }
 
     public function test_it_can_parse_right_with_bracket(): void
     {
         $bracket = Bracket::of('(8, 2)');
 
-        $this->assertEquals('2', $bracket->right);
+        $this->assertEquals('2', $bracket->right());
     }
 
     public function test_it_can_parse_left_with_space(): void
     {
         $bracket = Bracket::of('int unsigned');
 
-        $this->assertEquals('int', $bracket->left);
+        $this->assertEquals('int', $bracket->left());
     }
 
     public function test_it_can_parse_right_with_space(): void
     {
         $bracket = Bracket::of('int unsigned');
 
-        $this->assertEquals('unsigned', $bracket->right);
+        $this->assertEquals('unsigned', $bracket->right());
     }
 
     public function test_it_can_parse_string(): void
@@ -49,20 +49,28 @@ final class BracketTest extends TestCase
     {
         $this->expectException(InvalidArgumentException::class);
 
-        Bracket::of('int')->left;
+        Bracket::of('int')->left();
     }
 
     public function test_it_can_not_parse_right(): void
     {
         $this->expectException(InvalidArgumentException::class);
 
-        Bracket::of('int')->right;
+        Bracket::of('int')->right();
     }
 
     public function test_it_can_not_parse_array(): void
     {
         $this->expectException(InvalidArgumentException::class);
 
-        Bracket::of('int unsigned')->value;
+        Bracket::of('int unsigned')->to();
+    }
+
+    public function test_it_can_escape(): void
+    {
+        $this->assertEquals(
+            '8, 2',
+            Bracket::of('(8, 2)')->escape()
+        );
     }
 }

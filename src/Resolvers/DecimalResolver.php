@@ -2,6 +2,8 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
+use Cable8mm\Xeed\Types\Bracket;
+
 /**
  * DECIMAL(size, d)
  *
@@ -22,11 +24,12 @@ class DecimalResolver extends Resolver
 
     public function migration(): string
     {
-        // TODO: $table->decimal('amount', $precision = 8, $scale = 2);
         // TODO: $table->unsignedDecimal('amount', $precision = 8, $scale = 2);
+        $bracket = Bracket::of($this->column->bracket)->escape();
+
         $migration = $this->column->unsigned ?
-            '$table->unsignedDecimal(\''.$this->column->field.'\')' :
-            '$table->decimal(\''.$this->column->field.'\')';
+            '$table->unsignedDecimal(\''.$this->column->field.'\', '.$bracket.')' :
+            '$table->decimal(\''.$this->column->field.'\', '.$bracket.')';
 
         return $this->last($migration);
     }
