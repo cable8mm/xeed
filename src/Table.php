@@ -50,7 +50,8 @@ final class Table implements Stringable
      *
      * @return string The ModelName
      *
-     * @example `User` `Admin`
+     * @example echo (new Table('users'))->model();
+     * //=> User
      */
     public function model(): string
     {
@@ -61,13 +62,24 @@ final class Table implements Stringable
      * To get the migration file name from table name.
      *
      * @return string The migration file name.
+     *
+     * @example echo (new Table('users'))->migration();
+     * //=> 2024_03_18_135821_create_users_table.php
      */
     public function migration(): string
     {
-        return date('Y-m-d-His').'_create_'.$this->name.'_table.php';
+        return date('Y_m_d_His').'_create_'.$this->name.'_table.php';
     }
 
-    public function __toString()
+    /**
+     * Class magic method to get the real table name.
+     *
+     * @return string The real table name.
+     *
+     * @example echo new Table('users');
+     * //=> users
+     */
+    public function __toString(): string
     {
         return $this->name;
     }

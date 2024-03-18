@@ -8,16 +8,16 @@ namespace Cable8mm\Xeed\Interfaces;
 interface ResolverInterface
 {
     /**
-     * To get the row string form database factory.
+     * To get the row string form database factory, then return the string for Seeder class.
      *
-     * @return string The row string for factory method.
+     * @return string Seeder class row string
      */
     public function fake(): string;
 
     /**
-     * To get the row string for migration file.
+     * To get the row string for migration file, then return the string for migration class.
      *
-     * @return string The row string for migration file.
+     * @return string Migration file row string
      */
     public function migration(): string;
 }
