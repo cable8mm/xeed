@@ -2,6 +2,8 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
+use Cable8mm\Xeed\Types\Bracket;
+
 /**
  * TIME(fsp)
  *
@@ -18,10 +20,10 @@ class TimeResolver extends Resolver
 
     public function migration(): string
     {
+        $bracket = Bracket::of($this->column->bracket)->to(0);
         // TODO: $table->timeTz('sunrise', $precision = 0);
-        $migration = empty($this->column->bracket) ?
-            '$table->time(\''.$this->column->field.'\')' :
-            '$table->time(\''.$this->column->field.'\', '.$this->column->bracket.')';
+
+        $migration = '$table->time(\''.$this->column->field.'\', '.$bracket.')';
 
         return $this->last($migration);
     }

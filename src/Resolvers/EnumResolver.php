@@ -2,6 +2,8 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
+use Cable8mm\Xeed\Types\Bracket;
+
 /**
  * ENUM(val1, val2, val3, ...)
  *
@@ -20,8 +22,9 @@ class EnumResolver extends Resolver
 
     public function migration(): string
     {
-        // TODO: $table->enum('difficulty', ['easy', 'hard']);
-        $migration = '$table->enum(\''.$this->column->field.'\', '.$this->column->bracket.')';
+        $bracket = Bracket::of($this->column->bracket)->array();
+
+        $migration = '$table->enum(\''.$this->column->field.'\', '.$bracket.')';
 
         return $this->last($migration);
     }

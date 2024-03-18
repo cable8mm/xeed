@@ -2,6 +2,8 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
+use Cable8mm\Xeed\Types\Bracket;
+
 /**
  * TIMESTAMP(fsp)
  *
@@ -29,9 +31,10 @@ class TimestampResolver extends Resolver
         // TODO: $table->timestampTz('added_at', $precision = 0);
         // TODO: $table->timestampsTz($precision = 0);
         // TODO: $table->timestamps($precision = 0);
-        $migration = empty($this->column->bracket) ?
-            '$table->timestamp(\''.$this->column->field.'\')' :
-            '$table->timestamp(\''.$this->column->field.'\', '.$this->column->bracket.')';
+        $bracket = Bracket::of($this->column->bracket)->to(0);
+        // TODO: $table->timeTz('sunrise', $precision = 0);
+
+        $migration = '$table->timestamp(\''.$this->column->field.'\', '.$bracket.')';
 
         return $this->last($migration);
     }

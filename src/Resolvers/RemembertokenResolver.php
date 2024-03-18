@@ -14,8 +14,6 @@ class RemembertokenResolver extends Resolver
 
     public function migration(): string
     {
-        $migration = '$table->rememberToken()';
-
-        return $this->last($migration);
+        return '$table->rememberToken();';
     }
 }

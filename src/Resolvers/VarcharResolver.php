@@ -2,6 +2,8 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
+use Cable8mm\Xeed\Types\Bracket;
+
 /**
  * VARCHAR(size)
  *
@@ -17,8 +19,9 @@ class VarcharResolver extends Resolver
 
     public function migration(): string
     {
-        // TODO: $table->ipAddress('visitor');
-        $migration = '$table->string(\''.$this->column->field.'\')';
+        $bracket = Bracket::of($this->column->bracket)->escape();
+
+        $migration = '$table->string(\''.$this->column->field.'\', '.$bracket.')';
 
         return $this->last($migration);
     }

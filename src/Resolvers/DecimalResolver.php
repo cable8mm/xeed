@@ -24,7 +24,6 @@ class DecimalResolver extends Resolver
 
     public function migration(): string
     {
-        // TODO: $table->unsignedDecimal('amount', $precision = 8, $scale = 2);
         $bracket = Bracket::of($this->column->bracket)->escape();
 
         $migration = $this->column->unsigned ?
