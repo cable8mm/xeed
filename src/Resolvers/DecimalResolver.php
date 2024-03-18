@@ -28,9 +28,7 @@ class DecimalResolver extends Resolver
 
         $bracket = empty($bracket) ? '' : ', '.$bracket;
 
-        $migration = $this->column->unsigned ?
-            '$table->unsignedDecimal(\''.$this->column->field.'\''.$bracket.')' :
-            '$table->decimal(\''.$this->column->field.'\''.$bracket.')';
+        $migration = '$table->decimal(\''.$this->column->field.'\''.$bracket.')';
 
         return $this->last($migration);
     }

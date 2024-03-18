@@ -17,7 +17,9 @@ class EnumResolver extends Resolver
     public function fake(): string
     {
         // TODO: Replace 1,2,3 with real values
-        return '\''.$this->column->field.'\' => fake()->randomElements(1,2,3),';
+        $bracket = Bracket::of($this->column->bracket)->array();
+
+        return '\''.$this->column->field.'\' => fake()->randomElement('.$bracket.'),';
     }
 
     public function migration(): string
