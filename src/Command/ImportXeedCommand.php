@@ -52,7 +52,7 @@ class ImportXeedCommand extends Command
         $db = DB::getInstance();
 
         if ($argument === 'drop' || $argument === 'refresh') {
-            $sql = file_get_contents(Path::resourceTest().'xeeds.'.$db->driver.'.sql');
+            $sql = file_get_contents(Path::database().'xeeds.'.$db->driver.'.sql');
 
             $db->exec($sql);
 
@@ -60,7 +60,7 @@ class ImportXeedCommand extends Command
         }
 
         if ($argument === 'import' || $argument === 'refresh') {
-            $sql = file_get_contents(Path::resourceTest().'xeeds.'.$db->driver.'.sql');
+            $sql = file_get_contents(Path::database().'xeeds.'.$db->driver.'.sql');
 
             $db->exec($sql);
 
