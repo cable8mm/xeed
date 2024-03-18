@@ -19,8 +19,8 @@ We have provided the API Documentation on the web. For more information, please 
 - [x] Generate models for Laravel
 - [x] Generate seed files for Laravel
 - [x] Generate database seed files for Laravel
-- [ ] Generate factories for Laravel
-- [ ] Generate migrations for Laravel
+- [x] Generate factories for Laravel
+- [x] Generate migrations for Laravel
 
 ## Support & Tested
 
@@ -65,12 +65,15 @@ bin/console database
 
 ### Generate `Factory`s
 
-\[TODO]
+```sh
+bin/console factories
+# Generate all factories from database in `dist/database/factories' folder
+```
 
 ### Generate `Migration`s
 
 ```sh
-bin/console migration
+bin/console migrations
 # Generate all migrations from database in `dist/database/migrations' folder
 ```
 
