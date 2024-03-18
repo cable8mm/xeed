@@ -69,9 +69,17 @@ class Bracket implements Stringable
         return $this->parsed ?? $default;
     }
 
-    public function escape(): string
+    public function escape(): string|int
     {
-        return preg_replace('/[()]/', '', $this->value);
+        if (is_null($this->value)) {
+            return '';
+        }
+
+        $value = preg_replace('/,/', ', ', $this->value);
+
+        $value = preg_replace('/ +/', ' ', $value);
+
+        return preg_replace('/[()]/', '', $value);
     }
 
     public function array(): string

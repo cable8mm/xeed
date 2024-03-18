@@ -12,6 +12,8 @@ final class VarcharResolverTest extends TestCase
 {
     public Column $column;
 
+    public string $driver;
+
     protected function setUp(): void
     {
         $db = DB::getInstance();
@@ -20,6 +22,8 @@ final class VarcharResolverTest extends TestCase
             ->getTable('xeeds')
             ->getColumns()
         )->driver($db->driver)->field('string')->get();
+
+        $this->driver = $db->driver;
     }
 
     public function test_column_can_not_null(): void
@@ -45,6 +49,12 @@ final class VarcharResolverTest extends TestCase
     {
         $resolver = new VarcharResolver($this->column);
 
-        $this->assertEquals('$table->string(\'string\');', $resolver->migration());
+        if ($this->driver == 'mysql') {
+            $this->assertEquals('$table->string(\'string\', 100);', $resolver->migration());
+        }
+
+        if ($this->driver == 'sqlite') {
+            $this->assertEquals('$table->string(\'string\');', $resolver->migration());
+        }
     }
 }

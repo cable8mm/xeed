@@ -50,7 +50,7 @@ final class DecimalResolverTest extends TestCase
         $resolver = new DecimalResolver($this->column);
 
         if ($this->driver == 'mysql') {
-            $this->assertEquals('$table->unsignedDecimal(\''.$resolver->field.'\');', $resolver->migration());
+            $this->assertEquals('$table->decimal(\''.$resolver->field.'\', 8, 2);', $resolver->migration());
         }
 
         if ($this->driver == 'sqlite') {

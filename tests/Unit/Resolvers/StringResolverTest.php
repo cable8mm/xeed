@@ -12,6 +12,8 @@ final class StringResolverTest extends TestCase
 {
     public Column $column;
 
+    public string $driver;
+
     protected function setUp(): void
     {
         $db = DB::getInstance();
@@ -20,6 +22,8 @@ final class StringResolverTest extends TestCase
             ->getTable('xeeds')
             ->getColumns()
         )->driver($db->driver)->field('string')->get();
+
+        $this->driver = $db->driver;
     }
 
     public function test_column_can_not_null(): void
@@ -45,6 +49,12 @@ final class StringResolverTest extends TestCase
     {
         $resolver = new StringResolver($this->column);
 
-        $this->assertEquals('$table->string(\''.$resolver->field.'\');', $resolver->migration());
+        if ($this->driver == 'mysql') {
+            $this->assertEquals('$table->string(\''.$resolver->field.'\', 100);', $resolver->migration());
+        }
+
+        if ($this->driver == 'sqlite') {
+            $this->assertEquals('$table->string(\''.$resolver->field.'\');', $resolver->migration());
+        }
     }
 }

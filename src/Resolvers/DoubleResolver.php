@@ -27,7 +27,9 @@ class DoubleResolver extends Resolver
     {
         $bracket = Bracket::of($this->column->bracket)->escape();
 
-        $migration = '$table->double(\''.$this->column->field.'\', '.$bracket.')';
+        $bracket = empty($bracket) ? '' : ', '.$bracket;
+
+        $migration = '$table->double(\''.$this->column->field.'\''.$bracket.')';
 
         return $this->last($migration);
     }

@@ -50,7 +50,7 @@ final class TinyintResolverTest extends TestCase
         $resolver = new TinyintResolver($this->column);
 
         if ($this->driver == 'mysql') {
-            $this->assertEquals('$table->unsignedTinyInteger(\''.$resolver->field.'\');', $resolver->migration());
+            $this->assertEquals('$table->tinyInteger(\''.$resolver->field.'\');', $resolver->migration());
         }
 
         if ($this->driver == 'sqlite') {

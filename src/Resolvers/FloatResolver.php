@@ -35,7 +35,9 @@ class FloatResolver extends Resolver
     {
         $bracket = Bracket::of($this->column->bracket)->escape();
 
-        $migration = '$table->float(\''.$this->column->field.'\', '.$bracket.')';
+        $bracket = empty($bracket) ? '' : ', '.$bracket;
+
+        $migration = '$table->float(\''.$this->column->field.'\''.$bracket.')';
 
         return $this->last($migration);
     }
