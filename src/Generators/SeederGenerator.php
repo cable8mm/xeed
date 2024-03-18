@@ -39,7 +39,7 @@ final class SeederGenerator implements GeneratorInterface
     {
         $seederClass = str_replace(
             ['{class}', '{namespace_class}'],
-            [$this->table, $this->namespace.'\\'.$this->table->model()],
+            [$this->table->model('Seeder'), $this->namespace.'\\'.$this->table->model()],
             $this->stub
         );
 

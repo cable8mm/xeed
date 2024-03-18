@@ -13,7 +13,6 @@ use Cable8mm\Xeed\Resolvers\DecimalResolver;
 use Cable8mm\Xeed\Resolvers\DoubleResolver;
 use Cable8mm\Xeed\Resolvers\EnumResolver;
 use Cable8mm\Xeed\Resolvers\FloatResolver;
-use Cable8mm\Xeed\Resolvers\GeometrycollectionResolver;
 use Cable8mm\Xeed\Resolvers\GeometryResolver;
 use Cable8mm\Xeed\Resolvers\IdResolver;
 use Cable8mm\Xeed\Resolvers\InetResolver;
@@ -21,20 +20,14 @@ use Cable8mm\Xeed\Resolvers\IntegerResolver;
 use Cable8mm\Xeed\Resolvers\IntResolver;
 use Cable8mm\Xeed\Resolvers\JsonbResolver;
 use Cable8mm\Xeed\Resolvers\JsonResolver;
-use Cable8mm\Xeed\Resolvers\LineStringResolver;
 use Cable8mm\Xeed\Resolvers\LongtextResolver;
 use Cable8mm\Xeed\Resolvers\MacaddressResolver;
 use Cable8mm\Xeed\Resolvers\MediumintResolver;
 use Cable8mm\Xeed\Resolvers\MediumtextResolver;
 use Cable8mm\Xeed\Resolvers\MultilinestringResolver;
-use Cable8mm\Xeed\Resolvers\MultipointResolver;
-use Cable8mm\Xeed\Resolvers\MultipolygonResolver;
 use Cable8mm\Xeed\Resolvers\NumericResolver;
-use Cable8mm\Xeed\Resolvers\PointResolver;
-use Cable8mm\Xeed\Resolvers\PolygonResolver;
 use Cable8mm\Xeed\Resolvers\RemembertokenResolver;
 use Cable8mm\Xeed\Resolvers\Resolver;
-use Cable8mm\Xeed\Resolvers\SetResolver;
 use Cable8mm\Xeed\Resolvers\SmallintResolver;
 use Cable8mm\Xeed\Resolvers\TextResolver;
 use Cable8mm\Xeed\Resolvers\TimeResolver;
@@ -116,10 +109,6 @@ final class ResolverSelector
             return new FloatResolver($column);
         }
 
-        if ($column->type == 'geomcollection') {
-            return new GeometrycollectionResolver($column);
-        }
-
         if ($column->type == 'geometry') {
             return new GeometryResolver($column);
         }
@@ -144,10 +133,6 @@ final class ResolverSelector
             return new JsonbResolver($column);
         }
 
-        if ($column->type == 'linestring') {
-            return new LineStringResolver($column);
-        }
-
         if ($column->type == 'longtext') {
             return new LongtextResolver($column);
         }
@@ -164,28 +149,8 @@ final class ResolverSelector
             return new MediumtextResolver($column);
         }
 
-        if ($column->type == 'multipoint') {
-            return new MultipointResolver($column);
-        }
-
-        if ($column->type == 'multipolygon') {
-            return new MultipolygonResolver($column);
-        }
-
-        if ($column->type == 'point') {
-            return new PointResolver($column);
-        }
-
-        if ($column->type == 'polygon') {
-            return new PolygonResolver($column);
-        }
-
         if ($column->field == 'remember_token') {
             return new RemembertokenResolver($column);
-        }
-
-        if ($column->type == 'set') {
-            return new SetResolver($column);
         }
 
         if ($column->type == 'smallint') {
@@ -222,10 +187,6 @@ final class ResolverSelector
 
         if ($column->type == 'enum') {
             return new EnumResolver($column);
-        }
-
-        if ($column->type == 'geometrycollection') {
-            return new GeometrycollectionResolver($column);
         }
 
         if ($column->type == 'multilinestring') {

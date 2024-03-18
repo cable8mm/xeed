@@ -53,9 +53,9 @@ final class Table implements Stringable
      * @example echo (new Table('users'))->model();
      * //=> User
      */
-    public function model(): string
+    public function model(?string $postfix = null): string
     {
-        return Inflector::classify($this->name);
+        return Inflector::classify($this->name).$postfix;
     }
 
     /**

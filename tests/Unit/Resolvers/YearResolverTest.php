@@ -21,7 +21,7 @@ final class YearResolverTest extends TestCase
         $this->column = Picker::of($db->attach()
             ->getTable('xeeds')
             ->getColumns()
-        )->driver($db->driver)->field('birth_year')->get();
+        )->driver($db->driver)->field('year')->get();
 
         $this->driver = $db->driver;
     }
@@ -42,7 +42,7 @@ final class YearResolverTest extends TestCase
     {
         $resolver = new YearResolver($this->column);
 
-        $this->assertEquals('\'birth_year\' => fake()->year(),', $resolver->fake());
+        $this->assertEquals('\'year\' => fake()->year(),', $resolver->fake());
     }
 
     public function test_migration_method_can_working_well(): void

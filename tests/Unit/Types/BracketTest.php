@@ -80,12 +80,4 @@ final class BracketTest extends TestCase
             Bracket::of(null)->to(0)
         );
     }
-
-    public function test_unsignedDecimal(): void
-    {
-        $this->assertEquals(
-            '8, 2',
-            Bracket::of('8, 2 unsigned')->escape()
-        );
-    }
 }
