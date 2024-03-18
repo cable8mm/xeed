@@ -3,28 +3,11 @@
     xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
     processIsolation="false"
     bootstrap="vendor/autoload.php"
-    displayDetailsOnTestsThatTriggerDeprecations="true"
-    displayDetailsOnTestsThatTriggerErrors="true"
-    displayDetailsOnTestsThatTriggerNotices="true"
-    displayDetailsOnTestsThatTriggerWarnings="true"
-    cacheDirectory=".phpunit.cache"
-    colors="true"
-    testdox="true">
-    <testsuites>
-        <testsuite name="Unit">
-            <directory>tests/Unit</directory>
-        </testsuite>
-        <testsuite name="Feature">
-            <directory>tests/Feature</directory>
-        </testsuite>
-        <testsuite name="Generator">
-            <directory>tests/Unit/Generators</directory>
-        </testsuite>
-    </testsuites>
+    cacheDirectory=".phpunit.cache">
 
     <source>
         <include>
-            <directory>src</directory>
+            <directory suffix="Test.php">src</directory>
         </include>
     </source>
 

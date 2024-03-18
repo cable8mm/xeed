@@ -2,8 +2,8 @@
 
 namespace Cable8mm\Xeed\Tests\Unit;
 
-use Cable8mm\Xeed\Database\Seeder;
 use Cable8mm\Xeed\DB;
+use Cable8mm\Xeed\Tests\Seeder;
 use PHPUnit\Framework\TestCase;
 
 final class DBTest extends TestCase
