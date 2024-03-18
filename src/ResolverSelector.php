@@ -27,7 +27,6 @@ use Cable8mm\Xeed\Resolvers\MediumtextResolver;
 use Cable8mm\Xeed\Resolvers\MultilinestringResolver;
 use Cable8mm\Xeed\Resolvers\NumericResolver;
 use Cable8mm\Xeed\Resolvers\RemembertokenResolver;
-use Cable8mm\Xeed\Resolvers\Resolver;
 use Cable8mm\Xeed\Resolvers\SmallintResolver;
 use Cable8mm\Xeed\Resolvers\TextResolver;
 use Cable8mm\Xeed\Resolvers\TimeResolver;
