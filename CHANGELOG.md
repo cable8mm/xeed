@@ -1,5 +1,15 @@
 # Release Notes
 
+## v0.6.1 - 2024-03-18
+
+### What's Changed
+
+* Add a command for easy testing refresh by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/23
+* Refactor to remove an abstract class by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/24
+* Debug the function to make migrations by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/25
+
+**Full Changelog**: https://github.com/cable8mm/xeed/compare/v0.6.0...v0.6.1
+
 ## v0.6.0 - 2024-03-17
 
 ### What's Changed
