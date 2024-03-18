@@ -102,16 +102,4 @@ final class Path
     {
         return getcwd().DIRECTORY_SEPARATOR.'resources'.DIRECTORY_SEPARATOR.'tests'.DIRECTORY_SEPARATOR;
     }
-
-    /**
-     * To get `mapper` folder path.
-     *
-     * @return string The mapper folder path
-     *
-     * @example ./src/Mappers/
-     */
-    public static function mapper(): string
-    {
-        return getcwd().DIRECTORY_SEPARATOR.'src'.DIRECTORY_SEPARATOR.'Mappers'.DIRECTORY_SEPARATOR;
-    }
 }
