@@ -2,8 +2,6 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
-use Cable8mm\Xeed\Interfaces\ResolverInterface;
-
 /**
  * BIT(size)
  *
@@ -12,7 +10,7 @@ use Cable8mm\Xeed\Interfaces\ResolverInterface;
  * The size parameter can hold a value from 1 to 64.
  * The default value for size is 1.
  */
-final class BitResolver extends Resolver implements ResolverInterface
+final class BitResolver extends Resolver
 {
     public function fake(): string
     {

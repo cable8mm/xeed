@@ -2,8 +2,6 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
-use Cable8mm\Xeed\Interfaces\ResolverInterface;
-
 /**
  * INT(size)
  *
@@ -12,7 +10,7 @@ use Cable8mm\Xeed\Interfaces\ResolverInterface;
  * Unsigned range is from 0 to 4294967295.
  * The size parameter specifies the maximum display width (which is 255)
  */
-class IntResolver extends Resolver implements ResolverInterface
+class IntResolver extends Resolver
 {
     public function fake(): string
     {

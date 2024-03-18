@@ -2,8 +2,6 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
-use Cable8mm\Xeed\Interfaces\ResolverInterface;
-
 /**
  * TINYINT(size)
  *
@@ -12,7 +10,7 @@ use Cable8mm\Xeed\Interfaces\ResolverInterface;
  * Unsigned range is from 0 to 255.
  * The size parameter specifies the maximum display width (which is 255)
  */
-final class TinyintResolver extends Resolver implements ResolverInterface
+final class TinyintResolver extends Resolver
 {
     public function fake(): string
     {

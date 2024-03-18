@@ -2,12 +2,10 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
-use Cable8mm\Xeed\Interfaces\ResolverInterface;
-
 /**
  * POLYGON
  */
-class PolygonResolver extends Resolver implements ResolverInterface
+class PolygonResolver extends Resolver
 {
     public function fake(): string
     {

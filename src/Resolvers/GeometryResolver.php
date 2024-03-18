@@ -2,12 +2,10 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
-use Cable8mm\Xeed\Interfaces\ResolverInterface;
-
 /**
  * GEOMETRY
  */
-class GeometryResolver extends Resolver implements ResolverInterface
+class GeometryResolver extends Resolver
 {
     public function fake(): string
     {

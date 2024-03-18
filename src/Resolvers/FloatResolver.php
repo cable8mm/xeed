@@ -2,7 +2,6 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
-use Cable8mm\Xeed\Interfaces\ResolverInterface;
 use PDOException;
 
 /**
@@ -20,7 +19,7 @@ use PDOException;
  * If p is from 0 to 24, the data type becomes FLOAT().
  * If p is from 25 to 53, the data type becomes DOUBLE()
  */
-class FloatResolver extends Resolver implements ResolverInterface
+class FloatResolver extends Resolver
 {
     public function fake(): string
     {

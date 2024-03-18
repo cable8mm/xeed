@@ -2,14 +2,12 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
-use Cable8mm\Xeed\Interfaces\ResolverInterface;
-
 /**
  * TEXT(size)
  *
  * Holds a string with a maximum length of 65,535 bytes
  */
-class TextResolver extends Resolver implements ResolverInterface
+class TextResolver extends Resolver
 {
     public function fake(): string
     {

@@ -2,8 +2,6 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
-use Cable8mm\Xeed\Interfaces\ResolverInterface;
-
 /**
  * BIGINT(size)
  *
@@ -12,7 +10,7 @@ use Cable8mm\Xeed\Interfaces\ResolverInterface;
  * Unsigned range is from 0 to 18446744073709551615.
  * The size parameter specifies the maximum display width (which is 255)
  */
-class BigintResolver extends Resolver implements ResolverInterface
+class BigintResolver extends Resolver
 {
     public function fake(): string
     {

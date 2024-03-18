@@ -2,15 +2,13 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
-use Cable8mm\Xeed\Interfaces\ResolverInterface;
-
 /**
  * MEDIUMBLOB
  *
  * For BLOBs (Binary Large OBjects).
  * Holds up to 16,777,215 bytes of data
  */
-class MediumblobResolver extends Resolver implements ResolverInterface
+class MediumblobResolver extends Resolver
 {
     public function fake(): string
     {

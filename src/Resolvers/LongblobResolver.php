@@ -2,15 +2,13 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
-use Cable8mm\Xeed\Interfaces\ResolverInterface;
-
 /**
  * LONGBLOB
  *
  * For BLOBs (Binary Large OBjects).
  * Holds up to 4,294,967,295 bytes of data
  */
-class LongblobResolver extends Resolver implements ResolverInterface
+class LongblobResolver extends Resolver
 {
     public function fake(): string
     {
