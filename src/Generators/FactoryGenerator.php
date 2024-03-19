@@ -16,6 +16,8 @@ final class FactoryGenerator implements GeneratorInterface
      */
     private string $stub;
 
+    public const intent = '            ';
+
     private function __construct(
         private Table $table,
         private ?string $namespace = null,
@@ -36,7 +38,7 @@ final class FactoryGenerator implements GeneratorInterface
         $fakers = '';
 
         foreach ($this->table->getColumns() as $column) {
-            $fakers .= '            '.$column->fake().PHP_EOL;
+            $fakers .= FactoryGenerator::intent.$column->fake().PHP_EOL;
         }
 
         $fakers = preg_replace('/\n$/', '', $fakers);

@@ -2,6 +2,7 @@
 
 namespace Cable8mm\Xeed\Tests\Unit\Mergers;
 
+use Cable8mm\Xeed\Generators\MigrationGenerator;
 use Cable8mm\Xeed\Mergers\MergerContainer;
 use Cable8mm\Xeed\Mergers\MorphsMerger;
 use Cable8mm\Xeed\Mergers\NullableMorphsMerger;
@@ -116,7 +117,7 @@ final class MergerContainerTest extends TestCase
         $migrated = $container->engines($this->myEngines)->operating()->toArray();
 
         $this->assertEquals(
-            '$table->morphs(\'morphs\');',
+            MigrationGenerator::intent.'$table->morphs(\'morphs\');',
             reset($migrated)
         );
     }

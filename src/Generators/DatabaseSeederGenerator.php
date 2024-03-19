@@ -14,6 +14,8 @@ final class DatabaseSeederGenerator
      */
     private string $stub;
 
+    public const intent = '            ';
+
     private function __construct(
         private array $tables,
         private ?string $namespace = null,
@@ -38,7 +40,7 @@ final class DatabaseSeederGenerator
         $seeder_classes = '';
 
         foreach ($this->tables as $table) {
-            $seeder_classes .= '            '.$table->model().'Seeder::class,'.PHP_EOL;
+            $seeder_classes .= DatabaseSeederGenerator::intent.$table->model().'Seeder::class,'.PHP_EOL;
         }
 
         $seeder_classes = preg_replace('/\n$/', '', $seeder_classes);
