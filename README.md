@@ -1,5 +1,7 @@
 # Xeed
 
+[한글(Korean) 👈](README.ko.md)
+
 [![code-style](https://github.com/cable8mm/xeed/actions/workflows/code-style.yml/badge.svg)](https://github.com/cable8mm/xeed/actions/workflows/code-style.yml)
 [![run-tests](https://github.com/cable8mm/xeed/actions/workflows/run-tests.yml/badge.svg)](https://github.com/cable8mm/xeed/actions/workflows/run-tests.yml)
 [![Packagist Version](https://img.shields.io/packagist/v/cable8mm/xeed)](https://packagist.org/packages/cable8mm/xeed)
@@ -13,7 +15,7 @@ The Xeed is to generate new model, seed, database seed, factory and migration fi
 
 We have provided the API Documentation on the web. For more information, please visit https://www.palgle.com/xeed/ ❤️
 
-## Features
+### Features
 
 - [x] Database testing is supported
 - [x] Generate models for Laravel
@@ -21,16 +23,17 @@ We have provided the API Documentation on the web. For more information, please 
 - [x] Generate database seed files for Laravel
 - [x] Generate factories for Laravel
 - [x] Generate migrations for Laravel
+- [x] Laravel multi & reserved columns supported
+- [ ] Laravel integration
 
-## Support & Tested
+### Support & Tested
 
-| Database  | MySQL | SQLite |
-| :-------: | :---: | :----: |
-| Available |  ✅   |   ✅   |
-
-| PHP Versions | 8.0.2+ | 8.1.0+ | 8.2.0+ | 8.3.0+ |
-| :----------: | :----: | :----: | :----: | :----: |
-|  Available   |   ✅   |   ✅   |   ✅   |   ✅   |
+![MySQL Supported](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white)
+![SQLite Supported](https://img.shields.io/badge/SQLite-07405e?logo=sqlite&logoColor=white)
+![PHP 8.0.2+ Supported](https://img.shields.io/badge/PHP-8.0.2%2B-777BB4?logo=php&logoColor=white)
+![PHP 8.1.0+ Supported](https://img.shields.io/badge/PHP-8.1.0%2B-777BB4?logo=php&logoColor=white)
+![PHP 8.2.0+ Supported](https://img.shields.io/badge/PHP-8.2.0%2B-777BB4?logo=php&logoColor=white)
+![PHP 8.3.0+ Supported](https://img.shields.io/badge/PHP-8.3.0%2B-777BB4?logo=php&logoColor=white)
 
 ## Installation
 
@@ -42,14 +45,14 @@ And edit the `.env` file to configure your own database. You can manually copy `
 
 ## Usage
 
-### Generate `Model`s
+### Generate `Models`
 
 ```sh
 bin/console models
 # Generate all models from database in `dist/app/Models` folder
 ```
 
-### Generate `Seeder`s
+### Generate `Seeders`
 
 ```sh
 bin/console seeders
@@ -63,14 +66,14 @@ bin/console database
 # Generate a database seed from database in `dist/database/seeders` folder
 ```
 
-### Generate `Factory`s
+### Generate `Factories`
 
 ```sh
 bin/console factories
 # Generate all factories from database in `dist/database/factories' folder
 ```
 
-### Generate `Migration`s
+### Generate `Migrations`
 
 ```sh
 bin/console migrations
@@ -108,64 +111,6 @@ bin/console xeed drop
 ```
 
 Utilize migration files for all database field types by referring to the following location `resources/tests` these files are saved in the specified folder.
-
-🔥 SQLite does not yet support the `SET` and `ENUM` field types, so the corresponding lines are commented out. If you are using MySQL, you will need to uncomment the following line.
-
-```php
-Schema::create('xeeds', function (Blueprint $table) {
-  $table->id();
-  $table->bigInteger('big_integer');
-  $table->binary('binary');
-  $table->boolean('boolean');
-  $table->char('char', 100);
-  $table->dateTimeTz('date_time_tz', 0);
-  $table->dateTime('date_time', 0);
-  $table->date('date');
-  $table->decimal('decimal', 8, 2);
-  $table->double('double', 8, 2);
-  $table->enum('enum', ['easy', 'hard']);
-  $table->float('float', 8, 2);
-  $table->foreignId('foreign_id');
-  $table->foreignUlid('foreign_ulid');
-  $table->foreignUuid('foreign_uuid');
-  $table->geometry('geometry');
-  $table->integer('integer');
-  $table->ipAddress('ip_address');
-  $table->json('json');
-  $table->jsonb('jsonb');
-  $table->longText('long_text');
-  $table->macAddress('mac_address');
-  $table->mediumInteger('medium_integer');
-  $table->mediumText('medium_text');
-  $table->morphs('morphs');
-  $table->nullableMorphs('nullable_morphs');
-  $table->nullableUlidMorphs('nullable_ulid_morphs');
-  $table->nullableUuidMorphs('nullable_uuid_morphs');
-  $table->rememberToken();
-  $table->smallInteger('small_integer');
-  $table->softDeletesTz('soft_deletes_tz', 0);
-  $table->softDeletes('soft_deletes', 0);
-  $table->string('string', 100);
-  $table->text('text');
-  $table->timeTz('time_tz', 0);
-  $table->time('time', 0);
-  $table->timestampTz('timestamp_tz', 0);
-  $table->timestamp('timestamp', 0);
-  $table->timestamps(0);
-  $table->tinyInteger('tiny_integer');
-  $table->tinyText('tiny_text');
-  $table->unsignedBigInteger('unsigned_big_integer');
-  $table->unsignedInteger('unsigned_integer');
-  $table->unsignedMediumInteger('unsigned_medium_integer');
-  $table->unsignedSmallInteger('unsigned_small_integer');
-  $table->unsignedTinyInteger('unsigned_tiny_integer');
-  $table->ulidMorphs('ulid_morphs');
-  $table->uuidMorphs('uuid_morphs');
-  $table->ulid('ulid');
-  $table->uuid('uuid');
-  $table->year('year');
-}
-```
 
 ### Helpful commands
 
