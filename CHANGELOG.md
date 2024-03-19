@@ -1,5 +1,16 @@
 # Release Notes
 
+## v0.7.0 - 2024-03-19
+
+### What's Changed
+
+* Ready for merging to align with Laravel migration methods by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/32
+* Fix `MergerContainer` class bugs by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/33
+* Refactor `Merger*` classes by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/34
+* Apply merge after migrations are made by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/35
+
+**Full Changelog**: https://github.com/cable8mm/xeed/compare/v0.6.2...v0.7.0
+
 ## v0.6.2 - 2024-03-18
 
 ### What's Changed
