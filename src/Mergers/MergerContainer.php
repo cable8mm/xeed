@@ -4,6 +4,7 @@ namespace Cable8mm\Xeed\Mergers;
 
 use Cable8mm\Xeed\Interfaces\MergerInterface;
 use InvalidArgumentException;
+use LogicException;
 use Stringable;
 
 /**
@@ -14,7 +15,7 @@ class MergerContainer implements Stringable
     /**
      * @var array<MergerInterface>
      */
-    private array $engine = [];
+    private array $engines = [];
 
     /**
      * An array of migration files per lines.
@@ -27,14 +28,20 @@ class MergerContainer implements Stringable
         private ?string $migration = null,
         private ?string $body = null
     ) {
-        if (is_null($this->migration)) {
-            $this->lines = file($this->body = $migration);
+        if (! is_null($migration)) {
+            if (! file_exists($migration)) {
+                throw new InvalidArgumentException('File does not exist in '.$migration);
+            }
 
-            return;
+            $this->body = file_get_contents($migration);
         }
 
-        if (! file_exists($migration)) {
-            throw new InvalidArgumentException('File does not exist in '.$migration);
+        if (! is_null($this->body)) {
+            $this->lines = explode(PHP_EOL, $this->body);
+        }
+
+        if (is_null($this->lines)) {
+            throw new LogicException('$this->lines is never null.');
         }
     }
 
@@ -46,7 +53,7 @@ class MergerContainer implements Stringable
      */
     public function engine(Merger $merger): static
     {
-        $this->engine[] = $merger;
+        $this->engines[] = $merger;
 
         return $this;
     }
@@ -59,7 +66,7 @@ class MergerContainer implements Stringable
      */
     public function engines(array $mergers): static
     {
-        $this->engine += $mergers;
+        $this->engines += $mergers;
 
         return $this;
     }
@@ -80,15 +87,19 @@ class MergerContainer implements Stringable
             }
 
             /* @var MergerInterface $engine */
-            foreach ($this->engine as $engine) {
+            foreach ($this->engines as $engine) {
                 $replace = $engine->start($this->lines[$key], $this->lines[$key + 1]);
 
                 if ($replace !== null) {
                     $this->lines[$key + 1] = $replace;
                     $this->lines[$key] = null;
+
+                    break;
                 }
             }
         }
+
+        $this->lines = array_values(array_filter($this->lines));
 
         return $this;
     }
@@ -113,6 +124,11 @@ class MergerContainer implements Stringable
         return implode(PHP_EOL, $this->lines);
     }
 
+    public function toArray(): array
+    {
+        return $this->lines;
+    }
+
     /**
      * Class magic method to get the real migration file path.
      *
@@ -120,7 +136,7 @@ class MergerContainer implements Stringable
      */
     public function __toString(): string
     {
-        return $this->migration;
+        return $this->migration ?? $this->body;
     }
 
     /**
@@ -128,7 +144,7 @@ class MergerContainer implements Stringable
      *
      * @param  string  $migration  Path to the migration file from root folder.
      * @param  string  $body  Migration string.
-     * @return string The method return the instance that called the constructor.
+     * @return static The method return the instance that called the constructor.
      *
      * @throws InvalidArgumentException
      *
