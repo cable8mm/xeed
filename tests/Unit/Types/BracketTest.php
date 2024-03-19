@@ -1,6 +1,6 @@
 <?php
 
-namespace Cable8mm\Xeed\Tests\Unit\Support;
+namespace Cable8mm\Xeed\Tests\Unit\Types;
 
 use Cable8mm\Xeed\Types\Bracket;
 use InvalidArgumentException;
