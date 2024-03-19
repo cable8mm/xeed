@@ -20,6 +20,18 @@ final class UuidMorphsMergerTest extends TestCase
         $this->assertEquals($this->merged, $merged);
     }
 
+    public function test_it_can_merge_another_field(): void
+    {
+        $line = '$table->string(\'another_fields_type\', 255);';
+
+        $next = '$table->uuid(\'another_fields_id\');';
+
+        $this->assertEquals(
+            '$table->uuidMorphs(\'another_fields\');',
+            (new UuidMorphsMerger())->start($line, $next)
+        );
+    }
+
     public function test_it_can_not_merge(): void
     {
         $line = '$table->timestamp(\'created_at\', 0)->nullable();';

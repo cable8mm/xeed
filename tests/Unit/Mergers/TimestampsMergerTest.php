@@ -20,6 +20,18 @@ final class TimestampsMergerTest extends TestCase
         $this->assertEquals($this->merged, $merged);
     }
 
+    public function test_it_can_merge_another_field(): void
+    {
+        $line = '$table->timestamp(\'created_at\', 0)->nullable();';
+
+        $next = '$table->timestamp(\'updated_at\', 0)->nullable();';
+
+        $this->assertEquals(
+            '$table->timestamps();',
+            (new TimestampsMerger())->start($line, $next)
+        );
+    }
+
     public function test_it_can_not_merge(): void
     {
         $line = '$table->timestamp(\'created_at\', 0)->nullable();';

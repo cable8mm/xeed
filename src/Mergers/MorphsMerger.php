@@ -7,24 +7,9 @@ namespace Cable8mm\Xeed\Mergers;
  */
 class MorphsMerger extends Merger
 {
-    private string $line = '$table->string(\'morphs_type\',255);';
+    protected string $line = '$table->string(\'{name}_type\',255);';
 
-    private string $next = '$table->foreignId(\'morphs_id\');';
+    protected string $next = '$table->foreignId(\'{name}_id\');';
 
-    private string $merged = '$table->morphs(\'morphs\');';
-
-    /**
-     * {@inheritDoc}
-     */
-    public function start(string $line, string $next): ?string
-    {
-        $line = preg_replace('/[ \t]/', '', $line);
-        $next = preg_replace('/[ \t]/', '', $next);
-
-        if ($line === $this->line && $next === $this->next) {
-            return $this->merged;
-        }
-
-        return null;
-    }
+    protected string $merged = '$table->morphs(\'{name}\');';
 }

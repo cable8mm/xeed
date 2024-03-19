@@ -20,6 +20,18 @@ final class NullableUlidMorphsMergerTest extends TestCase
         $this->assertEquals($this->merged, $merged);
     }
 
+    public function test_it_can_merge_another_field(): void
+    {
+        $line = '$table->string(\'another_fields_type\', 255)->nullable();';
+
+        $next = '$table->ulid(\'another_fields_id\')->nullable();';
+
+        $this->assertEquals(
+            '$table->nullableUlidMorphs(\'another_fields\');',
+            (new NullableUlidMorphsMerger())->start($line, $next)
+        );
+    }
+
     public function test_it_can_not_merge(): void
     {
         $line = '$table->timestamp(\'created_at\', 0)->nullable();';
