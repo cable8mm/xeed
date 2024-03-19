@@ -80,6 +80,8 @@ bin/console migrations
 # Generate all migrations from database in `dist/database/migrations' folder
 ```
 
+The generated files are stored in the same folder as your Laravel project. Please check the `dist` folder.
+
 ## How to contribute
 
 ### Development
