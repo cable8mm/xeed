@@ -46,7 +46,7 @@ class MergerContainer implements Stringable
     }
 
     /**
-     * Add engine.
+     * To add a engine.
      *
      * @param  Merger  $merger  An engine to be added.
      * @return static The method returns the current instance that enables method chaining.
@@ -59,7 +59,7 @@ class MergerContainer implements Stringable
     }
 
     /**
-     * Add engines.
+     * To add engines.
      *
      * @param  array<MergerInstance>  $mergers  An array of engines to be added.
      * @return static The method returns the current instance that enables methods chaining.
@@ -72,7 +72,7 @@ class MergerContainer implements Stringable
     }
 
     /**
-     * Execute mergers.
+     * To execute engines.
      *
      * @return static The method returns this instance that was execute all mergers.
      */
@@ -124,6 +124,11 @@ class MergerContainer implements Stringable
         return implode(PHP_EOL, $this->lines);
     }
 
+    /**
+     * To get an array representation of the array.
+     *
+     * @return array The method returns an array representation of the array.
+     */
     public function toArray(): array
     {
         return $this->lines;

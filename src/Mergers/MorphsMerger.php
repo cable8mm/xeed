@@ -7,9 +7,13 @@ namespace Cable8mm\Xeed\Mergers;
  */
 class MorphsMerger extends Merger
 {
-    protected string $line = '$table->string(\'{name}_type\',255);';
-
-    protected string $next = '$table->foreignId(\'{name}_id\');';
-
-    protected string $merged = '$table->morphs(\'{name}\');';
+    /**
+     * {@inheritDoc}
+     */
+    public function __construct()
+    {
+        $this->line = '$table->string(\'{name}_type\',255);';
+        $this->next = '$table->foreignId(\'{name}_id\');';
+        $this->merged = '$table->morphs(\'{name}\');';
+    }
 }

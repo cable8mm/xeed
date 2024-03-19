@@ -9,7 +9,7 @@ use LogicException;
 /**
  * It is used by parent class of various resolver classes.
  */
-class Resolver implements ResolverInterface
+abstract class Resolver implements ResolverInterface
 {
     /**
      * Constructor.
@@ -29,10 +29,7 @@ class Resolver implements ResolverInterface
      *
      * @throw LogicException
      */
-    public function fake(): string
-    {
-        throw new LogicException(__METHOD__.' Method not implemented.');
-    }
+    abstract public function fake(): string;
 
     /**
      * {@inheritDoc}
@@ -41,10 +38,7 @@ class Resolver implements ResolverInterface
      *
      * @throw LogicException
      */
-    public function migration(): string
-    {
-        throw new LogicException(__METHOD__.' Method not implemented.');
-    }
+    abstract public function migration(): string;
 
     /**
      * Post processing method for resolvers

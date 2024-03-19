@@ -7,9 +7,13 @@ namespace Cable8mm\Xeed\Mergers;
  */
 class UlidMorphsMerger extends Merger
 {
-    protected string $line = '$table->string(\'{name}_type\',255);';
-
-    protected string $next = '$table->ulid(\'{name}_id\');';
-
-    protected string $merged = '$table->ulidMorphs(\'{name}\');';
+    /**
+     * {@inheritDoc}
+     */
+    public function __construct()
+    {
+        $this->line = '$table->string(\'{name}_type\',255);';
+        $this->next = '$table->ulid(\'{name}_id\');';
+        $this->merged = '$table->ulidMorphs(\'{name}\');';
+    }
 }
