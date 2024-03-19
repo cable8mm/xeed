@@ -13,7 +13,7 @@
 
 Xeed는 기존 데이터베이스 테이블에서 가져온 데이터를 기반으로 Laravel용 새로운 모델, 시드, 데이터베이스 시드, 팩토리 및 마이그레이션 파일을 생성하는 데 사용됩니다.
 
-웹 상에서 API 문서를 제공합니다. 자세한 내용은 https://www.palgle.com/xeed/에서 확인하십시오. ❤️
+웹 상에서 API 문서를 제공합니다. 자세한 내용은 https://www.palgle.com/xeed/ 에서 확인하십시오. ❤️
 
 ### 기능
 
@@ -41,7 +41,7 @@ Xeed는 기존 데이터베이스 테이블에서 가져온 데이터를 기반�
 composer create-project cable8mm/xeed
 ```
 
-그리고 `.env` 파일을 편집하여 고유한 데이터베이스를 구성하십시오. 필요할 때마다 수동으로 `.env.example`을 `.env`로 복사할 수 있습니다.
+그리고 `.env` 파일을 편집하여 연결해야 하는 데이터베이스를 구성하십시오. 필요할 때마다 수동으로 `.env.example`을 `.env`로 복사할 수 있습니다.
 
 ## 사용법
 
@@ -79,6 +79,8 @@ bin/console factories
 bin/console migrations
 # `dist/database/migrations` 폴더에 데이터베이스의 모든 마이그레이션 생성
 ```
+
+생성된 파일은 라라벨 프로젝트와 동일한 폴더에 저장됩니다. `dist` 폴더를 확인하세요.
 
 ## 기여 방법
 
@@ -157,4 +159,4 @@ composer testgen
 
 ## License
 
-Xeed 프로젝트는 LICENSE.md에 따라 오픈 소스 소프트웨어로 라이선스가 부여됩니다.
+Xeed 프로젝트는 [MIT 라이센스](LICENSE.md)에 따라 오픈 소스 소프트웨어로 라이센스가 부여됩니다.
