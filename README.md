@@ -86,38 +86,6 @@ bin/console migrations
 
 The generated files are stored in the same folder as your Laravel project. Please check the `dist` folder.
 
-## How to contribute
-
-### Development
-
-The Xeed has a built-in SQLite database, allowing you to contribute easily without needing your own database. Simply create a new file for testing purposes and utilize it.
-
-```sh
-touch database/database.sqlite
-# Create a new empty file for SQLite database
-```
-
-And then,
-
-```sh
-composer test
-# Run tests
-```
-
-### Database
-
-For migrations and factories, when you need to execute tests for all database field types, utilize the following command.
-
-```sh
-bin/console xeed
-# Import an 'xeeds' Table into the Database
-
-bin/console xeed drop
-# Drop the 'xeeds' Table from the Database
-```
-
-Utilize migration files for all database field types by referring to the following location `resources/tests` these files are saved in the specified folder.
-
 ### Helpful commands
 
 If you are going to test this package yourself, then you would use the following commands to clean up generated files.
@@ -135,11 +103,7 @@ Please select directory for you to want to clean.
   [5] exit
 ```
 
-### Issue a bug report and Pull Request
-
-The opportunity for you to create issues and pull requests makes me happy. Feel free to contribute and submit pull requests whenever you need.
-
-## Formatting
+### Formatting
 
 ```bash
 composer lint
@@ -149,7 +113,7 @@ composer inspect
 # Inspect all files to ensure compliance with PSR-12.
 ```
 
-## Test
+### Testing
 
 It uses the built-in SQLite database, not your own database. It will never cause harm to your data. You don't need to worry about that.
 
@@ -160,6 +124,48 @@ composer test
 composer testgen
 # All generator tests
 ```
+
+### Changelog
+
+Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
+
+## Contributing
+
+Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
+
+The below can help you contribute.
+
+The Xeed has a built-in SQLite database, allowing you to contribute easily without needing your own database. Simply create a new file for testing purposes and utilize it.
+
+```sh
+touch database/database.sqlite
+# Create a new empty file for SQLite database
+```
+
+And then,
+
+```sh
+composer test
+# Run tests
+```
+
+### Database seeds
+
+For migrations and factories, when you need to execute tests for all database field types, utilize the following command.
+
+```sh
+bin/console xeed
+# Import an 'xeeds' Table into the Database
+
+bin/console xeed drop
+# Drop the 'xeeds' Table from the Database
+```
+
+Utilize migration files for all database field types by referring to the following location `database/*.sql` these files are saved in the specified folder.
+
+## Credits
+
+- [Samgu Lee](https://github.com/cable8mm)
 
 ## License
 
