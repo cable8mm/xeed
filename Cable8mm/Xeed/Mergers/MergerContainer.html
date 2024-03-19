@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Cable8mm\Xeed\Support\Path | API</title>
+    <title>Cable8mm\Xeed\Mergers\MergerContainer | API</title>
 
             <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
 
     </head>
 
-    <body id="class" data-name="class:Cable8mm_Xeed_Support_Path" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
+    <body id="class" data-name="class:Cable8mm_Xeed_Mergers_MergerContainer" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -75,18 +75,18 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                        <li><a href="../../../Cable8mm.html">Cable8mm</a></li><li class="backslash">\</li><li><a href="../../../Cable8mm/Xeed.html">Xeed</a></li><li class="backslash">\</li><li><a href="../../../Cable8mm/Xeed/Support.html">Support</a></li><li class="backslash">\</li><li>Path</li>
+                        <li><a href="../../../Cable8mm.html">Cable8mm</a></li><li class="backslash">\</li><li><a href="../../../Cable8mm/Xeed.html">Xeed</a></li><li class="backslash">\</li><li><a href="../../../Cable8mm/Xeed/Mergers.html">Mergers</a></li><li class="backslash">\</li><li>MergerContainer</li>
             </ol>
         </div>
                 <div id="page-content">
     <div class="page-header">
-        <h1>Path    
+        <h1>MergerContainer    
             </h1>
     </div>
 
     
-    <p>final         class
-    <strong>Path</strong>
+    <p>        class
+    <strong>MergerContainer</strong>        implements        <a target="_blank" rel="noopener" href="https://www.php.net/Stringable">Stringable</a>
 </p>
 
         
@@ -94,7 +94,7 @@
         
 
             <div class="description">
-            <p><p>Path class can help to get the various paths like root folder, stub folder, model folder and so on.</p></p>                    </div>
+            <p><p>Container for mergers.</p></p>                    </div>
             
         
     
@@ -104,92 +104,92 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;string
+                    <a href="../../../Cable8mm/Xeed/Mergers/MergerContainer.html"><abbr title="Cable8mm\Xeed\Mergers\MergerContainer">MergerContainer</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_stub">stub</a>()
+                    <a href="#method_engine">engine</a>(<a href="../../../Cable8mm/Xeed/Mergers/Merger.html"><abbr title="Cable8mm\Xeed\Mergers\Merger">Merger</abbr></a> $merger)
         
-                                            <p><p>To get <code>stubs</code> folder path.</p></p>                </div>
+                                            <p><p>To add a engine.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;string
+                    <a href="../../../Cable8mm/Xeed/Mergers/MergerContainer.html"><abbr title="Cable8mm\Xeed\Mergers\MergerContainer">MergerContainer</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_model">model</a>()
+                    <a href="#method_engines">engines</a>(array $mergers)
         
-                                            <p><p>To get <code>Models</code> folder path.</p></p>                </div>
+                                            <p><p>To add engines.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;string
+                    <a href="../../../Cable8mm/Xeed/Mergers/MergerContainer.html"><abbr title="Cable8mm\Xeed\Mergers\MergerContainer">MergerContainer</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_seeder">seeder</a>()
+                    <a href="#method_operating">operating</a>()
         
-                                            <p><p>To get <code>seeders</code> folder path.</p></p>                </div>
+                                            <p><p>To execute engines.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;string
+                    <abbr title="Cable8mm\Xeed\Mergers\int|false">int|false</abbr>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_factory">factory</a>()
+                    <a href="#method_write">write</a>()
         
-                                            <p><p>To get <code>factory</code> folder path.</p></p>                </div>
+                                            <p><p>Write a string to a file from the <code>$this-&gt;lines</code> array.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;string
+                    string
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_database">database</a>()
+                    <a href="#method_verbose">verbose</a>()
         
-                                            <p><p>To get <code>database</code> folder path.</p></p>                </div>
+                                            <p><p>Print lines to string.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;string
+                    array
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_migration">migration</a>()
+                    <a href="#method_toArray">toArray</a>()
         
-                                            <p><p>To get <code>migration</code> folder path.</p></p>                </div>
+                                            <p><p>To get an array representation of the array.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;string
+                    string
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_resource">resource</a>()
+                    <a href="#method___toString">__toString</a>()
         
-                                            <p><p>To get <code>resource</code> folder path.</p></p>                </div>
+                                            <p><p>Class magic method to get the real migration file path.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;string
+                    static&nbsp;<a href="../../../Cable8mm/Xeed/Mergers/MergerContainer.html"><abbr title="Cable8mm\Xeed\Mergers\MergerContainer">MergerContainer</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_root">root</a>()
+                    <a href="#method_from">from</a>(string|null $migration = null, string|null $body = null)
         
-                                            <p><p>To get <code>root</code> folder path.</p></p>                </div>
+                                            <p><p>Constructor factory.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;string
+                    static&nbsp;array
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_testBootstrap">testBootstrap</a>()
+                    <a href="#method_getEngines">getEngines</a>()
         
-                                            <p><p>To get <code>tests/Bootstrap</code> folder path.</p></p>                </div>
+                                            <p><p>To get all the engines.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -199,10 +199,10 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_stub">
-        <div class="location">at line 17</div>
-        <code>        static            string
-    <strong>stub</strong>()
+                    <h3 id="method_engine">
+        <div class="location">at line 55</div>
+        <code>                    <a href="../../../Cable8mm/Xeed/Mergers/MergerContainer.html"><abbr title="Cable8mm\Xeed\Mergers\MergerContainer">MergerContainer</abbr></a>
+    <strong>engine</strong>(<a href="../../../Cable8mm/Xeed/Mergers/Merger.html"><abbr title="Cable8mm\Xeed\Mergers\Merger">Merger</abbr></a> $merger)
         </code>
     </h3>
     <div class="details">    
@@ -210,7 +210,155 @@
             
 
         <div class="method-description">
-                            <p><p>To get <code>stubs</code> folder path.</p></p>                        
+                            <p><p>To add a engine.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Cable8mm/Xeed/Mergers/Merger.html"><abbr title="Cable8mm\Xeed\Mergers\Merger">Merger</abbr></a></td>
+                <td>$merger</td>
+                <td><p>An engine to be added.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Cable8mm/Xeed/Mergers/MergerContainer.html"><abbr title="Cable8mm\Xeed\Mergers\MergerContainer">MergerContainer</abbr></a></td>
+            <td><p>The method returns the current instance that enables method chaining.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_engines">
+        <div class="location">at line 68</div>
+        <code>                    <a href="../../../Cable8mm/Xeed/Mergers/MergerContainer.html"><abbr title="Cable8mm\Xeed\Mergers\MergerContainer">MergerContainer</abbr></a>
+    <strong>engines</strong>(array $mergers)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>To add engines.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$mergers</td>
+                <td><p>An array of engines to be added.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Cable8mm/Xeed/Mergers/MergerContainer.html"><abbr title="Cable8mm\Xeed\Mergers\MergerContainer">MergerContainer</abbr></a></td>
+            <td><p>The method returns the current instance that enables methods chaining.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_operating">
+        <div class="location">at line 80</div>
+        <code>                    <a href="../../../Cable8mm/Xeed/Mergers/MergerContainer.html"><abbr title="Cable8mm\Xeed\Mergers\MergerContainer">MergerContainer</abbr></a>
+    <strong>operating</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>To execute engines.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Cable8mm/Xeed/Mergers/MergerContainer.html"><abbr title="Cable8mm\Xeed\Mergers\MergerContainer">MergerContainer</abbr></a></td>
+            <td><p>The method returns this instance that was execute all mergers.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_write">
+        <div class="location">at line 113</div>
+        <code>                    <abbr title="Cable8mm\Xeed\Mergers\int|false">int|false</abbr>
+    <strong>write</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Write a string to a file from the <code>$this-&gt;lines</code> array.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Cable8mm\Xeed\Mergers\int|false">int|false</abbr></td>
+            <td><p>The method returns the number of bytes that were written to the file, or false on failure.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_verbose">
+        <div class="location">at line 123</div>
+        <code>                    string
+    <strong>verbose</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Print lines to string.</p></p>                        
         </div>
         <div class="tags">
             
@@ -219,18 +367,141 @@
                     <table class="table table-condensed">
         <tr>
             <td>string</td>
-            <td><p>The stub folder path</p></td>
+            <td><p>The method returns the string representation.</p></td>
         </tr>
     </table>
 
             
             
             
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_toArray">
+        <div class="location">at line 133</div>
+        <code>                    array
+    <strong>toArray</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>To get an array representation of the array.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>The method returns an array representation of the array.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___toString">
+        <div class="location">at line 143</div>
+        <code>                    string
+    <strong>__toString</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Class magic method to get the real migration file path.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td><p>The method returns the real file path.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_from">
+        <div class="location">at line 160</div>
+        <code>        static            <a href="../../../Cable8mm/Xeed/Mergers/MergerContainer.html"><abbr title="Cable8mm\Xeed\Mergers\MergerContainer">MergerContainer</abbr></a>
+    <strong>from</strong>(string|null $migration = null, string|null $body = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Constructor factory.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$migration</td>
+                <td><p>Path to the migration file from root folder.</p></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$body</td>
+                <td><p>Migration string.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Cable8mm/Xeed/Mergers/MergerContainer.html"><abbr title="Cable8mm\Xeed\Mergers\MergerContainer">MergerContainer</abbr></a></td>
+            <td><p>The method return the instance that called the constructor.</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
                             <h4>Examples</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">./stubs/</pre></td>
+                <td><pre class="examples">MergerContainer::from(migration: &lt;migration_path&gt;)-&gt;engines([...engines...])-&gt;operating()-&gt;write();</pre></td>
+            </tr>
+                    <tr>
+                <td><pre class="examples">MergerContainer::from(body : &lt;body&gt;)-&gt;engines([...engines...])-&gt;operating()-&gt;verbose();</pre></td>
             </tr>
             </table>
 
@@ -239,10 +510,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_model">
-        <div class="location">at line 29</div>
-        <code>        static            string
-    <strong>model</strong>()
+                    <h3 id="method_getEngines">
+        <div class="location">at line 174</div>
+        <code>        static            array
+    <strong>getEngines</strong>()
         </code>
     </h3>
     <div class="details">    
@@ -250,7 +521,7 @@
             
 
         <div class="method-description">
-                            <p><p>To get <code>Models</code> folder path.</p></p>                        
+                            <p><p>To get all the engines.</p></p>                        
         </div>
         <div class="tags">
             
@@ -258,280 +529,8 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>string</td>
-            <td><p>The model folder path</p></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                            <h4>Examples</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><pre class="examples">./dist/app/Models/</pre></td>
-            </tr>
-            </table>
-
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_seeder">
-        <div class="location">at line 41</div>
-        <code>        static            string
-    <strong>seeder</strong>()
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>To get <code>seeders</code> folder path.</p></p>                        
-        </div>
-        <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string</td>
-            <td><p>The seeder folder path</p></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                            <h4>Examples</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><pre class="examples">./dist/database/seeders/</pre></td>
-            </tr>
-            </table>
-
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_factory">
-        <div class="location">at line 53</div>
-        <code>        static            string
-    <strong>factory</strong>()
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>To get <code>factory</code> folder path.</p></p>                        
-        </div>
-        <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string</td>
-            <td><p>The factory folder path</p></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                            <h4>Examples</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><pre class="examples">./dist/database/factories/</pre></td>
-            </tr>
-            </table>
-
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_database">
-        <div class="location">at line 65</div>
-        <code>        static            string
-    <strong>database</strong>()
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>To get <code>database</code> folder path.</p></p>                        
-        </div>
-        <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string</td>
-            <td><p>The database folder path</p></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                            <h4>Examples</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><pre class="examples">./database/</pre></td>
-            </tr>
-            </table>
-
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_migration">
-        <div class="location">at line 77</div>
-        <code>        static            string
-    <strong>migration</strong>()
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>To get <code>migration</code> folder path.</p></p>                        
-        </div>
-        <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string</td>
-            <td><p>The migration folder path</p></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                            <h4>Examples</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><pre class="examples">./dist/database/migrations/</pre></td>
-            </tr>
-            </table>
-
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_resource">
-        <div class="location">at line 89</div>
-        <code>        static            string
-    <strong>resource</strong>()
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>To get <code>resource</code> folder path.</p></p>                        
-        </div>
-        <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string</td>
-            <td><p>The resource folder path</p></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                            <h4>Examples</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><pre class="examples">./resources/</pre></td>
-            </tr>
-            </table>
-
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_root">
-        <div class="location">at line 99</div>
-        <code>        static            string
-    <strong>root</strong>()
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>To get <code>root</code> folder path.</p></p>                        
-        </div>
-        <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string</td>
-            <td><p>The root folder path</p></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_testBootstrap">
-        <div class="location">at line 109</div>
-        <code>        static            string
-    <strong>testBootstrap</strong>()
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>To get <code>tests/Bootstrap</code> folder path.</p></p>                        
-        </div>
-        <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string</td>
-            <td><p>The tests/Bootstrap folder path.</p></td>
+            <td>array</td>
+            <td><p>The method returns an array of engines.</p></td>
         </tr>
     </table>
 
