@@ -19,8 +19,6 @@ class Merger implements MergerInterface
 
     /**
      * {@inheritDoc}
-     *
-     * @internal This class should be implemented by child classes.
      */
     public function start(string $line, string $next): ?string
     {
