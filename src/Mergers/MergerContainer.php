@@ -2,6 +2,7 @@
 
 namespace Cable8mm\Xeed\Mergers;
 
+use Cable8mm\Xeed\Generators\MigrationGenerator;
 use Cable8mm\Xeed\Interfaces\MergerInterface;
 use InvalidArgumentException;
 use LogicException;
@@ -91,7 +92,7 @@ class MergerContainer implements Stringable
                 $replace = $engine->start($this->lines[$key], $this->lines[$key + 1]);
 
                 if ($replace !== null) {
-                    $this->lines[$key + 1] = $replace;
+                    $this->lines[$key + 1] = MigrationGenerator::intent.$replace;
                     $this->lines[$key] = null;
 
                     break;
@@ -163,5 +164,23 @@ class MergerContainer implements Stringable
         }
 
         throw new InvalidArgumentException('One of the arguments must be null');
+    }
+
+    /**
+     * To get all the engines.
+     *
+     * @return array The method returns an array of engines.
+     */
+    public static function getEngines(): array
+    {
+        return [
+            new MorphsMerger(),
+            new NullableMorphsMerger(),
+            new NullableUlidMorphsMerger(),
+            new NullableUuidMorphsMerger(),
+            new TimestampsMerger(),
+            new UlidMorphsMerger(),
+            new UuidMorphsMerger(),
+        ];
     }
 }
