@@ -7,9 +7,13 @@ namespace Cable8mm\Xeed\Mergers;
  */
 class NullableMorphsMerger extends Merger
 {
-    protected string $line = '$table->string(\'{name}_type\',255)->nullable();';
-
-    protected string $next = '$table->foreignId(\'{name}_id\')->nullable();';
-
-    protected string $merged = '$table->nullableMorphs(\'{name}\');';
+    /**
+     * {@inheritDoc}
+     */
+    public function __construct()
+    {
+        $this->line = '$table->string(\'{name}_type\',255)->nullable();';
+        $this->next = '$table->foreignId(\'{name}_id\')->nullable();';
+        $this->merged = '$table->nullableMorphs(\'{name}\');';
+    }
 }

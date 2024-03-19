@@ -5,17 +5,31 @@ namespace Cable8mm\Xeed\Mergers;
 use Cable8mm\Xeed\Interfaces\MergerInterface;
 
 /**
- * Merger class.
+ * Merger abstract class.
  *
  * @internal This class should be implemented by child classes.
  */
-class Merger implements MergerInterface
+abstract class Merger implements MergerInterface
 {
-    protected string $line = '$table->string(\'{name}_type\',255);';
+    /**
+     * This is a merged.
+     */
+    protected string $line;
 
-    protected string $next = '$table->foreignId(\'{name}_id\');';
+    /**
+     * This is a next row.
+     */
+    protected string $next;
 
-    protected string $merged = '$table->morphs(\'{name}\');';
+    /**
+     * This is a merged value.
+     */
+    protected string $merged;
+
+    /**
+     * $line, $next and $merged variables were set.
+     */
+    abstract public function __construct();
 
     /**
      * {@inheritDoc}

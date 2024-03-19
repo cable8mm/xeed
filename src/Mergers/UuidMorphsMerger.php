@@ -7,9 +7,13 @@ namespace Cable8mm\Xeed\Mergers;
  */
 class UuidMorphsMerger extends Merger
 {
-    protected string $line = '$table->string(\'{name}_type\',255);';
-
-    protected string $next = '$table->uuid(\'{name}_id\');';
-
-    protected string $merged = '$table->uuidMorphs(\'{name}\');';
+    /**
+     * {@inheritDoc}
+     */
+    public function __construct()
+    {
+        $this->line = '$table->string(\'{name}_type\',255);';
+        $this->next = '$table->uuid(\'{name}_id\');';
+        $this->merged = '$table->uuidMorphs(\'{name}\');';
+    }
 }

@@ -7,11 +7,15 @@ namespace Cable8mm\Xeed\Mergers;
  */
 class TimestampsMerger extends Merger
 {
-    protected string $line = '$table->timestamp(\'created_at\',0)->nullable();';
-
-    protected string $next = '$table->timestamp(\'updated_at\',0)->nullable();';
-
-    protected string $merged = '$table->timestamps();';
+    /**
+     * {@inheritDoc}
+     */
+    public function __construct()
+    {
+        $this->line = '$table->timestamp(\'created_at\',0)->nullable();';
+        $this->next = '$table->timestamp(\'updated_at\',0)->nullable();';
+        $this->merged = '$table->timestamps();';
+    }
 
     /**
      * {@inheritDoc}

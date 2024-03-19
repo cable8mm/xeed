@@ -62,7 +62,7 @@
         "testgen": "./vendor/bin/phpunit --testsuite Generator",
         "lint": "./vendor/bin/pint",
         "inspect": "./vendor/bin/pint --test",
-        "apidoc": "rm -rf build; rm -rf cache; doctum.phar update doctum.php --output-format=github --no-ansi --no-progress;",
+        "apidoc": "rm -rf build; rm -rf cache; doctum.phar update doctum.php --output-format=github --no-ansi --no-progress -v;",
         "opendoc": "open build/index.html"
     }
 }
