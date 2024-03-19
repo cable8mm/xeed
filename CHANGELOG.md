@@ -1,5 +1,14 @@
 # Release Notes
 
+## v0.7.1 - 2024-03-19
+
+### What's Changed
+
+* Add a README for Korean by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/36
+* Revise README file by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/37
+
+**Full Changelog**: https://github.com/cable8mm/xeed/compare/v0.7.0...v0.7.1
+
 ## v0.7.0 - 2024-03-19
 
 ### What's Changed
