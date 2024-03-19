@@ -26,6 +26,10 @@ We have provided the API Documentation on the web. For more information, please 
 - [x] Laravel multi & reserved columns supported
 - [ ] Laravel integration
 
+### Preview
+
+![Preview](https://github.com/cable8mm/cabinet/blob/main/xeed-preview.gif?raw=true)
+
 ### Support & Tested
 
 ![MySQL Supported](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white)

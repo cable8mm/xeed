@@ -26,6 +26,10 @@ Xeed는 기존 데이터베이스 테이블에서 가져온 데이터를 기반�
 - [x] Laravel 다중 및 예약된 열 지원
 - [ ] Laravel 통합
 
+### 미리보기
+
+![Preview](https://github.com/cable8mm/cabinet/blob/main/xeed-preview.gif?raw=true)
+
 ### 지원 및 테스트
 
 ![MySQL 지원](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white)
