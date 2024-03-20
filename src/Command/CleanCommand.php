@@ -59,8 +59,6 @@ class CleanCommand extends Command
         };
 
         if ($paths === null) {
-            $output->writeln('See you later!');
-
             return Command::SUCCESS;
         }
 

@@ -8,6 +8,7 @@ use Cable8mm\Xeed\Support\Path;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
@@ -30,6 +31,15 @@ class GenerateSeedersCommand extends Command
     {
         $dotenv = \Dotenv\Dotenv::createImmutable(getcwd());
         $dotenv->safeLoad();
+
+        $this
+            ->addOption(
+                'force',
+                'f',
+                InputOption::VALUE_OPTIONAL,
+                'Are files forcibly deleted even if they exist?',
+                false
+            );
     }
 
     /**
@@ -37,11 +47,13 @@ class GenerateSeedersCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
+        $force = $input->getOption('force') ?? true;
+
         $tables = DB::getInstance()->attach()->getTables();
 
         foreach ($tables as $table) {
             try {
-                SeederGenerator::make($table)->run();
+                SeederGenerator::make($table)->run(force: $force);
 
                 $output->writeln(Path::seeder().$table->seeder().'.php have been generated.');
             } catch (\Exception $e) {
