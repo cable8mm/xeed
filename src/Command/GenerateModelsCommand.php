@@ -2,9 +2,9 @@
 
 namespace Cable8mm\Xeed\Command;
 
-use Cable8mm\Xeed\Xeed;
 use Cable8mm\Xeed\Generators\ModelGenerator;
 use Cable8mm\Xeed\Support\Path;
+use Cable8mm\Xeed\Xeed;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
