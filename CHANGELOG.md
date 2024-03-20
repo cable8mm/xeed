@@ -1,5 +1,15 @@
 # Release Notes
 
+## v0.7.2 - 2024-03-20
+
+### What's Changed
+
+* Add a preview in the README file by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/38
+* Add the CONTRIBUTING.md by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/39
+* Prevent automatic overwriting by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/40
+
+**Full Changelog**: https://github.com/cable8mm/xeed/compare/v0.7.1...v0.7.2
+
 ## v0.7.1 - 2024-03-19
 
 ### What's Changed
