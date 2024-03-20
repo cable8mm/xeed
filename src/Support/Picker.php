@@ -23,7 +23,7 @@ final class Picker
      * Set a field value.
      *
      * @param  string  $field  The field name.
-     * @return static The current instance.
+     * @return static The method set `field` and it returns the current instance
      *
      * @example Picker::of(\Cable8mm\Xeed\Column[])->driver('mysql')->field('name')->get()
      */
@@ -38,7 +38,7 @@ final class Picker
      * Set a database driver.
      *
      * @param  string  $driver  The database driver name
-     * @return static The current instance
+     * @return static The method set `driver` and it returns the current instance
      *
      * @example Picker::of(\Cable8mm\Xeed\Column[])->driver($xeed->driver)->field('string')->get()
      */
@@ -124,7 +124,7 @@ final class Picker
     /**
      * Get an array of An array of `Table` instances.
      *
-     * @return \Cable8mm\Xeed\Column[] An array of An array of `\Cable8mm\Xeed\Table` instances.
+     * @return array<\Cable8mm\Xeed\Column> An array of An array of `\Cable8mm\Xeed\Table` instances.
      */
     public function toArray(): array
     {
@@ -132,9 +132,9 @@ final class Picker
     }
 
     /**
-     * Create a singleton instance.
+     * Create a instance.
      *
-     * @param  \Cable8mm\Xeed\Table[]  $values  An array of `\Cable8mm\Xeed\Table` instances.
+     * @param  array<\Cable8mm\Xeed\Table>  $values  An array of `\Cable8mm\Xeed\Table` instances.
      * @return static The Picker instance.
      *
      * @example Picker::of($xeed->attach()->getTable('xeeds')->getColumns())->driver($xeed->driver)->field('string')->get()

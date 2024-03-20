@@ -18,7 +18,7 @@ final class Table implements Stringable
     /**
      * Column array.
      *
-     * @var array<Column>
+     * @var array<\Cable8mm\Xeed\Column>
      */
     private array $columns = [];
 

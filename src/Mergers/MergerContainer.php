@@ -46,7 +46,7 @@ class MergerContainer implements Stringable
     /**
      * Add a engine.
      *
-     * @param  Merger  $merger  An engine to be added.
+     * @param  \Cable8mm\Xeed\Mergers\Merger  $merger  An engine to be added.
      * @return static The method returns the current instance that enables method chaining.
      */
     public function engine(Merger $merger): static
@@ -59,7 +59,7 @@ class MergerContainer implements Stringable
     /**
      * Add engines.
      *
-     * @param  array<MergerInstance>  $mergers  An array of engines to be added.
+     * @param  array<\Cable8mm\Xeed\Interfaces\MergerInstance>  $mergers  An array of engines to be added.
      * @return static The method returns the current instance that enables methods chaining.
      */
     public function engines(array $mergers): static
@@ -144,7 +144,7 @@ class MergerContainer implements Stringable
     }
 
     /**
-     * Create a singleton instance.
+     * Create a instance.
      *
      * @param  string  $migration  Path to the migration file from root folder.
      * @param  string  $body  Migration string.
