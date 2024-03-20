@@ -1,5 +1,15 @@
 # Release Notes
 
+## v0.7.4 - 2024-03-20
+
+### What's Changed
+
+* Refactor class comments by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/42
+* Set full namespace to class by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/43
+* Separate Xeed class and PDO by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/44
+
+**Full Changelog**: https://github.com/cable8mm/xeed/compare/v0.7.3...v0.7.4
+
 ## v0.7.3 - 2024-03-20
 
 ### What's Changed
