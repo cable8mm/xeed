@@ -11,12 +11,24 @@ use PDO;
 /**
  * Database Object.
  */
-final class Xeed extends PDO implements ArrayAccess
+final class Xeed implements ArrayAccess
 {
     /**
      * Singleton Instance.
      */
     private static $instance = null;
+
+    /**
+     * PDO Instance.
+     */
+    public PDO $pdo;
+
+    /**
+     * Driver name.
+     *
+     * @var string, eg. 'mysql' or 'sqlite'
+     */
+    public string $driver;
 
     /**
      * Array of available databases.
@@ -30,30 +42,45 @@ final class Xeed extends PDO implements ArrayAccess
 
     private ProviderInterface $provider;
 
-    private function __construct(
-        public string $driver,
-        ?string $database = null,
-        ?string $host = null,
-        ?string $port = null,
-        ?string $username = null,
-        ?string $password = '',
-        ?array $options = null
-    ) {
-        $options = $options ?? [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION];
+    /**
+     * Establish connection
+     *
+     * @param  array  $connection  The elements of the connection array.($driver, $database, $host, $port, $username, $password)
+     * @return static The method returns the current instance that enables method chaining.
+     */
+    public function addConnection(array $connection): static
+    {
+        // self::$instance = new self($driver, $database, $host, $port, $username, $password);
 
-        $this->provider = new (__NAMESPACE__.'\\Provider\\'.ucfirst($driver).'Provider');
+        $options = $connection['options'] ?? [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION];
 
-        if ($driver === 'sqlite') {
-            $dns = $driver.':'.($database ?? Path::database().'database.sqlite');
+        $this->provider = new (__NAMESPACE__.'\\Provider\\'.ucfirst($connection['driver']).'Provider');
 
-            parent::__construct($dns, options: $options);
+        $this->driver = $connection['driver'];
 
-            return;
+        if ($connection['driver'] === 'sqlite') {
+            $dns = $connection['driver'].':'.($database ?? Path::database().'database.sqlite');
+
+            $this->pdo = new PDO($dns, options: $options);
         }
 
-        $dns = $driver.':host='.$host.((! empty($port)) ? (';port='.$port) : '').';dbname='.$database;
+        if ($connection['driver'] === 'mysql') {
+            $dns = $connection['driver'].
+                ':host='.
+                $connection['host'].
+                ((! empty($connection['port'])) ? (';port='.$connection['port']) : '').';dbname='.$connection['database'];
 
-        parent::__construct($dns, $username, $password, $options);
+            $this->pdo = new PDO($dns, $connection['username'], $connection['password'], $options);
+        }
+
+        return $this;
+    }
+
+    public function addPdo(PDO $pdo): static
+    {
+        $this->pdo = $pdo;
+
+        return $this;
     }
 
     /**
@@ -74,7 +101,14 @@ final class Xeed extends PDO implements ArrayAccess
             $username = $_ENV['DB_USERNAME'] ?? null;
             $password = $_ENV['DB_PASSWORD'] ?? null;
 
-            self::$instance = new self($driver, $database, $host, $port, $username, $password);
+            self::$instance = (new static())->addConnection([
+                'driver' => $driver,
+                'database' => $database,
+                'host' => $host,
+                'port' => $port,
+                'username' => $username,
+                'password' => $password,
+            ]);
         }
 
         return self::$instance;
@@ -107,7 +141,7 @@ final class Xeed extends PDO implements ArrayAccess
     /**
      * Get attached tables.
      *
-     * @return array<\Cable8mm\Xeed\Table> The method returns the attached tables
+     * @return \Cable8mm\Xeed\Table[] The method returns the attached tables
      */
     public function getTables(): array
     {

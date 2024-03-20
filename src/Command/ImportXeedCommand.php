@@ -67,7 +67,7 @@ class ImportXeedCommand extends Command
         if ($argument === 'drop' || $argument === 'refresh') {
             $sql = 'DROP TABLE IF EXISTS '.self::TABLE_NAME;
 
-            $xeed->exec($sql);
+            $xeed->pdo->exec($sql);
 
             $output->writeln('`'.self::TABLE_NAME.'` table was dropped.');
         }
@@ -77,7 +77,7 @@ class ImportXeedCommand extends Command
 
             $sql = File::system()->read($filename);
 
-            $xeed->exec($sql);
+            $xeed->pdo->exec($sql);
 
             $output->writeln($filename.' was imported.');
 

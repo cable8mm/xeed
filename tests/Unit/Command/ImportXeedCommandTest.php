@@ -29,7 +29,7 @@ class ImportXeedCommandTest extends TestCase
         ]);
 
         try {
-            Xeed::getInstance()->query('SELECT 1 FROM '.ImportXeedCommand::TABLE_NAME);
+            Xeed::getInstance()->pdo->query('SELECT 1 FROM '.ImportXeedCommand::TABLE_NAME);
 
             $this->assertTrue(true);
         } catch (PDOException $e) {
@@ -41,7 +41,7 @@ class ImportXeedCommandTest extends TestCase
         ]);
 
         try {
-            Xeed::getInstance()->query('SELECT 1 FROM '.ImportXeedCommand::TABLE_NAME);
+            Xeed::getInstance()->pdo->query('SELECT 1 FROM '.ImportXeedCommand::TABLE_NAME);
 
             $this->assertTrue(false);
         } catch (PDOException $e) {
@@ -54,7 +54,7 @@ class ImportXeedCommandTest extends TestCase
         ]);
 
         try {
-            Xeed::getInstance()->query('SELECT 1 FROM '.ImportXeedCommand::TABLE_NAME);
+            Xeed::getInstance()->pdo->query('SELECT 1 FROM '.ImportXeedCommand::TABLE_NAME);
 
             $this->assertTrue(true);
         } catch (PDOException $e) {

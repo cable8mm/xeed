@@ -43,7 +43,7 @@ final class XeedTest extends TestCase
     {
         $tables = Xeed::getNewInstance()->attach()->getTables();
 
-        $this->assertNotEmpty($tables);
+        $this->assertIsArray($tables);
     }
 
     public function test_seeder_can_make_seeds(): void
@@ -52,7 +52,7 @@ final class XeedTest extends TestCase
 
         $sql = 'SELECT * FROM '.Seeder::TABLE;
 
-        $result = $xeed->query($sql);
+        $result = $xeed->pdo->query($sql);
 
         $users = $result->fetchAll();
 

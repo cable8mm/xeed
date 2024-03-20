@@ -32,7 +32,7 @@ class Seeder
 
     public function dropTables()
     {
-        $sql = $this->xeed->prepare('DROP TABLE IF EXISTS '.self::TABLE);
+        $sql = $this->xeed->pdo->prepare('DROP TABLE IF EXISTS '.self::TABLE);
 
         return $sql->execute();
     }
@@ -43,13 +43,13 @@ class Seeder
 
         $schema = 'CREATE TABLE `'.self::TABLE.'` ( id INTEGER PRIMARY KEY '.$autoIncrement.', name VARCHAR(25) NOT NULL, email VARCHAR(100) NOT NULL)';
 
-        return $this->xeed->exec($schema);
+        return $this->xeed->pdo->exec($schema);
     }
 
     private function addItem(): void
     {
         $sql = 'INSERT INTO '.self::TABLE.' (name, email) VALUES (:name, :email)';
-        $stmt = $this->xeed->prepare($sql);
+        $stmt = $this->xeed->pdo->prepare($sql);
 
         for ($i = 0; $i < self::TOTAL; $i++) {
             $stmt->execute($this->factory());
