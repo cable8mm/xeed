@@ -67,14 +67,16 @@ final class MergerContainerTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
 
         MergerContainer::from(
-            migration: Path::testBootstrap().'migration.php.sample',
+            migration: __DIR__.'/../../../'.Path::testBootstrap().'migration.php.sample',
             body: '            $table->string(\'morphs_type\', 255);'.PHP_EOL.'        $table->foreignId(\'morphs_id\');'
         );
     }
 
     public function test_it_can_add_a_engine(): void
     {
-        $container = MergerContainer::from(migration: Path::testBootstrap().'migration.php.sample');
+        $container = MergerContainer::from(
+            migration: Path::testBootstrap().'migration.php.sample'
+        );
 
         $container->engine(new MorphsMerger());
 
@@ -92,7 +94,9 @@ final class MergerContainerTest extends TestCase
 
     public function test_it_can_add_engines(): void
     {
-        $container = MergerContainer::from(migration: Path::testBootstrap().'migration.php.sample');
+        $container = MergerContainer::from(
+            migration: Path::testBootstrap().'migration.php.sample'
+        );
 
         $container->engines($this->myEngines);
 

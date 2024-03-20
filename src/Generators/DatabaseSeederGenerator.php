@@ -2,6 +2,7 @@
 
 namespace Cable8mm\Xeed\Generators;
 
+use Cable8mm\Xeed\Support\File;
 use Cable8mm\Xeed\Support\Path;
 
 /**
@@ -19,23 +20,23 @@ final class DatabaseSeederGenerator
     private function __construct(
         private array $tables,
         private ?string $namespace = null,
-        private ?string $dist = null
+        private ?string $destination = null
     ) {
-        if (is_null($dist)) {
-            $this->dist = Path::seeder();
+        if (is_null($destination)) {
+            $this->destination = Path::seeder();
         }
 
         if (is_null($namespace)) {
             $this->namespace = '\App\Models';
         }
 
-        $this->stub = file_get_contents(Path::stub().'DatabaseSeeder.stub');
+        $this->stub = File::system()->read(Path::stub().'DatabaseSeeder.stub');
     }
 
     /**
      * To run the generator logic and save it to a file.
      */
-    public function run(): void
+    public function run(bool $force = false): void
     {
         $seeder_classes = '';
 
@@ -51,9 +52,10 @@ final class DatabaseSeederGenerator
             $this->stub
         );
 
-        file_put_contents(
-            $this->dist.'DatabaseSeeder.php',
-            $seederClass
+        File::system()->write(
+            $this->destination.'DatabaseSeeder.php',
+            $seederClass,
+            $force
         );
     }
 
@@ -62,13 +64,13 @@ final class DatabaseSeederGenerator
      *
      * @param  array<Table>  $tables  The model class name
      * @param  string  $namespace  The model namespace
-     * @param  string  $dist  The path to the dist folder
+     * @param  string  $destination  The path to the dist folder
      */
     public static function make(
         array $tables,
         ?string $namespace = null,
-        ?string $dist = null
+        ?string $destination = null
     ): static {
-        return new self($tables, $namespace, $dist);
+        return new self($tables, $namespace, $destination);
     }
 }

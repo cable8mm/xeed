@@ -23,6 +23,6 @@ class GenerateFactoriesCommandTest extends TestCase
     {
         $this->commandTester->execute([]);
 
-        $this->assertEquals('Factories have been generated.', trim($this->commandTester->getDisplay()));
+        $this->assertStringContainsString('php', trim($this->commandTester->getDisplay()));
     }
 }

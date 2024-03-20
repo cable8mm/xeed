@@ -3,6 +3,8 @@
 namespace Cable8mm\Xeed\Tests\Unit\Command;
 
 use Cable8mm\Xeed\Command\ImportXeedCommand;
+use Cable8mm\Xeed\DB;
+use PDOException;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
@@ -21,22 +23,42 @@ class ImportXeedCommandTest extends TestCase
 
     public function test_execute(): void
     {
-        $this->commandTester->execute(['argument' => 'import']);
+        $this->commandTester->execute([
+            'argument' => 'import',
+            '-f',
+        ]);
 
-        $this->assertEquals('Table was imported.', trim($this->commandTester->getDisplay()));
-    }
+        try {
+            DB::getInstance()->query('SELECT 1 FROM '.ImportXeedCommand::TABLE_NAME);
 
-    public function test_drop_execute(): void
-    {
-        $this->commandTester->execute(['argument' => 'drop']);
+            $this->assertTrue(true);
+        } catch (PDOException $e) {
+            $this->assertTrue(false);
+        }
 
-        $this->assertEquals('Table was dropped.', trim($this->commandTester->getDisplay()));
-    }
+        $this->commandTester->execute([
+            'argument' => 'drop',
+        ]);
 
-    public function test_refresh_execute(): void
-    {
-        $this->commandTester->execute(['argument' => 'refresh']);
+        try {
+            DB::getInstance()->query('SELECT 1 FROM '.ImportXeedCommand::TABLE_NAME);
 
-        $this->assertEquals('Table was dropped.'.PHP_EOL.'Table was imported.', trim($this->commandTester->getDisplay()));
+            $this->assertTrue(false);
+        } catch (PDOException $e) {
+            $this->assertTrue(true);
+        }
+
+        $this->commandTester->execute([
+            'argument' => 'refresh',
+            '-f',
+        ]);
+
+        try {
+            DB::getInstance()->query('SELECT 1 FROM '.ImportXeedCommand::TABLE_NAME);
+
+            $this->assertTrue(true);
+        } catch (PDOException $e) {
+            $this->assertTrue(false);
+        }
     }
 }

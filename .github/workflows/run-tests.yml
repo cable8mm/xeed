@@ -37,7 +37,7 @@ jobs:
       - name: Copy environment file
         run: |
           cp .env.example .env
-          touch database/database.sqlite
+          touch tests/Bootstrap/database.sqlite
           bin/console xeed
 
       - name: Execute tests

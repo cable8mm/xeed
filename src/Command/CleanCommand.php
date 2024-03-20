@@ -2,7 +2,10 @@
 
 namespace Cable8mm\Xeed\Command;
 
+use Cable8mm\Xeed\Support\File;
 use Cable8mm\Xeed\Support\Path;
+use League\Flysystem\FilesystemException;
+use League\Flysystem\UnableToDeleteFile;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -41,7 +44,7 @@ class CleanCommand extends Command
 
         $output->writeln('You have just selected: '.$thing);
 
-        $path = match ($thing) {
+        $paths = match ($thing) {
             'seeder' => [Path::seeder()],
             'model' => [Path::model()],
             'factory' => [Path::factory()],
@@ -55,15 +58,20 @@ class CleanCommand extends Command
             default => null,
         };
 
-        if ($path === null) {
-            $output->writeln('See you later!');
-
+        if ($paths === null) {
             return Command::SUCCESS;
         }
 
-        foreach ($path as $path) {
-            array_map('unlink', array_filter((array) glob($path.'*.php')));
-            $output->writeln($path.' was cleaned. Enjoy it.');
+        foreach ($paths as $path) {
+            try {
+                array_map(function ($location) use ($output) {
+                    File::system()->delete($location);
+
+                    $output->writeln($location.' was deleted.');
+                }, array_filter((array) glob($path.'*.php')));
+            } catch (FilesystemException|UnableToDeleteFile $exception) {
+                $output->writeln($exception->getMessage());
+            }
         }
 
         return Command::SUCCESS;

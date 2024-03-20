@@ -3,6 +3,7 @@
 namespace Cable8mm\Xeed\Generators;
 
 use Cable8mm\Xeed\Interfaces\GeneratorInterface;
+use Cable8mm\Xeed\Support\File;
 use Cable8mm\Xeed\Support\Path;
 use Cable8mm\Xeed\Table;
 
@@ -21,19 +22,19 @@ final class FactoryGenerator implements GeneratorInterface
     private function __construct(
         private Table $table,
         private ?string $namespace = null,
-        private ?string $dist = null
+        private ?string $destination = null
     ) {
-        if (is_null($dist)) {
-            $this->dist = Path::factory();
+        if (is_null($destination)) {
+            $this->destination = Path::factory();
         }
 
-        $this->stub = file_get_contents(Path::stub().'Factory.stub');
+        $this->stub = File::system()->read(Path::stub().'Factory.stub');
     }
 
     /**
      * {@inheritDoc}
      */
-    public function run(): void
+    public function run(bool $force = false): void
     {
         $fakers = '';
 
@@ -49,9 +50,10 @@ final class FactoryGenerator implements GeneratorInterface
             $this->stub
         );
 
-        file_put_contents(
-            $this->dist.$this->table->model().'Factory.php',
-            $seederClass
+        File::system()->write(
+            $this->destination.$this->table->model().'Factory.php',
+            $seederClass,
+            $force
         );
     }
 
@@ -60,13 +62,13 @@ final class FactoryGenerator implements GeneratorInterface
      *
      * @param  string|Table  $table  The model class name
      * @param  string  $namespace  The model namespace
-     * @param  string  $dist  The path to the dist folder
+     * @param  string  $destination  The path to the dist folder
      */
     public static function make(
         Table $table,
         ?string $namespace = null,
-        ?string $dist = null
+        ?string $destination = null
     ): static {
-        return new self($table, $namespace, $dist);
+        return new self($table, $namespace, $destination);
     }
 }

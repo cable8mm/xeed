@@ -19,12 +19,12 @@ interface GeneratorInterface
      *
      * @param  string  $class  The name of the class for replacing with stub file
      * @param  string|null  $namespace  The namespace to be applied to the class
-     * @param  string|null  $dist  The path to the dist folder
+     * @param  string|null  $destination  The path to the dist folder
      * @return void
      */
     public static function make(
         Table $class,
         ?string $namespace = null,
-        ?string $dist = null
+        ?string $destination = null
     );
 }
