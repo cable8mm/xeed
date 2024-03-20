@@ -1,5 +1,13 @@
 # Release Notes
 
+## v0.7.5 - 2024-03-20
+
+### What's Changed
+
+* Fix a doctum bug by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/45
+
+**Full Changelog**: https://github.com/cable8mm/xeed/compare/v0.7.4...v0.7.5
+
 ## v0.7.4 - 2024-03-20
 
 ### What's Changed
