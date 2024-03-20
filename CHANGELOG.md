@@ -1,5 +1,13 @@
 # Release Notes
 
+## v0.7.3 - 2024-03-20
+
+### What's Changed
+
+* Rename db class to xeed by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/41
+
+**Full Changelog**: https://github.com/cable8mm/xeed/compare/v0.7.2...v0.7.3
+
 ## v0.7.2 - 2024-03-20
 
 ### What's Changed
