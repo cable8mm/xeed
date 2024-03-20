@@ -11,7 +11,7 @@ use PDO;
 /**
  * Database Object.
  */
-final class DB extends PDO implements ArrayAccess
+final class Xeed extends PDO implements ArrayAccess
 {
     /**
      * Singleton Instance.

@@ -3,9 +3,9 @@
 namespace Cable8mm\Xeed\Tests\Unit\Resolvers;
 
 use Cable8mm\Xeed\Column;
-use Cable8mm\Xeed\DB;
 use Cable8mm\Xeed\Resolvers\SmallintResolver;
 use Cable8mm\Xeed\Support\Picker;
+use Cable8mm\Xeed\Xeed;
 use PHPUnit\Framework\TestCase;
 
 final class SmallintResolverTest extends TestCase
@@ -16,7 +16,7 @@ final class SmallintResolverTest extends TestCase
 
     protected function setUp(): void
     {
-        $db = DB::getInstance();
+        $db = Xeed::getInstance();
 
         $this->column = Picker::of($db->attach()
             ->getTable('xeeds')

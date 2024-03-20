@@ -2,13 +2,13 @@
 
 namespace Cable8mm\Xeed\Tests\Bootstrap;
 
-use Cable8mm\Xeed\DB;
+use Cable8mm\Xeed\Xeed;
 
 class Seeder
 {
     private \Faker\Generator $faker;
 
-    private DB $db;
+    private Xeed $db;
 
     public const TOTAL = 100;
 
@@ -18,7 +18,7 @@ class Seeder
     {
         $this->faker = \Faker\Factory::create();
 
-        $this->db = DB::getInstance();
+        $this->db = Xeed::getInstance();
     }
 
     public function run(): void

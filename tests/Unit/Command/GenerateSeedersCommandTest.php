@@ -3,8 +3,8 @@
 namespace Cable8mm\Xeed\Tests\Unit\Command;
 
 use Cable8mm\Xeed\Command\GenerateSeedersCommand;
-use Cable8mm\Xeed\DB;
 use Cable8mm\Xeed\Support\Path;
+use Cable8mm\Xeed\Xeed;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
@@ -27,7 +27,7 @@ class GenerateSeedersCommandTest extends TestCase
 
         $this->assertStringContainsString('Seeder', trim($this->commandTester->getDisplay()));
 
-        $tables = DB::getInstance()->attach()->getTables();
+        $tables = Xeed::getInstance()->attach()->getTables();
 
         foreach ($tables as $table) {
             $this->assertFileExists(__DIR__.'/../../../'.Path::seeder().$table->model().'Seeder.php');

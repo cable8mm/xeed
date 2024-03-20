@@ -2,7 +2,7 @@
 
 namespace Cable8mm\Xeed\Command;
 
-use Cable8mm\Xeed\DB;
+use Cable8mm\Xeed\Xeed;
 use Cable8mm\Xeed\Generators\ModelGenerator;
 use Cable8mm\Xeed\Support\Path;
 use Symfony\Component\Console\Attribute\AsCommand;
@@ -49,7 +49,7 @@ class GenerateModelsCommand extends Command
     {
         $force = $input->getOption('force') ?? true;
 
-        $tables = DB::getInstance()->attach()->getTables();
+        $tables = Xeed::getInstance()->attach()->getTables();
 
         foreach ($tables as $table) {
             try {

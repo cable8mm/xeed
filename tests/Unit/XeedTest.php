@@ -2,11 +2,11 @@
 
 namespace Cable8mm\Xeed\Tests\Unit;
 
-use Cable8mm\Xeed\DB;
 use Cable8mm\Xeed\Tests\Bootstrap\Seeder;
+use Cable8mm\Xeed\Xeed;
 use PHPUnit\Framework\TestCase;
 
-final class DBTest extends TestCase
+final class XeedTest extends TestCase
 {
     private Seeder $seeder;
 
@@ -27,28 +27,28 @@ final class DBTest extends TestCase
 
     public function test_db_instance_can_be_created(): void
     {
-        $db = DB::getNewInstance();
+        $db = Xeed::getNewInstance();
 
-        $this->assertInstanceOf(DB::class, $db);
+        $this->assertInstanceOf(Xeed::class, $db);
     }
 
     public function test_can_be_connected_to_database(): void
     {
-        $db = DB::getInstance();
+        $db = Xeed::getInstance();
 
-        $this->assertInstanceOf(DB::class, $db);
+        $this->assertInstanceOf(Xeed::class, $db);
     }
 
     public function test_can_retrieve_tables(): void
     {
-        $tables = DB::getNewInstance()->attach()->getTables();
+        $tables = Xeed::getNewInstance()->attach()->getTables();
 
         $this->assertNotEmpty($tables);
     }
 
     public function test_seeder_can_make_seeds(): void
     {
-        $db = DB::getInstance();
+        $db = Xeed::getInstance();
 
         $sql = 'SELECT * FROM '.Seeder::TABLE;
 
@@ -61,19 +61,10 @@ final class DBTest extends TestCase
 
     public function test_getTable_method_can_work_well(): void
     {
-        $db = DB::getNewInstance()->attach();
+        $db = Xeed::getNewInstance()->attach();
 
         $table = $db->getTable(Seeder::TABLE);
 
         $this->assertEquals(Seeder::TABLE, $table);
     }
-
-    // public function test_getTable_method_can_work_well_for_xeeds_table(): void
-    // {
-    //     $db = DB::getNewInstance()->attach();
-
-    //     $table = $db->getTable('xeeds');
-
-    //     $this->assertEquals('xeeds', $table);
-    // }
 }

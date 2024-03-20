@@ -3,10 +3,10 @@
 namespace Cable8mm\Xeed\Tests\Unit\Resolvers;
 
 use Cable8mm\Xeed\Column;
-use Cable8mm\Xeed\DB;
 use Cable8mm\Xeed\Resolvers\DoubleResolver;
 use Cable8mm\Xeed\Resolvers\FloatResolver;
 use Cable8mm\Xeed\Support\Picker;
+use Cable8mm\Xeed\Xeed;
 use PHPUnit\Framework\TestCase;
 
 final class DoubleResolverTest extends TestCase
@@ -17,7 +17,7 @@ final class DoubleResolverTest extends TestCase
 
     protected function setUp(): void
     {
-        $db = DB::getInstance();
+        $db = Xeed::getInstance();
 
         $this->column = Picker::of($db->attach()
             ->getTable('xeeds')

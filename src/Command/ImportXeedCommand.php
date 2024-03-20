@@ -2,9 +2,9 @@
 
 namespace Cable8mm\Xeed\Command;
 
-use Cable8mm\Xeed\DB;
 use Cable8mm\Xeed\Support\File;
 use Cable8mm\Xeed\Support\Path;
+use Cable8mm\Xeed\Xeed;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -62,7 +62,7 @@ class ImportXeedCommand extends Command
 
         $argument = $input->getArgument('argument');
 
-        $db = DB::getInstance();
+        $db = Xeed::getInstance();
 
         if ($argument === 'drop' || $argument === 'refresh') {
             $sql = 'DROP TABLE IF EXISTS '.self::TABLE_NAME;

@@ -3,9 +3,9 @@
 namespace Cable8mm\Xeed\Provider;
 
 use Cable8mm\Xeed\Column;
-use Cable8mm\Xeed\DB;
 use Cable8mm\Xeed\Interfaces\ProviderInterface;
 use Cable8mm\Xeed\Table;
+use Cable8mm\Xeed\Xeed;
 
 use function Cable8mm\ArrayFlatten\array_flatten;
 
@@ -17,7 +17,7 @@ final class SqliteProvider implements ProviderInterface
     /**
      * {@inheritDoc}
      */
-    public function attach(DB $db): void
+    public function attach(Xeed $db): void
     {
         $query = $db->query("SELECT name FROM sqlite_master WHERE type='table';");
 
@@ -39,7 +39,7 @@ final class SqliteProvider implements ProviderInterface
     /**
      * {@inheritDoc}
      */
-    public static function map(array $column, ?string $table = null, ?DB $db = null): array
+    public static function map(array $column, ?string $table = null, ?Xeed $db = null): array
     {
         $authIncrement = false;
 

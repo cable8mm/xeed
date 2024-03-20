@@ -3,7 +3,7 @@
 namespace Cable8mm\Xeed\Tests\Unit\Command;
 
 use Cable8mm\Xeed\Command\ImportXeedCommand;
-use Cable8mm\Xeed\DB;
+use Cable8mm\Xeed\Xeed;
 use PDOException;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Application;
@@ -29,7 +29,7 @@ class ImportXeedCommandTest extends TestCase
         ]);
 
         try {
-            DB::getInstance()->query('SELECT 1 FROM '.ImportXeedCommand::TABLE_NAME);
+            Xeed::getInstance()->query('SELECT 1 FROM '.ImportXeedCommand::TABLE_NAME);
 
             $this->assertTrue(true);
         } catch (PDOException $e) {
@@ -41,7 +41,7 @@ class ImportXeedCommandTest extends TestCase
         ]);
 
         try {
-            DB::getInstance()->query('SELECT 1 FROM '.ImportXeedCommand::TABLE_NAME);
+            Xeed::getInstance()->query('SELECT 1 FROM '.ImportXeedCommand::TABLE_NAME);
 
             $this->assertTrue(false);
         } catch (PDOException $e) {
@@ -54,7 +54,7 @@ class ImportXeedCommandTest extends TestCase
         ]);
 
         try {
-            DB::getInstance()->query('SELECT 1 FROM '.ImportXeedCommand::TABLE_NAME);
+            Xeed::getInstance()->query('SELECT 1 FROM '.ImportXeedCommand::TABLE_NAME);
 
             $this->assertTrue(true);
         } catch (PDOException $e) {
