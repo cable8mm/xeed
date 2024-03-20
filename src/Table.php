@@ -53,9 +53,35 @@ final class Table implements Stringable
      * @example echo (new Table('users'))->model();
      * //=> User
      */
-    public function model(?string $postfix = null): string
+    public function model(?string $suffix = null): string
     {
-        return Inflector::classify($this->name).$postfix;
+        return Inflector::classify($this->name).$suffix;
+    }
+
+    /**
+     * To get the factory name from table name.
+     *
+     * @return string The FactoryName
+     *
+     * @example echo (new Table('users'))->factory();
+     * //=> User
+     */
+    public function factory(?string $suffix = null): string
+    {
+        return Inflector::classify($this->name).'Factory'.$suffix;
+    }
+
+    /**
+     * To get the seeder name from table name.
+     *
+     * @return string The SeederName
+     *
+     * @example echo (new Table('users'))->seeder();
+     * //=> User
+     */
+    public function seeder(?string $suffix = null): string
+    {
+        return Inflector::classify($this->name).'Seeder'.$suffix;
     }
 
     /**

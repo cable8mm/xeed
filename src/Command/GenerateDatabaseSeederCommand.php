@@ -4,6 +4,7 @@ namespace Cable8mm\Xeed\Command;
 
 use Cable8mm\Xeed\DB;
 use Cable8mm\Xeed\Generators\DatabaseSeederGenerator;
+use Cable8mm\Xeed\Support\Path;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -38,15 +39,13 @@ class GenerateDatabaseSeederCommand extends Command
     {
         $tables = DB::getInstance()->attach()->getTables();
 
-        $classes = [];
+        try {
+            DatabaseSeederGenerator::make($tables)->run(force: false);
 
-        foreach ($tables as $table) {
-            $classes[] = $table;
+            $output->writeln(Path::seeder().'DatabaseSeeder.php seeder have been generated.');
+        } catch (\Exception $e) {
+            $output->writeln(Path::seeder().'DatabaseSeeder.php seeder file already exists.');
         }
-
-        DatabaseSeederGenerator::make($classes)->run();
-
-        $output->writeln('Database seeder have been generated.');
 
         return Command::SUCCESS;
     }

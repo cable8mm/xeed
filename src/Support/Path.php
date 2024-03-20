@@ -16,7 +16,7 @@ final class Path
      */
     public static function stub(): string
     {
-        return getcwd().DIRECTORY_SEPARATOR.'stubs'.DIRECTORY_SEPARATOR;
+        return 'stubs'.DIRECTORY_SEPARATOR;
     }
 
     /**
@@ -28,7 +28,7 @@ final class Path
      */
     public static function model(): string
     {
-        return getcwd().DIRECTORY_SEPARATOR.'dist'.DIRECTORY_SEPARATOR.'app'.DIRECTORY_SEPARATOR.'Models'.DIRECTORY_SEPARATOR;
+        return 'dist'.DIRECTORY_SEPARATOR.'app'.DIRECTORY_SEPARATOR.'Models'.DIRECTORY_SEPARATOR;
     }
 
     /**
@@ -40,7 +40,7 @@ final class Path
      */
     public static function seeder(): string
     {
-        return getcwd().DIRECTORY_SEPARATOR.'dist'.DIRECTORY_SEPARATOR.'database'.DIRECTORY_SEPARATOR.'seeders'.DIRECTORY_SEPARATOR;
+        return 'dist'.DIRECTORY_SEPARATOR.'database'.DIRECTORY_SEPARATOR.'seeders'.DIRECTORY_SEPARATOR;
     }
 
     /**
@@ -52,7 +52,7 @@ final class Path
      */
     public static function factory(): string
     {
-        return getcwd().DIRECTORY_SEPARATOR.'dist'.DIRECTORY_SEPARATOR.'database'.DIRECTORY_SEPARATOR.'factories'.DIRECTORY_SEPARATOR;
+        return 'dist'.DIRECTORY_SEPARATOR.'database'.DIRECTORY_SEPARATOR.'factories'.DIRECTORY_SEPARATOR;
     }
 
     /**
@@ -64,7 +64,7 @@ final class Path
      */
     public static function database(): string
     {
-        return getcwd().DIRECTORY_SEPARATOR.'database'.DIRECTORY_SEPARATOR;
+        return 'database'.DIRECTORY_SEPARATOR;
     }
 
     /**
@@ -76,7 +76,7 @@ final class Path
      */
     public static function migration(): string
     {
-        return getcwd().DIRECTORY_SEPARATOR.'dist'.DIRECTORY_SEPARATOR.'database'.DIRECTORY_SEPARATOR.'migrations'.DIRECTORY_SEPARATOR;
+        return 'dist'.DIRECTORY_SEPARATOR.'database'.DIRECTORY_SEPARATOR.'migrations'.DIRECTORY_SEPARATOR;
     }
 
     /**
@@ -88,7 +88,7 @@ final class Path
      */
     public static function resource(): string
     {
-        return getcwd().DIRECTORY_SEPARATOR.'resources'.DIRECTORY_SEPARATOR;
+        return 'resources'.DIRECTORY_SEPARATOR;
     }
 
     /**
@@ -98,7 +98,7 @@ final class Path
      */
     public static function root(): string
     {
-        return getcwd().DIRECTORY_SEPARATOR;
+        return '.'.DIRECTORY_SEPARATOR;
     }
 
     /**
@@ -108,6 +108,18 @@ final class Path
      */
     public static function testBootstrap(): string
     {
-        return getcwd().DIRECTORY_SEPARATOR.'tests'.DIRECTORY_SEPARATOR.'Bootstrap'.DIRECTORY_SEPARATOR;
+        return 'tests'.DIRECTORY_SEPARATOR.'Bootstrap'.DIRECTORY_SEPARATOR;
+    }
+
+    /**
+     * To get `tests/Generate` folder path.
+     *
+     * @internal Don't use this method except testing.
+     *
+     * @return string This method returns the `tests/Generate` folder path for testing.
+     */
+    public static function testgen(): string
+    {
+        return 'tests'.DIRECTORY_SEPARATOR.'Generate'.DIRECTORY_SEPARATOR;
     }
 }

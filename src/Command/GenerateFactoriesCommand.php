@@ -4,6 +4,7 @@ namespace Cable8mm\Xeed\Command;
 
 use Cable8mm\Xeed\DB;
 use Cable8mm\Xeed\Generators\FactoryGenerator;
+use Cable8mm\Xeed\Support\Path;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -39,10 +40,14 @@ class GenerateFactoriesCommand extends Command
         $tables = DB::getInstance()->attach()->getTables();
 
         foreach ($tables as $table) {
-            FactoryGenerator::make($table)->run();
-        }
+            try {
+                FactoryGenerator::make($table)->run();
 
-        $output->writeln('Factories have been generated.');
+                $output->writeln(Path::factory().$table->factory().'.php have been generated.');
+            } catch (\Exception $e) {
+                $output->writeln(Path::factory().$table->factory().'.php file already exists.');
+            }
+        }
 
         return Command::SUCCESS;
     }

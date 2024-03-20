@@ -30,7 +30,7 @@ class GenerateSeedersCommandTest extends TestCase
         $tables = DB::getInstance()->attach()->getTables();
 
         foreach ($tables as $table) {
-            $this->assertFileExists(Path::seeder().$table->model().'Seeder.php');
+            $this->assertFileExists(__DIR__.'/../../../'.Path::seeder().$table->model().'Seeder.php');
         }
     }
 }

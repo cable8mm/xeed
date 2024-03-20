@@ -5,6 +5,7 @@ namespace Cable8mm\Xeed\Command;
 use Cable8mm\Xeed\DB;
 use Cable8mm\Xeed\Generators\MigrationGenerator;
 use Cable8mm\Xeed\Mergers\MergerContainer;
+use Cable8mm\Xeed\Support\Path;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -40,13 +41,16 @@ class GenerateMigrationsCommand extends Command
         $tables = DB::getInstance()->attach()->getTables();
 
         foreach ($tables as $table) {
-            //            MigrationGenerator::make($table)->run();
-            MigrationGenerator::make($table)->merging(
-                MergerContainer::getEngines()
-            )->run();
-        }
+            try {
+                MigrationGenerator::make($table)->merging(
+                    MergerContainer::getEngines()
+                )->run();
 
-        $output->writeln('Migrations have been generated.');
+                $output->writeln(Path::migration().$table->migration().' has been generated.');
+            } catch (\Exception $e) {
+                $output->writeln(Path::migration().$table->migration().'.php file already exists.');
+            }
+        }
 
         return Command::SUCCESS;
     }

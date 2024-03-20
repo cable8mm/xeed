@@ -3,6 +3,7 @@
 namespace Cable8mm\Xeed\Command;
 
 use Cable8mm\Xeed\DB;
+use Cable8mm\Xeed\Support\File;
 use Cable8mm\Xeed\Support\Path;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
@@ -23,6 +24,8 @@ use Symfony\Component\Console\Output\OutputInterface;
 )]
 class ImportXeedCommand extends Command
 {
+    public const TABLE_NAME = 'xeeds';
+
     /**
      * Configure the command.
      */
@@ -52,19 +55,21 @@ class ImportXeedCommand extends Command
         $db = DB::getInstance();
 
         if ($argument === 'drop' || $argument === 'refresh') {
-            $sql = file_get_contents(Path::database().'xeeds.'.$db->driver.'.sql');
+            $sql = 'DROP TABLE IF EXISTS '.self::TABLE_NAME;
 
             $db->exec($sql);
 
-            $output->writeln('Table was dropped.');
+            $output->writeln('`'.self::TABLE_NAME.'` table was dropped.');
         }
 
         if ($argument === 'import' || $argument === 'refresh') {
-            $sql = file_get_contents(Path::database().'xeeds.'.$db->driver.'.sql');
+            $filename = Path::database().self::TABLE_NAME.'.'.$db->driver.'.sql';
+
+            $sql = File::system()->read($filename);
 
             $db->exec($sql);
 
-            $output->writeln('Table was imported.');
+            $output->writeln($filename.' was imported.');
         }
 
         return Command::SUCCESS;

@@ -4,6 +4,7 @@ namespace Cable8mm\Xeed\Generators;
 
 use Cable8mm\Xeed\Interfaces\GeneratorInterface;
 use Cable8mm\Xeed\Mergers\MergerContainer;
+use Cable8mm\Xeed\Support\File;
 use Cable8mm\Xeed\Support\Path;
 use Cable8mm\Xeed\Table;
 
@@ -29,19 +30,19 @@ final class MigrationGenerator implements GeneratorInterface
     private function __construct(
         private Table $table,
         private ?string $namespace = null,
-        private ?string $dist = null
+        private ?string $destination = null
     ) {
-        if (is_null($dist)) {
-            $this->dist = Path::migration();
+        if (is_null($destination)) {
+            $this->destination = Path::migration();
         }
 
-        $this->stub = file_get_contents(Path::stub().'Migration.stub');
+        $this->stub = File::system()->read(Path::stub().'Migration.stub');
     }
 
     /**
      * {@inheritDoc}
      */
-    public function run(): void
+    public function run(bool $force = false): void
     {
         $fields = '';
 
@@ -64,9 +65,10 @@ final class MigrationGenerator implements GeneratorInterface
                 ->verbose();
         }
 
-        file_put_contents(
-            $this->dist.$this->table->migration(),
-            $seederClass
+        File::system()->write(
+            $this->destination.$this->table->migration(),
+            $seederClass,
+            $force
         );
     }
 
@@ -88,13 +90,13 @@ final class MigrationGenerator implements GeneratorInterface
      *
      * @param  string|Table  $table  The model class name
      * @param  string  $namespace  The model namespace
-     * @param  string  $dist  The path to the dist folder
+     * @param  string  $destination  The path to the dist folder
      */
     public static function make(
         Table $table,
         ?string $namespace = null,
-        ?string $dist = null
+        ?string $destination = null
     ): static {
-        return new self($table, $namespace, $dist);
+        return new self($table, $namespace, $destination);
     }
 }

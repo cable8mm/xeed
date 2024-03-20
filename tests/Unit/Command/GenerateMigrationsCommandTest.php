@@ -23,6 +23,6 @@ class GenerateMigrationsCommandTest extends TestCase
     {
         $this->commandTester->execute([]);
 
-        $this->assertEquals('Migrations have been generated.', trim($this->commandTester->getDisplay()));
+        $this->assertStringContainsString('has been generated.', trim($this->commandTester->getDisplay()));
     }
 }

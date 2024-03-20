@@ -4,6 +4,7 @@ namespace Cable8mm\Xeed\Mergers;
 
 use Cable8mm\Xeed\Generators\MigrationGenerator;
 use Cable8mm\Xeed\Interfaces\MergerInterface;
+use Cable8mm\Xeed\Support\File;
 use InvalidArgumentException;
 use LogicException;
 use Stringable;
@@ -30,11 +31,7 @@ class MergerContainer implements Stringable
         private ?string $body = null
     ) {
         if (! is_null($migration)) {
-            if (! file_exists($migration)) {
-                throw new InvalidArgumentException('File does not exist in '.$migration);
-            }
-
-            $this->body = file_get_contents($migration);
+            $this->body = File::system()->read($migration);
         }
 
         if (! is_null($this->body)) {
@@ -110,9 +107,12 @@ class MergerContainer implements Stringable
      *
      * @return int|false The method returns the number of bytes that were written to the file, or false on failure.
      */
-    public function write(): int|false
+    public function write(): void
     {
-        return file_put_contents($this->migration, implode(PHP_EOL, $this->lines));
+        File::system()->write(
+            $this->migration,
+            implode(PHP_EOL, $this->lines)
+        );
     }
 
     /**
