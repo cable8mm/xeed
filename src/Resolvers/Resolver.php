@@ -60,7 +60,7 @@ abstract class Resolver implements ResolverInterface
     }
 
     /**
-     *  Reading data from inaccessible (protected or private) or non-existing properties.
+     * Reading data from inaccessible (protected or private) or non-existing properties.
      *
      * @param  string  $property  The property name.
      * @return mixed The value of the `column` property.

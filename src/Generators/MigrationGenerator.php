@@ -26,7 +26,7 @@ final class MigrationGenerator implements GeneratorInterface
     /**
      * Engines for MergerContainer.
      *
-     * @var ?array<Merger>
+     * @var ?array<\Cable8mm\Xeed\Mergers\Merger>
      */
     private ?array $mergerEngines = null;
 
@@ -78,7 +78,7 @@ final class MigrationGenerator implements GeneratorInterface
     /**
      * Set merger engines.
      *
-     * @param  array<Merger>  $engines  An array of merger engines.
+     * @param  array<\Cable8mm\Xeed\Mergers\Merger>  $engines  An array of merger engines.
      * @return static The method returns the current instance that enables methods chaining.
      */
     public function merging(array $engines): static

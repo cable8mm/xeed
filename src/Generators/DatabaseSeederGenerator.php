@@ -63,9 +63,9 @@ final class DatabaseSeederGenerator
     }
 
     /**
-     * Create a singleton instance.
+     * Create a instance.
      *
-     * @param  array<Table>  $tables  The model class name
+     * @param  array<\Cable8mm\Xeed\Table>  $tables  The model class name
      * @param  string  $namespace  The model namespace
      * @param  string  $destination  The path to the dist folder
      */
