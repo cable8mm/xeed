@@ -18,10 +18,10 @@ final class MysqlProvider implements ProviderInterface
      */
     public function attach(Xeed $xeed): void
     {
-        $tables = $xeed->query('SHOW TABLES')->fetchAll(PDO::FETCH_COLUMN);
+        $tables = $xeed->pdo->query('SHOW TABLES')->fetchAll(PDO::FETCH_COLUMN);
 
         foreach ($tables as $table) {
-            $columns = $xeed->query('SHOW COLUMNS FROM '.$table)->fetchAll(PDO::FETCH_ASSOC);
+            $columns = $xeed->pdo->query('SHOW COLUMNS FROM '.$table)->fetchAll(PDO::FETCH_ASSOC);
 
             $tableColumns = array_map(
                 fn (array $column) => new Column(...self::map($column)),
