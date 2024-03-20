@@ -16,14 +16,14 @@ final class FloatResolverTest extends TestCase
 
     protected function setUp(): void
     {
-        $db = Xeed::getInstance();
+        $xeed = Xeed::getInstance();
 
-        $this->column = Picker::of($db->attach()
+        $this->column = Picker::of($xeed->attach()
             ->getTable('xeeds')
             ->getColumns()
-        )->driver($db->driver)->field('float')->get();
+        )->driver($xeed->driver)->field('float')->get();
 
-        $this->driver = $db->driver;
+        $this->driver = $xeed->driver;
     }
 
     public function test_column_can_not_null(): void

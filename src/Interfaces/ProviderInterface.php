@@ -12,17 +12,17 @@ interface ProviderInterface
     /**
      * To attach child provider to DB instance.
      *
-     * @param  \Cable8mm\Xeed\Xeed  $db  Xeed instance
+     * @param  \Cable8mm\Xeed\Xeed  $xeed  Xeed instance
      */
-    public function attach(Xeed $db): void;
+    public function attach(Xeed $xeed): void;
 
     /**
      * Mapping method between another fields for Database.
      *
      * @param  array  $column  Original column data
      * @param  string  $table  Table name
-     * @param  Xeed  $db  Database instance
+     * @param  Xeed  $xeed  Database instance
      * @return array Mapped column data
      */
-    public static function map(array $column, ?string $table = null, ?Xeed $db = null): array;
+    public static function map(array $column, ?string $table = null, ?Xeed $xeed = null): array;
 }

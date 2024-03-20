@@ -14,12 +14,12 @@ final class LongtextResolverTest extends TestCase
 
     protected function setUp(): void
     {
-        $db = Xeed::getInstance();
+        $xeed = Xeed::getInstance();
 
-        $this->column = Picker::of($db->attach()
+        $this->column = Picker::of($xeed->attach()
             ->getTable('xeeds')
             ->getColumns()
-        )->driver($db->driver)->field('long_text')->get();
+        )->driver($xeed->driver)->field('long_text')->get();
     }
 
     public function test_column_can_not_null(): void

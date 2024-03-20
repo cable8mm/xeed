@@ -62,22 +62,22 @@ class ImportXeedCommand extends Command
 
         $argument = $input->getArgument('argument');
 
-        $db = Xeed::getInstance();
+        $xeed = Xeed::getInstance();
 
         if ($argument === 'drop' || $argument === 'refresh') {
             $sql = 'DROP TABLE IF EXISTS '.self::TABLE_NAME;
 
-            $db->exec($sql);
+            $xeed->exec($sql);
 
             $output->writeln('`'.self::TABLE_NAME.'` table was dropped.');
         }
 
         if ($argument === 'import' || $argument === 'refresh') {
-            $filename = Path::database().self::TABLE_NAME.'.'.$db->driver.'.sql';
+            $filename = Path::database().self::TABLE_NAME.'.'.$xeed->driver.'.sql';
 
             $sql = File::system()->read($filename);
 
-            $db->exec($sql);
+            $xeed->exec($sql);
 
             $output->writeln($filename.' was imported.');
 

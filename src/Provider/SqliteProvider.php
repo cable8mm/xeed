@@ -17,34 +17,34 @@ final class SqliteProvider implements ProviderInterface
     /**
      * {@inheritDoc}
      */
-    public function attach(Xeed $db): void
+    public function attach(Xeed $xeed): void
     {
-        $query = $db->query("SELECT name FROM sqlite_master WHERE type='table';");
+        $query = $xeed->query("SELECT name FROM sqlite_master WHERE type='table';");
 
         $tables = array_filter($query->fetchAll(), fn ($item) => $item['name'] !== 'sqlite_sequence');
 
         $tables = array_flatten($tables);
 
         foreach ($tables as $table) {
-            $columns = $db->query('SELECT * FROM PRAGMA_TABLE_INFO("'.$table.'");')->fetchAll();
+            $columns = $xeed->query('SELECT * FROM PRAGMA_TABLE_INFO("'.$table.'");')->fetchAll();
 
             foreach ($columns as $column) {
-                $columnObject[] = new Column(...self::map($column, $table, $db));
+                $columnObject[] = new Column(...self::map($column, $table, $xeed));
             }
 
-            $db[$table] = new Table($table, $columnObject);
+            $xeed[$table] = new Table($table, $columnObject);
         }
     }
 
     /**
      * {@inheritDoc}
      */
-    public static function map(array $column, ?string $table = null, ?Xeed $db = null): array
+    public static function map(array $column, ?string $table = null, ?Xeed $xeed = null): array
     {
         $authIncrement = false;
 
         if ($column['pk'] == 1) {
-            $count = $db->query('SELECT COUNT(*) FROM sqlite_sequence WHERE name=\''.$table.'\'');
+            $count = $xeed->query('SELECT COUNT(*) FROM sqlite_sequence WHERE name=\''.$table.'\'');
             $authIncrement = $count == 1;
         }
 
