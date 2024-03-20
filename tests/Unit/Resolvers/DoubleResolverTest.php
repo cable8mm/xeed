@@ -3,10 +3,10 @@
 namespace Cable8mm\Xeed\Tests\Unit\Resolvers;
 
 use Cable8mm\Xeed\Column;
-use Cable8mm\Xeed\DB;
 use Cable8mm\Xeed\Resolvers\DoubleResolver;
 use Cable8mm\Xeed\Resolvers\FloatResolver;
 use Cable8mm\Xeed\Support\Picker;
+use Cable8mm\Xeed\Xeed;
 use PHPUnit\Framework\TestCase;
 
 final class DoubleResolverTest extends TestCase
@@ -17,14 +17,14 @@ final class DoubleResolverTest extends TestCase
 
     protected function setUp(): void
     {
-        $db = DB::getInstance();
+        $xeed = Xeed::getInstance();
 
-        $this->column = Picker::of($db->attach()
+        $this->column = Picker::of($xeed->attach()
             ->getTable('xeeds')
             ->getColumns()
-        )->driver($db->driver)->field('double')->get();
+        )->driver($xeed->driver)->field('double')->get();
 
-        $this->driver = $db->driver;
+        $this->driver = $xeed->driver;
     }
 
     public function test_column_can_not_null(): void

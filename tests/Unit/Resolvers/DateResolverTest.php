@@ -3,9 +3,9 @@
 namespace Cable8mm\Xeed\Tests\Unit\Resolvers;
 
 use Cable8mm\Xeed\Column;
-use Cable8mm\Xeed\DB;
 use Cable8mm\Xeed\Resolvers\DateResolver;
 use Cable8mm\Xeed\Support\Picker;
+use Cable8mm\Xeed\Xeed;
 use PHPUnit\Framework\TestCase;
 
 final class DateResolverTest extends TestCase
@@ -14,12 +14,12 @@ final class DateResolverTest extends TestCase
 
     protected function setUp(): void
     {
-        $db = DB::getInstance();
+        $xeed = Xeed::getInstance();
 
-        $this->column = Picker::of($db->attach()
+        $this->column = Picker::of($xeed->attach()
             ->getTable('xeeds')
             ->getColumns()
-        )->driver($db->driver)->field('date')->get();
+        )->driver($xeed->driver)->field('date')->get();
     }
 
     public function test_column_can_not_null(): void

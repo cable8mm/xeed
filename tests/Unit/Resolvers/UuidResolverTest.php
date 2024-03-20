@@ -3,9 +3,9 @@
 namespace Cable8mm\Xeed\Tests\Unit\Resolvers;
 
 use Cable8mm\Xeed\Column;
-use Cable8mm\Xeed\DB;
 use Cable8mm\Xeed\Resolvers\UuidResolver;
 use Cable8mm\Xeed\Support\Picker;
+use Cable8mm\Xeed\Xeed;
 use PHPUnit\Framework\TestCase;
 
 final class UuidResolverTest extends TestCase
@@ -14,12 +14,12 @@ final class UuidResolverTest extends TestCase
 
     protected function setUp(): void
     {
-        $db = DB::getInstance();
+        $xeed = Xeed::getInstance();
 
-        $this->column = Picker::of($db->attach()
+        $this->column = Picker::of($xeed->attach()
             ->getTable('xeeds')
             ->getColumns()
-        )->driver($db->driver)->field('uuid')->get();
+        )->driver($xeed->driver)->field('uuid')->get();
     }
 
     public function test_column_can_not_null(): void

@@ -2,7 +2,7 @@
 
 namespace Cable8mm\Xeed\Tests\Feature;
 
-use Cable8mm\Xeed\DB;
+use Cable8mm\Xeed\Xeed;
 use PHPUnit\Framework\TestCase;
 
 final class PhpunitTest extends TestCase
@@ -15,7 +15,7 @@ final class PhpunitTest extends TestCase
 
     public function test_received_phpunit_connection()
     {
-        $this->assertContains($_ENV['DB_CONNECTION'], DB::AVAILABLE_DATABASES);
+        $this->assertContains($_ENV['DB_CONNECTION'], Xeed::AVAILABLE_DATABASES);
     }
 
     public function test_received_phpunit_database()

@@ -2,13 +2,13 @@
 
 namespace Cable8mm\Xeed\Tests\Bootstrap;
 
-use Cable8mm\Xeed\DB;
+use Cable8mm\Xeed\Xeed;
 
 class Seeder
 {
     private \Faker\Generator $faker;
 
-    private DB $db;
+    private Xeed $xeed;
 
     public const TOTAL = 100;
 
@@ -18,7 +18,7 @@ class Seeder
     {
         $this->faker = \Faker\Factory::create();
 
-        $this->db = DB::getInstance();
+        $this->xeed = Xeed::getInstance();
     }
 
     public function run(): void
@@ -32,24 +32,24 @@ class Seeder
 
     public function dropTables()
     {
-        $sql = $this->db->prepare('DROP TABLE IF EXISTS '.self::TABLE);
+        $sql = $this->xeed->prepare('DROP TABLE IF EXISTS '.self::TABLE);
 
         return $sql->execute();
     }
 
     private function createUserTable(): int|false
     {
-        $autoIncrement = $this->db->driver === 'mysql' ? 'AUTO_INCREMENT' : 'AUTOINCREMENT';
+        $autoIncrement = $this->xeed->driver === 'mysql' ? 'AUTO_INCREMENT' : 'AUTOINCREMENT';
 
         $schema = 'CREATE TABLE `'.self::TABLE.'` ( id INTEGER PRIMARY KEY '.$autoIncrement.', name VARCHAR(25) NOT NULL, email VARCHAR(100) NOT NULL)';
 
-        return $this->db->exec($schema);
+        return $this->xeed->exec($schema);
     }
 
     private function addItem(): void
     {
         $sql = 'INSERT INTO '.self::TABLE.' (name, email) VALUES (:name, :email)';
-        $stmt = $this->db->prepare($sql);
+        $stmt = $this->xeed->prepare($sql);
 
         for ($i = 0; $i < self::TOTAL; $i++) {
             $stmt->execute($this->factory());

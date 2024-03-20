@@ -40,7 +40,7 @@ final class Picker
      * @param  string  $driver  The database driver name
      * @return static The current instance
      *
-     * @example Picker::of(\Cable8mm\Xeed\Column[])->driver($db->driver)->field('string')->get()
+     * @example Picker::of(\Cable8mm\Xeed\Column[])->driver($xeed->driver)->field('string')->get()
      */
     public function driver(string $driver): static
     {
@@ -54,7 +54,7 @@ final class Picker
      *
      * @return string|null The driver value.
      *
-     * @example Picker::of(\Cable8mm\Xeed\Column[])->driver($db->driver)->getDriver()
+     * @example Picker::of(\Cable8mm\Xeed\Column[])->driver($xeed->driver)->getDriver()
      */
     public function getDriver(): ?string
     {
@@ -85,7 +85,7 @@ final class Picker
      *
      * @throws InvalidArgumentException When the driver is invalid or the field type is not supported
      *
-     * @example Picker::of(\Cable8mm\Xeed\Column[])->driver($db->driver)->field('string')->get()
+     * @example Picker::of(\Cable8mm\Xeed\Column[])->driver($xeed->driver)->field('string')->get()
      * @example Picker::of(\Cable8mm\Xeed\Column[])->get(driver: 'mysql', field: 'name', type: 'varchar')->get()
      * @example Picker::of(\Cable8mm\Xeed\Column[])->get(driver: 'mysql', field: 'name')->get()
      * @example Picker::of(\Cable8mm\Xeed\Column[])->get(driver: 'mysql', type: 'varchar')->get()
@@ -137,7 +137,7 @@ final class Picker
      * @param  \Cable8mm\Xeed\Table[]  $values  An array of `\Cable8mm\Xeed\Table` instances.
      * @return static The Picker instance.
      *
-     * @example Picker::of($db->attach()->getTable('xeeds')->getColumns())->driver($db->driver)->field('string')->get()
+     * @example Picker::of($xeed->attach()->getTable('xeeds')->getColumns())->driver($xeed->driver)->field('string')->get()
      */
     public static function of(array $values): static
     {

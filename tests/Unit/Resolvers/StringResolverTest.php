@@ -3,9 +3,9 @@
 namespace Cable8mm\Xeed\Tests\Unit\Resolvers;
 
 use Cable8mm\Xeed\Column;
-use Cable8mm\Xeed\DB;
 use Cable8mm\Xeed\Resolvers\StringResolver;
 use Cable8mm\Xeed\Support\Picker;
+use Cable8mm\Xeed\Xeed;
 use PHPUnit\Framework\TestCase;
 
 final class StringResolverTest extends TestCase
@@ -16,14 +16,14 @@ final class StringResolverTest extends TestCase
 
     protected function setUp(): void
     {
-        $db = DB::getInstance();
+        $xeed = Xeed::getInstance();
 
-        $this->column = Picker::of($db->attach()
+        $this->column = Picker::of($xeed->attach()
             ->getTable('xeeds')
             ->getColumns()
-        )->driver($db->driver)->field('string')->get();
+        )->driver($xeed->driver)->field('string')->get();
 
-        $this->driver = $db->driver;
+        $this->driver = $xeed->driver;
     }
 
     public function test_column_can_not_null(): void

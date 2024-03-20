@@ -3,9 +3,9 @@
 namespace Cable8mm\Xeed\Provider;
 
 use Cable8mm\Xeed\Column;
-use Cable8mm\Xeed\DB;
 use Cable8mm\Xeed\Interfaces\ProviderInterface;
 use Cable8mm\Xeed\Table;
+use Cable8mm\Xeed\Xeed;
 use PDO;
 
 /**
@@ -16,26 +16,26 @@ final class MysqlProvider implements ProviderInterface
     /**
      * {@inheritDoc}
      */
-    public function attach(DB $db): void
+    public function attach(Xeed $xeed): void
     {
-        $tables = $db->query('SHOW TABLES')->fetchAll(PDO::FETCH_COLUMN);
+        $tables = $xeed->query('SHOW TABLES')->fetchAll(PDO::FETCH_COLUMN);
 
         foreach ($tables as $table) {
-            $columns = $db->query('SHOW COLUMNS FROM '.$table)->fetchAll(PDO::FETCH_ASSOC);
+            $columns = $xeed->query('SHOW COLUMNS FROM '.$table)->fetchAll(PDO::FETCH_ASSOC);
 
             $tableColumns = array_map(
                 fn (array $column) => new Column(...self::map($column)),
                 $columns
             );
 
-            $db[$table] = new Table($table, $tableColumns);
+            $xeed[$table] = new Table($table, $tableColumns);
         }
     }
 
     /**
      * {@inheritDoc}
      */
-    public static function map(array $column, ?string $table = null, ?DB $db = null): array
+    public static function map(array $column, ?string $table = null, ?Xeed $xeed = null): array
     {
         $bracket = preg_match('/\(/', $column['Type']) ? preg_replace('/.+\(([^)]+)\)/', '\\1', $column['Type']) : null;
 
