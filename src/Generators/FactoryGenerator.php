@@ -17,7 +17,10 @@ final class FactoryGenerator implements GeneratorInterface
      */
     private string $stub;
 
-    public const intent = '            ';
+    /**
+     * The left padding for the body of the generated.
+     */
+    const INTENT = '            ';
 
     private function __construct(
         private Table $table,
@@ -39,7 +42,7 @@ final class FactoryGenerator implements GeneratorInterface
         $fakers = '';
 
         foreach ($this->table->getColumns() as $column) {
-            $fakers .= FactoryGenerator::intent.$column->fake().PHP_EOL;
+            $fakers .= FactoryGenerator::INTENT.$column->fake().PHP_EOL;
         }
 
         $fakers = preg_replace('/\n$/', '', $fakers);
@@ -58,11 +61,7 @@ final class FactoryGenerator implements GeneratorInterface
     }
 
     /**
-     * Factory method.
-     *
-     * @param  string|Table  $table  The model class name
-     * @param  string  $namespace  The model namespace
-     * @param  string  $destination  The path to the dist folder
+     * {@inheritDoc}
      */
     public static function make(
         Table $table,

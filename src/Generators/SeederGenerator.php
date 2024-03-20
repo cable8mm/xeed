@@ -52,11 +52,7 @@ final class SeederGenerator implements GeneratorInterface
     }
 
     /**
-     * Factory method.
-     *
-     * @param  string|Table  $table  The model class name
-     * @param  string  $namespace  The model namespace
-     * @param  string  $destination  The path to the dist folder
+     * {@inheritDoc}
      */
     public static function make(
         Table $table,

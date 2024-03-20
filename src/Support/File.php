@@ -16,7 +16,7 @@ final class File
     private static ?Filesystem $filesystem = null;
 
     /**
-     * To read a file.
+     * Read a file.
      *
      * @return string The method returns the string representation.
      *
@@ -29,7 +29,7 @@ final class File
     }
 
     /**
-     * To write a content to a file.
+     * Write a content to a file.
      *
      * @param  bool  $force  Whether to force writing of the file or not (default false)
      *
@@ -47,7 +47,7 @@ final class File
     }
 
     /**
-     * To write a empty content to a file.
+     * Write a empty content to a file.
      *
      * @param  bool  $force  Whether to force writing of the file or not (default false)
      *
@@ -61,7 +61,7 @@ final class File
     }
 
     /**
-     * To delete a file.
+     * Delete a file.
      *
      * @throws \League\Flysystem\UnableToWriteFile
      * @throws \League\Flysystem\FilesystemException
@@ -71,6 +71,11 @@ final class File
         self::$filesystem->delete($location);
     }
 
+    /**
+     * Delete all files in a directory.
+     *
+     * @param  string|null  $ext  The extension of the files to be deleted.
+     */
     public function deleteDictionary(string $path, ?string $ext = null): void
     {
         if ($ext === null) {
@@ -85,7 +90,7 @@ final class File
     }
 
     /**
-     * To create a instance of the class.
+     * Create a instance of the class.
      *
      * @param  string|null  $base  The base path.
      * @return static The method returns the current instance that enables method chaining.

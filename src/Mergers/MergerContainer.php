@@ -15,7 +15,7 @@ use Stringable;
 class MergerContainer implements Stringable
 {
     /**
-     * @var array<MergerInterface>
+     * @var array<\Cable8mm\Xeed\Interfaces\MergerInterface>
      */
     private array $engines = [];
 
@@ -44,7 +44,7 @@ class MergerContainer implements Stringable
     }
 
     /**
-     * To add a engine.
+     * Add a engine.
      *
      * @param  Merger  $merger  An engine to be added.
      * @return static The method returns the current instance that enables method chaining.
@@ -57,7 +57,7 @@ class MergerContainer implements Stringable
     }
 
     /**
-     * To add engines.
+     * Add engines.
      *
      * @param  array<MergerInstance>  $mergers  An array of engines to be added.
      * @return static The method returns the current instance that enables methods chaining.
@@ -70,7 +70,7 @@ class MergerContainer implements Stringable
     }
 
     /**
-     * To execute engines.
+     * Execute engines.
      *
      * @return static The method returns this instance that was execute all mergers.
      */
@@ -89,7 +89,7 @@ class MergerContainer implements Stringable
                 $replace = $engine->start($this->lines[$key], $this->lines[$key + 1]);
 
                 if ($replace !== null) {
-                    $this->lines[$key + 1] = MigrationGenerator::intent.$replace;
+                    $this->lines[$key + 1] = MigrationGenerator::INTENT.$replace;
                     $this->lines[$key] = null;
 
                     break;
@@ -104,8 +104,6 @@ class MergerContainer implements Stringable
 
     /**
      * Write a string to a file from the `$this->lines` array.
-     *
-     * @return int|false The method returns the number of bytes that were written to the file, or false on failure.
      */
     public function write(): void
     {
@@ -126,7 +124,7 @@ class MergerContainer implements Stringable
     }
 
     /**
-     * To get an array representation of the array.
+     * Get an array representation of the array.
      *
      * @return array The method returns an array representation of the array.
      */
@@ -146,7 +144,7 @@ class MergerContainer implements Stringable
     }
 
     /**
-     * Constructor factory.
+     * Create a singleton instance.
      *
      * @param  string  $migration  Path to the migration file from root folder.
      * @param  string  $body  Migration string.
@@ -167,7 +165,7 @@ class MergerContainer implements Stringable
     }
 
     /**
-     * To get all the engines.
+     * Get all the engines.
      *
      * @return array The method returns an array of engines.
      */

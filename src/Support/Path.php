@@ -8,7 +8,7 @@ namespace Cable8mm\Xeed\Support;
 final class Path
 {
     /**
-     * To get `stubs` folder path.
+     * Get `stubs` folder path.
      *
      * @return string The stub folder path
      *
@@ -20,7 +20,7 @@ final class Path
     }
 
     /**
-     * To get `Models` folder path.
+     * Get `Models` folder path.
      *
      * @return string The model folder path
      *
@@ -32,7 +32,7 @@ final class Path
     }
 
     /**
-     * To get `seeders` folder path.
+     * Get `seeders` folder path.
      *
      * @return string The seeder folder path
      *
@@ -44,7 +44,7 @@ final class Path
     }
 
     /**
-     * To get `factory` folder path.
+     * Get `factory` folder path.
      *
      * @return string The factory folder path
      *
@@ -56,7 +56,7 @@ final class Path
     }
 
     /**
-     * To get `database` folder path.
+     * Get `database` folder path.
      *
      * @return string The database folder path
      *
@@ -68,7 +68,7 @@ final class Path
     }
 
     /**
-     * To get `migration` folder path.
+     * Get `migration` folder path.
      *
      * @return string The migration folder path
      *
@@ -80,7 +80,7 @@ final class Path
     }
 
     /**
-     * To get `resource` folder path.
+     * Get `resource` folder path.
      *
      * @return string The resource folder path
      *
@@ -92,7 +92,7 @@ final class Path
     }
 
     /**
-     * To get `root` folder path.
+     * Get `root` folder path.
      *
      * @return string The root folder path
      */
@@ -102,7 +102,7 @@ final class Path
     }
 
     /**
-     * To get `tests/Bootstrap` folder path.
+     * Get `tests/Bootstrap` folder path.
      *
      * @return string The tests/Bootstrap folder path.
      */
@@ -112,7 +112,7 @@ final class Path
     }
 
     /**
-     * To get `tests/Generate` folder path.
+     * Get `tests/Generate` folder path.
      *
      * @internal Don't use this method except testing.
      *

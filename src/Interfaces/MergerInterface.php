@@ -8,7 +8,7 @@ namespace Cable8mm\Xeed\Interfaces;
 interface MergerInterface
 {
     /**
-     * To get a merged line from the current line and the next line.
+     * Get a merged line from the current line and the next line.
      *
      * @param  string  $line  The current line.
      * @param  string  $next  The next line.

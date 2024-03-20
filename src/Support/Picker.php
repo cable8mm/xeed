@@ -20,7 +20,7 @@ final class Picker
     }
 
     /**
-     * To set a field value.
+     * Set a field value.
      *
      * @param  string  $field  The field name.
      * @return static The current instance.
@@ -35,7 +35,7 @@ final class Picker
     }
 
     /**
-     * To set a database driver.
+     * Set a database driver.
      *
      * @param  string  $driver  The database driver name
      * @return static The current instance
@@ -50,7 +50,7 @@ final class Picker
     }
 
     /**
-     * To get a driver value.
+     * Get a driver value.
      *
      * @return string|null The driver value.
      *
@@ -62,7 +62,7 @@ final class Picker
     }
 
     /**
-     * To set a database field type.
+     * Set a database field type.
      *
      * @param  string  $type  The column type
      *
@@ -76,7 +76,7 @@ final class Picker
     }
 
     /**
-     * To get a specific column
+     * Get a specific column
      *
      * @param  string  $driver  The driver.
      * @param  string  $field  The field.
@@ -122,7 +122,7 @@ final class Picker
     }
 
     /**
-     * To get an array of An array of `Table` instances.
+     * Get an array of An array of `Table` instances.
      *
      * @return \Cable8mm\Xeed\Column[] An array of An array of `\Cable8mm\Xeed\Table` instances.
      */
@@ -132,7 +132,7 @@ final class Picker
     }
 
     /**
-     * Factory method to get a Picker instance.
+     * Create a singleton instance.
      *
      * @param  \Cable8mm\Xeed\Table[]  $values  An array of `\Cable8mm\Xeed\Table` instances.
      * @return static The Picker instance.

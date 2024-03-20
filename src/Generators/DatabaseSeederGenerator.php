@@ -15,7 +15,10 @@ final class DatabaseSeederGenerator
      */
     private string $stub;
 
-    public const intent = '            ';
+    /**
+     * The left padding for the body of the generated.
+     */
+    public const INTENT = '            ';
 
     private function __construct(
         private array $tables,
@@ -34,14 +37,14 @@ final class DatabaseSeederGenerator
     }
 
     /**
-     * To run the generator logic and save it to a file.
+     * Run the generator logic and save it.
      */
     public function run(bool $force = false): void
     {
         $seeder_classes = '';
 
         foreach ($this->tables as $table) {
-            $seeder_classes .= DatabaseSeederGenerator::intent.$table->model().'Seeder::class,'.PHP_EOL;
+            $seeder_classes .= DatabaseSeederGenerator::INTENT.$table->model().'Seeder::class,'.PHP_EOL;
         }
 
         $seeder_classes = preg_replace('/\n$/', '', $seeder_classes);
@@ -60,7 +63,7 @@ final class DatabaseSeederGenerator
     }
 
     /**
-     * Factory method.
+     * Create a singleton instance.
      *
      * @param  array<Table>  $tables  The model class name
      * @param  string  $namespace  The model namespace

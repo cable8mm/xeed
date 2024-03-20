@@ -41,10 +41,10 @@ abstract class Resolver implements ResolverInterface
     abstract public function migration(): string;
 
     /**
-     * Post processing method for resolvers
+     * Finally process for resolvers
      *
      * @param  string  $migration  The migration payload before post processing
-     * @return string The migration payload after post processing
+     * @return string The method returns the migration payload after post processing
      */
     public function last(string $migration): string
     {
@@ -61,6 +61,9 @@ abstract class Resolver implements ResolverInterface
 
     /**
      *  Reading data from inaccessible (protected or private) or non-existing properties.
+     *
+     * @param  string  $property  The property name.
+     * @return mixed The value of the `column` property.
      */
     public function __get(string $property): mixed
     {

@@ -24,7 +24,7 @@ final class Xeed extends PDO implements ArrayAccess
     public const AVAILABLE_DATABASES = ['mysql', 'sqlite'];
 
     /**
-     * @var array<Table> Table array.
+     * @var array<\Cable8mm\Xeed\Table> Table array.
      */
     private array $tables = [];
 
@@ -59,7 +59,7 @@ final class Xeed extends PDO implements ArrayAccess
     /**
      * Singleton factory method.
      *
-     * @return static The current instance
+     * @return static The method returns the singleton instance
      */
     public static function getInstance(): static
     {
@@ -81,7 +81,9 @@ final class Xeed extends PDO implements ArrayAccess
     }
 
     /**
-     * To get new instance
+     * Get new instance
+     *
+     * @return static The method returns new singleton instance
      */
     public static function getNewInstance(): static
     {
@@ -91,7 +93,9 @@ final class Xeed extends PDO implements ArrayAccess
     }
 
     /**
-     * To attach tables and columns.
+     * Attach tables and columns.
+     *
+     * @return static The method returns the instance for chaining
      */
     public function attach(): static
     {
@@ -101,9 +105,9 @@ final class Xeed extends PDO implements ArrayAccess
     }
 
     /**
-     * To get attached tables.
+     * Get attached tables.
      *
-     * @return array<Table> The attached tables
+     * @return array<\Cable8mm\Xeed\Table> The method returns the attached tables
      */
     public function getTables(): array
     {
@@ -111,9 +115,9 @@ final class Xeed extends PDO implements ArrayAccess
     }
 
     /**
-     * To get a specific attached table.
+     * Get a specific attached table.
      *
-     * @return Table|null The table instance or null
+     * @return \Cable8mm\Xeed\Table|null The method returns the table instance or null
      */
     public function getTable(string $table): ?Table
     {
@@ -126,6 +130,9 @@ final class Xeed extends PDO implements ArrayAccess
 
     /**
      * Implements ArrayAccess interface.
+     *
+     * @param  mixed  $offset  The offset to retrieve
+     * @return bool The method returns whether the offset exists or not
      */
     public function offsetExists(mixed $offset): bool
     {
@@ -134,6 +141,9 @@ final class Xeed extends PDO implements ArrayAccess
 
     /**
      * Implements ArrayAccess interface.
+     *
+     * @param  mixed  $offset  The offset to retrieve
+     * @return mixed The method returns the table instance or null by offset
      */
     public function offsetGet(mixed $offset): mixed
     {
@@ -142,6 +152,9 @@ final class Xeed extends PDO implements ArrayAccess
 
     /**
      * Implements ArrayAccess interface.
+     *
+     * @param  mixed  $offset  The offset to retrieve
+     * @param  mixed  $value  The value to set
      */
     public function offsetSet(mixed $offset, mixed $value): void
     {
@@ -161,9 +174,9 @@ final class Xeed extends PDO implements ArrayAccess
     }
 
     /**
-     * To get a tables array.
+     * Get a tables array.
      *
-     * @return array An array of tables
+     * @return array The method returns the array of tables
      */
     public function toArray(): array
     {

@@ -121,7 +121,7 @@ final class MergerContainerTest extends TestCase
         $migrated = $container->engines($this->myEngines)->operating()->toArray();
 
         $this->assertEquals(
-            MigrationGenerator::intent.'$table->morphs(\'morphs\');',
+            MigrationGenerator::INTENT.'$table->morphs(\'morphs\');',
             reset($migrated)
         );
     }

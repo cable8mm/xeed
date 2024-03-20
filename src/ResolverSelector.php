@@ -40,15 +40,15 @@ use Cable8mm\Xeed\Resolvers\YearResolver;
 use InvalidArgumentException;
 
 /**
- * To select the resolver for the given column.
+ * The resolver to select selector class for the given column.
  */
 final class ResolverSelector
 {
     /**
-     * To select the resolver for the given column.
+     * Select the resolver for the given column.
      *
-     * @param  Column  $column  The column to select the resolver for.
-     * @return ResolverInterface The resolver
+     * @param  \Cable8mm\Xeed\Column  $column  The column to select the resolver for
+     * @return ResolverInterface The method returns the correct resolver
      *
      * @throws InvalidArgumentException
      *
