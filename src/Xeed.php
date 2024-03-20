@@ -24,9 +24,7 @@ final class Xeed implements ArrayAccess
     public PDO $pdo;
 
     /**
-     * Driver name.
-     *
-     * @var string, eg. 'mysql' or 'sqlite'
+     * Driver name. eg. 'mysql' or 'sqlite'
      */
     public string $driver;
 
@@ -76,6 +74,11 @@ final class Xeed implements ArrayAccess
         return $this;
     }
 
+    /**
+     * Add PDO connection.
+     *
+     * @return static The method get PDO instance and returns the current instance that enables method chaining.
+     */
     public function addPdo(PDO $pdo): static
     {
         $this->pdo = $pdo;
@@ -109,6 +112,20 @@ final class Xeed implements ArrayAccess
                 'username' => $username,
                 'password' => $password,
             ]);
+        }
+
+        return self::$instance;
+    }
+
+    /**
+     * Singleton factory method without connection.
+     *
+     * @return static The method returns the singleton instance without connection
+     */
+    public static function make(): static
+    {
+        if (self::$instance === null) {
+            self::$instance = new static();
         }
 
         return self::$instance;
