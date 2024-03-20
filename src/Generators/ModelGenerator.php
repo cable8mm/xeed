@@ -51,11 +51,7 @@ final class ModelGenerator implements GeneratorInterface
     }
 
     /**
-     * Factory method.
-     *
-     * @param  Table  $table  The model class name
-     * @param  string  $namespace  The model namespace
-     * @param  string  $destination  The path to the dist folder
+     * {@inheritDoc}
      *
      * @example \Generators\ModelGenerator::make('User')
      * @example \Generators\ModelGenerator::make('User', 'App\Models')

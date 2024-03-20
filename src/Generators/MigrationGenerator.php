@@ -18,7 +18,10 @@ final class MigrationGenerator implements GeneratorInterface
      */
     private string $stub;
 
-    public const intent = '            ';
+    /**
+     * The left padding for the body of the generated.
+     */
+    public const INTENT = '            ';
 
     /**
      * Engines for MergerContainer.
@@ -47,7 +50,7 @@ final class MigrationGenerator implements GeneratorInterface
         $fields = '';
 
         foreach ($this->table->getColumns() as $column) {
-            $fields .= MigrationGenerator::intent.$column->migration().PHP_EOL;
+            $fields .= MigrationGenerator::INTENT.$column->migration().PHP_EOL;
         }
 
         $fields = preg_replace('/\n$/', '', $fields);
@@ -73,7 +76,7 @@ final class MigrationGenerator implements GeneratorInterface
     }
 
     /**
-     * To set merger engines.
+     * Set merger engines.
      *
      * @param  array<Merger>  $engines  An array of merger engines.
      * @return static The method returns the current instance that enables methods chaining.
@@ -86,11 +89,7 @@ final class MigrationGenerator implements GeneratorInterface
     }
 
     /**
-     * Factory method.
-     *
-     * @param  string|Table  $table  The model class name
-     * @param  string  $namespace  The model namespace
-     * @param  string  $destination  The path to the dist folder
+     * {@inheritDoc}
      */
     public static function make(
         Table $table,

@@ -23,10 +23,10 @@ final class Table implements Stringable
     private array $columns = [];
 
     /**
-     * Table constructor.
+     * Constructor.
      *
      * @param  string  $name  Table name
-     * @param  array<Table>  $columns  Column array[Table]
+     * @param  array<\Cable8mm\Xeed\Table>  $columns  Column array[Table]
      */
     public function __construct(string $name, array $columns = [])
     {
@@ -36,9 +36,9 @@ final class Table implements Stringable
     }
 
     /**
-     * To get column array.
+     * Get column array.
      *
-     * @return array<Column> Column array
+     * @return array<\Cable8mm\Xeed\Column> The method returns `\Cable8mm\Xeed\Column` array
      */
     public function getColumns(): array
     {
@@ -46,9 +46,9 @@ final class Table implements Stringable
     }
 
     /**
-     * To get the model name from table name.
+     * Get the model name from table name.
      *
-     * @return string The ModelName
+     * @return string The method returns the ModelName
      *
      * @example echo (new Table('users'))->model();
      * //=> User
@@ -59,9 +59,9 @@ final class Table implements Stringable
     }
 
     /**
-     * To get the factory name from table name.
+     * Get the factory name from table name.
      *
-     * @return string The FactoryName
+     * @return string The method returns the FactoryName
      *
      * @example echo (new Table('users'))->factory();
      * //=> User
@@ -72,9 +72,9 @@ final class Table implements Stringable
     }
 
     /**
-     * To get the seeder name from table name.
+     * Get the seeder name from table name.
      *
-     * @return string The SeederName
+     * @return string The method returns the SeederName
      *
      * @example echo (new Table('users'))->seeder();
      * //=> User
@@ -85,9 +85,9 @@ final class Table implements Stringable
     }
 
     /**
-     * To get the migration file name from table name.
+     * Get the migration file name from table name.
      *
-     * @return string The migration file name.
+     * @return string The method returns the migration file name.
      *
      * @example echo (new Table('users'))->migration();
      * //=> 2024_03_18_135821_create_users_table.php
@@ -100,7 +100,7 @@ final class Table implements Stringable
     /**
      * Class magic method to get the real table name.
      *
-     * @return string The real table name.
+     * @return string The method returns the real table name.
      *
      * @example echo new Table('users');
      * //=> users

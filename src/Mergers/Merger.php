@@ -6,23 +6,21 @@ use Cable8mm\Xeed\Interfaces\MergerInterface;
 
 /**
  * Merger abstract class.
- *
- * @internal This class should be implemented by child classes.
  */
 abstract class Merger implements MergerInterface
 {
     /**
-     * This is a merged.
+     * On going merge the first line
      */
     protected string $line;
 
     /**
-     * This is a next row.
+     * On going merge the second line
      */
     protected string $next;
 
     /**
-     * This is a merged value.
+     * Final merge result
      */
     protected string $merged;
 

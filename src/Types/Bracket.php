@@ -42,7 +42,7 @@ class Bracket implements Stringable
     }
 
     /**
-     * To get the first element of the array.
+     * Get the first element of the array.
      *
      * @return string|int This method returns the first element of the array.
      */
@@ -56,7 +56,7 @@ class Bracket implements Stringable
     }
 
     /**
-     * To get the second element of the array.
+     * Get the second element of the array.
      *
      * @return string|int This method returns the second element of the array.
      */
@@ -70,7 +70,7 @@ class Bracket implements Stringable
     }
 
     /**
-     * To get a value or default value.
+     * Get a value or default value.
      *
      * @param  string  $default  Default value.
      * @return string|int The method returns the value or default value.
@@ -89,7 +89,7 @@ class Bracket implements Stringable
     }
 
     /**
-     * To get an escaped value.
+     * Get an escaped value.
      *
      * @return string|int The method returns the escaped value.
      */
@@ -107,7 +107,7 @@ class Bracket implements Stringable
     }
 
     /**
-     * To get an array of values.
+     * Get an array of values.
      *
      * @return string This method returns an array of values.
      */
@@ -119,7 +119,7 @@ class Bracket implements Stringable
     /**
      * Class magic method to get the instance information for a Exception
      *
-     * @return string The instance information for a Exception
+     * @return string The method returns the instance information for a Exception
      */
     public function __toString(): string
     {
@@ -127,7 +127,7 @@ class Bracket implements Stringable
     }
 
     /**
-     * Factory method to get a Bracket instance.
+     * Create a instance.
      *
      * @param  ?string  $values  The value of database bracket.
      * @return static The method returns the new instance.
