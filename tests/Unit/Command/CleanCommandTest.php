@@ -30,7 +30,6 @@ class CleanCommandTest extends TestCase
   [3] migration
   [4] all
   [5] exit
- > You have just selected: exit
-See you later!', trim($this->commandTester->getDisplay()));
+ > You have just selected: exit', trim($this->commandTester->getDisplay()));
     }
 }

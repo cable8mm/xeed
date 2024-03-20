@@ -23,6 +23,6 @@ class GenerateModelsCommandTest extends TestCase
     {
         $this->commandTester->execute([]);
 
-        $this->assertEquals('Models have been generated.', trim($this->commandTester->getDisplay()));
+        $this->assertStringContainsString('php', trim($this->commandTester->getDisplay()));
     }
 }

@@ -5,7 +5,6 @@ namespace Cable8mm\Xeed\Command;
 use Cable8mm\Xeed\DB;
 use Cable8mm\Xeed\Support\File;
 use Cable8mm\Xeed\Support\Path;
-use PDOException;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -74,27 +73,16 @@ class ImportXeedCommand extends Command
         }
 
         if ($argument === 'import' || $argument === 'refresh') {
-            if (! $force) {
-                try {
-                    $db->query('SELECT 1 FROM '.self::TABLE_NAME);
-                } catch (PDOException $e) {
-                    $filename = Path::database().self::TABLE_NAME.'.'.$db->driver.'.sql';
+            $filename = Path::database().self::TABLE_NAME.'.'.$db->driver.'.sql';
 
-                    $sql = File::system()->read($filename);
+            $sql = File::system()->read($filename);
 
-                    $db->exec($sql);
+            $db->exec($sql);
 
-                    $output->writeln($filename.' was imported.');
+            $output->writeln($filename.' was imported.');
 
-                    return Command::SUCCESS;
-                }
-            }
-
-            $output->writeln('`'.self::TABLE_NAME.'` table already exists.');
-
-            return Command::FAILURE;
         }
 
-        throw new \RuntimeException('Something went wrong.');
+        return Command::SUCCESS;
     }
 }
