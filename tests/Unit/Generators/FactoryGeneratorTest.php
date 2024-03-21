@@ -33,6 +33,6 @@ final class FactoryGeneratorTest extends TestCase
 
     public function test_it_can_generate_factory_file(): void
     {
-        $this->assertFileExists(__DIR__.'/../../../'.Path::testgen().DIRECTORY_SEPARATOR.'SampleFactory.php');
+        $this->assertFileExists(Path::testgen().DIRECTORY_SEPARATOR.'SampleFactory.php');
     }
 }

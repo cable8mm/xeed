@@ -25,6 +25,6 @@ final class ModelGeneratorTest extends TestCase
 
     public function test_it_can_generate_model_file(): void
     {
-        $this->assertFileExists(__DIR__.'/../../../'.Path::testgen().DIRECTORY_SEPARATOR.'Sample.php');
+        $this->assertFileExists(Path::testgen().DIRECTORY_SEPARATOR.'Sample.php');
     }
 }

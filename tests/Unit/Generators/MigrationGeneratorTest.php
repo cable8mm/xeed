@@ -33,6 +33,6 @@ final class MigrationGeneratorTest extends TestCase
 
     public function test_it_can_generate_migration_file(): void
     {
-        $this->assertFileExists(__DIR__.'/../../../'.Path::testgen().DIRECTORY_SEPARATOR.$this->table->migration());
+        $this->assertFileExists(Path::testgen().DIRECTORY_SEPARATOR.$this->table->migration());
     }
 }

@@ -28,6 +28,6 @@ final class DatabaseSeederGeneratorTest extends TestCase
 
     public function test_it_can_generate_database_seeder_file(): void
     {
-        $this->assertFileExists(__DIR__.'/../../../'.Path::testgen().DIRECTORY_SEPARATOR.'DatabaseSeeder.php');
+        $this->assertFileExists(Path::testgen().DIRECTORY_SEPARATOR.'DatabaseSeeder.php');
     }
 }
