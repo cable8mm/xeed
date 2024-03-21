@@ -92,7 +92,6 @@ final class File
     /**
      * Create a instance of the class.
      *
-     * @param  string|null  $base  The base path.
      * @return static The method returns the current instance that enables method chaining.
      */
     public static function system(): static
