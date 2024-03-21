@@ -1,4 +1,4 @@
-# Xeed
+# Xeed - Laravel Resources Generator
 
 [한글(Korean) 👈](README.ko.md)
 
@@ -15,7 +15,7 @@
 The Xeed is to generate new model, seed, database seed, factory and migration files for Laravel based on data from the existing database table.
 
 > [!TIP]
-> It can function as both `artisan` commands and `standalone` commands, providing 100% identical functionality. Therefore, you can use it within your own Laravel project or as a standalone application.
+> It can function as both `php artisan xeed:*` commands for Laravel and `bin/console *` commands for Standalone, providing 100% identical functionality. Therefore, you can use it within your own Laravel project or as a standalone application.
 
 We have provided the API Documentation on the web. For more information, please visit https://www.palgle.com/xeed/ ❤️
 
