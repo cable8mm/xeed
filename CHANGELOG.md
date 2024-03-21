@@ -1,5 +1,14 @@
 # Release Notes
 
+## v1.0.1 - 2024-03-21
+
+### What's Changed
+
+* Revise the Korean README by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/52
+* Fix a comment for Doctum by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/53
+
+**Full Changelog**: https://github.com/cable8mm/xeed/compare/v1.0.0...v1.0.1
+
 ## v1.0.0 - 2024-03-21
 
 ### What's Changed
