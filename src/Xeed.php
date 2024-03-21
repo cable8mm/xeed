@@ -57,7 +57,7 @@ final class Xeed implements ArrayAccess
         $this->driver = $connection['driver'];
 
         if ($connection['driver'] === 'sqlite') {
-            $dns = $connection['driver'].':'.($database ?? Path::database().'database.sqlite');
+            $dns = $connection['driver'].':'.($database ?? Path::database().DIRECTORY_SEPARATOR.'database.sqlite');
 
             $this->pdo = new PDO($dns, options: $options);
         }
