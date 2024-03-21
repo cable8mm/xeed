@@ -54,9 +54,9 @@ class GenerateDatabaseSeederCommand extends Command
         try {
             DatabaseSeederGenerator::make($tables)->run(force: $force);
 
-            $output->writeln(Path::seeder().'DatabaseSeeder.php seeder have been generated.');
+            $output->writeln(Path::seeder().DIRECTORY_SEPARATOR.'DatabaseSeeder.php seeder have been generated.');
         } catch (\Exception $e) {
-            $output->writeln(Path::seeder().'DatabaseSeeder.php seeder file already exists.');
+            $output->writeln(Path::seeder().DIRECTORY_SEPARATOR.'DatabaseSeeder.php seeder file already exists.');
         }
 
         return Command::SUCCESS;

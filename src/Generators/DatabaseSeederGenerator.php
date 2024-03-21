@@ -33,7 +33,7 @@ final class DatabaseSeederGenerator
             $this->namespace = '\App\Models';
         }
 
-        $this->stub = File::system()->read(Path::stub().'DatabaseSeeder.stub');
+        $this->stub = File::system()->read(Path::stub().DIRECTORY_SEPARATOR.'DatabaseSeeder.stub');
     }
 
     /**
@@ -44,7 +44,7 @@ final class DatabaseSeederGenerator
         $seeder_classes = '';
 
         foreach ($this->tables as $table) {
-            $seeder_classes .= DatabaseSeederGenerator::INTENT.$table->model().'Seeder::class,'.PHP_EOL;
+            $seeder_classes .= DatabaseSeederGenerator::INTENT.$table->model().DIRECTORY_SEPARATOR.'Seeder::class,'.PHP_EOL;
         }
 
         $seeder_classes = preg_replace('/\n$/', '', $seeder_classes);
@@ -56,7 +56,7 @@ final class DatabaseSeederGenerator
         );
 
         File::system()->write(
-            $this->destination.'DatabaseSeeder.php',
+            $this->destination.DIRECTORY_SEPARATOR.'DatabaseSeeder.php',
             $seederClass,
             $force
         );

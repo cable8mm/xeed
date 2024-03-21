@@ -20,11 +20,11 @@ final class ModelGeneratorTest extends TestCase
 
     protected function tearDown(): void
     {
-        File::system()->delete(Path::testgen().'Sample.php');
+        File::system()->delete(Path::testgen().DIRECTORY_SEPARATOR.'Sample.php');
     }
 
     public function test_it_can_generate_model_file(): void
     {
-        $this->assertFileExists(__DIR__.'/../../../'.Path::testgen().'Sample.php');
+        $this->assertFileExists(__DIR__.'/../../../'.Path::testgen().DIRECTORY_SEPARATOR.'Sample.php');
     }
 }

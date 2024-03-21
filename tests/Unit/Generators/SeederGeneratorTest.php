@@ -20,11 +20,11 @@ final class SeederGeneratorTest extends TestCase
 
     protected function tearDown(): void
     {
-        File::system()->delete(Path::testgen().'SampleSeeder.php');
+        File::system()->delete(Path::testgen().DIRECTORY_SEPARATOR.'SampleSeeder.php');
     }
 
     public function test_it_can_can_generate_seeder_file(): void
     {
-        $this->assertFileExists(__DIR__.'/../../../'.Path::testgen().'SampleSeeder.php');
+        $this->assertFileExists(__DIR__.'/../../../'.Path::testgen().DIRECTORY_SEPARATOR.'SampleSeeder.php');
     }
 }

@@ -39,7 +39,7 @@ final class MigrationGenerator implements GeneratorInterface
             $this->destination = Path::migration();
         }
 
-        $this->stub = File::system()->read(Path::stub().'Migration.stub');
+        $this->stub = File::system()->read(Path::stub().DIRECTORY_SEPARATOR.'Migration.stub');
     }
 
     /**
@@ -69,7 +69,7 @@ final class MigrationGenerator implements GeneratorInterface
         }
 
         File::system()->write(
-            $this->destination.$this->table->migration(),
+            $this->destination.DIRECTORY_SEPARATOR.$this->table->migration(),
             $seederClass,
             $force
         );

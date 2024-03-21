@@ -28,11 +28,11 @@ final class FactoryGeneratorTest extends TestCase
 
     protected function tearDown(): void
     {
-        File::system()->delete(Path::testgen().'SampleFactory.php');
+        File::system()->delete(Path::testgen().DIRECTORY_SEPARATOR.'SampleFactory.php');
     }
 
     public function test_it_can_generate_factory_file(): void
     {
-        $this->assertFileExists(__DIR__.'/../../../'.Path::testgen().'SampleFactory.php');
+        $this->assertFileExists(__DIR__.'/../../../'.Path::testgen().DIRECTORY_SEPARATOR.'SampleFactory.php');
     }
 }

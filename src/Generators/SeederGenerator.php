@@ -30,7 +30,7 @@ final class SeederGenerator implements GeneratorInterface
             $this->namespace = '\App\Models';
         }
 
-        $this->stub = File::system()->read(Path::stub().'Seeder.stub');
+        $this->stub = File::system()->read(Path::stub().DIRECTORY_SEPARATOR.'Seeder.stub');
     }
 
     /**
@@ -45,7 +45,7 @@ final class SeederGenerator implements GeneratorInterface
         );
 
         File::system()->write(
-            $this->destination.$this->table->seeder('.php'),
+            $this->destination.DIRECTORY_SEPARATOR.$this->table->seeder('.php'),
             $seederClass,
             $force
         );

@@ -31,7 +31,7 @@ final class FactoryGenerator implements GeneratorInterface
             $this->destination = Path::factory();
         }
 
-        $this->stub = File::system()->read(Path::stub().'Factory.stub');
+        $this->stub = File::system()->read(Path::stub().DIRECTORY_SEPARATOR.'Factory.stub');
     }
 
     /**
@@ -54,7 +54,7 @@ final class FactoryGenerator implements GeneratorInterface
         );
 
         File::system()->write(
-            $this->destination.$this->table->model().'Factory.php',
+            $this->destination.DIRECTORY_SEPARATOR.$this->table->model().'Factory.php',
             $seederClass,
             $force
         );
