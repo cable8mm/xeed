@@ -1,4 +1,4 @@
-# Xeed - Laravel Resources Generator
+# Xeed - Resources Generator for Laravel
 
 [한글(Korean) 👈](README.ko.md)
 
@@ -32,11 +32,11 @@ We have provided the API Documentation on the web. For more information, please 
 
 ### Preview
 
-Laravel:
+**Laravel:**
 
 ![Preview](https://github.com/cable8mm/cabinet/blob/main/xeed-laravel-preview.gif?raw=true)
 
-Standalone:
+**Standalone:**
 
 ![Preview](https://github.com/cable8mm/cabinet/blob/main/xeed-preview.gif?raw=true)
 
