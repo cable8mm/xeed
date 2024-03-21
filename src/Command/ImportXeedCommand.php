@@ -83,6 +83,8 @@ class ImportXeedCommand extends Command
 
         }
 
+        $output->writeln('<info>import-xeed</info> command executed successfully.');
+
         return Command::SUCCESS;
     }
 }

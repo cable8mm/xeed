@@ -58,11 +58,13 @@ class GenerateMigrationsCommand extends Command
                     MergerContainer::getEngines()
                 )->run(force: $force);
 
-                $output->writeln(Path::migration().DIRECTORY_SEPARATOR.$table->migration().' has been generated.');
+                $output->writeln('<info>'.Path::migration().DIRECTORY_SEPARATOR.$table->migration().' has been generated.'.'</info>');
             } catch (\Exception $e) {
-                $output->writeln(Path::migration().DIRECTORY_SEPARATOR.$table->migration().'.php file already exists.');
+                $output->writeln('<error>'.Path::migration().DIRECTORY_SEPARATOR.$table->migration().'.php file already exists.'.'</error>');
             }
         }
+
+        $output->writeln('<info>generate-migrations</info> command executed successfully.');
 
         return Command::SUCCESS;
     }
