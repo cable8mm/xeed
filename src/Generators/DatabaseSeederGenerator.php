@@ -33,7 +33,7 @@ final class DatabaseSeederGenerator
             $this->namespace = '\App\Models';
         }
 
-        $this->stub = File::system()->read(Path::stub().'DatabaseSeeder.stub');
+        $this->stub = File::system()->read(Path::stub().DIRECTORY_SEPARATOR.'DatabaseSeeder.stub');
     }
 
     /**
@@ -56,7 +56,7 @@ final class DatabaseSeederGenerator
         );
 
         File::system()->write(
-            $this->destination.'DatabaseSeeder.php',
+            $this->destination.DIRECTORY_SEPARATOR.'DatabaseSeeder.php',
             $seederClass,
             $force
         );

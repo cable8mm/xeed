@@ -23,11 +23,11 @@ final class DatabaseSeederGeneratorTest extends TestCase
 
     protected function tearDown(): void
     {
-        File::system()->delete(Path::testgen().'DatabaseSeeder.php');
+        File::system()->delete(Path::testgen().DIRECTORY_SEPARATOR.'DatabaseSeeder.php');
     }
 
     public function test_it_can_generate_database_seeder_file(): void
     {
-        $this->assertFileExists(__DIR__.'/../../../'.Path::testgen().'DatabaseSeeder.php');
+        $this->assertFileExists(Path::testgen().DIRECTORY_SEPARATOR.'DatabaseSeeder.php');
     }
 }

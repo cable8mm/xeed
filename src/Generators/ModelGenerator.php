@@ -29,7 +29,7 @@ final class ModelGenerator implements GeneratorInterface
             $this->destination = Path::model();
         }
 
-        $this->stub = File::system()->read(Path::stub().'Model.stub');
+        $this->stub = File::system()->read(Path::stub().DIRECTORY_SEPARATOR.'Model.stub');
     }
 
     /**
@@ -44,7 +44,7 @@ final class ModelGenerator implements GeneratorInterface
         );
 
         File::system()->write(
-            $this->destination.$this->table->model().'.php',
+            $this->destination.DIRECTORY_SEPARATOR.$this->table->model().'.php',
             $seederClass,
             $force
         );

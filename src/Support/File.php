@@ -95,11 +95,10 @@ final class File
      * @param  string|null  $base  The base path.
      * @return static The method returns the current instance that enables method chaining.
      */
-    public static function system(
-        ?string $base = __DIR__.'/../../'
-    ): static {
+    public static function system(): static
+    {
         if (self::$filesystem === null) {
-            $adapter = new LocalFilesystemAdapter($base);
+            $adapter = new LocalFilesystemAdapter('/');
 
             self::$filesystem = new Filesystem($adapter);
         }

@@ -73,7 +73,7 @@ class ImportXeedCommand extends Command
         }
 
         if ($argument === 'import' || $argument === 'refresh') {
-            $filename = Path::database().self::TABLE_NAME.'.'.$xeed->driver.'.sql';
+            $filename = Path::database().DIRECTORY_SEPARATOR.self::TABLE_NAME.'.'.$xeed->driver.'.sql';
 
             $sql = File::system()->read($filename);
 
