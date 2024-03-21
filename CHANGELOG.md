@@ -1,5 +1,18 @@
 # Release Notes
 
+## v1.0.0 - 2024-03-21
+
+### What's Changed
+
+* Laravel Integration by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/46
+* Add laravel artisan commands by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/47
+* Fix a `GenerateSeedersCommandTest` by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/48
+* Address bugs found in the commands test by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/49
+* Create the `artisan xeed:clean` command by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/50
+* Fix errors and revise README by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/51
+
+**Full Changelog**: https://github.com/cable8mm/xeed/compare/v0.7.5...v1.0.0
+
 ## v0.7.5 - 2024-03-20
 
 ### What's Changed
