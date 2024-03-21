@@ -44,7 +44,7 @@ final class DatabaseSeederGenerator
         $seeder_classes = '';
 
         foreach ($this->tables as $table) {
-            $seeder_classes .= DatabaseSeederGenerator::INTENT.$table->model().DIRECTORY_SEPARATOR.'Seeder::class,'.PHP_EOL;
+            $seeder_classes .= DatabaseSeederGenerator::INTENT.$table->model().'Seeder::class,'.PHP_EOL;
         }
 
         $seeder_classes = preg_replace('/\n$/', '', $seeder_classes);

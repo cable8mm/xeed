@@ -16,7 +16,7 @@ final class Path
      */
     public static function stub(): string
     {
-        return 'stubs'.DIRECTORY_SEPARATOR;
+        return __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'stubs';
     }
 
     /**
@@ -28,7 +28,7 @@ final class Path
      */
     public static function model(): string
     {
-        return 'dist'.DIRECTORY_SEPARATOR.'app'.DIRECTORY_SEPARATOR.'Models';
+        return __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'dist'.DIRECTORY_SEPARATOR.'app'.DIRECTORY_SEPARATOR.'Models';
     }
 
     /**
@@ -40,7 +40,7 @@ final class Path
      */
     public static function seeder(): string
     {
-        return 'dist'.DIRECTORY_SEPARATOR.'database'.DIRECTORY_SEPARATOR.'seeders';
+        return __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'dist'.DIRECTORY_SEPARATOR.'database'.DIRECTORY_SEPARATOR.'seeders';
     }
 
     /**
@@ -52,7 +52,7 @@ final class Path
      */
     public static function factory(): string
     {
-        return 'dist'.DIRECTORY_SEPARATOR.'database'.DIRECTORY_SEPARATOR.'factories';
+        return __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'dist'.DIRECTORY_SEPARATOR.'database'.DIRECTORY_SEPARATOR.'factories';
     }
 
     /**
@@ -64,7 +64,7 @@ final class Path
      */
     public static function database(): string
     {
-        return 'database';
+        return __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'database';
     }
 
     /**
@@ -76,7 +76,7 @@ final class Path
      */
     public static function migration(): string
     {
-        return 'dist'.DIRECTORY_SEPARATOR.'database'.DIRECTORY_SEPARATOR.'migrations';
+        return __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'dist'.DIRECTORY_SEPARATOR.'database'.DIRECTORY_SEPARATOR.'migrations';
     }
 
     /**
@@ -88,7 +88,7 @@ final class Path
      */
     public static function resource(): string
     {
-        return 'resources';
+        return __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'resources';
     }
 
     /**
@@ -98,7 +98,7 @@ final class Path
      */
     public static function root(): string
     {
-        return '.';
+        return __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..';
     }
 
     /**
@@ -108,7 +108,7 @@ final class Path
      */
     public static function testBootstrap(): string
     {
-        return 'tests'.DIRECTORY_SEPARATOR.'Bootstrap';
+        return __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'tests'.DIRECTORY_SEPARATOR.'Bootstrap';
     }
 
     /**
@@ -120,6 +120,6 @@ final class Path
      */
     public static function testgen(): string
     {
-        return 'tests'.DIRECTORY_SEPARATOR.'Generate';
+        return __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'tests'.DIRECTORY_SEPARATOR.'Generate';
     }
 }
