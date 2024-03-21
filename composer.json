@@ -28,6 +28,8 @@
     "require-dev": {
         "fakerphp/faker": "^1.23",
         "laravel/pint": "^1.0",
+        "nunomaduro/collision": "^8.0",
+        "orchestra/testbench": "^6.0|^7.0|^8.0|^9.0",
         "phpunit/phpunit": "^9.0|^10.0|^11.0"
     },
     "suggest": {
@@ -53,6 +55,16 @@
         "preferred-install": "dist",
         "sort-packages": true
     },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Cable8mm\\Xeed\\Laravel\\XeedServiceProvider"
+            ],
+            "aliases": {
+                "Xeed": "Cable8mm\\Xeed\\Laravel\\XeedFacade"
+            }
+        }
+    },
     "minimum-stability": "stable",
     "prefer-stable": true,
     "scripts": {
@@ -60,6 +72,7 @@
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
         "test": "./vendor/bin/phpunit tests",
+        "testpack": "vendor/bin/testbench package:test",
         "testgen": "./vendor/bin/phpunit --testsuite Generator",
         "lint": "./vendor/bin/pint",
         "inspect": "./vendor/bin/pint --test",
