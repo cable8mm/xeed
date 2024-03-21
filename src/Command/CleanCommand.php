@@ -68,7 +68,7 @@ class CleanCommand extends Command
                     File::system()->delete($location);
 
                     $output->writeln($location.' was deleted.');
-                }, array_filter((array) glob($path.'*.php')));
+                }, array_filter((array) glob($path.DIRECTORY_SEPARATOR.'*.php')));
             } catch (FilesystemException|UnableToDeleteFile $exception) {
                 $output->writeln($exception->getMessage());
             }
