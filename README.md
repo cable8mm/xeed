@@ -34,6 +34,8 @@ We have provided the API Documentation on the web. For more information, please 
 
 Laravel:
 
+![Preview](https://github.com/cable8mm/cabinet/blob/main/xeed-laravel-preview.gif?raw=true)
+
 Standalone:
 
 ![Preview](https://github.com/cable8mm/cabinet/blob/main/xeed-preview.gif?raw=true)
