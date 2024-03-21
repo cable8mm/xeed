@@ -23,6 +23,6 @@ class GenerateSeedersCommandTest extends TestCase
     {
         $this->commandTester->execute([]);
 
-        $this->assertStringContainsString('php', trim($this->commandTester->getDisplay()));
+        $this->assertStringContainsString('generate-seeders command executed successfully.', trim($this->commandTester->getDisplay()));
     }
 }
