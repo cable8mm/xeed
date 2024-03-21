@@ -7,11 +7,15 @@
 [![Packagist Version](https://img.shields.io/packagist/v/cable8mm/xeed)](https://packagist.org/packages/cable8mm/xeed)
 [![Packagist Downloads](https://img.shields.io/packagist/dt/cable8mm/xeed)](https://packagist.org/packages/cable8mm/xeed/stats)
 [![Packagist Dependency Version](https://img.shields.io/packagist/dependency-v/cable8mm/xeed/php)](https://packagist.org/packages/cable8mm/xeed)
+![Laravel Version](https://img.shields.io/badge/Laravel-8.0%2B-FF2D20?logo=laravel&labelColor=white)
 ![Packagist Dependency Version](https://img.shields.io/packagist/dependency-v/cable8mm/xeed/symfony%2Fconsole)
 [![Packagist Stars](https://img.shields.io/packagist/stars/cable8mm/xeed)](https://github.com/cable8mm/xeed/stargazers)
 [![Packagist License](https://img.shields.io/packagist/l/cable8mm/xeed)](https://github.com/cable8mm/xeed/blob/main/LICENSE.md)
 
 The Xeed is to generate new model, seed, database seed, factory and migration files for Laravel based on data from the existing database table.
+
+> [!TIP]
+> It can function as both `artisan` commands and `standalone` commands, providing 100% identical functionality. Therefore, you can use it within your own Laravel project or as a standalone application.
 
 We have provided the API Documentation on the web. For more information, please visit https://www.palgle.com/xeed/ ❤️
 
@@ -24,9 +28,15 @@ We have provided the API Documentation on the web. For more information, please 
 - [x] Generate factories for Laravel
 - [x] Generate migrations for Laravel
 - [x] Laravel multi & reserved columns supported
-- [ ] Laravel integration
+- [x] Laravel integration
 
 ### Preview
+
+Laravel:
+
+![Preview](https://github.com/cable8mm/cabinet/blob/main/xeed-laravel-preview.gif?raw=true)
+
+Standalone:
 
 ![Preview](https://github.com/cable8mm/cabinet/blob/main/xeed-preview.gif?raw=true)
 
@@ -41,45 +51,77 @@ We have provided the API Documentation on the web. For more information, please 
 
 ## Installation
 
-```sh
-composer create-project cable8mm/xeed
+```shell tab=Laravel
+composer require cable8mm/xeed
+# For Laravel
 ```
 
-And edit the `.env` file to configure your own database. You can manually copy `.env.example` to `.env` whenever you need to.
+```shell tab=Standalone
+composer create-project cable8mm/xeed
+# For Standalone
+```
+
+> [!IMPORTANT]
+> Edit the `.env` file to configure your own database. You can manually copy `.env.example` to `.env` whenever you need to.
 
 ## Usage
 
 ### Generate `Models`
 
-```sh
+```shell tab=Laravel
+php artisan xeed:models
+# Generate all models from database in `app/Models` folder
+```
+
+```shell tab=Standalone
 bin/console models
 # Generate all models from database in `dist/app/Models` folder
 ```
 
 ### Generate `Seeders`
 
-```sh
+```shell tab=Laravel
+php artisan xeed:seeders
+# Generate all seeds from database in `database/seeders` folder
+```
+
+```shell tab=Standalone
 bin/console seeders
 # Generate all seeds from database in `dist/database/seeders` folder
 ```
 
 ### Generate `DatabaseSeeder`
 
-```sh
+```shell tab=Laravel
+php artisan xeed:database
+# Generate a database seed from database in `database/seeders` folder
+```
+
+```shell tab=Standalone
 bin/console database
 # Generate a database seed from database in `dist/database/seeders` folder
 ```
 
 ### Generate `Factories`
 
-```sh
+```shell tab=Laravel
+php artisan xeed:factories
+# Generate all factories from database in `database/factories' folder
+```
+
+```shell tab=Standalone
 bin/console factories
 # Generate all factories from database in `dist/database/factories' folder
 ```
 
 ### Generate `Migrations`
 
-```sh
+```shell tab=Laravel
+php artisan xeed:migrations
+# Generate all migrations from database in `database/migrations' folder
+```
+
+```shell tab=Standalone
 bin/console migrations
 # Generate all migrations from database in `dist/database/migrations' folder
 ```
@@ -90,7 +132,20 @@ The generated files are stored in the same folder as your Laravel project. Pleas
 
 If you are going to test this package yourself, then you would use the following commands to clean up generated files.
 
-```sh
+```shell tab=Laravel
+php artisan xeed:clean
+# Clean generated files, seeders, models, factories and migration files.
+#=> Refer the below
+Please select directory for you to want to clean.
+  [0] seeder
+  [1] model
+  [2] factory
+  [3] migration
+  [4] all
+  [5] exit
+```
+
+```shell tab=Standalone
 bin/console clean
 # Clean generated files, seeders, models, factories and migration files.
 #=> Refer the below
@@ -105,7 +160,7 @@ Please select directory for you to want to clean.
 
 ### Formatting
 
-```bash
+```shell
 composer lint
 # Modify all files to comply with the PSR-12.
 
@@ -117,12 +172,14 @@ composer inspect
 
 It uses the built-in SQLite database, not your own database. It will never cause harm to your data. You don't need to worry about that.
 
-```sh
-composer test
-# All tests
+```shell tab=Laravel
+composer testpack
+# All tests with Laravel artisan commands
+```
 
-composer testgen
-# All generator tests
+```shell tab=Standalone
+composer test
+# All tests without Laravel artisan commands
 ```
 
 ### Changelog
@@ -137,14 +194,14 @@ The below can help you contribute.
 
 The Xeed has a built-in SQLite database, allowing you to contribute easily without needing your own database. Simply create a new file for testing purposes and utilize it.
 
-```sh
+```shell
 touch database/database.sqlite
 # Create a new empty file for SQLite database
 ```
 
 And then,
 
-```sh
+```shell
 composer test
 # Run tests
 ```
@@ -153,7 +210,15 @@ composer test
 
 For migrations and factories, when you need to execute tests for all database field types, utilize the following command.
 
-```sh
+```shell tab=Laravel
+php artisan xeed
+# Import an 'xeeds' Table into the Database
+
+php artisan xeed drop
+# Drop the 'xeeds' Table from the Database
+```
+
+```shell tab=Standalone
 bin/console xeed
 # Import an 'xeeds' Table into the Database
 
