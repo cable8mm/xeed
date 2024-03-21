@@ -52,7 +52,7 @@ Standalone:
 ## Installation
 
 ```shell tab=Laravel
-composer require cable8mm/xeed
+composer require cable8mm/xeed --dev
 # For Laravel
 ```
 
