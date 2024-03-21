@@ -40,9 +40,9 @@ class GenerateDatabaseSeederCommand extends Command
                 destination: database_path('seeders')
             )->run(force: $force);
 
-            $this->info(database_path('seeders').'DatabaseSeeder.php seeder have been generated.');
+            $this->info(database_path('seeders').DIRECTORY_SEPARATOR.'DatabaseSeeder.php seeder have been generated.');
         } catch (\Exception $e) {
-            $this->error(database_path('seeders').'DatabaseSeeder.php seeder file already exists.');
+            $this->error(database_path('seeders').DIRECTORY_SEPARATOR.'DatabaseSeeder.php seeder file already exists.');
         }
 
         return Command::SUCCESS;

@@ -42,7 +42,9 @@
     "autoload": {
         "psr-4": {
             "Cable8mm\\Xeed\\": "src/",
-            "Cable8mm\\Xeed\\Database\\": "database/"
+            "App\\Models\\": "dist/app/Models/",
+            "Database\\Factories\\": "dist/database/factories/",
+            "Database\\Seeders\\": "dist/database/seeders/"
         }
     },
     "autoload-dev": {
