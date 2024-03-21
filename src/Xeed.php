@@ -83,6 +83,10 @@ final class Xeed implements ArrayAccess
     {
         $this->pdo = $pdo;
 
+        $this->driver = $pdo->getAttribute(PDO::ATTR_DRIVER_NAME);
+
+        $this->provider = new (__NAMESPACE__.'\\Provider\\'.ucfirst($this->driver).'Provider');
+
         return $this;
     }
 
