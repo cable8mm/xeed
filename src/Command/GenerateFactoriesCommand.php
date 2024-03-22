@@ -56,7 +56,7 @@ class GenerateFactoriesCommand extends Command
                 FactoryGenerator::make($table)->run(force: $force);
 
                 $output->writeln('<info>'.Path::factory().DIRECTORY_SEPARATOR.$table->factory().'.php have been generated.'.'</info>');
-            } catch (\Exception $e) {
+            } catch (\RuntimeException $e) {
                 $output->writeln('<error>'.Path::factory().DIRECTORY_SEPARATOR.$table->factory().'.php file already exists.'.'<error>');
             }
         }

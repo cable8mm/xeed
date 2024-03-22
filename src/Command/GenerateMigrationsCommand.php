@@ -59,7 +59,7 @@ class GenerateMigrationsCommand extends Command
                 )->run(force: $force);
 
                 $output->writeln('<info>'.Path::migration().DIRECTORY_SEPARATOR.$table->migration().' has been generated.'.'</info>');
-            } catch (\Exception $e) {
+            } catch (\RuntimeException $e) {
                 $output->writeln('<error>'.Path::migration().DIRECTORY_SEPARATOR.$table->migration().'.php file already exists.'.'</error>');
             }
         }

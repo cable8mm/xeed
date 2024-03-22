@@ -56,7 +56,7 @@ class GenerateSeedersCommand extends Command
                 SeederGenerator::make($table)->run(force: $force);
 
                 $output->writeln('<info>'.Path::seeder().DIRECTORY_SEPARATOR.$table->seeder().'.php have been generated.'.'</info>');
-            } catch (\Exception $e) {
+            } catch (\RuntimeException $e) {
                 $output->writeln('<error>'.Path::seeder().DIRECTORY_SEPARATOR.$table->seeder().'.php file already exists.'.'</error>');
             }
         }

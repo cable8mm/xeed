@@ -56,7 +56,7 @@ class GenerateModelsCommand extends Command
                 ModelGenerator::make($table)->run(force: $force);
 
                 $output->writeln('<info>'.Path::model().DIRECTORY_SEPARATOR.$table->model().'.php have been generated.'.'</info>');
-            } catch (\Exception $e) {
+            } catch (\RuntimeException $e) {
                 $output->writeln('<error>'.Path::model().DIRECTORY_SEPARATOR.$table->model().'.php file already exists.'.'</error>');
             }
         }
