@@ -29,7 +29,11 @@ final class PgsqlProvider implements ProviderInterface
         foreach ($tables as $table) {
             $columns = $xeed->pdo->query('SELECT * FROM information_schema.columns WHERE table_schema = \'public\' AND table_name = \''.$table.'\'')->fetchAll(PDO::FETCH_ASSOC);
 
-            $primaryKeys = $xeed->pdo->query('SELECT a.attname AS column_name FROM   pg_index i JOIN   pg_attribute a ON a.attrelid = i.indrelid AND a.attnum = ANY(i.indkey) WHERE i.indrelid = \''.$table.'\'::regclass AND i.indisprimary')->fetchAll(PDO::FETCH_COLUMN);
+            try {
+                $primaryKeys = $xeed->pdo->query('SELECT a.attname AS column_name FROM pg_index i JOIN pg_attribute a ON a.attrelid = i.indrelid AND a.attnum = ANY(i.indkey) WHERE i.indrelid = \''.$table.'\'::regclass AND i.indisprimary')->fetchAll(PDO::FETCH_COLUMN);
+            } catch (\PDOException $e) {
+                $primaryKeys = [];
+            }
 
             $tableColumns = array_map(
                 function (array $column) use ($primaryKeys) {
@@ -50,13 +54,13 @@ final class PgsqlProvider implements ProviderInterface
      */
     public static function map(array $column, ?string $table = null, ?Xeed $xeed = null): array
     {
-        $bracket = ! empty($column['numeric_precision']) ? '('.$column['numeric_precision'].', '.$column['numeric_precision_radix'].')' : '';
+        $bracket = ! empty($column['numeric_precision']) ? '('.$column['numeric_precision'].', '.$column['numeric_precision_radix'].')' : null;
 
         $primaryKey = $column['primary_key'];
 
         $autoIncrement = isset($column['column_default']) ? str_contains($column['column_default'], 'nextval') : false;
 
-        $notNull = $column['is_nullable'] !== 'NO';
+        $notNull = $column['is_nullable'] === 'NO';
 
         $unsigned = false;
 
