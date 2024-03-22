@@ -30,6 +30,16 @@ Xeed는 기존 데이터베이스 테이블에서 가져온 데이터를 기반�
 - [x] Laravel 통합
 - [x] MySQL, SQLite 그리고 PostgreSQL 지원
 
+### 지원 및 테스트
+
+![MySQL 지원](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white)
+![SQLite 지원](https://img.shields.io/badge/SQLite-07405e?logo=sqlite&logoColor=white)
+![PostgreSQL 지원](https://img.shields.io/badge/PostgreSQL-Beta-316192?&logo=postgresql&logoColor=white)
+![PHP 8.0.2+ 지원](https://img.shields.io/badge/PHP-8.0.2%2B-777BB4?logo=php&logoColor=white)
+![PHP 8.1.0+ 지원](https://img.shields.io/badge/PHP-8.1.0%2B-777BB4?logo=php&logoColor=white)
+![PHP 8.2.0+ 지원](https://img.shields.io/badge/PHP-8.2.0%2B-777BB4?logo=php&logoColor=white)
+![PHP 8.3.0+ 지원](https://img.shields.io/badge/PHP-8.3.0%2B-777BB4?logo=php&logoColor=white)
+
 > [!CAUTION]
 > PostgreSQL은 Beta 지원이며, 문제가 발생할 경우 깃헙 이슈를 통해서 리포팅 해 주세요.
 
@@ -42,15 +52,6 @@ Laravel:
 Standalone:
 
 ![Preview](https://github.com/cable8mm/cabinet/blob/main/xeed-preview.gif?raw=true)
-
-### 지원 및 테스트
-
-![MySQL 지원](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white)
-![SQLite 지원](https://img.shields.io/badge/SQLite-07405e?logo=sqlite&logoColor=white)
-![PHP 8.0.2+ 지원](https://img.shields.io/badge/PHP-8.0.2%2B-777BB4?logo=php&logoColor=white)
-![PHP 8.1.0+ 지원](https://img.shields.io/badge/PHP-8.1.0%2B-777BB4?logo=php&logoColor=white)
-![PHP 8.2.0+ 지원](https://img.shields.io/badge/PHP-8.2.0%2B-777BB4?logo=php&logoColor=white)
-![PHP 8.3.0+ 지원](https://img.shields.io/badge/PHP-8.3.0%2B-777BB4?logo=php&logoColor=white)
 
 ## 설치
 
