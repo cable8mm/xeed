@@ -103,7 +103,7 @@ final class File
 
         array_map(function ($location) {
             $this->delete($location);
-        }, array_filter((array) glob($path.'*.'.$ext)));
+        }, array_filter((array) glob($path.DIRECTORY_SEPARATOR.'*.'.$ext)));
     }
 
     /**
