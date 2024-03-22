@@ -56,5 +56,9 @@ final class DecimalResolverTest extends TestCase
         if ($this->driver == 'sqlite') {
             $this->assertEquals('$table->decimal(\''.$resolver->field.'\');', $resolver->migration());
         }
+
+        if ($this->driver == 'pgsql') {
+            $this->assertEquals('$table->decimal(\''.$resolver->field.'\', 8, 10);', $resolver->migration());
+        }
     }
 }

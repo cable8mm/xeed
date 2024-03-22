@@ -56,5 +56,9 @@ final class UnsignedBigIntegerResolverTest extends TestCase
         if ($this->driver == 'sqlite') {
             $this->assertEquals('$table->bigInteger(\''.$resolver->field.'\');', $resolver->migration());
         }
+
+        if ($this->driver == 'pgsql') {
+            $this->assertEquals('$table->bigInteger(\''.$resolver->field.'\');', $resolver->migration());
+        }
     }
 }

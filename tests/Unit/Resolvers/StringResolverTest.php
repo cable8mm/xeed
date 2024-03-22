@@ -56,5 +56,9 @@ final class StringResolverTest extends TestCase
         if ($this->driver == 'sqlite') {
             $this->assertEquals('$table->string(\''.$resolver->field.'\');', $resolver->migration());
         }
+
+        if ($this->driver == 'pgsql') {
+            $this->assertEquals('$table->string(\''.$resolver->field.'\');', $resolver->migration());
+        }
     }
 }

@@ -49,12 +49,6 @@ final class IntegerResolverTest extends TestCase
     {
         $resolver = new IntegerResolver($this->column);
 
-        if ($this->driver == 'mysql') {
-            $this->assertEquals('$table->integer(\''.$resolver->field.'\');', $resolver->migration());
-        }
-
-        if ($this->driver == 'sqlite') {
-            $this->assertEquals('$table->integer(\''.$resolver->field.'\');', $resolver->migration());
-        }
+        $this->assertEquals('$table->integer(\''.$resolver->field.'\');', $resolver->migration());
     }
 }

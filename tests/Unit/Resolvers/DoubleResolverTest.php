@@ -54,6 +54,10 @@ final class DoubleResolverTest extends TestCase
             $this->assertEquals('$table->double(\'double\', 8, 2);', $resolver->migration());
         }
 
+        if ($this->driver === 'pgsql') {
+            $this->assertEquals('$table->double(\'double\', 53, 2);', $resolver->migration());
+        }
+
         if ($this->driver === 'sqlite') {
             $this->assertEquals('$table->double(\'double\');', $resolver->migration());
         }

@@ -56,5 +56,9 @@ final class VarcharResolverTest extends TestCase
         if ($this->driver == 'sqlite') {
             $this->assertEquals('$table->string(\'string\');', $resolver->migration());
         }
+
+        if ($this->driver == 'pgsql') {
+            $this->assertEquals('$table->string(\'string\');', $resolver->migration());
+        }
     }
 }
