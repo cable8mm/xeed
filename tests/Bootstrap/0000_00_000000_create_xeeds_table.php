@@ -22,7 +22,7 @@ return new class extends Migration
             $table->date('date');
             $table->decimal('decimal', 8, 2);
             $table->double('double');
-            $table->enum('enum', ['easy','hard']);
+            $table->enum('enum', ['easy', 'hard']);
             $table->float('float');
             $table->foreignId('foreign_id');
             $table->foreignUlid('foreign_ulid');
