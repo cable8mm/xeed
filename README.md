@@ -29,6 +29,10 @@ We have provided the API Documentation on the web. For more information, please 
 - [x] Generate migrations for Laravel
 - [x] Laravel multi & reserved columns supported
 - [x] Laravel integration
+- [x] MySQL, SQLite and PostgreSQL supported
+
+> [!CAUTION]
+> PostgreSQL support is in beta. If you encounter any issues, please report them via GitHub issues.
 
 ### Preview
 
