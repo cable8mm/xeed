@@ -1,5 +1,16 @@
 # Release Notes
 
+## v1.1.0 - 2024-03-22
+
+### What's Changed
+
+* Fix the install instructions(thank you  hotsaucejake) by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/54
+* Rename `laravel` to `for Laravel` by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/55
+* Include PostgreSQL driver by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/56
+* Add PostgreSQL badge in the README by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/57
+
+**Full Changelog**: https://github.com/cable8mm/xeed/compare/v1.0.1...v1.1.0
+
 ## v1.0.1 - 2024-03-21
 
 ### What's Changed
