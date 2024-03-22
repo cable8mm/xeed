@@ -5,6 +5,7 @@ namespace Cable8mm\Xeed;
 use ArrayAccess;
 use Cable8mm\Xeed\Interfaces\ProviderInterface;
 use Cable8mm\Xeed\Support\Path;
+use Exception;
 use InvalidArgumentException;
 use PDO;
 
@@ -16,7 +17,7 @@ final class Xeed implements ArrayAccess
     /**
      * Singleton Instance.
      */
-    private static $instance = null;
+    private static ?Xeed $instance = null;
 
     /**
      * PDO Instance.
@@ -41,6 +42,14 @@ final class Xeed implements ArrayAccess
     private ProviderInterface $provider;
 
     /**
+     * is not allowed to call from outside to prevent from creating multiple instances,
+     * to use the singleton, you have to obtain the instance from Xeed::getInstance() instead
+     */
+    private function __construct()
+    {
+    }
+
+    /**
      * Establish connection
      *
      * @param  array  $connection  The elements of the connection array.($driver, $database, $host, $port, $username, $password)
@@ -56,19 +65,30 @@ final class Xeed implements ArrayAccess
 
         $this->driver = $connection['driver'];
 
-        if ($connection['driver'] === 'sqlite') {
-            $dns = $connection['driver'].':'.($database ?? Path::database().DIRECTORY_SEPARATOR.'database.sqlite');
+        switch ($connection['driver']) {
+            case 'sqlite':
+                $dns = $connection['driver'].':'.($database ?? Path::database().DIRECTORY_SEPARATOR.'database.sqlite');
 
-            $this->pdo = new PDO($dns, options: $options);
-        }
+                $this->pdo = new PDO($dns);
+                break;
 
-        if (in_array($connection['driver'], ['mysql', 'pgsql'])) {
-            $dns = $connection['driver'].
-                ':host='.
-                $connection['host'].
-                ((! empty($connection['port'])) ? (';port='.$connection['port']) : '').';dbname='.$connection['database'];
+            case 'mysql':
+                $dns = $connection['driver'].
+                    ':host='.
+                    $connection['host'].
+                    ((! empty($connection['port'])) ? (';port='.$connection['port']) : '').';dbname='.$connection['database'];
 
-            $this->pdo = new PDO($dns, $connection['username'], $connection['password'], $options);
+                $this->pdo = new PDO($dns, $connection['username'], $connection['password'], $options);
+                break;
+
+            case 'pgsql':
+                $dns = $connection['driver'].
+                    ':host='.
+                    $connection['host'].
+                    ((! empty($connection['port'])) ? (';port='.$connection['port']) : '').';dbname='.$connection['database'].';';
+
+                $this->pdo = new PDO($dns, $connection['username'], $connection['password']);
+                break;
         }
 
         return $this;
@@ -119,6 +139,21 @@ final class Xeed implements ArrayAccess
         }
 
         return self::$instance;
+    }
+
+    /**
+     * prevent the instance from being cloned (which would create a second instance of it)
+     */
+    private function __clone()
+    {
+    }
+
+    /**
+     * prevent from being unserialized (which would create a second instance of it)
+     */
+    public function __wakeup()
+    {
+        throw new Exception('Cannot unserialize singleton');
     }
 
     /**

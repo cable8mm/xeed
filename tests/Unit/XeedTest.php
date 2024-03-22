@@ -8,28 +8,15 @@ use PHPUnit\Framework\TestCase;
 
 final class XeedTest extends TestCase
 {
-    private Seeder $seeder;
-
-    protected function setUp(): void
-    {
-        $dotenv = \Dotenv\Dotenv::createImmutable(getcwd());
-        $dotenv->safeLoad();
-
-        $this->seeder = new Seeder();
-
-        $this->seeder->run();
-    }
-
-    protected function tearDown(): void
-    {
-        $this->seeder->dropTables();
-    }
-
     public function test_db_instance_can_be_created(): void
     {
+        ($seeder = new Seeder())->run();
+
         $xeed = Xeed::getNewInstance();
 
-        $this->assertInstanceOf(Xeed::class, $xeed);
+        $this->assertInstanceOf(\Cable8mm\Xeed\Xeed::class, $xeed);
+
+        $seeder->dropTables();
     }
 
     public function test_can_be_connected_to_database(): void
@@ -48,6 +35,8 @@ final class XeedTest extends TestCase
 
     public function test_seeder_can_make_seeds(): void
     {
+        ($seeder = new Seeder())->run();
+
         $xeed = Xeed::getInstance();
 
         $sql = 'SELECT * FROM '.Seeder::TABLE;
@@ -56,15 +45,21 @@ final class XeedTest extends TestCase
 
         $users = $result->fetchAll();
 
+        $seeder->dropTables();
+
         $this->assertEquals(Seeder::TOTAL, count($users));
     }
 
     public function test_getTable_method_can_work_well(): void
     {
+        ($seeder = new Seeder())->run();
+
         $xeed = Xeed::getNewInstance()->attach();
 
         $table = $xeed->getTable(Seeder::TABLE);
 
         $this->assertEquals(Seeder::TABLE, $table);
+
+        $seeder->dropTables();
     }
 }
