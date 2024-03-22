@@ -28,6 +28,10 @@ Xeed는 기존 데이터베이스 테이블에서 가져온 데이터를 기반�
 - [x] Laravel을 위한 마이그레이션 생성
 - [x] Laravel 다중 및 예약된 열 지원
 - [x] Laravel 통합
+- [x] MySQL, SQLite 그리고 PostgreSQL 지원
+
+> [!CAUTION]
+> PostgreSQL은 Beta 지원이며, 문제가 발생할 경우 깃헙 이슈를 통해서 리포팅 해 주세요.
 
 ### 미리보기
 

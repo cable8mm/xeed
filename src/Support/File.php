@@ -29,6 +29,23 @@ final class File
     }
 
     /**
+     * Read a sql file without comments.
+     *
+     * @return string The method returns the string representation without comments.
+     *
+     * @throws \League\Flysystem\UnableToWriteFile
+     * @throws \League\Flysystem\FilesystemException
+     */
+    public function readSql(string $location): string
+    {
+        $body = self::$filesystem->read($location);
+
+        $body = preg_replace('/^--.*?$/m', '', $body);
+
+        return preg_replace('/^\s*?$\n/m', '', $body);
+    }
+
+    /**
      * Write a content to a file.
      *
      * @param  bool  $force  Whether to force writing of the file or not (default false)
@@ -86,7 +103,7 @@ final class File
 
         array_map(function ($location) {
             $this->delete($location);
-        }, array_filter((array) glob($path.'*.'.$ext)));
+        }, array_filter((array) glob($path.DIRECTORY_SEPARATOR.'*.'.$ext)));
     }
 
     /**

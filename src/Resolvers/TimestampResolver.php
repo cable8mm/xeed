@@ -31,7 +31,7 @@ class TimestampResolver extends Resolver
         // TODO: $table->timestampTz('added_at', $precision = 0);
         // TODO: $table->timestampsTz($precision = 0);
         // TODO: $table->timestamps($precision = 0);
-        $bracket = Bracket::of($this->column->bracket)->to(0);
+        $bracket = Bracket::of($this->column->bracket)->to('0');
         // TODO: $table->timeTz('sunrise', $precision = 0);
 
         if ($this->column->field === 'deleted_at' && ! $this->column->notNull) {

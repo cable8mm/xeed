@@ -56,5 +56,9 @@ final class CharResolverTest extends TestCase
         if ($this->driver === 'sqlite') {
             $this->assertEquals('$table->char(\'char\');', $resolver->migration());
         }
+
+        if ($this->driver === 'pgsql') {
+            $this->assertEquals('$table->char(\'char\');', $resolver->migration());
+        }
     }
 }

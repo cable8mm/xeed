@@ -49,12 +49,6 @@ final class BigintResolverTest extends TestCase
     {
         $resolver = new BigintResolver($this->column);
 
-        if ($this->driver == 'mysql') {
-            $this->assertEquals('$table->bigInteger(\''.$resolver->field.'\');', $resolver->migration());
-        }
-
-        if ($this->driver == 'sqlite') {
-            $this->assertEquals('$table->bigInteger(\''.$resolver->field.'\');', $resolver->migration());
-        }
+        $this->assertEquals('$table->bigInteger(\''.$resolver->field.'\');', $resolver->migration());
     }
 }

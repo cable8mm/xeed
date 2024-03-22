@@ -56,5 +56,9 @@ final class UnsignedTinyIntegerResolverTest extends TestCase
         if ($this->driver == 'sqlite') {
             $this->assertEquals('$table->tinyInteger(\''.$resolver->field.'\');', $resolver->migration());
         }
+
+        if ($this->driver == 'pgsql') {
+            $this->assertEquals('$table->tinyInteger(\''.$resolver->field.'\');', $resolver->migration());
+        }
     }
 }

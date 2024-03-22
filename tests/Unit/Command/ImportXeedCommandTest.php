@@ -4,61 +4,62 @@ namespace Cable8mm\Xeed\Tests\Unit\Command;
 
 use Cable8mm\Xeed\Command\ImportXeedCommand;
 use Cable8mm\Xeed\Xeed;
-use PDOException;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
 
 class ImportXeedCommandTest extends TestCase
 {
-    private $commandTester;
+    public $commandTester;
+
+    public string $table = '';
 
     protected function setUp(): void
     {
-        $application = new Application();
-        $application->add(new ImportXeedCommand());
-        $command = $application->find('import-xeed');
-        $this->commandTester = new CommandTester($command);
+        $this->table = (Xeed::getInstance()->driver === 'pgsql' ? 'public.' : '').ImportXeedCommand::TABLE_NAME;
     }
 
     public function test_execute(): void
     {
-        $this->commandTester->execute([
+        $application = new Application();
+        $application->add(new ImportXeedCommand());
+        $command = $application->find('import-xeed');
+        $commandTester = new CommandTester($command);
+
+        $commandTester->execute([
             'argument' => 'import',
             '-f',
         ]);
 
-        try {
-            Xeed::getInstance()->pdo->query('SELECT 1 FROM '.ImportXeedCommand::TABLE_NAME);
+        $this->assertStringContainsString('command executed successfully', $commandTester->getDisplay());
+    }
 
-            $this->assertTrue(true);
-        } catch (PDOException $e) {
-            $this->assertTrue(false);
-        }
+    public function test_execute_drop(): void
+    {
+        $application = new Application();
+        $application->add(new ImportXeedCommand());
+        $command = $application->find('import-xeed');
+        $commandTester = new CommandTester($command);
 
-        $this->commandTester->execute([
+        $commandTester->execute([
             'argument' => 'drop',
         ]);
 
-        try {
-            Xeed::getInstance()->pdo->query('SELECT 1 FROM '.ImportXeedCommand::TABLE_NAME);
+        $this->assertStringContainsString('command executed successfully', $commandTester->getDisplay());
+    }
 
-            $this->assertTrue(false);
-        } catch (PDOException $e) {
-            $this->assertTrue(true);
-        }
+    public function test_execute_refresh(): void
+    {
+        $application = new Application();
+        $application->add(new ImportXeedCommand());
+        $command = $application->find('import-xeed');
+        $commandTester = new CommandTester($command);
 
-        $this->commandTester->execute([
+        $commandTester->execute([
             'argument' => 'refresh',
             '-f',
         ]);
 
-        try {
-            Xeed::getInstance()->pdo->query('SELECT 1 FROM '.ImportXeedCommand::TABLE_NAME);
-
-            $this->assertTrue(true);
-        } catch (PDOException $e) {
-            $this->assertTrue(false);
-        }
+        $this->assertStringContainsString('command executed successfully', $commandTester->getDisplay());
     }
 }

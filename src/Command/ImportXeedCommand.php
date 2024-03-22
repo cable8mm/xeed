@@ -67,20 +67,30 @@ class ImportXeedCommand extends Command
         if ($argument === 'drop' || $argument === 'refresh') {
             $sql = 'DROP TABLE IF EXISTS '.self::TABLE_NAME;
 
-            $xeed->pdo->exec($sql);
-
-            $output->writeln('`'.self::TABLE_NAME.'` table was dropped.');
+            if ($xeed->pdo->exec($sql) !== false) {
+                $output->writeln('`'.self::TABLE_NAME.'` table was successfully dropped.');
+            } else {
+                $output->writeln('`'.self::TABLE_NAME.'` table failed to drop.');
+            }
         }
 
         if ($argument === 'import' || $argument === 'refresh') {
             $filename = Path::database().DIRECTORY_SEPARATOR.self::TABLE_NAME.'.'.$xeed->driver.'.sql';
 
-            $sql = File::system()->read($filename);
+            switch ($xeed->driver) {
+                case 'pgsql':
+                    $sql = File::system()->readSql($filename);
+                    break;
+                default:
+                    $sql = File::system()->read($filename);
+                    break;
+            }
 
-            $xeed->pdo->exec($sql);
-
-            $output->writeln($filename.' was imported.');
-
+            if ($xeed->pdo->exec($sql) !== false) {
+                $output->writeln($filename.' was imported.');
+            } else {
+                $output->writeln($filename.' wasn\'t imported.');
+            }
         }
 
         $output->writeln('<info>import-xeed</info> command executed successfully.');

@@ -56,5 +56,9 @@ final class FloatResolverTest extends TestCase
         if ($this->driver === 'sqlite') {
             $this->assertEquals('$table->float(\'float\');', $resolver->migration());
         }
+
+        if ($this->driver == 'pgsql') {
+            $this->assertEquals('$table->float(\'float\', 24, 2);', $resolver->migration());
+        }
     }
 }

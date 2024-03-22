@@ -14,6 +14,14 @@
     <php>
         <env name="DB_CONNECTION" value="sqlite" />
         <env name="DB_DATABASE" value="tests/Generate/database.sqlite" />
+
+        <!-- <env name="DB_CONNECTION" value="pgsql" />
+        <env name="DB_HOST" value="127.0.0.1" />
+        <env name="DB_PORT" value="5432" />
+        <env name="DB_DATABASE" value="xeed" />
+        <env name="DB_USERNAME" value="postgres" />
+        <env name="DB_PASSWORD" value="" /> -->
+
         <!-- <env name="DB_CONNECTION" value="mysql" />
         <env name="DB_HOST" value="127.0.0.1" />
         <env name="DB_PORT" value="3306" />
