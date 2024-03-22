@@ -31,7 +31,7 @@ final class Xeed implements ArrayAccess
     /**
      * Array of available databases.
      */
-    public const AVAILABLE_DATABASES = ['mysql', 'sqlite'];
+    public const AVAILABLE_DATABASES = ['mysql', 'sqlite', 'pgsql'];
 
     /**
      * @var array<\Cable8mm\Xeed\Table> Table array.
@@ -62,7 +62,7 @@ final class Xeed implements ArrayAccess
             $this->pdo = new PDO($dns, options: $options);
         }
 
-        if ($connection['driver'] === 'mysql') {
+        if (in_array($connection['driver'], ['mysql', 'pgsql'])) {
             $dns = $connection['driver'].
                 ':host='.
                 $connection['host'].

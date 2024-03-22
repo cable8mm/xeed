@@ -4,11 +4,13 @@ namespace Cable8mm\Xeed;
 
 use Cable8mm\Xeed\Interfaces\ResolverInterface;
 use Cable8mm\Xeed\Resolvers\BigintResolver;
+use Cable8mm\Xeed\Resolvers\BinaryResolver;
 use Cable8mm\Xeed\Resolvers\BlobResolver;
 use Cable8mm\Xeed\Resolvers\BoolResolver;
 use Cable8mm\Xeed\Resolvers\CharResolver;
 use Cable8mm\Xeed\Resolvers\DateResolver;
 use Cable8mm\Xeed\Resolvers\DatetimeResolver;
+use Cable8mm\Xeed\Resolvers\DateTimeTzResolver;
 use Cable8mm\Xeed\Resolvers\DecimalResolver;
 use Cable8mm\Xeed\Resolvers\DoubleResolver;
 use Cable8mm\Xeed\Resolvers\EnumResolver;
@@ -31,6 +33,7 @@ use Cable8mm\Xeed\Resolvers\SmallintResolver;
 use Cable8mm\Xeed\Resolvers\TextResolver;
 use Cable8mm\Xeed\Resolvers\TimeResolver;
 use Cable8mm\Xeed\Resolvers\TimestampResolver;
+use Cable8mm\Xeed\Resolvers\TimeTzResolver;
 use Cable8mm\Xeed\Resolvers\TinyintResolver;
 use Cable8mm\Xeed\Resolvers\TinytextResolver;
 use Cable8mm\Xeed\Resolvers\UlidResolver;
@@ -64,11 +67,15 @@ final class ResolverSelector
             return new BigintResolver($column);
         }
 
+        if ($column->type == 'binary' || $column->type == 'bytea') {
+            return new BinaryResolver($column);
+        }
+
         if ($column->type == 'blob') {
             return new BlobResolver($column);
         }
 
-        if ($column->type == 'tinyint' && $column->bracket == '1') {
+        if (($column->type == 'tinyint' && $column->bracket == '1') || $column->type == 'boolean') {
             return new BoolResolver($column);
         }
 
@@ -76,7 +83,7 @@ final class ResolverSelector
             return new UlidResolver($column);
         }
 
-        if ($column->type == 'char' && $column->bracket == '36') {
+        if (($column->type == 'char' && $column->bracket == '36') || $column->type == 'uuid') {
             return new UuidResolver($column);
         }
 
@@ -84,7 +91,11 @@ final class ResolverSelector
             return new CharResolver($column);
         }
 
-        if ($column->type == 'datetime') {
+        if ($column->type == 'timestamp with time zone') {
+            return new DateTimeTzResolver($column);
+        }
+
+        if ($column->type == 'datetime' || $column->type == 'timestamp without time zone') {
             return new DatetimeResolver($column);
         }
 
@@ -100,15 +111,15 @@ final class ResolverSelector
             return new NumericResolver($column);
         }
 
-        if ($column->type == 'double') {
+        if ($column->type == 'double' || $column->type == 'double precision') {
             return new DoubleResolver($column);
         }
 
-        if ($column->type == 'float') {
+        if ($column->type == 'float' || $column->type == 'real') {
             return new FloatResolver($column);
         }
 
-        if ($column->type == 'geometry') {
+        if ($column->type == 'geometry' || $column->type == 'user-defined') {
             return new GeometryResolver($column);
         }
 
@@ -120,7 +131,7 @@ final class ResolverSelector
             return new IntegerResolver($column);
         }
 
-        if ($column->type == 'varchar' && $column->bracket == '45') {
+        if (($column->type == 'varchar' && $column->bracket == '45') || $column->type == 'inet') {
             return new InetResolver($column);
         }
 
@@ -136,7 +147,7 @@ final class ResolverSelector
             return new LongtextResolver($column);
         }
 
-        if ($column->type == 'varchar' && $column->bracket == '17') {
+        if (($column->type == 'varchar' && $column->bracket == '17') || $column->type == 'macaddr') {
             return new MacaddressResolver($column);
         }
 
@@ -156,7 +167,7 @@ final class ResolverSelector
             return new SmallintResolver($column);
         }
 
-        if ($column->type == 'varchar') {
+        if ($column->type == 'varchar' || $column->type == 'character varying' || $column->type == 'character') {
             return new VarcharResolver($column);
         }
 
@@ -164,8 +175,12 @@ final class ResolverSelector
             return new TextResolver($column);
         }
 
-        if ($column->type == 'time') {
+        if ($column->type == 'time' || $column->type == 'time without time zone') {
             return new TimeResolver($column);
+        }
+
+        if ($column->type == 'time with time zone') {
+            return new TimeTzResolver($column);
         }
 
         if ($column->type == 'timestamp') {
