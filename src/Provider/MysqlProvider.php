@@ -16,9 +16,11 @@ final class MysqlProvider implements ProviderInterface
     /**
      * {@inheritDoc}
      */
-    public function attach(Xeed $xeed): void
+    public function attach(Xeed $xeed, ?string $table = null): void
     {
-        $tables = $xeed->pdo->query('SHOW TABLES')->fetchAll(PDO::FETCH_COLUMN);
+        $tables = is_null($table)
+            ? $xeed->pdo->query('SHOW TABLES')->fetchAll(PDO::FETCH_COLUMN)
+            : [$table];
 
         foreach ($tables as $table) {
             $columns = $xeed->pdo->query('SHOW COLUMNS FROM '.$table)->fetchAll(PDO::FETCH_ASSOC);

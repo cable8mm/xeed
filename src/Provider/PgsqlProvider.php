@@ -16,9 +16,11 @@ final class PgsqlProvider implements ProviderInterface
     /**
      * {@inheritDoc}
      */
-    public function attach(Xeed $xeed): void
+    public function attach(Xeed $xeed, ?string $table = null): void
     {
-        $tables = $xeed->pdo->query('SELECT table_name FROM information_schema.tables WHERE table_schema = \'public\' ORDER BY table_name')->fetchAll(PDO::FETCH_COLUMN);
+        $tables = is_null($table)
+            ? $xeed->pdo->query('SELECT table_name FROM information_schema.tables WHERE table_schema = \'public\' ORDER BY table_name')->fetchAll(PDO::FETCH_COLUMN)
+            : [$table];
 
         $tables = array_diff($tables, [
             'geography_columns',
