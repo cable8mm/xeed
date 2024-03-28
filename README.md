@@ -17,7 +17,7 @@ The Xeed is to generate new model, seed, database seed, factory and migration fi
 > [!TIP]
 > It can function as both `php artisan xeed:*` commands for Laravel and `bin/console *` commands for Standalone, providing 100% identical functionality. Therefore, you can use it within your own Laravel project or as a standalone application.
 
-We have provided the API Documentation on the web. For more information, please visit https://www.palgle.com/xeed/ ❤️
+We have provided the API Documentation on the web. For more information, please visit <https://www.palgle.com/xeed/> ❤️
 
 ### Features
 
@@ -76,11 +76,17 @@ composer create-project cable8mm/xeed
 ```shell tab=Laravel
 php artisan xeed:models
 # Generate all models from database in `app/Models` folder
+
+php artisan xeed:models -f -t xeeds
+# Force to generate a model from `xeeds` table in `app/Models` folder
 ```
 
 ```shell tab=Standalone
 bin/console models
 # Generate all models from database in `dist/app/Models` folder
+
+bin/console models -f -t xeeds
+# Force to generate a model from `xeeds` table in `app/Models` folder
 ```
 
 ### Generate `Seeders`
@@ -88,11 +94,17 @@ bin/console models
 ```shell tab=Laravel
 php artisan xeed:seeders
 # Generate all seeds from database in `database/seeders` folder
+
+php artisan xeed:seeders -f -t xeeds
+# Force to generate a seeder from `xeeds` table in `database/seeders` folder
 ```
 
 ```shell tab=Standalone
 bin/console seeders
 # Generate all seeds from database in `dist/database/seeders` folder
+
+bin/console seeders -f -t xeeds
+# Force to generate a seeder from `xeeds` table in `dist/database/seeders` folder
 ```
 
 ### Generate `DatabaseSeeder`
@@ -112,11 +124,17 @@ bin/console database
 ```shell tab=Laravel
 php artisan xeed:factories
 # Generate all factories from database in `database/factories' folder
+
+php artisan xeed:factories -f -t xeeds
+# Force to generate a factory from `xeeds` table in `database/factories' folder
 ```
 
 ```shell tab=Standalone
 bin/console factories
 # Generate all factories from database in `dist/database/factories' folder
+
+bin/console factories -f -t xeeds
+# Force to generate a factory from `xeeds` table in `database/factories' folder
 ```
 
 ### Generate `Migrations`
@@ -124,11 +142,17 @@ bin/console factories
 ```shell tab=Laravel
 php artisan xeed:migrations
 # Generate all migrations from database in `database/migrations' folder
+
+php artisan xeed:migrations -f -t xeeds
+# Force to generate a migration from `xeeds` table in `database/migrations' folder
 ```
 
 ```shell tab=Standalone
 bin/console migrations
 # Generate all migrations from database in `dist/database/migrations' folder
+
+bin/console migrations -f -t xeeds
+# Force to generate a migration from `xeeds` table in `database/migrations' folder
 ```
 
 The generated files are stored in the same folder as your Laravel project. Please check the `dist` folder.
