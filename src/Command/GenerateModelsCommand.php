@@ -39,6 +39,12 @@ class GenerateModelsCommand extends Command
                 InputOption::VALUE_OPTIONAL,
                 'Are files forcibly deleted even if they exist?',
                 false
+            )->addOption(
+                'table',
+                't',
+                InputOption::VALUE_OPTIONAL,
+                'Are you generating the specific table with the model?',
+                null
             );
     }
 
@@ -49,7 +55,11 @@ class GenerateModelsCommand extends Command
     {
         $force = $input->getOption('force') ?? true;
 
-        $tables = Xeed::getInstance()->attach()->getTables();
+        $table = $input->getOption('table');
+
+        $tables = is_null($table)
+            ? Xeed::getInstance()->attach()->getTables()
+            : Xeed::getInstance()->attach($table)->getTables();
 
         foreach ($tables as $table) {
             try {

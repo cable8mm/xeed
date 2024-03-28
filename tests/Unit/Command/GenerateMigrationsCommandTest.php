@@ -25,4 +25,14 @@ class GenerateMigrationsCommandTest extends TestCase
 
         $this->assertStringContainsString('generate-migrations command executed successfully.', trim($this->commandTester->getDisplay()));
     }
+
+    public function test_execute_specific_table(): void
+    {
+        $this->commandTester->execute([
+            '--table' => 'xeeds',
+            '--force' => true,
+        ]);
+
+        $this->assertStringContainsString('generate-migrations command executed successfully.', trim($this->commandTester->getDisplay()));
+    }
 }
