@@ -2,6 +2,7 @@
 
 namespace Cable8mm\Xeed\Tests\Unit\Generators;
 
+use Cable8mm\Xeed\Column;
 use Cable8mm\Xeed\Generators\DatabaseSeederGenerator;
 use Cable8mm\Xeed\Support\File;
 use Cable8mm\Xeed\Support\Path;
@@ -14,8 +15,12 @@ final class DatabaseSeederGeneratorTest extends TestCase
     {
         DatabaseSeederGenerator::make(
             [
-                new Table('one_samples'),
-                new Table('two_samples'),
+                new Table('one_samples', [
+                    Column::make('id', 'bigint'),
+                ]),
+                new Table('two_samples', [
+                    Column::make('id', 'bigint'),
+                ]),
             ],
             destination: Path::testgen()
         )->run();

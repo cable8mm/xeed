@@ -185,11 +185,12 @@ final class Xeed implements ArrayAccess
     /**
      * Attach tables and columns.
      *
+     * @param  string  $table  The table name to attach child provider
      * @return static The method returns the instance for chaining
      */
-    public function attach(): static
+    public function attach(?string $table = null): static
     {
-        $this->provider->attach($this);
+        $this->provider->attach($this, $table);
 
         return $this;
     }

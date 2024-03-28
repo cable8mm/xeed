@@ -32,6 +32,8 @@ final class SqliteProvider implements ProviderInterface
         foreach ($tables as $table) {
             $columns = $xeed->pdo->query('SELECT * FROM PRAGMA_TABLE_INFO("'.$table.'");')->fetchAll();
 
+            $columnObject = [];
+
             foreach ($columns as $column) {
                 $columnObject[] = new Column(...self::map($column, $table, $xeed));
             }
