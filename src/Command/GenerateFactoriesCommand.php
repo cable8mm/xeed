@@ -20,7 +20,7 @@ use Symfony\Component\Console\Output\OutputInterface;
     name: 'generate-factories',
     description: 'Generate factories. run `bin/console generate-factories` or `bin/console factories`',
     hidden: false,
-    aliases: ['factories']
+    aliases: ['factories', 'factory']
 )]
 class GenerateFactoriesCommand extends Command
 {

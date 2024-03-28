@@ -20,7 +20,7 @@ use Symfony\Component\Console\Output\OutputInterface;
     name: 'generate-models',
     description: 'Generate models. run `bin/console generate-models` or `bin/console models`',
     hidden: false,
-    aliases: ['models']
+    aliases: ['models', 'model']
 )]
 class GenerateModelsCommand extends Command
 {

@@ -21,7 +21,7 @@ use Symfony\Component\Console\Output\OutputInterface;
     name: 'generate-migrations',
     description: 'Generate migrations. run `bin/console generate-migrations` or `bin/console migrations`',
     hidden: false,
-    aliases: ['migrations']
+    aliases: ['migrations', 'migration']
 )]
 class GenerateMigrationsCommand extends Command
 {

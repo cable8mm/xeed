@@ -14,7 +14,9 @@ class GenerateFactoriesCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'xeed:factories {force=false}';
+    protected $signature = 'xeed:factories
+                            {force=false : Are files forcibly deleted even if they exist?}
+                            {--t|table= : Are you generating the specific table with the factory?}';
 
     /**
      * The console command description.
@@ -30,9 +32,11 @@ class GenerateFactoriesCommand extends Command
     {
         $force = $this->argument('force');
 
-        $tables = $xeed->addPdo(
-            DB::connection()->getPDO()
-        )->attach()->getTables();
+        $table = $this->option('table');
+
+        $tables = is_null($table)
+            ? $xeed->addPdo(DB::connection()->getPDO())->attach()->getTables()
+            : $xeed->addPdo(DB::connection()->getPDO())->attach($table)->getTables();
 
         foreach ($tables as $table) {
             try {

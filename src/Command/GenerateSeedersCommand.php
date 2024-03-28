@@ -20,7 +20,7 @@ use Symfony\Component\Console\Output\OutputInterface;
     name: 'generate-seeders',
     description: 'Generate seeders. run `bin/console generate-seeders` or `bin/console seeders`',
     hidden: false,
-    aliases: ['seeders']
+    aliases: ['seeders', 'seeder']
 )]
 class GenerateSeedersCommand extends Command
 {

@@ -21,16 +21,19 @@ class GenerateSeedersCommandTest extends TestCase
 
     public function test_execute(): void
     {
-        $this->commandTester->execute([]);
+        $this->commandTester->execute([
+            '--force' => true,
+        ]);
 
         $this->assertStringContainsString('generate-seeders command executed successfully.', trim($this->commandTester->getDisplay()));
     }
 
-    public function test_execute_specific_table(): void
+    public function test_execute_with_a_table(): void
     {
         $this->commandTester->execute([
-            '--table' => 'xeeds',
             '--force' => true,
+        ], [
+            '--table' => 'xeeds',
         ]);
 
         $this->assertStringContainsString('generate-seeders command executed successfully.', trim($this->commandTester->getDisplay()));
