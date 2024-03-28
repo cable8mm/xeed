@@ -20,7 +20,7 @@ use Symfony\Component\Console\Output\OutputInterface;
     name: 'generate-factories',
     description: 'Generate factories. run `bin/console generate-factories` or `bin/console factories`',
     hidden: false,
-    aliases: ['factories']
+    aliases: ['factories', 'factory']
 )]
 class GenerateFactoriesCommand extends Command
 {
@@ -39,6 +39,12 @@ class GenerateFactoriesCommand extends Command
                 InputOption::VALUE_OPTIONAL,
                 'Are files forcibly deleted even if they exist?',
                 false
+            )->addOption(
+                'table',
+                't',
+                InputOption::VALUE_OPTIONAL,
+                'Are you generating the specific table with the factory?',
+                null
             );
     }
 
@@ -49,7 +55,11 @@ class GenerateFactoriesCommand extends Command
     {
         $force = $input->getOption('force') ?? true;
 
-        $tables = Xeed::getInstance()->attach()->getTables();
+        $table = $input->getOption('table');
+
+        $tables = is_null($table)
+            ? Xeed::getInstance()->attach()->getTables()
+            : Xeed::getInstance()->attach($table)->getTables();
 
         foreach ($tables as $table) {
             try {

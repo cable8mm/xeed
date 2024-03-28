@@ -3,6 +3,7 @@
 namespace Cable8mm\Xeed;
 
 use Cable8mm\Xeed\Support\Inflector;
+use LogicException;
 use Stringable;
 
 /**
@@ -28,8 +29,10 @@ final class Table implements Stringable
      * @param  string  $name  Table name
      * @param  array<\Cable8mm\Xeed\Table>  $columns  Column array[Table]
      */
-    public function __construct(string $name, array $columns = [])
+    public function __construct(string $name, ?array $columns = [])
     {
+        assert(! empty($columns), new LogicException('Columns must not be empty'));
+
         $this->name = $name;
 
         $this->columns = $columns;

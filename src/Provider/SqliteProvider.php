@@ -17,16 +17,22 @@ final class SqliteProvider implements ProviderInterface
     /**
      * {@inheritDoc}
      */
-    public function attach(Xeed $xeed): void
+    public function attach(Xeed $xeed, ?string $table = null): void
     {
-        $query = $xeed->pdo->query("SELECT name FROM sqlite_master WHERE type='table';");
+        if (is_null($table)) {
+            $query = $xeed->pdo->query("SELECT name FROM sqlite_master WHERE type='table';");
 
-        $tables = array_filter($query->fetchAll(), fn ($item) => $item['name'] !== 'sqlite_sequence');
+            $tables = array_filter($query->fetchAll(), fn ($item) => $item['name'] !== 'sqlite_sequence');
 
-        $tables = array_flatten($tables);
+            $tables = array_flatten($tables);
+        } else {
+            $tables = [$table];
+        }
 
         foreach ($tables as $table) {
             $columns = $xeed->pdo->query('SELECT * FROM PRAGMA_TABLE_INFO("'.$table.'");')->fetchAll();
+
+            $columnObject = [];
 
             foreach ($columns as $column) {
                 $columnObject[] = new Column(...self::map($column, $table, $xeed));

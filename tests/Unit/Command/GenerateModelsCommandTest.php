@@ -25,4 +25,15 @@ class GenerateModelsCommandTest extends TestCase
 
         $this->assertStringContainsString('generate-models command executed successfully.', trim($this->commandTester->getDisplay()));
     }
+
+    public function test_execute_with_a_table(): void
+    {
+        $this->commandTester->execute([
+            '--force' => true,
+        ], [
+            '--table' => 'xeeds',
+        ]);
+
+        $this->assertStringContainsString('generate-models command executed successfully.', trim($this->commandTester->getDisplay()));
+    }
 }

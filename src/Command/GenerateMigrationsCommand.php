@@ -21,7 +21,7 @@ use Symfony\Component\Console\Output\OutputInterface;
     name: 'generate-migrations',
     description: 'Generate migrations. run `bin/console generate-migrations` or `bin/console migrations`',
     hidden: false,
-    aliases: ['migrations']
+    aliases: ['migrations', 'migration']
 )]
 class GenerateMigrationsCommand extends Command
 {
@@ -40,6 +40,12 @@ class GenerateMigrationsCommand extends Command
                 InputOption::VALUE_OPTIONAL,
                 'Are files forcibly deleted even if they exist?',
                 false
+            )->addOption(
+                'table',
+                't',
+                InputOption::VALUE_OPTIONAL,
+                'Are you generating the specific table with the migration?',
+                null
             );
     }
 
@@ -50,7 +56,11 @@ class GenerateMigrationsCommand extends Command
     {
         $force = $input->getOption('force') ?? true;
 
-        $tables = Xeed::getInstance()->attach()->getTables();
+        $table = $input->getOption('table');
+
+        $tables = is_null($table)
+            ? Xeed::getInstance()->attach()->getTables()
+            : Xeed::getInstance()->attach($table)->getTables();
 
         foreach ($tables as $table) {
             try {

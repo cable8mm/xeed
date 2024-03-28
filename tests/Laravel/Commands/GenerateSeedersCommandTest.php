@@ -9,6 +9,11 @@ class GenerateSeedersCommandTest extends \Orchestra\Testbench\TestCase
         $this->artisan('xeed:seeders')->assertSuccessful();
     }
 
+    public function test_execute_xeed_database_command_with_table()
+    {
+        $this->artisan('xeed:seeders -t xeeds')->assertSuccessful();
+    }
+
     protected function getPackageProviders($app)
     {
         return [

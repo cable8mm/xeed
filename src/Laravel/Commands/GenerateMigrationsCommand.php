@@ -15,7 +15,9 @@ class GenerateMigrationsCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'xeed:migrations {force=false}';
+    protected $signature = 'xeed:migrations
+                            {force=false : Are files forcibly deleted even if they exist?}
+                            {--t|table= : Are you generating the specific table with the migration?}';
 
     /**
      * The console command description.
@@ -31,9 +33,11 @@ class GenerateMigrationsCommand extends Command
     {
         $force = $this->argument('force');
 
-        $tables = $xeed->addPdo(
-            DB::connection()->getPDO()
-        )->attach()->getTables();
+        $table = $this->option('table');
+
+        $tables = is_null($table)
+            ? $xeed->addPdo(DB::connection()->getPDO())->attach()->getTables()
+            : $xeed->addPdo(DB::connection()->getPDO())->attach($table)->getTables();
 
         foreach ($tables as $table) {
             try {
