@@ -1,5 +1,13 @@
 # Release Notes
 
+## v1.2.0 - 2024-03-28
+
+### What's Changed
+
+* Commands for one table #58 by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/59
+
+**Full Changelog**: https://github.com/cable8mm/xeed/compare/v1.1.0...v1.2.0
+
 ## v1.1.0 - 2024-03-22
 
 ### What's Changed
