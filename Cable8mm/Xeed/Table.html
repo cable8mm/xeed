@@ -107,7 +107,7 @@
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method___construct">__construct</a>(string $name, array $columns = [])
+                    <a href="#method___construct">__construct</a>(string $name, array|null $columns = [])
         
                                             <p>Constructor.</p>                </div>
                 <div class="col-md-2"></div>
@@ -180,9 +180,9 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at line 31</div>
+        <div class="location">at line 32</div>
         <code>                    
-    <strong>__construct</strong>(string $name, array $columns = [])
+    <strong>__construct</strong>(string $name, array|null $columns = [])
         </code>
     </h3>
     <div class="details">    
@@ -202,7 +202,7 @@
                 <td><p>Table name</p></td>
             </tr>
                     <tr>
-                <td>array</td>
+                <td>array|null</td>
                 <td>$columns</td>
                 <td><p>Column array[Table]</p></td>
             </tr>
@@ -218,7 +218,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getColumns">
-        <div class="location">at line 43</div>
+        <div class="location">at line 46</div>
         <code>                    array
     <strong>getColumns</strong>()
         </code>
@@ -250,7 +250,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_model">
-        <div class="location">at line 56</div>
+        <div class="location">at line 59</div>
         <code>                    string
     <strong>model</strong>(string|null $suffix = null)
         </code>
@@ -301,7 +301,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_factory">
-        <div class="location">at line 69</div>
+        <div class="location">at line 72</div>
         <code>                    string
     <strong>factory</strong>(string|null $suffix = null)
         </code>
@@ -352,7 +352,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_seeder">
-        <div class="location">at line 82</div>
+        <div class="location">at line 85</div>
         <code>                    string
     <strong>seeder</strong>(string|null $suffix = null)
         </code>
@@ -403,7 +403,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_migration">
-        <div class="location">at line 95</div>
+        <div class="location">at line 98</div>
         <code>                    string
     <strong>migration</strong>()
         </code>
@@ -444,7 +444,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___toString">
-        <div class="location">at line 108</div>
+        <div class="location">at line 111</div>
         <code>                    string
     <strong>__toString</strong>()
         </code>

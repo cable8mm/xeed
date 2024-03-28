@@ -107,7 +107,7 @@
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_attach">attach</a>(<a href="../../../Cable8mm/Xeed/Xeed.html"><abbr title="Cable8mm\Xeed\Xeed">Xeed</abbr></a> $xeed)
+                    <a href="#method_attach">attach</a>(<a href="../../../Cable8mm/Xeed/Xeed.html"><abbr title="Cable8mm\Xeed\Xeed">Xeed</abbr></a> $xeed, string|null $table = null)
         
                                             <p><p>Attach child provider to DB instance.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -132,7 +132,7 @@
                     <h3 id="method_attach">
         <div class="location">at line 20</div>
         <code>                    void
-    <strong>attach</strong>(<a href="../../../Cable8mm/Xeed/Xeed.html"><abbr title="Cable8mm\Xeed\Xeed">Xeed</abbr></a> $xeed)
+    <strong>attach</strong>(<a href="../../../Cable8mm/Xeed/Xeed.html"><abbr title="Cable8mm\Xeed\Xeed">Xeed</abbr></a> $xeed, string|null $table = null)
         </code>
     </h3>
     <div class="details">    
@@ -150,6 +150,11 @@
                 <td><a href="../../../Cable8mm/Xeed/Xeed.html"><abbr title="Cable8mm\Xeed\Xeed">Xeed</abbr></a></td>
                 <td>$xeed</td>
                 <td><p>Xeed instance</p></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$table</td>
+                <td><p>The table name to attach child provider</p></td>
             </tr>
             </table>
 
@@ -172,7 +177,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_map">
-        <div class="location">at line 42</div>
+        <div class="location">at line 48</div>
         <code>        static            array
     <strong>map</strong>(array $column, string|null $table = null, <abbr title="Cable8mm\Xeed\Interfaces\Cable8mm\Xeed\Xeed">Xeed</abbr>|null $xeed = null)
         </code>
