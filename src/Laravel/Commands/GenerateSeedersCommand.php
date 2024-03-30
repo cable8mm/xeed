@@ -15,7 +15,7 @@ class GenerateSeedersCommand extends Command
      * @var string
      */
     protected $signature = 'xeed:seeders
-                            {force=false : Are files forcibly deleted even if they exist?}
+                            {--f|force : Are files forcibly deleted even if they exist?}
                             {--t|table= : Are you generating the specific table with the seeder?}';
 
     /**
@@ -30,7 +30,7 @@ class GenerateSeedersCommand extends Command
      */
     public function handle(Xeed $xeed)
     {
-        $force = $this->argument('force');
+        $force = $this->option('force') ?? false;
 
         $table = $this->option('table');
 

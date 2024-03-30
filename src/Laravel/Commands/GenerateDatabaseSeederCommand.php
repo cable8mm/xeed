@@ -14,7 +14,7 @@ class GenerateDatabaseSeederCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'xeed:database {force=false}';
+    protected $signature = 'xeed:database {--f|force}';
 
     /**
      * The console command description.
@@ -28,7 +28,7 @@ class GenerateDatabaseSeederCommand extends Command
      */
     public function handle(Xeed $xeed)
     {
-        $force = $this->argument('force');
+        $force = $this->option('force') ?? false;
 
         $tables = $xeed->addPdo(
             DB::connection()->getPDO()
