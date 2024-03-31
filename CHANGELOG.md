@@ -1,5 +1,17 @@
 # Release Notes
 
+## v1.2.1 - 2024-03-31
+
+### What's Changed
+
+* Fix laravel commads by [@cognitus](https://github.com/cognitus) in https://github.com/cable8mm/xeed/pull/60
+
+### New Contributors
+
+* [@cognitus](https://github.com/cognitus) made their first contribution in https://github.com/cable8mm/xeed/pull/60
+
+**Full Changelog**: https://github.com/cable8mm/xeed/compare/v1.2.0...v1.2.1
+
 ## v1.2.0 - 2024-03-28
 
 ### What's Changed
