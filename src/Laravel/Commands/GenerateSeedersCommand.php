@@ -15,7 +15,7 @@ class GenerateSeedersCommand extends Command
      * @var string
      */
     protected $signature = 'xeed:seeders
-                            {force=false : Are files forcibly deleted even if they exist?}
+                            {--f|force : Are files forcibly deleted even if they exist?}
                             {--t|table= : Are you generating the specific table with the seeder?}';
 
     /**
@@ -30,7 +30,7 @@ class GenerateSeedersCommand extends Command
      */
     public function handle(Xeed $xeed)
     {
-        $force = $this->argument('force');
+        $force = $this->option('force') ?? false;
 
         $table = $this->option('table');
 
@@ -45,9 +45,9 @@ class GenerateSeedersCommand extends Command
                     destination: database_path('seeders')
                 )->run(force: $force);
 
-                $this->info(database_path('seeders').DIRECTORY_SEPARATOR.$table->factory().'.php has been generated.');
+                $this->info(database_path('seeders').DIRECTORY_SEPARATOR.$table->seeder().'.php has been generated.');
             } catch (\Exception $e) {
-                $this->error(database_path('seeders').DIRECTORY_SEPARATOR.$table->factory().'.php file already exists.');
+                $this->error(database_path('seeders').DIRECTORY_SEPARATOR.$table->seeder().'.php file already exists.');
             }
         }
 
