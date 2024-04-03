@@ -20,7 +20,7 @@ use Symfony\Component\Console\Output\OutputInterface;
     name: 'generate-faker-seeders',
     description: 'Generate faker seeders. run `bin/console generate-faker-seeders` or `bin/console fakers`',
     hidden: false,
-    aliases: ['fakers', 'faker']
+    aliases: ['faker-seeders', 'fakers', 'faker']
 )]
 class GenerateFakerSeedersCommand extends Command
 {

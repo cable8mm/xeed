@@ -107,6 +107,26 @@ bin/console seeders -f -t xeeds
 # Force to generate a seeder from `xeeds` table in `dist/database/seeders` folder
 ```
 
+### Generate `Faker Seeders`
+
+The Faker seeders are utilized without the `factory()` method to generate seeds. This command was created to address the issue, providing insight into its purpose.
+
+```shell tab=Laravel
+php artisan xeed:faker-seeders
+# Generate all seeds from database in `database/seeders` folder
+
+php artisan xeed:faker-seeders -f -t xeeds
+# Force to generate a seeder from `xeeds` table in `database/seeders` folder
+```
+
+```shell tab=Standalone
+bin/console faker-seeders
+# Generate all seeds from database in `dist/database/seeders` folder
+
+bin/console faker-seeders -f -t xeeds
+# Force to generate a seeder from `xeeds` table in `dist/database/seeders` folder
+```
+
 ### Generate `DatabaseSeeder`
 
 ```shell tab=Laravel
@@ -256,6 +276,10 @@ bin/console xeed drop
 ```
 
 Utilize migration files for all database field types by referring to the following location `database/*.sql` these files are saved in the specified folder.
+
+### Use `testorchestral/testbench`
+
+You can utilize `testorchestral/testbench` to execute tests. When running Laravel commands, the generated files are saved in the `vendor/orchestra/testbench-core/laravel/database` folder.
 
 ## Credits
 
