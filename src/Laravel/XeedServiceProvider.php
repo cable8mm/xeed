@@ -5,6 +5,7 @@ namespace Cable8mm\Xeed\Laravel;
 use Cable8mm\Xeed\Laravel\Commands\CleanCommand;
 use Cable8mm\Xeed\Laravel\Commands\GenerateDatabaseSeederCommand;
 use Cable8mm\Xeed\Laravel\Commands\GenerateFactoriesCommand;
+use Cable8mm\Xeed\Laravel\Commands\GenerateFakerSeedersCommand;
 use Cable8mm\Xeed\Laravel\Commands\GenerateMigrationsCommand;
 use Cable8mm\Xeed\Laravel\Commands\GenerateModelsCommand;
 use Cable8mm\Xeed\Laravel\Commands\GenerateSeedersCommand;
@@ -30,6 +31,7 @@ class XeedServiceProvider extends ServiceProvider implements DeferrableProvider
                 GenerateSeedersCommand::class,
                 ImportXeedCommand::class,
                 CleanCommand::class,
+                GenerateFakerSeedersCommand::class,
             ]);
         }
     }
