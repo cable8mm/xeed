@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Cable8mm\Xeed\Laravel\XeedServiceProvider | API</title>
+    <title>Cable8mm\Xeed\Generators\FakerSeederGenerator | API</title>
 
             <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
 
     </head>
 
-    <body id="class" data-name="class:Cable8mm_Xeed_Laravel_XeedServiceProvider" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
+    <body id="class" data-name="class:Cable8mm_Xeed_Generators_FakerSeederGenerator" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -75,26 +75,49 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                        <li><a href="../../../Cable8mm.html">Cable8mm</a></li><li class="backslash">\</li><li><a href="../../../Cable8mm/Xeed.html">Xeed</a></li><li class="backslash">\</li><li><a href="../../../Cable8mm/Xeed/Laravel.html">Laravel</a></li><li class="backslash">\</li><li>XeedServiceProvider</li>
+                        <li><a href="../../../Cable8mm.html">Cable8mm</a></li><li class="backslash">\</li><li><a href="../../../Cable8mm/Xeed.html">Xeed</a></li><li class="backslash">\</li><li><a href="../../../Cable8mm/Xeed/Generators.html">Generators</a></li><li class="backslash">\</li><li>FakerSeederGenerator</li>
             </ol>
         </div>
                 <div id="page-content">
     <div class="page-header">
-        <h1>XeedServiceProvider    
+        <h1>FakerSeederGenerator    
             </h1>
     </div>
 
     
-    <p>        class
-    <strong>XeedServiceProvider</strong>        extends <abbr title="Illuminate\Support\ServiceProvider">ServiceProvider</abbr>        implements        <abbr title="Illuminate\Contracts\Support\DeferrableProvider">DeferrableProvider</abbr>
+    <p>final         class
+    <strong>FakerSeederGenerator</strong>        implements        <a href="../../../Cable8mm/Xeed/Interfaces/GeneratorInterface.html"><abbr title="Cable8mm\Xeed\Interfaces\GeneratorInterface">GeneratorInterface</abbr></a>
 </p>
 
         
     
         
 
+            <div class="description">
+            <p><p>Generator for <code>dist/database/seeders/*.php</code>.</p></p>                    </div>
             
         
+            <h2>Constants</h2>    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                                                                                                        INTENT
+                                    </td>
+                <td class="last">
+                    <p><em><p>The left padding for the body of the generated.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        SUB_INTENT
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+            </table>
+
     
     
             <h2>Methods</h2>
@@ -102,32 +125,32 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    <a href="../../../Cable8mm/Xeed/Generators/FakerSeederGenerator.html"><abbr title="Cable8mm\Xeed\Generators\FakerSeederGenerator">FakerSeederGenerator</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_boot">boot</a>()
+                    <a href="#method_count">count</a>(int $count)
         
-                                            <p><p>Bootstrap the application services.</p></p>                </div>
+                                            <p><p>Set count values for the generated stub</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_register">register</a>()
+                    <a href="#method_run">run</a>(bool $force = false)
         
-                                            <p><p>Register the application services.</p></p>                </div>
+                                            <p><p>Run the generator logic and save it to a file.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    array
+                    static&nbsp;void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_provides">provides</a>()
+                    <a href="#method_make">make</a>(<a href="../../../Cable8mm/Xeed/Table.html"><abbr title="Cable8mm\Xeed\Table">Table</abbr></a> $table, string|null $namespace = null, string|null $destination = null)
         
-                                            <p><p>Get the services provided by the provider.</p></p>                </div>
+                                            <p><p>Create a instance.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -137,10 +160,10 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_boot">
-        <div class="location">at line 22</div>
-        <code>                    
-    <strong>boot</strong>()
+                    <h3 id="method_count">
+        <div class="location">at line 48</div>
+        <code>                    <a href="../../../Cable8mm/Xeed/Generators/FakerSeederGenerator.html"><abbr title="Cable8mm\Xeed\Generators\FakerSeederGenerator">FakerSeederGenerator</abbr></a>
+    <strong>count</strong>(int $count)
         </code>
     </h3>
     <div class="details">    
@@ -148,61 +171,119 @@
             
 
         <div class="method-description">
-                            <p><p>Bootstrap the application services.</p></p>                        
+                            <p><p>Set count values for the generated stub</p></p>                        
         </div>
         <div class="tags">
-            
-            
-            
-            
-                    </div>
-    </div>
+                            <h4>Parameters</h4>
 
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_register">
-        <div class="location">at line 42</div>
-        <code>                    
-    <strong>register</strong>()
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$count</td>
+                <td></td>
+            </tr>
+            </table>
 
-        <div class="method-description">
-                            <p><p>Register the application services.</p></p>                        
-        </div>
-        <div class="tags">
-            
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_provides">
-        <div class="location">at line 55</div>
-        <code>                    array
-    <strong>provides</strong>()
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Get the services provided by the provider.</p></p>                        
-        </div>
-        <div class="tags">
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td>array</td>
+            <td><a href="../../../Cable8mm/Xeed/Generators/FakerSeederGenerator.html"><abbr title="Cable8mm\Xeed\Generators\FakerSeederGenerator">FakerSeederGenerator</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_run">
+        <div class="location">at line 58</div>
+        <code>                    void
+    <strong>run</strong>(bool $force = false)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Run the generator logic and save it to a file.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>bool</td>
+                <td>$force</td>
+                <td><p>Whether to force the generation of the generator file or not.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_make">
+        <div class="location">at line 84</div>
+        <code>        static            void
+    <strong>make</strong>(<a href="../../../Cable8mm/Xeed/Table.html"><abbr title="Cable8mm\Xeed\Table">Table</abbr></a> $table, string|null $namespace = null, string|null $destination = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Create a instance.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Cable8mm/Xeed/Table.html"><abbr title="Cable8mm\Xeed\Table">Table</abbr></a></td>
+                <td>$table</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$namespace</td>
+                <td><p>The namespace to be applied to the class</p></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$destination</td>
+                <td><p>The path to the dist folder</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
             <td></td>
         </tr>
     </table>
