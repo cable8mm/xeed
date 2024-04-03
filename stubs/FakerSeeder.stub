@@ -1,0 +1,25 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+
+class {class} extends Seeder
+{
+    /**
+     * Run the database seeds without factory.
+     */
+    public function run(): void
+    {
+        DB::table('{table_name}')->truncate();
+
+        $records = [];
+
+        for ($i = 0; $i < {count}; $i++) {
+{records}
+        }
+
+        DB::table('{table_name}')->insert($records);
+    }
+}
