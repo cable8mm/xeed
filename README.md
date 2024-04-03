@@ -109,7 +109,7 @@ bin/console seeders -f -t xeeds
 
 ### Generate `Faker Seeders`
 
-The Faker seeders are utilized without the `factory()` method to generate seeds. This command was created to address the issue, providing insight into its purpose.
+The Faker seeders are utilized without the `factory()` method to generate seeds. This command was created to address the [issue #61](https://github.com/cable8mm/xeed/issues/61), providing insight into its purpose.
 
 ```shell tab=Laravel
 php artisan xeed:faker-seeders
