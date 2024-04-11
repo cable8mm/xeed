@@ -24,18 +24,28 @@ final class Table implements Stringable
     private array $columns = [];
 
     /**
+     * Foreign key array.
+     *
+     * @var array<\Cable8mm\Xeed\ForeignKey>
+     */
+    private array $foreignKeys = [];
+
+    /**
      * Constructor.
      *
      * @param  string  $name  Table name
      * @param  array<\Cable8mm\Xeed\Table>  $columns  Column array[Table]
+     * @param  array<\Cable8mm\Xeed\ForeignKey>  $foreignKeys  Foreign key array
      */
-    public function __construct(string $name, ?array $columns = [])
+    public function __construct(string $name, ?array $columns = [], ?array $foreignKeys = [])
     {
-        assert(! empty($columns), new LogicException('Columns must not be empty'));
+        assert(!empty($columns), new LogicException('Columns must not be empty'));
 
         $this->name = $name;
 
         $this->columns = $columns;
+
+        $this->foreignKeys = $foreignKeys;
     }
 
     /**
@@ -49,6 +59,16 @@ final class Table implements Stringable
     }
 
     /**
+     * Get key array.
+     *
+     * @return array<\Cable8mm\Xeed\Key> The method returns `\Cable8mm\Xeed\Key` array
+     */
+    public function getForeignKeys(): array
+    {
+        return $this->foreignKeys;
+    }
+
+    /**
      * Get the model name from table name.
      *
      * @return string The method returns the ModelName
@@ -58,7 +78,7 @@ final class Table implements Stringable
      */
     public function model(?string $suffix = null): string
     {
-        return Inflector::classify($this->name).$suffix;
+        return Inflector::classify($this->name) . $suffix;
     }
 
     /**
@@ -71,7 +91,7 @@ final class Table implements Stringable
      */
     public function factory(?string $suffix = null): string
     {
-        return Inflector::classify($this->name).'Factory'.$suffix;
+        return Inflector::classify($this->name) . 'Factory' . $suffix;
     }
 
     /**
@@ -84,7 +104,7 @@ final class Table implements Stringable
      */
     public function seeder(?string $suffix = null): string
     {
-        return Inflector::classify($this->name).'Seeder'.$suffix;
+        return Inflector::classify($this->name) . 'Seeder' . $suffix;
     }
 
     /**
@@ -97,7 +117,7 @@ final class Table implements Stringable
      */
     public function migration(): string
     {
-        return date('Y_m_d_His').'_create_'.$this->name.'_table.php';
+        return date('Y_m_d_His') . '_create_' . $this->name . '_table.php';
     }
 
     /**

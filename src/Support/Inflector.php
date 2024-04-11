@@ -23,10 +23,43 @@ final class Inflector
      */
     public static function classify(string $string): string
     {
-        if (self::$inflector === null) {
+        if (self::$inflector === null)
+        {
             self::$inflector = InflectorFactory::create()->build();
         }
 
         return self::$inflector->singularize(self::$inflector->classify($string));
+    }
+
+    /**
+     * Get Class name as hasMany method name.
+     *
+     * @param  string  $string  raw Class name
+     * @return string The method returns hasMany method name
+     */
+    public static function pluralize(string $string): string
+    {
+        if (self::$inflector === null)
+        {
+            self::$inflector = InflectorFactory::create()->build();
+        }
+
+        return self::$inflector->pluralize(self::$inflector->tableize($string));
+    }
+
+    /**
+     * Get Class name as belongsTo method name.
+     *
+     * @param  string  $string  raw Class name
+     * @return string The method returns belongsTo method name
+     */
+    public static function tableize(string $string): string
+    {
+        if (self::$inflector === null)
+        {
+            self::$inflector = InflectorFactory::create()->build();
+        }
+
+        return self::$inflector->tableize($string);
     }
 }
