@@ -6,8 +6,6 @@ on:
   push:
     branches:
       - main
-    branches-ignore:
-      - "dependabot/npm_and_yarn/*"
 
 jobs:
   test:
