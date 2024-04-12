@@ -19,27 +19,53 @@ final class SqliteProvider implements ProviderInterface
      */
     public function attach(Xeed $xeed, ?string $table = null): void
     {
-        if (is_null($table)) {
+        if (is_null($table))
+        {
             $query = $xeed->pdo->query("SELECT name FROM sqlite_master WHERE type='table';");
 
             $tables = array_filter($query->fetchAll(), fn ($item) => $item['name'] !== 'sqlite_sequence');
 
             $tables = array_flatten($tables);
-        } else {
+        }
+        else
+        {
             $tables = [$table];
         }
 
-        foreach ($tables as $table) {
-            $columns = $xeed->pdo->query('SELECT * FROM PRAGMA_TABLE_INFO("'.$table.'");')->fetchAll();
+        foreach ($tables as $table)
+        {
+            $columns = $xeed->pdo->query('SELECT * FROM PRAGMA_TABLE_INFO("' . $table . '");')->fetchAll();
 
             $columnObject = [];
 
-            foreach ($columns as $column) {
+            foreach ($columns as $column)
+            {
                 $columnObject[] = new Column(...self::map($column, $table, $xeed));
             }
 
-            $xeed[$table] = new Table($table, $columnObject);
+            $foreignKeys = $xeed->pdo->query('PRAGMA foreign_key_list(' . $table . ');')->fetchAll();
+
+            $foreignKeys = array_map(
+                fn (array $key) => new ForeignKey(...self::mapForeignKeys($key, $table)),
+                $foreignKeys
+            );
+
+            $xeed[$table] = new Table($table, $columnObject, $foreignKeys);
         }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public static function mapForeignKeys(array $foreignKey, string $table): array
+    {
+        return [
+            'name' => $foreignKey['from'],
+            'table' => $table,
+            'column' => $foreignKey['from'],
+            'referenced_table' => $foreignKey['table'],
+            'referenced_column' => $foreignKey['to'],
+        ];
     }
 
     /**
@@ -49,8 +75,9 @@ final class SqliteProvider implements ProviderInterface
     {
         $authIncrement = false;
 
-        if ($column['pk'] == 1) {
-            $count = $xeed->pdo->query('SELECT COUNT(*) FROM sqlite_sequence WHERE name=\''.$table.'\'');
+        if ($column['pk'] == 1)
+        {
+            $count = $xeed->pdo->query('SELECT COUNT(*) FROM sqlite_sequence WHERE name=\'' . $table . '\'');
             $authIncrement = $count == 1;
         }
 
