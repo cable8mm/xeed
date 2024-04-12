@@ -1,5 +1,14 @@
 # Release Notes
 
+## v1.3.1 - 2024-04-12
+
+### What's Changed
+
+* Refer to link for the faker seeders by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/63
+* Tests not working #64 by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/66
+
+**Full Changelog**: https://github.com/cable8mm/xeed/compare/v1.3.0...v1.3.1
+
 ## v1.3.0 - 2024-04-03
 
 ### What's Changed
