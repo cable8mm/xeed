@@ -2,6 +2,7 @@
 
 namespace Cable8mm\Xeed\Laravel\Commands;
 
+use Cable8mm\Xeed\Generators\ModelGenerator;
 use Cable8mm\Xeed\Generators\RelationGenerator;
 use Cable8mm\Xeed\Xeed;
 use Illuminate\Console\Command;
@@ -42,10 +43,11 @@ class GenerateRelationsCommand extends Command
                 if ($models)
                 {
                     ModelGenerator::make($table)->run($force);
+                    $this->info(app_path('Models') . DIRECTORY_SEPARATOR . $table->model() . '.php has been generated.');
                 }
                 RelationGenerator::make($table)->run();
 
-                $this->info('Relations of ' . $table->model() . 'have been generated.');
+                $this->info('Relations of ' . $table->model() . ' have been generated.');
             }
             catch (\Exception $e)
             {

@@ -2,7 +2,9 @@
 
 namespace Cable8mm\Xeed\Command;
 
+use Cable8mm\Xeed\Generators\ModelGenerator;
 use Cable8mm\Xeed\Generators\RelationGenerator;
+use Cable8mm\Xeed\Support\Path;
 use Cable8mm\Xeed\Xeed;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
@@ -53,9 +55,9 @@ class GenerateRelationsCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
 
-        $force = $input->getOption('force') ?? false;
+        $force = $input->getOption('force') ?? true;
 
-        $models = $input->getOption('models') ?? false;
+        $models = $input->getOption('models') ?? true;
 
         $tables = Xeed::getInstance()->attach()->getTables();
 
@@ -66,14 +68,14 @@ class GenerateRelationsCommand extends Command
                 if ($models)
                 {
                     ModelGenerator::make($table)->run($force);
+                    $output->writeln('<info>' . Path::model() . DIRECTORY_SEPARATOR . $table->model() . '.php have been generated.' . '</info>');
                 }
                 RelationGenerator::make($table)->run($force);
 
-                $output->writeln('<info>Relations of ' . $table->model() . 'have been generated.</info>');
+                $output->writeln('<info>Relations of ' . $table->model() . ' have been generated.</info>');
             }
             catch (\RuntimeException $e)
             {
-                dd($e->getMessage());
                 $output->writeln('<error>Error creating relations of ' . $table->model() . '.<error>');
             }
         }
