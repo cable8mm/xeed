@@ -38,7 +38,7 @@ class GenerateRelationsCommand extends Command
                 'models',
                 'm',
                 InputOption::VALUE_OPTIONAL,
-                'Run xseed:models before?',
+                'Run xeed:models before?',
                 false
             )->addOption(
                 'force',
@@ -71,7 +71,7 @@ class GenerateRelationsCommand extends Command
 
                 $output->writeln('<info>Relations of '.$table->model().' have been generated.</info>');
             } catch (\RuntimeException $e) {
-                $output->writeln('<error>Error creating relations of '.$table->model().'.<error>');
+                $output->writeln('<error>`'.$table->model().'` model doesn\'t exist. Initially, you create models using `bin/console models`.<error>');
             }
         }
 

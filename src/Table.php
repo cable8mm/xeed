@@ -61,7 +61,7 @@ final class Table implements Stringable
     /**
      * Get key array.
      *
-     * @return array<\Cable8mm\Xeed\Key> The method returns `\Cable8mm\Xeed\Key` array
+     * @return array<\Cable8mm\Xeed\ForeignKey> The method returns `\Cable8mm\Xeed\Key` array
      */
     public function getForeignKeys(): array
     {

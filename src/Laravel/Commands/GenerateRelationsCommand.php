@@ -16,7 +16,7 @@ class GenerateRelationsCommand extends Command
      * @var string
      */
     protected $signature = 'xeed:relations
-                            {--m|models : Run xseed:models before?}
+                            {--m|models : Run xeed:models before?}
                             {--f|force : Are files forcibly deleted even if they exist?}';
 
     /**
@@ -46,7 +46,7 @@ class GenerateRelationsCommand extends Command
 
                 $this->info('Relations of '.$table->model().' have been generated.');
             } catch (\Exception $e) {
-                $this->error('Error creating relations of '.$table->model().'.');
+                $this->error('<error>`'.$table->model().'` model doesn\'t exist. Initially, you create models using `php artisan xeed:models`.<error>');
             }
         }
 
