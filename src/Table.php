@@ -34,8 +34,8 @@ final class Table implements Stringable
      * Constructor.
      *
      * @param  string  $name  Table name
-     * @param  array<\Cable8mm\Xeed\Table>  $columns  Column array[Table]
-     * @param  array<\Cable8mm\Xeed\ForeignKey>  $foreignKeys  Foreign key array
+     * @param  array<\Cable8mm\Xeed\Table>|null  $columns  Column array[Table]
+     * @param  array<\Cable8mm\Xeed\ForeignKey>|null  $foreignKeys  Foreign key array
      */
     public function __construct(string $name, ?array $columns = [], ?array $foreignKeys = [])
     {
