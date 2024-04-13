@@ -1,5 +1,18 @@
 # Release Notes
 
+## v1.4.0 - 2024-04-13
+
+### What's Changed
+
+* Add `pull-request` in the github actions by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/67
+* Command for creating relationship functions (belongsTo and hasMany) by [@Lopoi](https://github.com/Lopoi) in https://github.com/cable8mm/xeed/pull/65
+
+### New Contributors
+
+* [@Lopoi](https://github.com/Lopoi) made their first contribution in https://github.com/cable8mm/xeed/pull/65
+
+**Full Changelog**: https://github.com/cable8mm/xeed/compare/v1.3.1...v1.4.0
+
 ## v1.3.1 - 2024-04-12
 
 ### What's Changed
