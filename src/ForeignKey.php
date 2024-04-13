@@ -25,8 +25,7 @@ final class ForeignKey implements Stringable
         public string $column,
         public string $referenced_table,
         public string $referenced_column,
-    )
-    {
+    ) {
     }
 
     /**
@@ -60,8 +59,7 @@ final class ForeignKey implements Stringable
         string $column,
         string $referenced_table,
         string $referenced_column,
-    ): static
-    {
+    ): static {
         return new self(
             $name,
             $table,
@@ -79,30 +77,31 @@ final class ForeignKey implements Stringable
     public function belongsTo(): string
     {
         $secondParam = '';
-        if ($this->referenced_column !== 'id')
-        {
-            $secondParam = ', \'' . $this->referenced_column . '\'';
+        if ($this->referenced_column !== 'id') {
+            $secondParam = ', \''.$this->referenced_column.'\'';
         }
-        return '    public function ' . Inflector::tableize($this->referenced_table) . '()' . PHP_EOL .
-            '    {' . PHP_EOL .
-            '        return $this->belongsTo(' . $this->referenced_table . '::class, \'' . $this->column . '\'' . $secondParam . ');' . PHP_EOL .
+
+        return '    public function '.Inflector::tableize($this->referenced_table).'()'.PHP_EOL.
+            '    {'.PHP_EOL.
+            '        return $this->belongsTo('.$this->referenced_table.'::class, \''.$this->column.'\''.$secondParam.');'.PHP_EOL.
             '    }';
     }
 
     /**
      * Get the hasMany relation from another model to this.
+     *
      * @return string The method returns a relation function string
      */
     public function hasMany(): string
     {
         $secondParam = '';
-        if ($this->referenced_column !== 'id')
-        {
-            $secondParam = ', \'' . $this->referenced_column . '\'';
+        if ($this->referenced_column !== 'id') {
+            $secondParam = ', \''.$this->referenced_column.'\'';
         }
-        return '    public function ' . Inflector::pluralize($this->table) . '()' . PHP_EOL .
-            '    {' . PHP_EOL .
-            '        return $this->hasMany(' . $this->table . '::class, \'' . $this->column . '\'' . $secondParam . ');' . PHP_EOL .
+
+        return '    public function '.Inflector::pluralize($this->table).'()'.PHP_EOL.
+            '    {'.PHP_EOL.
+            '        return $this->hasMany('.$this->table.'::class, \''.$this->column.'\''.$secondParam.');'.PHP_EOL.
             '    }';
     }
 
@@ -113,6 +112,6 @@ final class ForeignKey implements Stringable
      */
     public function __toString(): string
     {
-        return 'Foreign Key is ' . $this->name . ' and table is ' . $this->table . '.';
+        return 'Foreign Key is '.$this->name.' and table is '.$this->table.'.';
     }
 }

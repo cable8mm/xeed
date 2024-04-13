@@ -23,8 +23,7 @@ final class Inflector
      */
     public static function classify(string $string): string
     {
-        if (self::$inflector === null)
-        {
+        if (self::$inflector === null) {
             self::$inflector = InflectorFactory::create()->build();
         }
 
@@ -39,8 +38,7 @@ final class Inflector
      */
     public static function pluralize(string $string): string
     {
-        if (self::$inflector === null)
-        {
+        if (self::$inflector === null) {
             self::$inflector = InflectorFactory::create()->build();
         }
 
@@ -55,8 +53,7 @@ final class Inflector
      */
     public static function tableize(string $string): string
     {
-        if (self::$inflector === null)
-        {
+        if (self::$inflector === null) {
             self::$inflector = InflectorFactory::create()->build();
         }
 

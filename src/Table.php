@@ -39,7 +39,7 @@ final class Table implements Stringable
      */
     public function __construct(string $name, ?array $columns = [], ?array $foreignKeys = [])
     {
-        assert(!empty($columns), new LogicException('Columns must not be empty'));
+        assert(! empty($columns), new LogicException('Columns must not be empty'));
 
         $this->name = $name;
 
@@ -78,7 +78,7 @@ final class Table implements Stringable
      */
     public function model(?string $suffix = null): string
     {
-        return Inflector::classify($this->name) . $suffix;
+        return Inflector::classify($this->name).$suffix;
     }
 
     /**
@@ -91,7 +91,7 @@ final class Table implements Stringable
      */
     public function factory(?string $suffix = null): string
     {
-        return Inflector::classify($this->name) . 'Factory' . $suffix;
+        return Inflector::classify($this->name).'Factory'.$suffix;
     }
 
     /**
@@ -104,7 +104,7 @@ final class Table implements Stringable
      */
     public function seeder(?string $suffix = null): string
     {
-        return Inflector::classify($this->name) . 'Seeder' . $suffix;
+        return Inflector::classify($this->name).'Seeder'.$suffix;
     }
 
     /**
@@ -117,7 +117,7 @@ final class Table implements Stringable
      */
     public function migration(): string
     {
-        return date('Y_m_d_His') . '_create_' . $this->name . '_table.php';
+        return date('Y_m_d_His').'_create_'.$this->name.'_table.php';
     }
 
     /**

@@ -15,11 +15,13 @@ use Cable8mm\Xeed\Xeed;
 use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
 
-class XeedServiceProvider extends ServiceProvider implements DeferrableProvider {
+class XeedServiceProvider extends ServiceProvider implements DeferrableProvider
+{
     /**
      * Bootstrap the application services.
      */
-    public function boot() {
+    public function boot()
+    {
         // php artisan vendor:publish --tag=xeed-sql
         if ($this->app->runningInConsole()) {
             $this->commands([
@@ -31,7 +33,7 @@ class XeedServiceProvider extends ServiceProvider implements DeferrableProvider 
                 ImportXeedCommand::class,
                 CleanCommand::class,
                 GenerateFakerSeedersCommand::class,
-                GenerateRelationsCommand::class
+                GenerateRelationsCommand::class,
             ]);
         }
     }
@@ -39,7 +41,8 @@ class XeedServiceProvider extends ServiceProvider implements DeferrableProvider 
     /**
      * Register the application services.
      */
-    public function register() {
+    public function register()
+    {
         // Register the main class to use with the facade
         $this->app->singleton(Xeed::class, function () {
             return Xeed::make();
@@ -51,7 +54,8 @@ class XeedServiceProvider extends ServiceProvider implements DeferrableProvider 
      *
      * @return array<int, string>
      */
-    public function provides(): array {
+    public function provides(): array
+    {
         return [Xeed::class];
     }
 }

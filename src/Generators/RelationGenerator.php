@@ -34,10 +34,8 @@ final class RelationGenerator implements GeneratorInterface
         private Table $table,
         private ?string $namespace = null,
         private ?string $destination = null
-    )
-    {
-        if (is_null($destination))
-        {
+    ) {
+        if (is_null($destination)) {
             $this->destination = Path::model();
         }
     }
@@ -47,29 +45,28 @@ final class RelationGenerator implements GeneratorInterface
      */
     public function run(bool $force = false): void
     {
-        $model = File::system()->read($this->destination . DIRECTORY_SEPARATOR . $this->table->model() . '.php');
+        $model = File::system()->read($this->destination.DIRECTORY_SEPARATOR.$this->table->model().'.php');
         [$before, $after] = explode('use HasFactory;', $model);
         $belongsToRelation = '';
 
-        foreach ($this->table->getForeignKeys() as $key)
-        {
-            $belongsToRelation .= PHP_EOL . $key->belongsTo() . PHP_EOL;
-            $relatedModel = File::system()->read($this->destination . DIRECTORY_SEPARATOR . $key->referenced_table . '.php');
+        foreach ($this->table->getForeignKeys() as $key) {
+            $belongsToRelation .= PHP_EOL.$key->belongsTo().PHP_EOL;
+            $relatedModel = File::system()->read($this->destination.DIRECTORY_SEPARATOR.$key->referenced_table.'.php');
             [$relatedBefore, $relatedAfter] = explode('use HasFactory;', $relatedModel);
 
             $hasManyRelation = $key->hasMany();
-            $relatedModel = $relatedBefore . 'use HasFactory;' . PHP_EOL . $hasManyRelation . PHP_EOL . $relatedAfter;
+            $relatedModel = $relatedBefore.'use HasFactory;'.PHP_EOL.$hasManyRelation.PHP_EOL.$relatedAfter;
             File::system()->write(
-                $this->destination . DIRECTORY_SEPARATOR . $key->referenced_table . '.php',
+                $this->destination.DIRECTORY_SEPARATOR.$key->referenced_table.'.php',
                 $relatedModel,
                 true
             );
         }
 
-        $model = $before . 'use HasFactory;' . PHP_EOL . $belongsToRelation . PHP_EOL . $after;
+        $model = $before.'use HasFactory;'.PHP_EOL.$belongsToRelation.PHP_EOL.$after;
 
         File::system()->write(
-            $this->destination . DIRECTORY_SEPARATOR . $this->table->model() . '.php',
+            $this->destination.DIRECTORY_SEPARATOR.$this->table->model().'.php',
             $model,
             true
         );
@@ -95,8 +92,7 @@ final class RelationGenerator implements GeneratorInterface
         Table $table,
         ?string $namespace = null,
         ?string $destination = null
-    ): static
-    {
+    ): static {
         return new self($table, $namespace, $destination);
     }
 }

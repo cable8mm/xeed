@@ -61,22 +61,17 @@ class GenerateRelationsCommand extends Command
 
         $tables = Xeed::getInstance()->attach()->getTables();
 
-        foreach ($tables as $table)
-        {
-            try
-            {
-                if ($models)
-                {
+        foreach ($tables as $table) {
+            try {
+                if ($models) {
                     ModelGenerator::make($table)->run($force);
-                    $output->writeln('<info>' . Path::model() . DIRECTORY_SEPARATOR . $table->model() . '.php have been generated.' . '</info>');
+                    $output->writeln('<info>'.Path::model().DIRECTORY_SEPARATOR.$table->model().'.php have been generated.'.'</info>');
                 }
                 RelationGenerator::make($table)->run($force);
 
-                $output->writeln('<info>Relations of ' . $table->model() . ' have been generated.</info>');
-            }
-            catch (\RuntimeException $e)
-            {
-                $output->writeln('<error>Error creating relations of ' . $table->model() . '.<error>');
+                $output->writeln('<info>Relations of '.$table->model().' have been generated.</info>');
+            } catch (\RuntimeException $e) {
+                $output->writeln('<error>Error creating relations of '.$table->model().'.<error>');
             }
         }
 

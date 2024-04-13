@@ -56,9 +56,8 @@ final class File
      */
     public function write(string $location, string $content, bool $force = false): void
     {
-        if ($force === false && self::$filesystem->has($location) === true)
-        {
-            throw new \RuntimeException($location . ' file already exists');
+        if ($force === false && self::$filesystem->has($location) === true) {
+            throw new \RuntimeException($location.' file already exists');
         }
 
         self::$filesystem->write($location, $content);
@@ -96,17 +95,15 @@ final class File
      */
     public function deleteDictionary(string $path, ?string $ext = null): void
     {
-        if ($ext === null)
-        {
+        if ($ext === null) {
             self::$filesystem->deleteDirectory($path);
 
             return;
         }
 
-        array_map(function ($location)
-        {
+        array_map(function ($location) {
             $this->delete($location);
-        }, array_filter((array) glob($path . DIRECTORY_SEPARATOR . '*.' . $ext)));
+        }, array_filter((array) glob($path.DIRECTORY_SEPARATOR.'*.'.$ext)));
     }
 
     /**
@@ -116,8 +113,7 @@ final class File
      */
     public static function system(): static
     {
-        if (self::$filesystem === null)
-        {
+        if (self::$filesystem === null) {
             $adapter = new LocalFilesystemAdapter('/');
 
             self::$filesystem = new Filesystem($adapter);

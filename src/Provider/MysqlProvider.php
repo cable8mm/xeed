@@ -3,8 +3,8 @@
 namespace Cable8mm\Xeed\Provider;
 
 use Cable8mm\Xeed\Column;
-use Cable8mm\Xeed\Interfaces\ProviderInterface;
 use Cable8mm\Xeed\ForeignKey;
+use Cable8mm\Xeed\Interfaces\ProviderInterface;
 use Cable8mm\Xeed\Support\Inflector;
 use Cable8mm\Xeed\Table;
 use Cable8mm\Xeed\Xeed;
@@ -24,11 +24,10 @@ final class MysqlProvider implements ProviderInterface
             ? $xeed->pdo->query('SHOW TABLES')->fetchAll(PDO::FETCH_COLUMN)
             : [$table];
 
-        foreach ($tables as $table)
-        {
-            $columns = $xeed->pdo->query('SHOW COLUMNS FROM ' . $table)->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($tables as $table) {
+            $columns = $xeed->pdo->query('SHOW COLUMNS FROM '.$table)->fetchAll(PDO::FETCH_ASSOC);
 
-            $foreignKeys = $xeed->pdo->query('SELECT * FROM information_schema.KEY_COLUMN_USAGE WHERE TABLE_NAME = "' . $table . '" AND TABLE_SCHEMA = "' . $_ENV['DB_DATABASE'] . '" AND REFERENCED_TABLE_NAME IS NOT NULL')->fetchAll(PDO::FETCH_ASSOC);
+            $foreignKeys = $xeed->pdo->query('SELECT * FROM information_schema.KEY_COLUMN_USAGE WHERE TABLE_NAME = "'.$table.'" AND TABLE_SCHEMA = "'.$_ENV['DB_DATABASE'].'" AND REFERENCED_TABLE_NAME IS NOT NULL')->fetchAll(PDO::FETCH_ASSOC);
 
             $foreignKeys = array_map(
                 fn (array $key) => new ForeignKey(...self::mapForeignKeys($key)),

@@ -36,22 +36,17 @@ class GenerateRelationsCommand extends Command
         $models = $this->option('models') ?? false;
         $tables = $xeed->addPdo(DB::connection()->getPDO())->attach()->getTables();
 
-        foreach ($tables as $table)
-        {
-            try
-            {
-                if ($models)
-                {
+        foreach ($tables as $table) {
+            try {
+                if ($models) {
                     ModelGenerator::make($table)->run($force);
-                    $this->info(app_path('Models') . DIRECTORY_SEPARATOR . $table->model() . '.php has been generated.');
+                    $this->info(app_path('Models').DIRECTORY_SEPARATOR.$table->model().'.php has been generated.');
                 }
                 RelationGenerator::make($table)->run();
 
-                $this->info('Relations of ' . $table->model() . ' have been generated.');
-            }
-            catch (\Exception $e)
-            {
-                $this->error('Error creating relations of ' . $table->model() . '.');
+                $this->info('Relations of '.$table->model().' have been generated.');
+            } catch (\Exception $e) {
+                $this->error('Error creating relations of '.$table->model().'.');
             }
         }
 
