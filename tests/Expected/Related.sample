@@ -9,10 +9,8 @@ class Related extends Model
 {
     use HasFactory;
 
-
     public function samples()
     {
         return $this->hasMany(Sample::class, 'related_id');
     }
-
 }
