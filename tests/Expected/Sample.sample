@@ -13,4 +13,6 @@ class Sample extends Model
     {
         return $this->belongsTo(Related::class, 'related_id');
     }
+
+
 }

@@ -59,11 +59,11 @@ final class RelationGeneratorTest extends TestCase
     public function test_it_can_generate_relations(): void
     {
         $this->assertFileEquals(
-            Path::testExpected().DIRECTORY_SEPARATOR.'Sample.php',
+            Path::testExpected().DIRECTORY_SEPARATOR.'Sample.sample',
             Path::testgen().DIRECTORY_SEPARATOR.'Sample.php'
         );
         $this->assertFileEquals(
-            Path::testExpected().DIRECTORY_SEPARATOR.'Related.php',
+            Path::testExpected().DIRECTORY_SEPARATOR.'Related.sample',
             Path::testgen().DIRECTORY_SEPARATOR.'Related.php'
         );
     }
