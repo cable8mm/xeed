@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Cable8mm\Xeed\Provider\SqliteProvider | API</title>
+    <title>Cable8mm\Xeed\Generators\RelationGenerator | API</title>
 
             <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
 
     </head>
 
-    <body id="class" data-name="class:Cable8mm_Xeed_Provider_SqliteProvider" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
+    <body id="class" data-name="class:Cable8mm_Xeed_Generators_RelationGenerator" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -75,18 +75,18 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                        <li><a href="../../../Cable8mm.html">Cable8mm</a></li><li class="backslash">\</li><li><a href="../../../Cable8mm/Xeed.html">Xeed</a></li><li class="backslash">\</li><li><a href="../../../Cable8mm/Xeed/Provider.html">Provider</a></li><li class="backslash">\</li><li>SqliteProvider</li>
+                        <li><a href="../../../Cable8mm.html">Cable8mm</a></li><li class="backslash">\</li><li><a href="../../../Cable8mm/Xeed.html">Xeed</a></li><li class="backslash">\</li><li><a href="../../../Cable8mm/Xeed/Generators.html">Generators</a></li><li class="backslash">\</li><li>RelationGenerator</li>
             </ol>
         </div>
                 <div id="page-content">
     <div class="page-header">
-        <h1>SqliteProvider    
+        <h1>RelationGenerator    
             </h1>
     </div>
 
     
     <p>final         class
-    <strong>SqliteProvider</strong>        implements        <a href="../../../Cable8mm/Xeed/Interfaces/ProviderInterface.html"><abbr title="Cable8mm\Xeed\Interfaces\ProviderInterface">ProviderInterface</abbr></a>
+    <strong>RelationGenerator</strong>        implements        <a href="../../../Cable8mm/Xeed/Interfaces/GeneratorInterface.html"><abbr title="Cable8mm\Xeed\Interfaces\GeneratorInterface">GeneratorInterface</abbr></a>
 </p>
 
         
@@ -94,9 +94,21 @@
         
 
             <div class="description">
-            <p><p>SQLite provider can help to retrieve data from sqlite database and marshalling between another fields for SQLite.</p></p>                    </div>
+            <p><p>Generator for <code>dist/database/migrations/*.php</code>.</p></p>                    </div>
             
         
+            <h2>Constants</h2>    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                                                                                                        INTENT
+                                    </td>
+                <td class="last">
+                    <p><em><p>The left padding for the body of the generated.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+            </table>
+
     
     
             <h2>Methods</h2>
@@ -107,29 +119,19 @@
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_attach">attach</a>(<a href="../../../Cable8mm/Xeed/Xeed.html"><abbr title="Cable8mm\Xeed\Xeed">Xeed</abbr></a> $xeed, string|null $table = null)
+                    <a href="#method_run">run</a>(bool $force = false)
         
-                                            <p><p>Attach child provider to DB instance.</p></p>                </div>
+                                            <p><p>Run the generator logic and save it to a file.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;array
+                    static&nbsp;void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_mapForeignKeys">mapForeignKeys</a>(array $foreignKey, string $table)
+                    <a href="#method_make">make</a>(<a href="../../../Cable8mm/Xeed/Table.html"><abbr title="Cable8mm\Xeed\Table">Table</abbr></a> $table, string|null $namespace = null, string|null $destination = null)
         
-                                            <p>{@inheritDoc}</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    static&nbsp;array
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_map">map</a>(array $column, string|null $table = null, <abbr title="Cable8mm\Xeed\Interfaces\Cable8mm\Xeed\Xeed">Xeed</abbr>|null $xeed = null)
-        
-                                            <p><p>Do mapping method between another fields for Database.</p></p>                </div>
+                                            <p><p>Create a instance.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -139,10 +141,10 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_attach">
-        <div class="location">at line 21</div>
+                    <h3 id="method_run">
+        <div class="location">at line 33</div>
         <code>                    void
-    <strong>attach</strong>(<a href="../../../Cable8mm/Xeed/Xeed.html"><abbr title="Cable8mm\Xeed\Xeed">Xeed</abbr></a> $xeed, string|null $table = null)
+    <strong>run</strong>(bool $force = false)
         </code>
     </h3>
     <div class="details">    
@@ -150,21 +152,16 @@
             
 
         <div class="method-description">
-                            <p><p>Attach child provider to DB instance.</p></p>                        
+                            <p><p>Run the generator logic and save it to a file.</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../Cable8mm/Xeed/Xeed.html"><abbr title="Cable8mm\Xeed\Xeed">Xeed</abbr></a></td>
-                <td>$xeed</td>
-                <td><p>Xeed instance</p></td>
-            </tr>
-                    <tr>
-                <td>string|null</td>
-                <td>$table</td>
-                <td><p>The table name to attach child provider</p></td>
+                <td>bool</td>
+                <td>$force</td>
+                <td><p>Whether to force the generation of the generator file or not.</p></td>
             </tr>
             </table>
 
@@ -186,10 +183,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_mapForeignKeys">
-        <div class="location">at line 56</div>
-        <code>        static            array
-    <strong>mapForeignKeys</strong>(array $foreignKey, string $table)
+                    <h3 id="method_make">
+        <div class="location">at line 70</div>
+        <code>        static            void
+    <strong>make</strong>(<a href="../../../Cable8mm/Xeed/Table.html"><abbr title="Cable8mm\Xeed\Table">Table</abbr></a> $table, string|null $namespace = null, string|null $destination = null)
         </code>
     </h3>
     <div class="details">    
@@ -197,73 +194,26 @@
             
 
         <div class="method-description">
-                            <p>{@inheritDoc}</p>                        
+                            <p><p>Create a instance.</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>array</td>
-                <td>$foreignKey</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>string</td>
+                <td><a href="../../../Cable8mm/Xeed/Table.html"><abbr title="Cable8mm\Xeed\Table">Table</abbr></a></td>
                 <td>$table</td>
                 <td></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>array</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_map">
-        <div class="location">at line 70</div>
-        <code>        static            array
-    <strong>map</strong>(array $column, string|null $table = null, <abbr title="Cable8mm\Xeed\Interfaces\Cable8mm\Xeed\Xeed">Xeed</abbr>|null $xeed = null)
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Do mapping method between another fields for Database.</p></p>                        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>array</td>
-                <td>$column</td>
-                <td><p>Original column data</p></td>
             </tr>
                     <tr>
                 <td>string|null</td>
-                <td>$table</td>
-                <td><p>Table name</p></td>
+                <td>$namespace</td>
+                <td><p>The namespace to be applied to the class</p></td>
             </tr>
                     <tr>
-                <td><abbr title="Cable8mm\Xeed\Interfaces\Cable8mm\Xeed\Xeed">Xeed</abbr>|null</td>
-                <td>$xeed</td>
-                <td><p>Database instance</p></td>
+                <td>string|null</td>
+                <td>$destination</td>
+                <td><p>The path to the dist folder</p></td>
             </tr>
             </table>
 
@@ -272,8 +222,8 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>array</td>
-            <td><p>The method returns mapped column data</p></td>
+            <td>void</td>
+            <td></td>
         </tr>
     </table>
 

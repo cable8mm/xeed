@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Cable8mm\Xeed\Table | API</title>
+    <title>Cable8mm\Xeed\ForeignKey | API</title>
 
             <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
 
     </head>
 
-    <body id="class" data-name="class:Cable8mm_Xeed_Table" data-root-path="../../" data-search-index-url="../../doctum-search.json">
+    <body id="class" data-name="class:Cable8mm_Xeed_ForeignKey" data-root-path="../../" data-search-index-url="../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -75,18 +75,18 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                        <li><a href="../../Cable8mm.html">Cable8mm</a></li><li class="backslash">\</li><li><a href="../../Cable8mm/Xeed.html">Xeed</a></li><li class="backslash">\</li><li>Table</li>
+                        <li><a href="../../Cable8mm.html">Cable8mm</a></li><li class="backslash">\</li><li><a href="../../Cable8mm/Xeed.html">Xeed</a></li><li class="backslash">\</li><li>ForeignKey</li>
             </ol>
         </div>
                 <div id="page-content">
     <div class="page-header">
-        <h1>Table    
+        <h1>ForeignKey    
             </h1>
     </div>
 
     
     <p>final         class
-    <strong>Table</strong>        implements        <a target="_blank" rel="noopener" href="https://www.php.net/Stringable">Stringable</a>
+    <strong>ForeignKey</strong>        implements        <a target="_blank" rel="noopener" href="https://www.php.net/Stringable">Stringable</a>
 </p>
 
         
@@ -94,7 +94,7 @@
         
 
             <div class="description">
-            <p><p>Database Table Object.</p></p>                    </div>
+            <p><p>Database ForeignKey Object.</p></p>                    </div>
             
         
     
@@ -107,9 +107,9 @@
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method___construct">__construct</a>(string $name, array|null $columns = [], array|null $foreignKeys = [])
+                    <a href="#method___construct">__construct</a>(string $name, string $table, string $column, string $referenced_table, string $referenced_column)
         
-                                            <p>Constructor.</p>                </div>
+                                            <p><p>ForeignKey constructor.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -117,29 +117,19 @@
                     array
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getColumns">getColumns</a>()
+                    <a href="#method_toArray">toArray</a>()
         
-                                            <p><p>Get column array.</p></p>                </div>
+                                            <p><p>Get column information array.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    array
+                    static&nbsp;<a href="../../Cable8mm/Xeed/ForeignKey.html"><abbr title="Cable8mm\Xeed\ForeignKey">ForeignKey</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getForeignKeys">getForeignKeys</a>()
+                    <a href="#method_make">make</a>(string $name, string $table, string $column, string $referenced_table, string $referenced_column)
         
-                                            <p><p>Get key array.</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    string
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_model">model</a>(string|null $suffix = null)
-        
-                                            <p><p>Get the model name from table name.</p></p>                </div>
+                                            <p><p>Create a instance.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -147,9 +137,9 @@
                     string
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_factory">factory</a>(string|null $suffix = null)
+                    <a href="#method_belongsTo">belongsTo</a>()
         
-                                            <p><p>Get the factory name from table name.</p></p>                </div>
+                                            <p><p>Get the belongsTo relation from this model to another.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -157,19 +147,9 @@
                     string
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_seeder">seeder</a>(string|null $suffix = null)
+                    <a href="#method_hasMany">hasMany</a>()
         
-                                            <p><p>Get the seeder name from table name.</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    string
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_migration">migration</a>()
-        
-                                            <p><p>Get the migration file name from table name.</p></p>                </div>
+                                            <p><p>Get the hasMany relation from another model to this.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -179,7 +159,7 @@
                 <div class="col-md-8">
                     <a href="#method___toString">__toString</a>()
         
-                                            <p><p>Class magic method to get the real table name.</p></p>                </div>
+                                            <p><p>Class magic method to get the instance information for a Exception</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -190,9 +170,9 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at line 40</div>
+        <div class="location">at line 22</div>
         <code>                    
-    <strong>__construct</strong>(string $name, array|null $columns = [], array|null $foreignKeys = [])
+    <strong>__construct</strong>(string $name, string $table, string $column, string $referenced_table, string $referenced_column)
         </code>
     </h3>
     <div class="details">    
@@ -200,7 +180,7 @@
             
 
         <div class="method-description">
-                            <p>Constructor.</p>                        
+                            <p><p>ForeignKey constructor.</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -209,17 +189,27 @@
                     <tr>
                 <td>string</td>
                 <td>$name</td>
+                <td><p>Name of the key</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$table</td>
                 <td><p>Table name</p></td>
             </tr>
                     <tr>
-                <td>array|null</td>
-                <td>$columns</td>
-                <td><p>Column array[Table]</p></td>
+                <td>string</td>
+                <td>$column</td>
+                <td><p>Column name</p></td>
             </tr>
                     <tr>
-                <td>array|null</td>
-                <td>$foreignKeys</td>
-                <td><p>Foreign key array</p></td>
+                <td>string</td>
+                <td>$referenced_table</td>
+                <td><p>Referenced table name</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$referenced_column</td>
+                <td><p>Referenced column name</p></td>
             </tr>
             </table>
 
@@ -232,10 +222,42 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getColumns">
+                    <h3 id="method_toArray">
+        <div class="location">at line 36</div>
+        <code>                    array
+    <strong>toArray</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get column information array.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>The method returns column information array</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_make">
         <div class="location">at line 56</div>
-        <code>                    array
-    <strong>getColumns</strong>()
+        <code>        static            <a href="../../Cable8mm/Xeed/ForeignKey.html"><abbr title="Cable8mm\Xeed\ForeignKey">ForeignKey</abbr></a>
+    <strong>make</strong>(string $name, string $table, string $column, string $referenced_table, string $referenced_column)
         </code>
     </h3>
     <div class="details">    
@@ -243,80 +265,36 @@
             
 
         <div class="method-description">
-                            <p><p>Get column array.</p></p>                        
-        </div>
-        <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>array</td>
-            <td><p>The method returns <code>\Cable8mm\Xeed\Column</code> array</p></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getForeignKeys">
-        <div class="location">at line 66</div>
-        <code>                    array
-    <strong>getForeignKeys</strong>()
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Get key array.</p></p>                        
-        </div>
-        <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>array</td>
-            <td><p>The method returns <code>\Cable8mm\Xeed\Key</code> array</p></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_model">
-        <div class="location">at line 79</div>
-        <code>                    string
-    <strong>model</strong>(string|null $suffix = null)
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Get the model name from table name.</p></p>                        
+                            <p><p>Create a instance.</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string|null</td>
-                <td>$suffix</td>
-                <td></td>
+                <td>string</td>
+                <td>$name</td>
+                <td><p>Name of the key</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$table</td>
+                <td><p>Table name</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$column</td>
+                <td><p>Column name</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$referenced_table</td>
+                <td><p>Referenced table name</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$referenced_column</td>
+                <td><p>Referenced column name</p></td>
             </tr>
             </table>
 
@@ -325,32 +303,23 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>string</td>
-            <td><p>The method returns the ModelName</p></td>
+            <td><a href="../../Cable8mm/Xeed/ForeignKey.html"><abbr title="Cable8mm\Xeed\ForeignKey">ForeignKey</abbr></a></td>
+            <td></td>
         </tr>
     </table>
 
             
             
             
-                            <h4>Examples</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><pre class="examples">echo (new Table(&#039;users&#039;))-&gt;model();<br />
-//=&gt; User</pre></td>
-            </tr>
-            </table>
-
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_factory">
-        <div class="location">at line 92</div>
+                    <h3 id="method_belongsTo">
+        <div class="location">at line 77</div>
         <code>                    string
-    <strong>factory</strong>(string|null $suffix = null)
+    <strong>belongsTo</strong>()
         </code>
     </h3>
     <div class="details">    
@@ -358,109 +327,7 @@
             
 
         <div class="method-description">
-                            <p><p>Get the factory name from table name.</p></p>                        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string|null</td>
-                <td>$suffix</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string</td>
-            <td><p>The method returns the FactoryName</p></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                            <h4>Examples</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><pre class="examples">echo (new Table(&#039;users&#039;))-&gt;factory();<br />
-//=&gt; User</pre></td>
-            </tr>
-            </table>
-
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_seeder">
-        <div class="location">at line 105</div>
-        <code>                    string
-    <strong>seeder</strong>(string|null $suffix = null)
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Get the seeder name from table name.</p></p>                        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string|null</td>
-                <td>$suffix</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string</td>
-            <td><p>The method returns the SeederName</p></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                            <h4>Examples</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><pre class="examples">echo (new Table(&#039;users&#039;))-&gt;seeder();<br />
-//=&gt; User</pre></td>
-            </tr>
-            </table>
-
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_migration">
-        <div class="location">at line 118</div>
-        <code>                    string
-    <strong>migration</strong>()
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Get the migration file name from table name.</p></p>                        
+                            <p><p>Get the belongsTo relation from this model to another.</p></p>                        
         </div>
         <div class="tags">
             
@@ -469,29 +336,52 @@
                     <table class="table table-condensed">
         <tr>
             <td>string</td>
-            <td><p>The method returns the migration file name.</p></td>
+            <td><p>The method returns a relation function string</p></td>
         </tr>
     </table>
 
             
             
             
-                            <h4>Examples</h4>
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_hasMany">
+        <div class="location">at line 95</div>
+        <code>                    string
+    <strong>hasMany</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the hasMany relation from another model to this.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
 
                     <table class="table table-condensed">
-                    <tr>
-                <td><pre class="examples">echo (new Table(&#039;users&#039;))-&gt;migration();<br />
-//=&gt; 2024_03_18_135821_create_users_table.php</pre></td>
-            </tr>
-            </table>
+        <tr>
+            <td>string</td>
+            <td><p>The method returns a relation function string</p></td>
+        </tr>
+    </table>
 
+            
+            
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method___toString">
-        <div class="location">at line 131</div>
+        <div class="location">at line 113</div>
         <code>                    string
     <strong>__toString</strong>()
         </code>
@@ -501,7 +391,7 @@
             
 
         <div class="method-description">
-                            <p><p>Class magic method to get the real table name.</p></p>                        
+                            <p><p>Class magic method to get the instance information for a Exception</p></p>                        
         </div>
         <div class="tags">
             
@@ -510,22 +400,13 @@
                     <table class="table table-condensed">
         <tr>
             <td>string</td>
-            <td><p>The method returns the real table name.</p></td>
+            <td><p>The method returns the instance information for a Exception</p></td>
         </tr>
     </table>
 
             
             
             
-                            <h4>Examples</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><pre class="examples">echo new Table(&#039;users&#039;);<br />
-//=&gt; users</pre></td>
-            </tr>
-            </table>
-
                     </div>
     </div>
 
