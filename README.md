@@ -183,19 +183,19 @@ The generated files are stored in the same folder as your Laravel project. Pleas
 This command can only be used in Models where `use HasFactory;` exists, all relations will be placed after it.
 
 ```shell tab=Laravel
-php artisan xeed:relation
+php artisan xeed:relations
 # Add the relation function to all models from database in `app/Models` folder
 
-php artisan xeed:relation -m
-# Runs xeed:models before running xeed:relation. Add -f to force to generate
+php artisan xeed:relations -m
+# Runs xeed:models before running xeed:relations. Add -f to force to generate
 ```
 
 ```shell tab=Standalone
-bin/console relation
+bin/console relations
 # Add the relation function to all models from database in `dist/app/Models` folder
 
-bin/console relation -m
-# Runs xeed:models before running xeed:relation. Add -f to force to generate
+bin/console relations -m
+# Runs xeed:models before running xeed:relations. Add -f to force to generate
 ```
 
 The generated relations are named using laravels convetion. Some names may be duplicated
