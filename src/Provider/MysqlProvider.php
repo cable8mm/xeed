@@ -3,7 +3,9 @@
 namespace Cable8mm\Xeed\Provider;
 
 use Cable8mm\Xeed\Column;
+use Cable8mm\Xeed\ForeignKey;
 use Cable8mm\Xeed\Interfaces\ProviderInterface;
+use Cable8mm\Xeed\Support\Inflector;
 use Cable8mm\Xeed\Table;
 use Cable8mm\Xeed\Xeed;
 use PDO;
@@ -25,13 +27,34 @@ final class MysqlProvider implements ProviderInterface
         foreach ($tables as $table) {
             $columns = $xeed->pdo->query('SHOW COLUMNS FROM '.$table)->fetchAll(PDO::FETCH_ASSOC);
 
+            $foreignKeys = $xeed->pdo->query('SELECT * FROM information_schema.KEY_COLUMN_USAGE WHERE TABLE_NAME = "'.$table.'" AND TABLE_SCHEMA = "'.$_ENV['DB_DATABASE'].'" AND REFERENCED_TABLE_NAME IS NOT NULL')->fetchAll(PDO::FETCH_ASSOC);
+
+            $foreignKeys = array_map(
+                fn (array $key) => new ForeignKey(...self::mapForeignKeys($key)),
+                $foreignKeys
+            );
+
             $tableColumns = array_map(
                 fn (array $column) => new Column(...self::map($column)),
                 $columns
             );
 
-            $xeed[$table] = new Table($table, $tableColumns);
+            $xeed[$table] = new Table($table, $tableColumns, $foreignKeys);
         }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public static function mapForeignKeys(array $foreignKey): array
+    {
+        return [
+            'name' => $foreignKey['CONSTRAINT_NAME'],
+            'table' => Inflector::classify($foreignKey['TABLE_NAME']),
+            'column' => $foreignKey['COLUMN_NAME'],
+            'referenced_table' => Inflector::classify($foreignKey['REFERENCED_TABLE_NAME']),
+            'referenced_column' => $foreignKey['REFERENCED_COLUMN_NAME'],
+        ];
     }
 
     /**

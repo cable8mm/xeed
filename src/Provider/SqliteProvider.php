@@ -3,6 +3,7 @@
 namespace Cable8mm\Xeed\Provider;
 
 use Cable8mm\Xeed\Column;
+use Cable8mm\Xeed\ForeignKey;
 use Cable8mm\Xeed\Interfaces\ProviderInterface;
 use Cable8mm\Xeed\Table;
 use Cable8mm\Xeed\Xeed;
@@ -38,8 +39,29 @@ final class SqliteProvider implements ProviderInterface
                 $columnObject[] = new Column(...self::map($column, $table, $xeed));
             }
 
-            $xeed[$table] = new Table($table, $columnObject);
+            $foreignKeys = $xeed->pdo->query('PRAGMA foreign_key_list('.$table.');')->fetchAll();
+
+            $foreignKeys = array_map(
+                fn (array $key) => new ForeignKey(...self::mapForeignKeys($key, $table)),
+                $foreignKeys
+            );
+
+            $xeed[$table] = new Table($table, $columnObject, $foreignKeys);
         }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public static function mapForeignKeys(array $foreignKey, string $table): array
+    {
+        return [
+            'name' => $foreignKey['from'],
+            'table' => $table,
+            'column' => $foreignKey['from'],
+            'referenced_table' => $foreignKey['table'],
+            'referenced_column' => $foreignKey['to'],
+        ];
     }
 
     /**

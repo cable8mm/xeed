@@ -19,7 +19,7 @@ The Xeed is to generate new model, seed, database seed, factory and migration fi
 
 We have provided the API Documentation on the web. For more information, please visit <https://www.palgle.com/xeed/> ❤️
 
-### Features
+## Features
 
 - [x] Database testing is supported
 - [x] Generate models for Laravel
@@ -27,6 +27,7 @@ We have provided the API Documentation on the web. For more information, please 
 - [x] Generate database seed files for Laravel
 - [x] Generate factories for Laravel
 - [x] Generate migrations for Laravel
+- [x] Generate belongsTo and hasMany relationships functions for Laravel
 - [x] Laravel multi & reserved columns supported
 - [x] Laravel integration
 - [x] MySQL, SQLite and PostgreSQL supported
@@ -176,6 +177,28 @@ bin/console migrations -f -t xeeds
 ```
 
 The generated files are stored in the same folder as your Laravel project. Please check the `dist` folder.
+
+### Generate `Relations`
+
+This command can only be used in Models where `use HasFactory;` exists, all relations will be placed after it.
+
+```shell tab=Laravel
+php artisan xeed:relations
+# Add the relation function to all models from database in `app/Models` folder
+
+php artisan xeed:relations -m
+# Runs xeed:models before running xeed:relations. Add -f to force to generate
+```
+
+```shell tab=Standalone
+bin/console relations
+# Add the relation function to all models from database in `dist/app/Models` folder
+
+bin/console relations -m
+# Runs xeed:models before running xeed:relations. Add -f to force to generate
+```
+
+The generated relations are named using laravels convention. Some names may be duplicated
 
 ### Helpful commands
 

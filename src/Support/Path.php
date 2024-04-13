@@ -122,4 +122,16 @@ final class Path
     {
         return realpath(__DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'tests'.DIRECTORY_SEPARATOR.'Generate');
     }
+
+    /**
+     * Get `tests/Expected` folder path.
+     *
+     * @internal Don't use this method except testing.
+     *
+     * @return string This method returns the `tests/Expected` folder path for testing.
+     */
+    public static function testExpected(): string
+    {
+        return realpath(__DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'tests'.DIRECTORY_SEPARATOR.'Expected');
+    }
 }

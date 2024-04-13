@@ -24,18 +24,28 @@ final class Table implements Stringable
     private array $columns = [];
 
     /**
+     * Foreign key array.
+     *
+     * @var array<\Cable8mm\Xeed\ForeignKey>
+     */
+    private array $foreignKeys = [];
+
+    /**
      * Constructor.
      *
      * @param  string  $name  Table name
-     * @param  array<\Cable8mm\Xeed\Table>  $columns  Column array[Table]
+     * @param  array<\Cable8mm\Xeed\Table>|null  $columns  Column array[Table]
+     * @param  array<\Cable8mm\Xeed\ForeignKey>|null  $foreignKeys  Foreign key array
      */
-    public function __construct(string $name, ?array $columns = [])
+    public function __construct(string $name, ?array $columns = [], ?array $foreignKeys = [])
     {
         assert(! empty($columns), new LogicException('Columns must not be empty'));
 
         $this->name = $name;
 
         $this->columns = $columns;
+
+        $this->foreignKeys = $foreignKeys;
     }
 
     /**
@@ -46,6 +56,16 @@ final class Table implements Stringable
     public function getColumns(): array
     {
         return $this->columns;
+    }
+
+    /**
+     * Get key array.
+     *
+     * @return array<\Cable8mm\Xeed\ForeignKey> The method returns `\Cable8mm\Xeed\Key` array
+     */
+    public function getForeignKeys(): array
+    {
+        return $this->foreignKeys;
     }
 
     /**
