@@ -42,7 +42,7 @@ final class VarcharResolverTest extends TestCase
     {
         $resolver = new VarcharResolver($this->column);
 
-        $this->assertEquals('\'string\' => fake()->paragraph(),', $resolver->fake());
+        $this->assertEquals('\'string\' => fake()->text(),', $resolver->fake());
     }
 
     public function test_migration_method_can_working_well(): void
