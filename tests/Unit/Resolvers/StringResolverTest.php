@@ -42,7 +42,7 @@ final class StringResolverTest extends TestCase
     {
         $resolver = new StringResolver($this->column);
 
-        $this->assertEquals('\''.$resolver->field.'\' => fake()->paragraph(),', $resolver->fake());
+        $this->assertEquals('\''.$resolver->field.'\' => fake()->text(),', $resolver->fake());
     }
 
     public function test_migration_method_can_working_well(): void

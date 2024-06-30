@@ -18,9 +18,7 @@ abstract class Resolver implements ResolverInterface
      */
     public function __construct(
         protected Column $column
-    ) {
-
-    }
+    ) {}
 
     /**
      * {@inheritDoc}

@@ -7,6 +7,4 @@ namespace Cable8mm\Xeed\Resolvers;
  *
  * Equal to BOOL
  */
-final class BooleanResolver extends BoolResolver
-{
-}
+final class BooleanResolver extends BoolResolver {}

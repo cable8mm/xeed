@@ -7,6 +7,4 @@ namespace Cable8mm\Xeed\Resolvers;
  *
  * Equal to INT(size)
  */
-final class IntegerResolver extends IntResolver
-{
-}
+final class IntegerResolver extends IntResolver {}

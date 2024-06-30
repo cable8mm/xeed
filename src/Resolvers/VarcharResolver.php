@@ -14,7 +14,7 @@ class VarcharResolver extends Resolver
 {
     public function fake(): string
     {
-        return '\''.$this->column->field.'\' => fake()->paragraph(),';
+        return '\''.$this->column->field.'\' => fake()->text(),';
     }
 
     public function migration(): string
