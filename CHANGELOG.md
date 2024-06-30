@@ -1,5 +1,13 @@
 # Release Notes
 
+## v1.5.0 - 2024-06-30
+
+### What's Changed
+
+* Factory varchar produces fake()->paragraph() which is too long #68 by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/69
+
+**Full Changelog**: https://github.com/cable8mm/xeed/compare/v1.4.0...v1.5.0
+
 ## v1.4.0 - 2024-04-13
 
 ### What's Changed
