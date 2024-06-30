@@ -15,9 +15,7 @@ final class Picker
         private ?string $driver = null,
         private ?string $field = null,
         private ?string $type = null,
-    ) {
-
-    }
+    ) {}
 
     /**
      * Set a field value.

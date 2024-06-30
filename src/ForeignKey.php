@@ -25,8 +25,7 @@ final class ForeignKey implements Stringable
         public string $column,
         public string $referenced_table,
         public string $referenced_column,
-    ) {
-    }
+    ) {}
 
     /**
      * Get column information array.

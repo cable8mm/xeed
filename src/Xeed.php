@@ -45,9 +45,7 @@ final class Xeed implements ArrayAccess
      * is not allowed to call from outside to prevent from creating multiple instances,
      * to use the singleton, you have to obtain the instance from Xeed::getInstance() instead
      */
-    private function __construct()
-    {
-    }
+    private function __construct() {}
 
     /**
      * Establish connection
@@ -144,9 +142,7 @@ final class Xeed implements ArrayAccess
     /**
      * prevent the instance from being cloned (which would create a second instance of it)
      */
-    private function __clone()
-    {
-    }
+    private function __clone() {}
 
     /**
      * prevent from being unserialized (which would create a second instance of it)

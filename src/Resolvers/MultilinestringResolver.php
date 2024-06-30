@@ -5,6 +5,4 @@ namespace Cable8mm\Xeed\Resolvers;
 /**
  * MULTILINESTRING
  */
-class MultilinestringResolver extends VarcharResolver
-{
-}
+class MultilinestringResolver extends VarcharResolver {}
