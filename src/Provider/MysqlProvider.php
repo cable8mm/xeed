@@ -25,7 +25,7 @@ final class MysqlProvider implements ProviderInterface
             : [$table];
 
         foreach ($tables as $table) {
-            $columns = $xeed->pdo->query('SHOW COLUMNS FROM '.$table)->fetchAll(PDO::FETCH_ASSOC);
+            $columns = $xeed->pdo->query('SHOW COLUMNS FROM `'.$table.'`')->fetchAll(PDO::FETCH_ASSOC);
 
             $foreignKeys = $xeed->pdo->query('SELECT * FROM information_schema.KEY_COLUMN_USAGE WHERE TABLE_NAME = "'.$table.'" AND TABLE_SCHEMA = "'.$_ENV['DB_DATABASE'].'" AND REFERENCED_TABLE_NAME IS NOT NULL')->fetchAll(PDO::FETCH_ASSOC);
 
