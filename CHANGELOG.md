@@ -1,5 +1,18 @@
 # Release Notes
 
+## v1.5.1 - 2024-12-09
+
+### What's Changed
+
+* Fixes cable8mm/xeed#70 by [@Blucreation](https://github.com/Blucreation) in https://github.com/cable8mm/xeed/pull/71
+* Can't create relations #72 by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/73
+
+### New Contributors
+
+* [@Blucreation](https://github.com/Blucreation) made their first contribution in https://github.com/cable8mm/xeed/pull/71
+
+**Full Changelog**: https://github.com/cable8mm/xeed/compare/v1.5.0...v1.5.1
+
 ## v1.5.0 - 2024-06-30
 
 ### What's Changed
