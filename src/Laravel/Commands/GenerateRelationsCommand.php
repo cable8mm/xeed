@@ -39,10 +39,16 @@ class GenerateRelationsCommand extends Command
         foreach ($tables as $table) {
             try {
                 if ($models) {
-                    ModelGenerator::make($table)->run($force);
+                    ModelGenerator::make(
+                        $table,
+                        destination: app_path('Models')
+                    )->run($force);
                     $this->info(app_path('Models').DIRECTORY_SEPARATOR.$table->model().'.php has been generated.');
                 }
-                RelationGenerator::make($table)->run();
+                RelationGenerator::make(
+                    $table,
+                    destination: app_path('Models')
+                )->run();
 
                 $this->info('Relations of '.$table->model().' have been generated.');
             } catch (\Exception $e) {

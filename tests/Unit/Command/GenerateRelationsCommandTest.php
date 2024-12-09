@@ -13,8 +13,8 @@ class GenerateRelationsCommandTest extends TestCase
 
     protected function setUp(): void
     {
-        $application = new Application();
-        $application->add(new GenerateRelationsCommand());
+        $application = new Application;
+        $application->add(new GenerateRelationsCommand);
         $command = $application->find('relations');
         $this->commandTester = new CommandTester($command);
     }

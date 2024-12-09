@@ -119,6 +119,6 @@ final class File
             self::$filesystem = new Filesystem($adapter);
         }
 
-        return new self();
+        return new self;
     }
 }

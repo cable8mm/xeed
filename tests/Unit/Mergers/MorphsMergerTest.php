@@ -15,7 +15,7 @@ final class MorphsMergerTest extends TestCase
 
     public function test_it_can_merge(): void
     {
-        $merged = (new MorphsMerger())->start($this->line, $this->next);
+        $merged = (new MorphsMerger)->start($this->line, $this->next);
 
         $this->assertEquals($this->merged, $merged);
     }
@@ -28,7 +28,7 @@ final class MorphsMergerTest extends TestCase
 
         $this->assertEquals(
             '$table->morphs(\'another_fields\');',
-            (new MorphsMerger())->start($line, $next)
+            (new MorphsMerger)->start($line, $next)
         );
     }
 
@@ -38,7 +38,7 @@ final class MorphsMergerTest extends TestCase
 
         $next = '$table->timestamp(\'updated_at\', 0);';
 
-        $merged = (new MorphsMerger())->start($line, $next);
+        $merged = (new MorphsMerger)->start($line, $next);
 
         $this->assertNotEquals($this->merged, $merged);
     }

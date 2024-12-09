@@ -13,8 +13,8 @@ class GenerateMigrationsCommandTest extends TestCase
 
     protected function setUp(): void
     {
-        $application = new Application();
-        $application->add(new GenerateMigrationsCommand());
+        $application = new Application;
+        $application->add(new GenerateMigrationsCommand);
         $command = $application->find('migrations');
         $this->commandTester = new CommandTester($command);
     }

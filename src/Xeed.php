@@ -126,7 +126,7 @@ final class Xeed implements ArrayAccess
             $username = $_ENV['DB_USERNAME'] ?? null;
             $password = $_ENV['DB_PASSWORD'] ?? null;
 
-            self::$instance = (new static())->addConnection([
+            self::$instance = (new static)->addConnection([
                 'driver' => $driver,
                 'database' => $database,
                 'host' => $host,
@@ -160,7 +160,7 @@ final class Xeed implements ArrayAccess
     public static function make(): static
     {
         if (self::$instance === null) {
-            self::$instance = new static();
+            self::$instance = new static;
         }
 
         return self::$instance;

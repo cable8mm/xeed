@@ -19,13 +19,13 @@ final class PostProcessTest extends TestCase
     protected function setUp(): void
     {
         $this->myEngines = [
-            new MorphsMerger(),
-            new NullableMorphsMerger(),
-            new NullableUlidMorphsMerger(),
-            new NullableUuidMorphsMerger(),
-            new TimestampsMerger(),
-            new UlidMorphsMerger(),
-            new UuidMorphsMerger(),
+            new MorphsMerger,
+            new NullableMorphsMerger,
+            new NullableUlidMorphsMerger,
+            new NullableUuidMorphsMerger,
+            new TimestampsMerger,
+            new UlidMorphsMerger,
+            new UuidMorphsMerger,
         ];
     }
 

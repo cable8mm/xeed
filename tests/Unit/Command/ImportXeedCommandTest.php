@@ -21,8 +21,8 @@ class ImportXeedCommandTest extends TestCase
 
     public function test_execute(): void
     {
-        $application = new Application();
-        $application->add(new ImportXeedCommand());
+        $application = new Application;
+        $application->add(new ImportXeedCommand);
         $command = $application->find('import-xeed');
         $commandTester = new CommandTester($command);
 
@@ -36,8 +36,8 @@ class ImportXeedCommandTest extends TestCase
 
     public function test_execute_drop(): void
     {
-        $application = new Application();
-        $application->add(new ImportXeedCommand());
+        $application = new Application;
+        $application->add(new ImportXeedCommand);
         $command = $application->find('import-xeed');
         $commandTester = new CommandTester($command);
 
@@ -50,8 +50,8 @@ class ImportXeedCommandTest extends TestCase
 
     public function test_execute_refresh(): void
     {
-        $application = new Application();
-        $application->add(new ImportXeedCommand());
+        $application = new Application;
+        $application->add(new ImportXeedCommand);
         $command = $application->find('import-xeed');
         $commandTester = new CommandTester($command);
 
