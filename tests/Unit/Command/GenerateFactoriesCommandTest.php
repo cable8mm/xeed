@@ -13,8 +13,8 @@ class GenerateFactoriesCommandTest extends TestCase
 
     protected function setUp(): void
     {
-        $application = new Application();
-        $application->add(new GenerateFactoriesCommand());
+        $application = new Application;
+        $application->add(new GenerateFactoriesCommand);
         $command = $application->find('factories');
         $this->commandTester = new CommandTester($command);
     }

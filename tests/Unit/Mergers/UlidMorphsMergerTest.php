@@ -15,7 +15,7 @@ final class UlidMorphsMergerTest extends TestCase
 
     public function test_it_can_merge(): void
     {
-        $merged = (new UlidMorphsMerger())->start($this->line, $this->next);
+        $merged = (new UlidMorphsMerger)->start($this->line, $this->next);
 
         $this->assertEquals($this->merged, $merged);
     }
@@ -28,7 +28,7 @@ final class UlidMorphsMergerTest extends TestCase
 
         $this->assertEquals(
             '$table->ulidMorphs(\'another_fields\');',
-            (new UlidMorphsMerger())->start($line, $next)
+            (new UlidMorphsMerger)->start($line, $next)
         );
     }
 
@@ -38,7 +38,7 @@ final class UlidMorphsMergerTest extends TestCase
 
         $next = '$table->timestamp(\'updated_at\', 0);';
 
-        $merged = (new UlidMorphsMerger())->start($line, $next);
+        $merged = (new UlidMorphsMerger)->start($line, $next);
 
         $this->assertNotEquals($this->merged, $merged);
     }

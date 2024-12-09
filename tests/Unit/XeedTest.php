@@ -10,7 +10,7 @@ final class XeedTest extends TestCase
 {
     public function test_db_instance_can_be_created(): void
     {
-        ($seeder = new Seeder())->run();
+        ($seeder = new Seeder)->run();
 
         $xeed = Xeed::getNewInstance();
 
@@ -35,7 +35,7 @@ final class XeedTest extends TestCase
 
     public function test_seeder_can_make_seeds(): void
     {
-        ($seeder = new Seeder())->run();
+        ($seeder = new Seeder)->run();
 
         $xeed = Xeed::getInstance();
 
@@ -50,9 +50,9 @@ final class XeedTest extends TestCase
         $this->assertEquals(Seeder::TOTAL, count($users));
     }
 
-    public function test_getTable_method_can_work_well(): void
+    public function test_get_table_method_can_work_well(): void
     {
-        ($seeder = new Seeder())->run();
+        ($seeder = new Seeder)->run();
 
         $xeed = Xeed::getNewInstance()->attach();
 

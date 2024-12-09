@@ -15,7 +15,7 @@ final class RetrieveTest extends TestCase
         $dotenv = \Dotenv\Dotenv::createImmutable(getcwd());
         $dotenv->safeLoad();
 
-        $this->seeder = new Seeder();
+        $this->seeder = new Seeder;
 
         $this->seeder->run();
     }

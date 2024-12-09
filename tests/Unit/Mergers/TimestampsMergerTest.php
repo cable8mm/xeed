@@ -15,7 +15,7 @@ final class TimestampsMergerTest extends TestCase
 
     public function test_it_can_merge(): void
     {
-        $merged = (new TimestampsMerger())->start($this->line, $this->next);
+        $merged = (new TimestampsMerger)->start($this->line, $this->next);
 
         $this->assertEquals($this->merged, $merged);
     }
@@ -28,7 +28,7 @@ final class TimestampsMergerTest extends TestCase
 
         $this->assertEquals(
             '$table->timestamps();',
-            (new TimestampsMerger())->start($line, $next)
+            (new TimestampsMerger)->start($line, $next)
         );
     }
 
@@ -38,7 +38,7 @@ final class TimestampsMergerTest extends TestCase
 
         $next = '$table->timestamp(\'updated_at\', 0);';
 
-        $merged = (new TimestampsMerger())->start($line, $next);
+        $merged = (new TimestampsMerger)->start($line, $next);
 
         $this->assertNotEquals($this->merged, $merged);
     }

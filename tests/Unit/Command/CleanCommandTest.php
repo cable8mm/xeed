@@ -13,13 +13,13 @@ class CleanCommandTest extends TestCase
 
     protected function setUp(): void
     {
-        $application = new Application();
-        $application->add(new CleanCommand());
+        $application = new Application;
+        $application->add(new CleanCommand);
         $command = $application->find('clean');
         $this->commandTester = new CommandTester($command);
     }
 
-    public function testExecute(): void
+    public function test_execute(): void
     {
         $this->commandTester->execute([]);
 

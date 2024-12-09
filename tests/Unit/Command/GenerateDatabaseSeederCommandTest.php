@@ -13,8 +13,8 @@ class GenerateDatabaseSeederCommandTest extends TestCase
 
     protected function setUp(): void
     {
-        $application = new Application();
-        $application->add(new GenerateDatabaseSeederCommand());
+        $application = new Application;
+        $application->add(new GenerateDatabaseSeederCommand);
         $command = $application->find('database');
         $this->commandTester = new CommandTester($command);
     }

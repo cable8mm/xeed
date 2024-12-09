@@ -13,8 +13,8 @@ class GenerateModelsCommandTest extends TestCase
 
     protected function setUp(): void
     {
-        $application = new Application();
-        $application->add(new GenerateModelsCommand());
+        $application = new Application;
+        $application->add(new GenerateModelsCommand);
         $command = $application->find('models');
         $this->commandTester = new CommandTester($command);
     }

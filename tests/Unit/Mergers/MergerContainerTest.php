@@ -25,13 +25,13 @@ final class MergerContainerTest extends TestCase
     protected function setUp(): void
     {
         $this->myEngines = [
-            new MorphsMerger(),
-            new NullableMorphsMerger(),
-            new NullableUlidMorphsMerger(),
-            new NullableUuidMorphsMerger(),
-            new TimestampsMerger(),
-            new UlidMorphsMerger(),
-            new UuidMorphsMerger(),
+            new MorphsMerger,
+            new NullableMorphsMerger,
+            new NullableUlidMorphsMerger,
+            new NullableUuidMorphsMerger,
+            new TimestampsMerger,
+            new UlidMorphsMerger,
+            new UuidMorphsMerger,
         ];
     }
 
@@ -80,7 +80,7 @@ final class MergerContainerTest extends TestCase
             migration: Path::testBootstrap().DIRECTORY_SEPARATOR.self::MIGRATION_FILE
         );
 
-        $container->engine(new MorphsMerger());
+        $container->engine(new MorphsMerger);
 
         $reflectedClass = new ReflectionClass(MergerContainer::class);
         $reflected = $reflectedClass->getProperty('engines');

@@ -172,13 +172,13 @@ class MergerContainer implements Stringable
     public static function getEngines(): array
     {
         return [
-            new MorphsMerger(),
-            new NullableMorphsMerger(),
-            new NullableUlidMorphsMerger(),
-            new NullableUuidMorphsMerger(),
-            new TimestampsMerger(),
-            new UlidMorphsMerger(),
-            new UuidMorphsMerger(),
+            new MorphsMerger,
+            new NullableMorphsMerger,
+            new NullableUlidMorphsMerger,
+            new NullableUuidMorphsMerger,
+            new TimestampsMerger,
+            new UlidMorphsMerger,
+            new UuidMorphsMerger,
         ];
     }
 }
