@@ -383,6 +383,10 @@ Laravel columns **description** for mysql:
 |uuid('uuid')                                    |uuid                    |char(36)                   |NO  |   |       |              |
 |year('year')                                    |year                    |year                       |NO  |   |       |              |
 
+## Code of Conduct
+
+In order to ensure that the community is welcoming to all, please review and abide by the [CODE OF CONDUCT](CODE_OF_CONDUCT.md).
+
 ## Credits
 
 - [Samgu Lee](https://github.com/cable8mm)
