@@ -1,13 +1,14 @@
 {
     "name": "cable8mm/xeed",
-    "description": "The Xeed is to generate new model, seed, database seed, factory and migration files for Laravel based on data from the existing database table.",
+    "description": "The Xeed is to generate new model, seed, Nova resource, database seed, factory and migration files for Laravel & Nova based on data from the existing database table.",
     "keywords": [
         "laravel",
         "factory",
         "seed",
         "migration",
         "generator",
-        "xeed"
+        "xeed",
+        "nova"
     ],
     "type": "project",
     "license": "MIT",

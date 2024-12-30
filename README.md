@@ -1,19 +1,21 @@
-# Xeed - Resources Generator for Laravel
+# Xeed - Resources Generator for Laravel & Nova
 
 [![code-style](https://github.com/cable8mm/xeed/actions/workflows/code-style.yml/badge.svg)](https://github.com/cable8mm/xeed/actions/workflows/code-style.yml)
 [![run-tests](https://github.com/cable8mm/xeed/actions/workflows/run-tests.yml/badge.svg)](https://github.com/cable8mm/xeed/actions/workflows/run-tests.yml)
 [![Packagist Version](https://img.shields.io/packagist/v/cable8mm/xeed)](https://packagist.org/packages/cable8mm/xeed)
-[![Packagist Downloads](https://img.shields.io/packagist/dt/cable8mm/xeed)](https://packagist.org/packages/cable8mm/xeed/stats)
-[![Packagist Dependency Version](https://img.shields.io/packagist/dependency-v/cable8mm/xeed/php)](https://packagist.org/packages/cable8mm/xeed)
+[![Packagist Dependency Version](https://img.shields.io/packagist/dependency-v/cable8mm/xeed/php?logo=PHP&logoColor=white&color=777BB4
+)](https://packagist.org/packages/cable8mm/xeed)
 ![Laravel Version](https://img.shields.io/badge/Laravel-8.0%2B-FF2D20?logo=laravel&labelColor=white)
+![Static Badge](https://img.shields.io/badge/Laravel%20Nova-4.0%2B-4BA2E4?logo=laravel%20nova&logoColor=00E9F0&labelColor=white)
 ![Packagist Dependency Version](https://img.shields.io/packagist/dependency-v/cable8mm/xeed/symfony%2Fconsole)
+[![Packagist Downloads](https://img.shields.io/packagist/dt/cable8mm/xeed)](https://packagist.org/packages/cable8mm/xeed/stats)
 [![Packagist Stars](https://img.shields.io/packagist/stars/cable8mm/xeed)](https://github.com/cable8mm/xeed/stargazers)
 [![Packagist License](https://img.shields.io/packagist/l/cable8mm/xeed)](https://github.com/cable8mm/xeed/blob/main/LICENSE.md)
 
-The Xeed is to generate new model, seed, database seed, factory and migration files for Laravel based on data from the existing database table.
+The Xeed is to generate new model, seed, Nova resources, database seed, factory and migration files for Laravel & Nova based on data from the existing database table.
 
 > [!TIP]
-> It can function as both `php artisan xeed:*` commands for Laravel and `bin/console *` commands for Standalone, providing 100% identical functionality. Therefore, you can use it within your own Laravel project or as a standalone application.
+> It can function as both `php artisan xeed:*` commands for Laravel & Nova and `bin/console *` commands for Standalone, providing 100% identical functionality. Therefore, you can use it within your own Laravel & Nova project or as a standalone application.
 
 We have provided the API Documentation on the web. For more information, please visit <https://www.palgle.com/xeed/> ❤️
 
@@ -22,7 +24,7 @@ We have provided the API Documentation on the web. For more information, please 
 - [x] Database testing is supported
 - [x] Generate models for Laravel
 - [x] Generate seed files for Laravel
-- [x] Generate Laravel Nova resources files for Laravel
+- [x] Generate Nova resources files for Laravel Nova
 - [x] Generate database seed files for Laravel
 - [x] Generate factories for Laravel
 - [x] Generate migrations for Laravel
