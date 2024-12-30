@@ -22,6 +22,7 @@ We have provided the API Documentation on the web. For more information, please 
 - [x] Database testing is supported
 - [x] Generate models for Laravel
 - [x] Generate seed files for Laravel
+- [x] Generate Laravel Nova resources files for Laravel
 - [x] Generate database seed files for Laravel
 - [x] Generate factories for Laravel
 - [x] Generate migrations for Laravel
@@ -197,6 +198,18 @@ bin/console relations -m
 ```
 
 The generated relations are named using laravels convention. Some names may be duplicated
+
+### Generate `NovaResources`
+
+```shell tab=Laravel
+php artisan xeed:nova
+# Add the Laravel Nova resources to all tables in `app/Nova` folder
+```
+
+```shell tab=Standalone
+bin/console nova-fields
+# Add the Laravel Nova resources to all tables  in `dist/app/Nova` folder
+```
 
 ### Helpful commands
 
