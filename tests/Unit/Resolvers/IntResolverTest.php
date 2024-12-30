@@ -51,4 +51,13 @@ final class IntResolverTest extends TestCase
 
         $this->assertEquals('$table->integer(\''.$resolver->field.'\');', $resolver->migration());
     }
+
+    public function test_nova_method_can_working_well(): void
+    {
+        $this->column->field = 'int_field';
+
+        $resolver = new IntResolver($this->column);
+
+        $this->assertEquals('Number::make(\''.$this->column->title().'\'),', $resolver->nova());
+    }
 }

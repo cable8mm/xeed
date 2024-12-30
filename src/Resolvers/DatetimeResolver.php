@@ -2,6 +2,8 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
+use Cable8mm\Xeed\Support\Inflector;
+
 /**
  * DATETIME(fsp)
  *
@@ -27,5 +29,10 @@ class DatetimeResolver extends Resolver
         }
 
         return $this->last($migration);
+    }
+
+    public function nova(): ?string
+    {
+        return 'DateTime::make(\''.Inflector::title($this->column->field).'\'),';
     }
 }

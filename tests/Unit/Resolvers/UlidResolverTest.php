@@ -47,4 +47,13 @@ final class UlidResolverTest extends TestCase
 
         $this->assertEquals('$table->ulid(\''.$resolver->field.'\');', $resolver->migration());
     }
+
+    public function test_nova_method_can_working_well(): void
+    {
+        $this->column->field = 'ulid_field';
+
+        $resolver = new UlidResolver($this->column);
+
+        $this->assertEquals('Text::make(\''.$this->column->title().'\'),', $resolver->nova());
+    }
 }

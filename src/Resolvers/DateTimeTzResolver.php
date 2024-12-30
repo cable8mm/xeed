@@ -2,6 +2,8 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
+use Cable8mm\Xeed\Support\Inflector;
+
 /**
  * timestamp with time zone
  *
@@ -19,5 +21,10 @@ class DateTimeTzResolver extends Resolver
         $migration = '$table->dateTimeTz(\''.$this->column->field.'\')';
 
         return $this->last($migration);
+    }
+
+    public function nova(): ?string
+    {
+        return 'DateTime::make(\''.Inflector::title($this->column->field).'\'),';
     }
 }

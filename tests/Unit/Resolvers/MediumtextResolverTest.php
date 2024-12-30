@@ -47,4 +47,13 @@ final class MediumtextResolverTest extends TestCase
 
         $this->assertEquals('$table->mediumText(\''.$resolver->field.'\');', $resolver->migration());
     }
+
+    public function test_nova_method_can_working_well(): void
+    {
+        $this->column->field = 'mediumtext_field';
+
+        $resolver = new MediumtextResolver($this->column);
+
+        $this->assertEquals('Textarea::make(\''.$this->column->title().'\'),', $resolver->nova());
+    }
 }

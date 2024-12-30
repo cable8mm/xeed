@@ -2,6 +2,8 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
+use Cable8mm\Xeed\Support\Inflector;
+
 /**
  * TINYINT(size)
  *
@@ -28,5 +30,12 @@ final class TinyintResolver extends Resolver
         }
 
         return $this->last($migration);
+    }
+
+    public function nova(): ?string
+    {
+        return $this->column->unsigned ?
+            'Number::make(\''.Inflector::title($this->column->field).'\')->min(0)->max(255),' :
+            'Number::make(\''.Inflector::title($this->column->field).'\')->min(-128)->max(127),';
     }
 }

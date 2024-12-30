@@ -2,6 +2,8 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
+use Cable8mm\Xeed\Support\Inflector;
+
 /**
  * CHAR(size)
  *
@@ -23,5 +25,10 @@ class CharResolver extends Resolver
             '$table->char(\''.$this->column->field.'\', '.$this->column->bracket.')';
 
         return $this->last($migration);
+    }
+
+    public function nova(): ?string
+    {
+        return 'Text::make(\''.Inflector::title($this->column->field).'\'),';
     }
 }

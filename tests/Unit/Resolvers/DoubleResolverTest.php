@@ -62,4 +62,13 @@ final class DoubleResolverTest extends TestCase
             $this->assertEquals('$table->double(\'double\');', $resolver->migration());
         }
     }
+
+    public function test_nova_method_can_working_well(): void
+    {
+        $this->column->field = 'double_field';
+
+        $resolver = new DoubleResolver($this->column);
+
+        $this->assertEquals('Number::make(\''.$this->column->title().'\')->step(\'any\'),', $resolver->nova());
+    }
 }

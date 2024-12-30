@@ -39,6 +39,15 @@ abstract class Resolver implements ResolverInterface
     abstract public function migration(): string;
 
     /**
+     * {@inheritDoc}
+     *
+     * @internal This method should be implemented by nova resource classes.
+     *
+     * @throw LogicException
+     */
+    abstract public function nova(): ?string;
+
+    /**
      * Finally process for resolvers
      *
      * @param  string  $migration  The migration payload before post processing

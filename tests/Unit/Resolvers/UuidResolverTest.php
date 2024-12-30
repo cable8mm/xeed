@@ -47,4 +47,13 @@ final class UuidResolverTest extends TestCase
 
         $this->assertEquals('$table->uuid(\''.$resolver->field.'\');', $resolver->migration());
     }
+
+    public function test_nova_method_can_working_well(): void
+    {
+        $this->column->field = 'uuid_field';
+
+        $resolver = new UuidResolver($this->column);
+
+        $this->assertEquals('Text::make(\''.$this->column->title().'\'),', $resolver->nova());
+    }
 }

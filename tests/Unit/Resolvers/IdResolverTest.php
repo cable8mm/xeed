@@ -49,4 +49,11 @@ final class IdResolverTest extends TestCase
 
         $this->assertEquals('$table->id();', $resolver->migration());
     }
+
+    public function test_nova_method_can_working_well(): void
+    {
+        $resolver = new IdResolver($this->column);
+
+        $this->assertEquals('ID::make()->sortable(),', $resolver->nova());
+    }
 }

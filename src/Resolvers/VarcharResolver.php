@@ -2,6 +2,7 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
+use Cable8mm\Xeed\Support\Inflector;
 use Cable8mm\Xeed\Types\Bracket;
 
 /**
@@ -26,5 +27,10 @@ class VarcharResolver extends Resolver
         $migration = '$table->string(\''.$this->column->field.'\''.$bracket.')';
 
         return $this->last($migration);
+    }
+
+    public function nova(): ?string
+    {
+        return 'Text::make(\''.Inflector::title($this->column->field).'\')->maxlength(65535),';
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
+use Cable8mm\Xeed\Support\Inflector;
+
 /**
  * DATE
  *
@@ -20,5 +22,10 @@ class DateResolver extends Resolver
         $migration = '$table->date(\''.$this->column->field.'\')';
 
         return $this->last($migration);
+    }
+
+    public function nova(): ?string
+    {
+        return 'Date::make(\''.Inflector::title($this->column->field).'\'),';
     }
 }

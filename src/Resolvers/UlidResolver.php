@@ -2,6 +2,8 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
+use Cable8mm\Xeed\Support\Inflector;
+
 /**
  * ULID
  */
@@ -21,5 +23,18 @@ class UlidResolver extends Resolver
         }
 
         return $this->last($migration);
+    }
+
+    public function nova(): ?string
+    {
+        if (preg_match('/_ulid$/', $this->column->field)) {
+            $title = Inflector::title(preg_replace('/_ulid$/', '', $this->column->field));
+
+            $migration = 'BelongsTo::make(\''.$title.'\'),';
+        } else {
+            $migration = 'Text::make(\''.Inflector::title($this->column->field).'\'),';
+        }
+
+        return $migration;
     }
 }

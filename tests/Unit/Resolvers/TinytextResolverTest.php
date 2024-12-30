@@ -47,4 +47,13 @@ final class TinytextResolverTest extends TestCase
 
         $this->assertEquals('$table->tinyText(\''.$resolver->field.'\');', $resolver->migration());
     }
+
+    public function test_nova_method_can_working_well(): void
+    {
+        $this->column->field = 'tinytext_field';
+
+        $resolver = new TinytextResolver($this->column);
+
+        $this->assertEquals('Text::make(\''.$this->column->title().'\')->maxlength(255),', $resolver->nova());
+    }
 }

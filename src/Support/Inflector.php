@@ -17,6 +17,7 @@ final class Inflector
 
     /**
      * Get Class name as Laravel style.
+     * Returns a word in singular form.
      *
      * @param  string  $string  raw table name
      * @return string The method returns Model class name as Laravel style
@@ -32,6 +33,7 @@ final class Inflector
 
     /**
      * Get Class name as hasMany method name.
+     * Returns a word in plural form.
      *
      * @param  string  $string  raw Class name
      * @return string The method returns hasMany method name
@@ -47,6 +49,7 @@ final class Inflector
 
     /**
      * Get Class name as belongsTo method name.
+     * Converts a word into the format for a Doctrine table name. Converts 'ModelName' to 'model_name'.
      *
      * @param  string  $string  raw Class name
      * @return string The method returns belongsTo method name
@@ -58,5 +61,22 @@ final class Inflector
         }
 
         return self::$inflector->tableize($string);
+    }
+
+    /**
+     * get title from Doctrine table
+     *
+     * @param  string  $string  raw Class name
+     * @return string The method returns title
+     */
+    public static function title(string $string): string
+    {
+        if (self::$inflector === null) {
+            self::$inflector = InflectorFactory::create()->build();
+        }
+
+        $string = str_replace('_', ' ', $string);
+
+        return ucwords(preg_replace('/\-_/', ' ', self::$inflector->tableize($string)));
     }
 }

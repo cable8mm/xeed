@@ -61,4 +61,13 @@ final class DecimalResolverTest extends TestCase
             $this->assertEquals('$table->decimal(\''.$resolver->field.'\', 8, 10);', $resolver->migration());
         }
     }
+
+    public function test_nova_method_can_working_well(): void
+    {
+        $this->column->field = 'decimal_field';
+
+        $resolver = new DecimalResolver($this->column);
+
+        $this->assertEquals('Number::make(\''.$this->column->title().'\')->step(\'any\'),', $resolver->nova());
+    }
 }

@@ -61,4 +61,13 @@ final class StringResolverTest extends TestCase
             $this->assertEquals('$table->string(\''.$resolver->field.'\');', $resolver->migration());
         }
     }
+
+    public function test_nova_method_can_working_well(): void
+    {
+        $this->column->field = 'string_field';
+
+        $resolver = new StringResolver($this->column);
+
+        $this->assertEquals('Text::make(\''.$this->column->title().'\')->maxlength(65535),', $resolver->nova());
+    }
 }

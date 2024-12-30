@@ -2,6 +2,8 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
+use Cable8mm\Xeed\Support\Inflector;
+
 /**
  * YEAR
  *
@@ -21,5 +23,10 @@ class YearResolver extends Resolver
         $migration = '$table->year(\''.$this->column->field.'\')';
 
         return $this->last($migration);
+    }
+
+    public function nova(): ?string
+    {
+        return 'Number::make(\''.Inflector::title($this->column->field).'\')->min(1901)->max(2155),';
     }
 }

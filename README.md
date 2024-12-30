@@ -1,7 +1,5 @@
 # Xeed - Resources Generator for Laravel
 
-[한글(Korean) 👈](README.ko.md)
-
 [![code-style](https://github.com/cable8mm/xeed/actions/workflows/code-style.yml/badge.svg)](https://github.com/cable8mm/xeed/actions/workflows/code-style.yml)
 [![run-tests](https://github.com/cable8mm/xeed/actions/workflows/run-tests.yml/badge.svg)](https://github.com/cable8mm/xeed/actions/workflows/run-tests.yml)
 [![Packagist Version](https://img.shields.io/packagist/v/cable8mm/xeed)](https://packagist.org/packages/cable8mm/xeed)
@@ -24,6 +22,7 @@ We have provided the API Documentation on the web. For more information, please 
 - [x] Database testing is supported
 - [x] Generate models for Laravel
 - [x] Generate seed files for Laravel
+- [x] Generate Laravel Nova resources files for Laravel
 - [x] Generate database seed files for Laravel
 - [x] Generate factories for Laravel
 - [x] Generate migrations for Laravel
@@ -200,6 +199,18 @@ bin/console relations -m
 
 The generated relations are named using laravels convention. Some names may be duplicated
 
+### Generate `NovaResources`
+
+```shell tab=Laravel
+php artisan xeed:nova
+# Add the Laravel Nova resources to all tables in `app/Nova` folder
+```
+
+```shell tab=Standalone
+bin/console nova-fields
+# Add the Laravel Nova resources to all tables  in `dist/app/Nova` folder
+```
+
 ### Helpful commands
 
 If you are going to test this package yourself, then you would use the following commands to clean up generated files.
@@ -303,6 +314,72 @@ Utilize migration files for all database field types by referring to the followi
 ### Use `testorchestral/testbench`
 
 You can utilize `testorchestral/testbench` to execute tests. When running Laravel commands, the generated files are saved in the `vendor/orchestra/testbench-core/laravel/database` folder.
+
+## Resources
+
+Laravel columns **description** for mysql:
+
+|Available Column Types                                  |Field                   |Type                       |Null|Key|Default|Extra         |
+|--------------------------------------------------------|------------------------|---------------------------|----|---|-------|--------------|
+|id()                                            |id                      |bigint unsigned            |NO  |PRI|       |auto_increment|
+|bigInteger('big_integer')                       |big_integer             |bigint                     |NO  |   |       |              |
+|binary('binary')                                |binary                  |blob                       |NO  |   |       |              |
+|boolean('boolean')                              |boolean                 |tinyint(1)                 |NO  |   |       |              |
+|char('char', length: 100)                       |char                    |char(100)                  |NO  |   |       |              |
+|dateTimeTz('date_time_tz', precision: 0)        |date_time_tz            |datetime                   |NO  |   |       |              |
+|dateTime('date_time', precision: 0)             |date_time               |datetime                   |NO  |   |       |              |
+|date('date')                                    |date                    |date                       |NO  |   |       |              |
+|decimal('decimal', total: 8, places: 2)         |decimal                 |decimal(8,2)               |NO  |   |       |              |
+|double('double')                                |double                  |double                     |NO  |   |       |              |
+|enum('enum', \['easy', 'hard'\])                  |enum                    |enum('easy','hard')        |NO  |   |       |              |
+|float('float', precision: 53)                   |float                   |double                     |NO  |   |       |              |
+|foreignId('foreign_id')                         |foreign_id              |bigint unsigned            |NO  |   |       |              |
+|foreignUlid('foreign_ulid')                     |foreign_ulid            |char(26)                   |NO  |   |       |              |
+|foreignUuid('foreign_uuid')                     |foreign_uuid            |char(36)                   |NO  |   |       |              |
+|geometry('geometry', subtype: 'point', srid: 0) |geometry                |point                      |NO  |   |       |              |
+|integer('integer')                              |integer                 |int                        |NO  |   |       |              |
+|ipAddress('ip_address')                         |ip_address              |varchar(45)                |NO  |   |       |              |
+|json('json')                                    |json                    |json                       |NO  |   |       |              |
+|jsonb('jsonb')                                  |jsonb                   |json                       |NO  |   |       |              |
+|longText('long_text')                           |long_text               |longtext                   |NO  |   |       |              |
+|macAddress('mac_address')                       |mac_address             |varchar(17)                |NO  |   |       |              |
+|mediumInteger('medium_integer')                 |medium_integer          |mediumint                  |NO  |   |       |              |
+|mediumText('medium_text')                       |medium_text             |mediumtext                 |NO  |   |       |              |
+|morphs('morph')                                 |morph_type              |varchar(255)               |NO  |MUL|       |              |
+|_Ditto make 2 fields_                                                       |morph_id                |bigint unsigned            |NO  |   |       |              |
+|nullableTimestamps(precision: 0)                |created_at              |timestamp                  |YES |   |       |              |
+|_Ditto make 2 fields_                                                       |updated_at              |timestamp                  |YES |   |       |              |
+|nullableMorphs('nullable_morph')                |nullable_morph_type     |varchar(255)               |YES |MUL|       |              |
+|_Ditto make 2 fields_                                                      |nullable_morph_id       |bigint unsigned            |YES |   |       |              |
+|nullableUlidMorphs('nullable_ulid_morph')       |nullable_ulid_morph_type|varchar(255)               |YES |MUL|       |              |
+|_Ditto make 2 fields_                                                      |nullable_ulid_morph_id  |char(26)                   |YES |   |       |              |
+|nullableUuidMorphs('nullable_uuid_morph')       |nullable_uuid_morph_type|varchar(255)               |YES |MUL|       |              |
+|_Ditto make 2 fields_                                                     |nullable_uuid_morph_id  |char(36)                   |YES |   |       |              |
+|rememberToken()                                 |remember_token          |varchar(100)               |YES |   |       |              |
+|set('set', \['strawberry', 'vanilla'\])           |set                     |set('strawberry','vanilla')|NO  |   |       |              |
+|smallInteger('small_integer')                   |small_integer           |smallint                   |NO  |   |       |              |
+|softDeletesTz('soft_delete_tz', precision: 0)   |soft_delete_tz          |timestamp                  |YES |   |       |              |
+|softDeletes('soft_delete', precision: 0)        |soft_delete             |timestamp                  |YES |   |       |              |
+|string('string', length: 100)                   |string                  |varchar(100)               |NO  |   |       |              |
+|text('text')                                    |text                    |text                       |NO  |   |       |              |
+|time('time_tz', 0)                              |time_tz                 |time                       |NO  |   |       |              |
+|time('time', 0)                                 |time                    |time                       |NO  |   |       |              |
+|timestampTz('timestamp_tz', precision: 0)       |timestamp_tz            |timestamp                  |NO  |   |       |              |
+|timestamp('timestamp', precision: 0)            |timestamp               |timestamp                  |NO  |   |       |              |
+|tinyInteger('tiny_integer')                     |tiny_integer            |tinyint                    |NO  |   |       |              |
+|tinyText('tiny_text')                           |tiny_text               |tinytext                   |NO  |   |       |              |
+|unsignedBigInteger('unsigned_big_integer')      |unsigned_big_integer    |bigint unsigned            |NO  |   |       |              |
+|unsignedInteger('unsigned_integer')             |unsigned_integer        |int unsigned               |NO  |   |       |              |
+|unsignedMediumInteger('unsigned_medium_integer')|unsigned_medium_integer |mediumint unsigned         |NO  |   |       |              |
+|unsignedSmallInteger('unsigned_small_integer')  |unsigned_small_integer  |smallint unsigned          |NO  |   |       |              |
+|unsignedTinyInteger('unsigned_tiny_integer')    |unsigned_tiny_integer   |tinyint unsigned           |NO  |   |       |              |
+|ulidMorphs('ulid_morph')                        |ulid_morph_type         |varchar(255)               |NO  |MUL|       |              |
+|_Ditto make 2 fields_                                                   |ulid_morph_id           |char(26)                   |NO  |   |       |              |
+|uuidMorphs('uuid_morph')                        |uuid_morph_type         |varchar(255)               |NO  |MUL|       |              |
+|_Ditto make 2 fields_                                                    |uuid_morph_id           |char(36)                   |NO  |   |       |              |
+|ulid('ulid')                                    |ulid                    |char(26)                   |NO  |   |       |              |
+|uuid('uuid')                                    |uuid                    |char(36)                   |NO  |   |       |              |
+|year('year')                                    |year                    |year                       |NO  |   |       |              |
 
 ## Credits
 

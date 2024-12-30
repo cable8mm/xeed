@@ -61,4 +61,13 @@ final class CharResolverTest extends TestCase
             $this->assertEquals('$table->char(\'char\');', $resolver->migration());
         }
     }
+
+    public function test_nova_method_can_working_well(): void
+    {
+        $this->column->field = 'char_field';
+
+        $resolver = new CharResolver($this->column);
+
+        $this->assertEquals('Text::make(\''.$this->column->title().'\'),', $resolver->nova());
+    }
 }

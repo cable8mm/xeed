@@ -2,6 +2,8 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
+use Cable8mm\Xeed\Support\Inflector;
+
 /**
  * MEDIUMTEXT
  *
@@ -19,5 +21,10 @@ class MediumtextResolver extends Resolver
         $migration = '$table->mediumText(\''.$this->column->field.'\')';
 
         return $this->last($migration);
+    }
+
+    public function nova(): ?string
+    {
+        return 'Textarea::make(\''.Inflector::title($this->column->field).'\'),';
     }
 }

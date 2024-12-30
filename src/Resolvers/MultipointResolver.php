@@ -2,6 +2,8 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
+use Cable8mm\Xeed\Support\Inflector;
+
 /**
  * MULTIPOINT
  */
@@ -17,5 +19,10 @@ class MultipointResolver extends Resolver
         $migration = '$table->multiPoint(\''.$this->column->field.'\')';
 
         return $this->last($migration);
+    }
+
+    public function nova(): ?string
+    {
+        return 'Textarea::make(\''.Inflector::title($this->column->field).'\'),';
     }
 }

@@ -47,4 +47,13 @@ final class RemembertokenResolverTest extends TestCase
 
         $this->assertEquals('$table->rememberToken();', $resolver->migration());
     }
+
+    public function test_nova_method_can_working_well(): void
+    {
+        $this->column->field = 'remembertoken_field';
+
+        $resolver = new RemembertokenResolver($this->column);
+
+        $this->assertEquals('Textarea::make(\''.$this->column->title().'\'),', $resolver->nova());
+    }
 }

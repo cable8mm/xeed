@@ -2,6 +2,8 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
+use Cable8mm\Xeed\Support\Inflector;
+
 /**
  * SMALLINT(size)
  *
@@ -25,5 +27,10 @@ final class SmallintResolver extends Resolver
             '$table->smallInteger(\''.$this->column->field.'\')';
 
         return $this->last($migration);
+    }
+
+    public function nova(): ?string
+    {
+        return 'Number::make(\''.Inflector::title($this->column->field).'\'),';
     }
 }
