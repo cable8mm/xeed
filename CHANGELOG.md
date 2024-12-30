@@ -1,5 +1,13 @@
 # Release Notes
 
+## v1.6.0 - 2024-12-30
+
+### What's Changed
+
+* Add new functions for Laravel Nova by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/74
+
+**Full Changelog**: https://github.com/cable8mm/xeed/compare/v1.5.1...v1.6.0
+
 ## v1.5.1 - 2024-12-09
 
 ### What's Changed
