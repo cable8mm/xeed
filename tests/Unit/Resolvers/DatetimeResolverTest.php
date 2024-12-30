@@ -47,4 +47,13 @@ final class DatetimeResolverTest extends TestCase
 
         $this->assertEquals('$table->dateTime(\'date_time\');', $resolver->migration());
     }
+
+    public function test_nova_method_can_working_well(): void
+    {
+        $this->column->field = 'datetime_field';
+
+        $resolver = new DatetimeResolver($this->column);
+
+        $this->assertEquals('DateTime::make(\''.$this->column->title().'\'),', $resolver->nova());
+    }
 }

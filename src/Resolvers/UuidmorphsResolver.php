@@ -19,4 +19,9 @@ class UuidmorphsResolver extends Resolver
 
         return $this->last($migration);
     }
+
+    public function nova(): ?string
+    {
+        return false;
+    }
 }

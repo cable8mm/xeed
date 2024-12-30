@@ -47,4 +47,13 @@ final class TimeResolverTest extends TestCase
 
         $this->assertEquals('$table->time(\''.$resolver->field.'\', 0);', $resolver->migration());
     }
+
+    public function test_nova_method_can_working_well(): void
+    {
+        $this->column->field = 'time_field';
+
+        $resolver = new TimeResolver($this->column);
+
+        $this->assertEquals('Text::make(\''.$this->column->title().'\'),', $resolver->nova());
+    }
 }

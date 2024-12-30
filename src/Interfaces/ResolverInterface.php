@@ -20,4 +20,11 @@ interface ResolverInterface
      * @return string The method returns a Migration file row string
      */
     public function migration(): string;
+
+    /**
+     * Get the row string for Nova resource file, then return the string for Nova resource class.
+     *
+     * @return string The method returns a Nova resource file row field string
+     */
+    public function nova(): ?string;
 }

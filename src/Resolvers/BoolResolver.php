@@ -2,6 +2,8 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
+use Cable8mm\Xeed\Support\Inflector;
+
 /**
  * BOOL
  *
@@ -19,5 +21,10 @@ class BoolResolver extends Resolver
         $migration = '$table->boolean(\''.$this->column->field.'\')';
 
         return $this->last($migration);
+    }
+
+    public function nova(): ?string
+    {
+        return 'Boolean::make(\''.Inflector::title($this->column->field).'\'),';
     }
 }

@@ -51,4 +51,13 @@ final class YearResolverTest extends TestCase
 
         $this->assertEquals('$table->year(\''.$resolver->field.'\');', $resolver->migration());
     }
+
+    public function test_nova_method_can_working_well(): void
+    {
+        $this->column->field = 'year_field';
+
+        $resolver = new YearResolver($this->column);
+
+        $this->assertEquals('Number::make(\''.$this->column->title().'\')->min(1901)->max(2155),', $resolver->nova());
+    }
 }

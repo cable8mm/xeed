@@ -2,6 +2,8 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
+use Cable8mm\Xeed\Support\Inflector;
+
 /**
  * MACADDRESS
  */
@@ -17,5 +19,10 @@ class MacaddressResolver extends Resolver
         $migration = '$table->macAddress(\''.$this->column->field.'\')';
 
         return $this->last($migration);
+    }
+
+    public function nova(): ?string
+    {
+        return 'Text::make(\''.Inflector::title($this->column->field).'\'),';
     }
 }

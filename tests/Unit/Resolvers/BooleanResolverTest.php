@@ -47,4 +47,13 @@ final class BooleanResolverTest extends TestCase
 
         $this->assertEquals('$table->boolean(\'boolean\');', $resolver->migration());
     }
+
+    public function test_nova_method_can_working_well(): void
+    {
+        $this->column->field = 'boolean_field';
+
+        $resolver = new BooleanResolver($this->column);
+
+        $this->assertEquals('Boolean::make(\''.$this->column->title().'\'),', $resolver->nova());
+    }
 }

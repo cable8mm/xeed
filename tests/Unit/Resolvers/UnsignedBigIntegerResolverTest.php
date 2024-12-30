@@ -61,4 +61,13 @@ final class UnsignedBigIntegerResolverTest extends TestCase
             $this->assertEquals('$table->bigInteger(\''.$resolver->field.'\');', $resolver->migration());
         }
     }
+
+    public function test_nova_method_can_working_well(): void
+    {
+        $this->column->field = 'bigint_field';
+
+        $resolver = new BigintResolver($this->column);
+
+        $this->assertEquals('Number::make(\''.$this->column->title().'\'),', $resolver->nova());
+    }
 }

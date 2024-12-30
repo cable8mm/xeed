@@ -47,4 +47,13 @@ final class LongtextResolverTest extends TestCase
 
         $this->assertEquals('$table->longText(\''.$resolver->field.'\');', $resolver->migration());
     }
+
+    public function test_nova_method_can_working_well(): void
+    {
+        $this->column->field = 'longtext_field';
+
+        $resolver = new LongtextResolver($this->column);
+
+        $this->assertEquals('Textarea::make(\''.$this->column->title().'\'),', $resolver->nova());
+    }
 }

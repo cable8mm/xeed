@@ -2,6 +2,7 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
+use Cable8mm\Xeed\Support\Inflector;
 use Cable8mm\Xeed\Types\Bracket;
 
 /**
@@ -40,5 +41,10 @@ class FloatResolver extends Resolver
         $migration = '$table->float(\''.$this->column->field.'\''.$bracket.')';
 
         return $this->last($migration);
+    }
+
+    public function nova(): ?string
+    {
+        return 'Number::make(\''.Inflector::title($this->column->field).'\')->step(\'any\'),';
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
+use Cable8mm\Xeed\Support\Inflector;
+
 /**
  * BLOB(size)
  *
@@ -20,5 +22,10 @@ final class BlobResolver extends Resolver
         $migration = '$table->binary(\''.$this->column->field.'\')';
 
         return $this->last($migration);
+    }
+
+    public function nova(): ?string
+    {
+        return 'Text::make(\''.Inflector::title($this->column->field).'\'),';
     }
 }

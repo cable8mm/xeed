@@ -2,6 +2,8 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
+use Cable8mm\Xeed\Support\Inflector;
+
 /**
  * BIGINT(size)
  *
@@ -29,5 +31,16 @@ class BigintResolver extends Resolver
         }
 
         return $this->last($migration);
+    }
+
+    public function nova(): ?string
+    {
+        if ($this->column->field === 'id') {
+            $novaResourceField = 'ID::make()->sortable(),';
+        } else {
+            $novaResourceField = 'Number::make(\''.Inflector::title($this->column->field).'\'),';
+        }
+
+        return $novaResourceField;
     }
 }

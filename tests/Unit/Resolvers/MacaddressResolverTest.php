@@ -47,4 +47,13 @@ final class MacaddressResolverTest extends TestCase
 
         $this->assertEquals('$table->macAddress(\''.$resolver->field.'\');', $resolver->migration());
     }
+
+    public function test_nova_method_can_working_well(): void
+    {
+        $this->column->field = 'macaddress_field';
+
+        $resolver = new MacaddressResolver($this->column);
+
+        $this->assertEquals('Text::make(\''.$this->column->title().'\'),', $resolver->nova());
+    }
 }

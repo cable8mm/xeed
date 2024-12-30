@@ -61,4 +61,13 @@ final class UnsignedTinyIntegerResolverTest extends TestCase
             $this->assertEquals('$table->tinyInteger(\''.$resolver->field.'\');', $resolver->migration());
         }
     }
+
+    public function test_nova_method_can_working_well(): void
+    {
+        $this->column->field = 'tinyint_field';
+
+        $resolver = new TinyintResolver($this->column);
+
+        $this->assertEquals('Number::make(\''.$this->column->title().'\')->min(-128)->max(127),', $resolver->nova());
+    }
 }

@@ -2,6 +2,8 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
+use Cable8mm\Xeed\Support\Inflector;
+
 /**
  * JSONB
  */
@@ -17,5 +19,10 @@ class JsonbResolver extends Resolver
         $migration = '$table->jsonb(\''.$this->column->field.'\')';
 
         return $this->last($migration);
+    }
+
+    public function nova(): ?string
+    {
+        return 'KeyValue::make(\''.Inflector::title($this->column->field).'\')->rules(\'json\'),';
     }
 }

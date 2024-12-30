@@ -2,6 +2,7 @@
 
 namespace Cable8mm\Xeed;
 
+use Cable8mm\Xeed\Support\Inflector;
 use Stringable;
 
 /**
@@ -111,6 +112,29 @@ final class Column implements Stringable
     public function migration(): string
     {
         return ResolverSelector::of($this)->migration();
+    }
+
+    /**
+     * Get the row string for migration file, then return the string for migration class.
+     *
+     * @return string The method returns a Migration class row string
+     */
+    public function novaField(): string
+    {
+        return ResolverSelector::of($this)->nova();
+    }
+
+    /**
+     * Get the title for Nova field title from column name.
+     *
+     * @return string The method returns the title for Nova field title
+     *
+     * @example echo (new Column(['username', 'varchar']))->title();
+     * //=> Username
+     */
+    public function title(): string
+    {
+        return Inflector::title($this->field);
     }
 
     /**

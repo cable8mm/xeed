@@ -47,4 +47,13 @@ final class JsonResolverTest extends TestCase
 
         $this->assertEquals('$table->json(\''.$resolver->field.'\');', $resolver->migration());
     }
+
+    public function test_nova_method_can_working_well(): void
+    {
+        $this->column->field = 'json_field';
+
+        $resolver = new JsonResolver($this->column);
+
+        $this->assertEquals('KeyValue::make(\''.$this->column->title().'\')->rules(\'json\'),', $resolver->nova());
+    }
 }

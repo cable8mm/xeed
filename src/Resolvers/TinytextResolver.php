@@ -2,6 +2,8 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
+use Cable8mm\Xeed\Support\Inflector;
+
 /**
  * TINYTEXT
  *
@@ -19,5 +21,10 @@ class TinytextResolver extends Resolver
         $migration = '$table->tinyText(\''.$this->column->field.'\')';
 
         return $this->last($migration);
+    }
+
+    public function nova(): ?string
+    {
+        return 'Text::make(\''.Inflector::title($this->column->field).'\')->maxlength(255),';
     }
 }

@@ -82,6 +82,32 @@ final class Table implements Stringable
     }
 
     /**
+     * Get the Nova resource name from table name.
+     *
+     * @return string The method returns the NovaResourceName
+     *
+     * @example echo (new Table('users'))->nova();
+     * //=> User
+     */
+    public function nova(?string $suffix = null): string
+    {
+        return $this->model($suffix);
+    }
+
+    /**
+     * Get the title for Nova resource name from table name.
+     *
+     * @return string The method returns the title for NovaResource name
+     *
+     * @example echo (new Table('users'))->title();
+     * //=> User
+     */
+    public function title(?string $suffix = null): string
+    {
+        return Inflector::title($this->name).$suffix;
+    }
+
+    /**
      * Get the factory name from table name.
      *
      * @return string The method returns the FactoryName

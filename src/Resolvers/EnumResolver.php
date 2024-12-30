@@ -2,6 +2,7 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
+use Cable8mm\Xeed\Support\Inflector;
 use Cable8mm\Xeed\Types\Bracket;
 
 /**
@@ -29,5 +30,12 @@ class EnumResolver extends Resolver
         $migration = '$table->enum(\''.$this->column->field.'\', '.$bracket.')';
 
         return $this->last($migration);
+    }
+
+    public function nova(): ?string
+    {
+        $bracket = Bracket::of($this->column->bracket)->array();
+
+        return 'Select::make(\''.Inflector::title($this->column->field).'\')->options(['.$bracket.']),';
     }
 }

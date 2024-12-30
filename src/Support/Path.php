@@ -32,6 +32,18 @@ final class Path
     }
 
     /**
+     * Get `Models` folder path.
+     *
+     * @return string The model folder path
+     *
+     * @example ./dist/app/Nova/
+     */
+    public static function nova(): string
+    {
+        return realpath(__DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'dist'.DIRECTORY_SEPARATOR.'app'.DIRECTORY_SEPARATOR.'Nova');
+    }
+
+    /**
      * Get `seeders` folder path.
      *
      * @return string The seeder folder path

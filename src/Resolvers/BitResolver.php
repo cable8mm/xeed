@@ -2,6 +2,8 @@
 
 namespace Cable8mm\Xeed\Resolvers;
 
+use Cable8mm\Xeed\Support\Inflector;
+
 /**
  * BIT(size)
  *
@@ -22,5 +24,10 @@ final class BitResolver extends Resolver
         $migration = '$table->integer(\''.$this->column->field.'\')';
 
         return $this->last($migration);
+    }
+
+    public function nova(): ?string
+    {
+        return 'Boolean::make(\''.Inflector::title($this->column->field).'\'),';
     }
 }

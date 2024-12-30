@@ -47,4 +47,13 @@ final class TimestampResolverTest extends TestCase
 
         $this->assertEquals('$table->timestamp(\''.$resolver->field.'\', 0);', $resolver->migration());
     }
+
+    public function test_nova_method_can_working_well(): void
+    {
+        $this->column->field = 'timestamp_field';
+
+        $resolver = new TimestampResolver($this->column);
+
+        $this->assertEquals('DateTime::make(\''.$this->column->title().'\'),', $resolver->nova());
+    }
 }

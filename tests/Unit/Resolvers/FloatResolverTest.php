@@ -61,4 +61,13 @@ final class FloatResolverTest extends TestCase
             $this->assertEquals('$table->float(\'float\', 24, 2);', $resolver->migration());
         }
     }
+
+    public function test_nova_method_can_working_well(): void
+    {
+        $this->column->field = 'float_field';
+
+        $resolver = new FloatResolver($this->column);
+
+        $this->assertEquals('Number::make(\''.$this->column->title().'\')->step(\'any\'),', $resolver->nova());
+    }
 }

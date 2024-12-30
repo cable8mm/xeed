@@ -47,4 +47,13 @@ final class DateResolverTest extends TestCase
 
         $this->assertEquals('$table->date(\'date\');', $resolver->migration());
     }
+
+    public function test_nova_method_can_working_well(): void
+    {
+        $this->column->field = 'date_field';
+
+        $resolver = new DateResolver($this->column);
+
+        $this->assertEquals('Date::make(\''.$this->column->title().'\'),', $resolver->nova());
+    }
 }

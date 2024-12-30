@@ -47,4 +47,13 @@ final class TextResolverTest extends TestCase
 
         $this->assertEquals('$table->text(\''.$resolver->field.'\');', $resolver->migration());
     }
+
+    public function test_nova_method_can_working_well(): void
+    {
+        $this->column->field = 'text_field';
+
+        $resolver = new TextResolver($this->column);
+
+        $this->assertEquals('Text::make(\''.$this->column->title().'\'),', $resolver->nova());
+    }
 }

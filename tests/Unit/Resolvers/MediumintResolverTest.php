@@ -47,4 +47,13 @@ final class MediumintResolverTest extends TestCase
 
         $this->assertEquals('$table->mediumInteger(\''.$resolver->field.'\');', $resolver->migration());
     }
+
+    public function test_nova_method_can_working_well(): void
+    {
+        $this->column->field = 'mediumint_field';
+
+        $resolver = new MediumintResolver($this->column);
+
+        $this->assertEquals('Number::make(\''.$this->column->title().'\'),', $resolver->nova());
+    }
 }

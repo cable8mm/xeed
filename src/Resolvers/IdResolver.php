@@ -21,4 +21,9 @@ class IdResolver extends Resolver
     {
         return '$table->id();';
     }
+
+    public function nova(): ?string
+    {
+        return 'ID::make()->sortable(),';
+    }
 }

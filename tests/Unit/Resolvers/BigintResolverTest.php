@@ -51,4 +51,19 @@ final class BigintResolverTest extends TestCase
 
         $this->assertEquals('$table->bigInteger(\''.$resolver->field.'\');', $resolver->migration());
     }
+
+    public function test_nova_method_can_working_well(): void
+    {
+        $this->column->field = 'id';
+
+        $resolver = new BigintResolver($this->column);
+
+        $this->assertEquals('ID::make()->sortable(),', $resolver->nova());
+
+        $this->column->field = 'column_name';
+
+        $resolver = new BigintResolver($this->column);
+
+        $this->assertEquals('Number::make(\''.$this->column->title().'\'),', $resolver->nova());
+    }
 }
