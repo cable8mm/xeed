@@ -1,5 +1,14 @@
 # Release Notes
 
+## v1.6.1 - 2024-12-30
+
+### What's Changed
+
+* Change title for including Laravel Nova by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/75
+* Make community standards by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/76
+
+**Full Changelog**: https://github.com/cable8mm/xeed/compare/v1.6.0...v1.6.1
+
 ## v1.6.0 - 2024-12-30
 
 ### What's Changed
