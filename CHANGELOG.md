@@ -1,5 +1,14 @@
 # Release Notes
 
+## v1.6.2 - 2025-01-03
+
+### What's Changed
+
+* Avoid Laravel builtin tables by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/77
+* Add `users` table into laravel default tables by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/78
+
+**Full Changelog**: https://github.com/cable8mm/xeed/compare/v1.6.1...v1.6.2
+
 ## v1.6.1 - 2024-12-30
 
 ### What's Changed
