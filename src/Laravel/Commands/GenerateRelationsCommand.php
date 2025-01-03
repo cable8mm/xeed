@@ -36,6 +36,10 @@ class GenerateRelationsCommand extends Command
         $models = $this->option('models') ?? false;
         $tables = $xeed->addPdo(DB::connection()->getPDO())->attach()->getTables();
 
+        $tables = array_filter($tables, function ($table) {
+            return ! in_array($table, Xeed::LARAVEL_DEFAULT_TABLES);
+        });
+
         foreach ($tables as $table) {
             try {
                 if ($models) {

@@ -2,6 +2,7 @@
 
 namespace Cable8mm\Xeed\Laravel\Commands;
 
+use Cable8mm\Xeed\Xeed;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 
@@ -55,8 +56,23 @@ class CleanCommand extends Command
         }
 
         foreach ($paths as $path) {
-            array_map(function ($location) {
-                File::delete($location);
+            array_map(function ($location) use ($path) {
+                if ($path === database_path('migrations')) {
+                    $hasLaravelDefaultTable = false;
+
+                    foreach (Xeed::LARAVEL_DEFAULT_TABLES as $table) {
+                        if (str_contains($location, '_'.$table.'_')) {
+                            $hasLaravelDefaultTable = true;
+                            break;
+                        }
+                    }
+
+                    if (! $hasLaravelDefaultTable) {
+                        File::delete($location);
+                    }
+                } else {
+                    File::delete($location);
+                }
 
                 $this->info($location.' was deleted.');
             }, array_filter((array) glob($path.DIRECTORY_SEPARATOR.'*.php')));
