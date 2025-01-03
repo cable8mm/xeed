@@ -34,7 +34,22 @@ final class Xeed implements ArrayAccess
      */
     public const AVAILABLE_DATABASES = ['mysql', 'sqlite', 'pgsql'];
 
-    public const LARAVEL_DEFAULT_TABLES = ['cache', 'cache_locks', 'failed_jobs', 'job_batches', 'jobs', 'action_events', 'migrations', 'password_resets', 'sessions', 'users'];
+    public const LARAVEL_DEFAULT_TABLES = [
+        'action_events',
+        'cache',
+        'cache_locks',
+        'failed_jobs',
+        'job_batches',
+        'jobs',
+        'migrations',
+        'nova_field_attachments',
+        'nova_notifications',
+        'nova_pending_field_attachments',
+        'password_resets',
+        'password_reset_tokens',
+        'sessions',
+        'users',
+    ];
 
     /**
      * @var array<\Cable8mm\Xeed\Table> Table array.
