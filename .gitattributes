@@ -3,7 +3,7 @@
 *.md diff=markdown
 *.php diff=php
 *.php.test diff=php
-/bin/colsone diff=php
+/bin/console diff=php
 
 /.github export-ignore
 /dist export-ignore
