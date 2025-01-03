@@ -2,6 +2,7 @@
 
 [![code-style](https://github.com/cable8mm/xeed/actions/workflows/code-style.yml/badge.svg)](https://github.com/cable8mm/xeed/actions/workflows/code-style.yml)
 [![run-tests](https://github.com/cable8mm/xeed/actions/workflows/run-tests.yml/badge.svg)](https://github.com/cable8mm/xeed/actions/workflows/run-tests.yml)
+[![pages-build-deployment](https://github.com/cable8mm/xeed/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/cable8mm/xeed/actions/workflows/pages/pages-build-deployment)
 [![Packagist Version](https://img.shields.io/packagist/v/cable8mm/xeed)](https://packagist.org/packages/cable8mm/xeed)
 [![Packagist Dependency Version](https://img.shields.io/packagist/dependency-v/cable8mm/xeed/php?logo=PHP&logoColor=white&color=777BB4
 )](https://packagist.org/packages/cable8mm/xeed)

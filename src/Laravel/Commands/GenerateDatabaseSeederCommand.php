@@ -34,6 +34,10 @@ class GenerateDatabaseSeederCommand extends Command
             DB::connection()->getPDO()
         )->attach()->getTables();
 
+        $tables = array_filter($tables, function ($table) {
+            return ! in_array($table, Xeed::LARAVEL_DEFAULT_TABLES);
+        });
+
         try {
             DatabaseSeederGenerator::make(
                 $tables,
