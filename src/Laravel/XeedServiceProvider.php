@@ -8,6 +8,7 @@ use Cable8mm\Xeed\Laravel\Commands\GenerateFactoriesCommand;
 use Cable8mm\Xeed\Laravel\Commands\GenerateFakerSeedersCommand;
 use Cable8mm\Xeed\Laravel\Commands\GenerateMigrationsCommand;
 use Cable8mm\Xeed\Laravel\Commands\GenerateModelsCommand;
+use Cable8mm\Xeed\Laravel\Commands\GenerateNovaCommand;
 use Cable8mm\Xeed\Laravel\Commands\GenerateRelationsCommand;
 use Cable8mm\Xeed\Laravel\Commands\GenerateSeedersCommand;
 use Cable8mm\Xeed\Laravel\Commands\ImportXeedCommand;
@@ -25,15 +26,16 @@ class XeedServiceProvider extends ServiceProvider implements DeferrableProvider
         // php artisan vendor:publish --tag=xeed-sql
         if ($this->app->runningInConsole()) {
             $this->commands([
+                CleanCommand::class,
                 GenerateDatabaseSeederCommand::class,
                 GenerateFactoriesCommand::class,
                 GenerateMigrationsCommand::class,
                 GenerateModelsCommand::class,
                 GenerateSeedersCommand::class,
-                ImportXeedCommand::class,
-                CleanCommand::class,
                 GenerateFakerSeedersCommand::class,
                 GenerateRelationsCommand::class,
+                ImportXeedCommand::class,
+                GenerateNovaCommand::class,
             ]);
         }
     }
