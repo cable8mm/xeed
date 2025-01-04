@@ -1,5 +1,13 @@
 # Release Notes
 
+## v1.6.5 - 2025-01-04
+
+### What's Changed
+
+* Fix `Provider must not be accessed` error by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/83
+
+**Full Changelog**: https://github.com/cable8mm/xeed/compare/v1.6.4...v1.6.5
+
 ## v1.6.4 - 2025-01-04
 
 ### What's Changed
