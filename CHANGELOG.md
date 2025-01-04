@@ -1,5 +1,15 @@
 # Release Notes
 
+## v1.6.3 - 2025-01-04
+
+### What's Changed
+
+* Add `action_events` table into laravel default tables by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/79
+* Add nova tables into laravel default tables by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/80
+* Revise a message for migrations by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/81
+
+**Full Changelog**: https://github.com/cable8mm/xeed/compare/v1.6.2...v1.6.3
+
 ## v1.6.2 - 2025-01-03
 
 ### What's Changed
