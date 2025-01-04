@@ -1,5 +1,13 @@
 # Release Notes
 
+## v1.6.4 - 2025-01-04
+
+### What's Changed
+
+* Add command for `xeed:nova` command by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/82
+
+**Full Changelog**: https://github.com/cable8mm/xeed/compare/v1.6.3...v1.6.4
+
 ## v1.6.3 - 2025-01-04
 
 ### What's Changed
