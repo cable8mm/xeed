@@ -4,7 +4,6 @@ namespace Cable8mm\Xeed\Command;
 
 use Cable8mm\Xeed\Generators\MigrationGenerator;
 use Cable8mm\Xeed\Mergers\MergerContainer;
-use Cable8mm\Xeed\Support\Path;
 use Cable8mm\Xeed\Xeed;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
@@ -68,9 +67,9 @@ class GenerateMigrationsCommand extends Command
                     MergerContainer::getEngines()
                 )->run(force: $force);
 
-                $output->writeln('<info>'.Path::migration().DIRECTORY_SEPARATOR.$table->migration().' has been generated.'.'</info>');
+                $output->writeln('<info>A migration file for '.$table.' table has been generated.</info>');
             } catch (\RuntimeException $e) {
-                $output->writeln('<error>'.Path::migration().DIRECTORY_SEPARATOR.$table->migration().'.php file already exists.'.'</error>');
+                $output->writeln('<error>'.$e->getMessage().'</error>');
             }
         }
 

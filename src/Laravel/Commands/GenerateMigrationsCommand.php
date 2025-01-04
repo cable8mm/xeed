@@ -52,9 +52,9 @@ class GenerateMigrationsCommand extends Command
                     MergerContainer::getEngines()
                 )->run(force: $force);
 
-                $this->info(database_path('migrations').DIRECTORY_SEPARATOR.$table->factory().'.php has been generated.');
+                $this->info('A migration file for '.$table.' table has been generated.');
             } catch (\Exception $e) {
-                $this->error(database_path('migrations').DIRECTORY_SEPARATOR.$table->factory().'.php file already exists.');
+                $this->error($e->getMessage());
             }
         }
 
