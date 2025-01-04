@@ -5,6 +5,7 @@ namespace Cable8mm\Xeed\Laravel\Commands;
 use Cable8mm\Xeed\Generators\NovaResourceGenerator;
 use Cable8mm\Xeed\Xeed;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
 
 class GenerateNovaCommand extends Command
 {
@@ -34,8 +35,8 @@ class GenerateNovaCommand extends Command
         $table = $this->option('table');
 
         $tables = is_null($table)
-            ? Xeed::getInstance()->attach()->getTables()
-            : Xeed::getInstance()->attach($table)->getTables();
+            ? $xeed->addPdo(DB::connection()->getPDO())->attach()->getTables()
+            : $xeed->addPdo(DB::connection()->getPDO())->attach($table)->getTables();
 
         $tables = array_filter($tables, function ($table) {
             return ! in_array($table, Xeed::LARAVEL_DEFAULT_TABLES);

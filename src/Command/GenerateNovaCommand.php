@@ -61,6 +61,10 @@ class GenerateNovaCommand extends Command
             ? Xeed::getInstance()->attach()->getTables()
             : Xeed::getInstance()->attach($table)->getTables();
 
+        $tables = array_filter($tables, function ($table) {
+            return ! in_array($table, Xeed::LARAVEL_DEFAULT_TABLES);
+        });
+
         foreach ($tables as $table) {
             try {
                 NovaResourceGenerator::make($table)->run(force: $force);
