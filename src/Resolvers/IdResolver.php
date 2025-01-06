@@ -14,7 +14,7 @@ class IdResolver extends Resolver
 {
     public function fake(): string
     {
-        return '\''.$this->column->field.'\' => fake()->numerify(),';
+        return '';
     }
 
     public function migration(): string
