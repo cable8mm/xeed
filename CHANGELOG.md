@@ -1,5 +1,13 @@
 # Release Notes
 
+## v1.6.8 - 2025-01-06
+
+### What's Changed
+
+* Fix a bug of `hasTimestamps()` method in `ModelGenerator` class by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/95
+
+**Full Changelog**: https://github.com/cable8mm/xeed/compare/v1.6.7...v1.6.8
+
 ## v1.6.7 - 2025-01-06
 
 ### What's Changed
