@@ -45,6 +45,15 @@ final class DecimalResolverTest extends TestCase
         $this->assertEquals('\''.$resolver->field.'\' => fake()->randomFloat(),', $resolver->fake());
     }
 
+    public function test_fake_method_can_working_well_with_bracket(): void
+    {
+        $this->column->bracket = '8, 2';
+
+        $resolver = new DecimalResolver($this->column);
+
+        $this->assertEquals('\''.$resolver->field.'\' => fake()->randomFloat(2, 0, 999999),', $resolver->fake());
+    }
+
     public function test_migration_method_can_working_well(): void
     {
         $resolver = new DecimalResolver($this->column);

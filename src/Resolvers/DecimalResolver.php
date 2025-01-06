@@ -22,9 +22,13 @@ class DecimalResolver extends Resolver
     {
         $bracket = Bracket::of($this->column->bracket)->escape();
 
-        $bracket = empty($bracket) ? '' : $bracket;
+        if (empty($bracket)) {
+            return '\''.$this->column->field.'\' => fake()->randomFloat(),';
+        }
 
-        return '\''.$this->column->field.'\' => fake()->randomFloat('.$bracket.'),';
+        preg_match('/([0-9]+), ?([0-9]+)/', $bracket, $arguments);
+
+        return '\''.$this->column->field.'\' => fake()->randomFloat('.$arguments[2].', 0, '.(pow(10, $arguments[1] - $arguments[2]) - 1).'),';
     }
 
     public function migration(): string
