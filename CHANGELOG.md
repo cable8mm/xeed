@@ -1,5 +1,13 @@
 # Release Notes
 
+## v1.6.9 - 2025-01-06
+
+### What's Changed
+
+* Fix remove useless fields from nova resources by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/96
+
+**Full Changelog**: https://github.com/cable8mm/xeed/compare/v1.6.8...v1.6.9
+
 ## v1.6.8 - 2025-01-06
 
 ### What's Changed
