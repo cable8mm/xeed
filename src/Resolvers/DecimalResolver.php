@@ -22,7 +22,7 @@ class DecimalResolver extends Resolver
     {
         $bracket = Bracket::of($this->column->bracket)->escape();
 
-        $bracket = empty($bracket) ? '' : ', '.$bracket;
+        $bracket = empty($bracket) ? '' : $bracket;
 
         return '\''.$this->column->field.'\' => fake()->randomFloat('.$bracket.'),';
     }
