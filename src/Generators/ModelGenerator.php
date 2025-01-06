@@ -38,8 +38,14 @@ final class ModelGenerator implements GeneratorInterface
     public function run(bool $force = false): void
     {
         $seederClass = str_replace(
-            ['{model}'],
-            [$this->table->model()],
+            [
+                '{model}',
+                '{timestamps}',
+            ],
+            [
+                $this->table->model(),
+                $this->table->hasTimestamps() ? PHP_EOL.PHP_EOL.'    public $timestamps = false;' : '',
+            ],
             $this->stub
         );
 
