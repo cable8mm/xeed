@@ -42,7 +42,9 @@ final class FactoryGenerator implements GeneratorInterface
         $fakers = '';
 
         foreach ($this->table->getColumns() as $column) {
-            $fakers .= FactoryGenerator::INTENT.$column->fake().PHP_EOL;
+            if (! empty($column->fake())) {
+                $fakers .= FactoryGenerator::INTENT.$column->fake().PHP_EOL;
+            }
         }
 
         $fakers = preg_replace('/\n$/', '', $fakers);
