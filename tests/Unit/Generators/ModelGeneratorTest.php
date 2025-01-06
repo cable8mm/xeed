@@ -42,7 +42,7 @@ final class ModelGeneratorTest extends TestCase
 
     public function test_it_can_generate_without_timestamps(): void
     {
-        unlink(Path::testgen().DIRECTORY_SEPARATOR.'Sample.php');
+        File::system()->delete(Path::testgen().DIRECTORY_SEPARATOR.'Sample.php');
 
         ModelGenerator::make(
             new Table('samples', [
