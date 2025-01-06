@@ -42,7 +42,7 @@ final class DecimalResolverTest extends TestCase
     {
         $resolver = new DecimalResolver($this->column);
 
-        $this->assertEquals('\''.$resolver->field.'\' => fake()->randomFloat(2, 0, 10000),', $resolver->fake());
+        $this->assertEquals('\''.$resolver->field.'\' => fake()->randomFloat(),', $resolver->fake());
     }
 
     public function test_migration_method_can_working_well(): void
