@@ -147,6 +147,14 @@ final class Table implements Stringable
     }
 
     /**
+     * Let it know if the table has timestamps.
+     */
+    public function hasTimestamps(): bool
+    {
+        return in_array('created_at', array_column($this->columns, 'field')) && in_array('updated_at', array_column($this->columns, 'field'));
+    }
+
+    /**
      * Class magic method to get the real table name.
      *
      * @return string The method returns the real table name.
