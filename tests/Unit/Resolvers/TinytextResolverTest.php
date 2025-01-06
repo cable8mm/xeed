@@ -38,7 +38,7 @@ final class TinytextResolverTest extends TestCase
     {
         $resolver = new TinytextResolver($this->column);
 
-        $this->assertEquals('\''.$resolver->field.'\' => fake()->sentence(),', $resolver->fake());
+        $this->assertEquals('\''.$resolver->field.'\' => fake()->text(255),', $resolver->fake());
     }
 
     public function test_migration_method_can_working_well(): void

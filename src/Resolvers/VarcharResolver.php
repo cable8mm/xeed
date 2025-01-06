@@ -15,22 +15,30 @@ class VarcharResolver extends Resolver
 {
     public function fake(): string
     {
-        return '\''.$this->column->field.'\' => fake()->text(),';
+        $bracket = Bracket::of($this->column->bracket)->escape();
+
+        $bracket = empty($bracket) ? '65535' : $bracket;
+
+        return '\''.$this->column->field.'\' => fake()->text('.$bracket.'),';
     }
 
     public function migration(): string
     {
         $bracket = Bracket::of($this->column->bracket)->escape();
 
-        $bracket = empty($bracket) ? '' : ', '.$bracket;
+        $bracket = empty($bracket) ? '65535' : $bracket;
 
-        $migration = '$table->string(\''.$this->column->field.'\''.$bracket.')';
+        $migration = '$table->string(\''.$this->column->field.'\', '.$bracket.')';
 
         return $this->last($migration);
     }
 
     public function nova(): ?string
     {
-        return 'Text::make(\''.Inflector::title($this->column->field).'\')->maxlength(65535),';
+        $bracket = Bracket::of($this->column->bracket)->escape();
+
+        $bracket = empty($bracket) ? '65535' : $bracket;
+
+        return 'Text::make(\''.Inflector::title($this->column->field).'\')->maxlength('.$bracket.'),';
     }
 }
