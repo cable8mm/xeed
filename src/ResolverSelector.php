@@ -63,7 +63,7 @@ final class ResolverSelector
             return new IdResolver($column);
         }
 
-        if ($column->type == 'bigint') {
+        if ($column->type == 'bigint' || $column->type == 'biginteger' || $column->type == 'bigInteger') {
             return new BigintResolver($column);
         }
 

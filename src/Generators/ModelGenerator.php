@@ -37,14 +37,31 @@ final class ModelGenerator implements GeneratorInterface
      */
     public function run(bool $force = false): void
     {
+        // Check if having casts
+        $casts = [];
+        foreach ($this->table->getColumns() as $column) {
+            if (! is_null($column->cast())) {
+                $casts[] = "'{$column->field}' => '{$column->cast()}'";
+            }
+        }
+
+        $castString = '';
+        if (! empty($casts)) {
+            $castString = PHP_EOL.PHP_EOL.'    '.'protected function casts(): array'.PHP_EOL.'    {'.PHP_EOL.'        return ['.PHP_EOL.'            ';
+            $castString .= implode(','.PHP_EOL.'            ', $casts).PHP_EOL;
+            $castString .= '        ];'.PHP_EOL.'    }';
+        }
+
         $seederClass = str_replace(
             [
                 '{model}',
                 '{timestamps}',
+                '{casts}',
             ],
             [
                 $this->table->model(),
                 $this->table->hasTimestamps() ? PHP_EOL.PHP_EOL.'    public $timestamps = false;' : '',
+                $castString,
             ],
             $this->stub
         );

@@ -41,4 +41,9 @@ class VarcharResolver extends Resolver
 
         return 'Text::make(\''.Inflector::title($this->column->field).'\')->maxlength('.$bracket.'),';
     }
+
+    public function cast(): ?string
+    {
+        return 'string';
+    }
 }

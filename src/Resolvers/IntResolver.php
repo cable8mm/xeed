@@ -39,4 +39,9 @@ class IntResolver extends Resolver
 
         return $novaResourceField;
     }
+
+    public function cast(): ?string
+    {
+        return 'integer';
+    }
 }

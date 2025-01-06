@@ -30,4 +30,9 @@ final class BitResolver extends Resolver
     {
         return 'Boolean::make(\''.Inflector::title($this->column->field).'\'),';
     }
+
+    public function cast(): ?string
+    {
+        return 'boolean';
+    }
 }

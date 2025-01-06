@@ -47,4 +47,9 @@ class FloatResolver extends Resolver
     {
         return 'Number::make(\''.Inflector::title($this->column->field).'\')->step(\'any\'),';
     }
+
+    public function cast(): ?string
+    {
+        return 'float';
+    }
 }

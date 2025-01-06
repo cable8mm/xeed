@@ -16,6 +16,7 @@ final class ModelGeneratorTest extends TestCase
         ModelGenerator::make(
             new Table('samples', [
                 Column::make('id', 'bigint'),
+                Column::make('timestamp', 'timestamp'),
                 Column::make('created_at', 'timestamp'),
                 Column::make('updated_at', 'timestamp'),
             ]),
@@ -41,6 +42,22 @@ final class ModelGeneratorTest extends TestCase
     }
 
     public function test_it_can_generate_without_timestamps(): void
+    {
+        File::system()->delete(Path::testgen().DIRECTORY_SEPARATOR.'Sample.php');
+
+        ModelGenerator::make(
+            new Table('samples', [
+                Column::make('id', 'bigint'),
+            ]),
+            destination: Path::testgen()
+        )->run();
+
+        $file = File::system()->read(Path::testgen().DIRECTORY_SEPARATOR.'Sample.php');
+
+        $this->assertStringContainsString('timestamps', $file);
+    }
+
+    public function test_it_is_needed_to_properties(): void
     {
         File::system()->delete(Path::testgen().DIRECTORY_SEPARATOR.'Sample.php');
 
