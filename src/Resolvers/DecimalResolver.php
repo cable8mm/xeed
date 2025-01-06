@@ -20,7 +20,11 @@ class DecimalResolver extends Resolver
 {
     public function fake(): string
     {
-        return '\''.$this->column->field.'\' => fake()->randomFloat(2, 0, 10000),';
+        $bracket = Bracket::of($this->column->bracket)->escape();
+
+        $bracket = empty($bracket) ? '' : ', '.$bracket;
+
+        return '\''.$this->column->field.'\' => fake()->randomFloat('.$bracket.'),';
     }
 
     public function migration(): string
