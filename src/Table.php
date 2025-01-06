@@ -151,7 +151,10 @@ final class Table implements Stringable
      */
     public function hasTimestamps(): bool
     {
-        return in_array('created_at', array_column($this->columns, 'field')) && in_array('updated_at', array_column($this->columns, 'field'));
+        return ! (
+            in_array('created_at', array_column($this->columns, 'field')) &&
+            in_array('updated_at', array_column($this->columns, 'field'))
+        );
     }
 
     /**

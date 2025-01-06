@@ -22,12 +22,16 @@ final class RelationGeneratorTest extends TestCase
         $this->table = new Table('samples', [
             Column::make('id', 'bigInteger'),
             Column::make('related_id', 'bigInteger'),
+            Column::make('created_at', 'timestamp'),
+            Column::make('updated_at', 'timestamp'),
         ], [
             ForeignKey::make('samples_related_fk', 'Sample', 'related_id', 'Related', 'id'),
         ]);
 
         $this->related = new Table('related', [
             Column::make('id', 'bigInteger'),
+            Column::make('created_at', 'timestamp'),
+            Column::make('updated_at', 'timestamp'),
         ]);
 
         ModelGenerator::make(
