@@ -38,4 +38,9 @@ final class TinyintResolver extends Resolver
             'Number::make(\''.Inflector::title($this->column->field).'\')->min(0)->max(255),' :
             'Number::make(\''.Inflector::title($this->column->field).'\')->min(-128)->max(127),';
     }
+
+    public function cast(): ?string
+    {
+        return 'integer';
+    }
 }

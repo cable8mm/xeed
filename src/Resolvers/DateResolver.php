@@ -28,4 +28,9 @@ class DateResolver extends Resolver
     {
         return 'Date::make(\''.Inflector::title($this->column->field).'\'),';
     }
+
+    public function cast(): ?string
+    {
+        return 'date';
+    }
 }

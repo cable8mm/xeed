@@ -25,4 +25,9 @@ class JsonResolver extends Resolver
     {
         return 'KeyValue::make(\''.Inflector::title($this->column->field).'\')->rules(\'json\'),';
     }
+
+    public function cast(): ?string
+    {
+        return 'object';
+    }
 }

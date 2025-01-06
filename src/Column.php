@@ -146,4 +146,9 @@ final class Column implements Stringable
     {
         return 'Field is '.$this->field.' and type is '.$this->type.'.';
     }
+
+    public function cast(): ?string
+    {
+        return ResolverSelector::of($this)->cast();
+    }
 }

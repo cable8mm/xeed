@@ -27,4 +27,11 @@ interface ResolverInterface
      * @return string The method returns a Nova resource file row field string
      */
     public function nova(): ?string;
+
+    /**
+     * Get the row string for cast file, then return the string for cast class.
+     *
+     * @return string The method returns a cast file row field string
+     */
+    public function cast(): ?string;
 }

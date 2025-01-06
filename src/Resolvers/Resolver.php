@@ -67,6 +67,16 @@ abstract class Resolver implements ResolverInterface
     }
 
     /**
+     * Get the attribute casting
+     *
+     * @return string|null The method returns the attribute casting
+     */
+    public function cast(): ?string
+    {
+        return null;
+    }
+
+    /**
      * Reading data from inaccessible (protected or private) or non-existing properties.
      *
      * @param  string  $property  The property name.

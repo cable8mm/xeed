@@ -48,4 +48,9 @@ class TimestampResolver extends Resolver
     {
         return 'DateTime::make(\''.Inflector::title($this->column->field).'\'),';
     }
+
+    public function cast(): ?string
+    {
+        return $this->column->field == 'created_at' || $this->column->field == 'updated_at' ? null : 'timestamp';
+    }
 }

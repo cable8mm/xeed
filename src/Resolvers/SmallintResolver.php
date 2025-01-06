@@ -33,4 +33,9 @@ final class SmallintResolver extends Resolver
     {
         return 'Number::make(\''.Inflector::title($this->column->field).'\'),';
     }
+
+    public function cast(): ?string
+    {
+        return 'integer';
+    }
 }

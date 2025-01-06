@@ -27,4 +27,9 @@ class DateTimeTzResolver extends Resolver
     {
         return 'DateTime::make(\''.Inflector::title($this->column->field).'\'),';
     }
+
+    public function cast(): ?string
+    {
+        return 'datetime';
+    }
 }

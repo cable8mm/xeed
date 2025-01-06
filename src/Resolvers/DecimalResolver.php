@@ -46,4 +46,9 @@ class DecimalResolver extends Resolver
     {
         return 'Number::make(\''.Inflector::title($this->column->field).'\')->step(\'any\'),';
     }
+
+    public function cast(): ?string
+    {
+        return 'decimal:'.Bracket::of($this->column->bracket)->escape();
+    }
 }
