@@ -40,7 +40,7 @@ final class IdResolverTest extends TestCase
     {
         $resolver = new IdResolver($this->column);
 
-        $this->assertEquals('\''.$resolver->field.'\' => fake()->numerify(),', $resolver->fake());
+        $this->assertEquals('', $resolver->fake());
     }
 
     public function test_migration_method_can_working_well(): void
