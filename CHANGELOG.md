@@ -1,5 +1,18 @@
 # Release Notes
 
+## v1.6.6 - 2025-01-06
+
+### What's Changed
+
+* SQLSTATE[22001]: String data, right truncated #84 by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/85
+* SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry #86 by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/87
+* SQLSTATE[22003]: Numeric value out of range: 1264 Out of range value for column #88 by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/89
+* syntax error, unexpected token "," error #90 by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/91
+* Fix `DecimalResolver->fake())'s wrong logic #88 by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/92
+* Remove blank lines of ID field in factory by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/93
+
+**Full Changelog**: https://github.com/cable8mm/xeed/compare/v1.6.5...v1.6.6
+
 ## v1.6.5 - 2025-01-04
 
 ### What's Changed
