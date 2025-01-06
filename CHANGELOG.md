@@ -1,5 +1,13 @@
 # Release Notes
 
+## v1.6.7 - 2025-01-06
+
+### What's Changed
+
+* Add timestamps into model by generator by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/94
+
+**Full Changelog**: https://github.com/cable8mm/xeed/compare/v1.6.6...v1.6.7
+
 ## v1.6.6 - 2025-01-06
 
 ### What's Changed
