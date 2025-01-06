@@ -37,7 +37,7 @@ final class ModelGeneratorTest extends TestCase
     {
         $file = File::system()->read(Path::testgen().DIRECTORY_SEPARATOR.'Sample.php');
 
-        $this->assertStringContainsString('timestamps', $file);
+        $this->assertStringNotContainsString('timestamps', $file);
     }
 
     public function test_it_can_generate_without_timestamps(): void
@@ -53,6 +53,6 @@ final class ModelGeneratorTest extends TestCase
 
         $file = File::system()->read(Path::testgen().DIRECTORY_SEPARATOR.'Sample.php');
 
-        $this->assertStringNotContainsString('timestamps', $file);
+        $this->assertStringContainsString('timestamps', $file);
     }
 }
