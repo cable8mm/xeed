@@ -13,7 +13,7 @@ class TinytextResolver extends Resolver
 {
     public function fake(): string
     {
-        return '\''.$this->column->field.'\' => fake()->sentence(),';
+        return '\''.$this->column->field.'\' => fake()->text(255),';
     }
 
     public function migration(): string

@@ -42,7 +42,7 @@ final class StringResolverTest extends TestCase
     {
         $resolver = new StringResolver($this->column);
 
-        $this->assertEquals('\''.$resolver->field.'\' => fake()->text(),', $resolver->fake());
+        $this->assertEquals('\''.$resolver->field.'\' => fake()->text(65535),', $resolver->fake());
     }
 
     public function test_migration_method_can_working_well(): void
@@ -50,15 +50,15 @@ final class StringResolverTest extends TestCase
         $resolver = new StringResolver($this->column);
 
         if ($this->driver == 'mysql') {
-            $this->assertEquals('$table->string(\''.$resolver->field.'\', 100);', $resolver->migration());
+            $this->assertEquals('$table->string(\''.$resolver->field.'\', 65535);', $resolver->migration());
         }
 
         if ($this->driver == 'sqlite') {
-            $this->assertEquals('$table->string(\''.$resolver->field.'\');', $resolver->migration());
+            $this->assertEquals('$table->string(\''.$resolver->field.'\', 65535);', $resolver->migration());
         }
 
         if ($this->driver == 'pgsql') {
-            $this->assertEquals('$table->string(\''.$resolver->field.'\');', $resolver->migration());
+            $this->assertEquals('$table->string(\''.$resolver->field.'\', 65535);', $resolver->migration());
         }
     }
 

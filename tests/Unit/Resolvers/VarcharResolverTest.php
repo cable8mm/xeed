@@ -42,7 +42,7 @@ final class VarcharResolverTest extends TestCase
     {
         $resolver = new VarcharResolver($this->column);
 
-        $this->assertEquals('\'string\' => fake()->text(),', $resolver->fake());
+        $this->assertEquals('\'string\' => fake()->text(65535),', $resolver->fake());
     }
 
     public function test_migration_method_can_working_well(): void
@@ -50,15 +50,15 @@ final class VarcharResolverTest extends TestCase
         $resolver = new VarcharResolver($this->column);
 
         if ($this->driver == 'mysql') {
-            $this->assertEquals('$table->string(\'string\', 100);', $resolver->migration());
+            $this->assertEquals('$table->string(\'string\', 65535);', $resolver->migration());
         }
 
         if ($this->driver == 'sqlite') {
-            $this->assertEquals('$table->string(\'string\');', $resolver->migration());
+            $this->assertEquals('$table->string(\'string\', 65535);', $resolver->migration());
         }
 
         if ($this->driver == 'pgsql') {
-            $this->assertEquals('$table->string(\'string\');', $resolver->migration());
+            $this->assertEquals('$table->string(\'string\', 65535);', $resolver->migration());
         }
     }
 
