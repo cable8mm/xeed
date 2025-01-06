@@ -41,7 +41,9 @@ final class NovaResourceGenerator implements GeneratorInterface
     {
         $novaFieldsString = '';
         foreach ($this->table->getColumns() as $column) {
-            $novaFieldsString .= self::INTENT.$column->novaField().PHP_EOL;
+            if (! in_array($column->field, ['created_at', 'updated_at'])) {
+                $novaFieldsString .= self::INTENT.$column->novaField().PHP_EOL;
+            }
         }
         $novaFieldsString = rtrim($novaFieldsString, PHP_EOL.PHP_EOL);
 
