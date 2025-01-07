@@ -72,4 +72,36 @@ final class ModelGeneratorTest extends TestCase
 
         $this->assertStringContainsString('timestamps', $file);
     }
+
+    public function test_primary_key_is_null(): void
+    {
+        File::system()->delete(Path::testgen().DIRECTORY_SEPARATOR.'Sample.php');
+
+        ModelGenerator::make(
+            new Table('samples', [
+                Column::make('bigint', 'bigint'),
+            ]),
+            destination: Path::testgen()
+        )->run();
+
+        $file = File::system()->read(Path::testgen().DIRECTORY_SEPARATOR.'Sample.php');
+
+        $this->assertStringContainsString('primaryKey = null', $file);
+    }
+
+    public function test_primary_key_is_empty_when_field_name_is_id(): void
+    {
+        File::system()->delete(Path::testgen().DIRECTORY_SEPARATOR.'Sample.php');
+
+        ModelGenerator::make(
+            new Table('samples', [
+                Column::make('id', 'bigint', unsigned: true, autoIncrement: true, primaryKey: true),
+            ]),
+            destination: Path::testgen()
+        )->run();
+
+        $file = File::system()->read(Path::testgen().DIRECTORY_SEPARATOR.'Sample.php');
+
+        $this->assertStringNotContainsString('primaryKey', $file);
+    }
 }

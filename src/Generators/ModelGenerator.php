@@ -52,16 +52,32 @@ final class ModelGenerator implements GeneratorInterface
             $castString .= '        ];'.PHP_EOL.'    }';
         }
 
+        $primaryColumn = $this->table->getPrimaryColumn();
+        $primaryKeyString = '';
+        if (is_null($primaryColumn)) {
+            $primaryKeyString .= PHP_EOL.PHP_EOL.'    protected $primaryKey = null;';
+            $primaryKeyString .= PHP_EOL.PHP_EOL.'    public $incrementing = false;';
+        } elseif ($primaryColumn->field === 'id') {
+            $primaryKeyString .= '';
+        } else {
+            $primaryKeyString .= PHP_EOL.PHP_EOL.'    protected $primaryKey = \''.$primaryColumn->field.'\';';
+            if ($primaryColumn->autoIncrement === false) {
+                $primaryKeyString .= PHP_EOL.PHP_EOL.'    public $incrementing = false;';
+            }
+        }
+
         $seederClass = str_replace(
             [
                 '{model}',
                 '{timestamps}',
                 '{casts}',
+                '{primaryKey}',
             ],
             [
                 $this->table->model(),
                 $this->table->hasTimestamps() ? PHP_EOL.PHP_EOL.'    public $timestamps = false;' : '',
                 $castString,
+                $primaryKeyString,
             ],
             $this->stub
         );

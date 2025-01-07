@@ -20,7 +20,7 @@ final class RelationGeneratorTest extends TestCase
     protected function setUp(): void
     {
         $this->table = new Table('samples', [
-            Column::make('id', 'bigInteger'),
+            Column::make('id', 'bigInteger', autoIncrement: true, primaryKey: true),
             Column::make('related_id', 'bigInteger'),
             Column::make('created_at', 'timestamp'),
             Column::make('updated_at', 'timestamp'),
@@ -29,7 +29,7 @@ final class RelationGeneratorTest extends TestCase
         ]);
 
         $this->related = new Table('related', [
-            Column::make('id', 'bigInteger'),
+            Column::make('id', 'bigInteger', autoIncrement: true, primaryKey: true),
             Column::make('created_at', 'timestamp'),
             Column::make('updated_at', 'timestamp'),
         ]);
