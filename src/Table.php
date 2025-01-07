@@ -158,6 +158,20 @@ final class Table implements Stringable
     }
 
     /**
+     * Get the primary key column.
+     */
+    public function getPrimaryColumn(): ?Column
+    {
+        foreach ($this->columns as $column) {
+            if ($column->primaryKey) {
+                return $column;
+            }
+        }
+
+        return null;
+    }
+
+    /**
      * Class magic method to get the real table name.
      *
      * @return string The method returns the real table name.
