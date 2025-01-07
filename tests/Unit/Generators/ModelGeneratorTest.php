@@ -104,4 +104,20 @@ final class ModelGeneratorTest extends TestCase
 
         $this->assertStringNotContainsString('primaryKey', $file);
     }
+
+    public function test_primary_key_is_empty_when_field_name_is_not_id(): void
+    {
+        File::system()->delete(Path::testgen().DIRECTORY_SEPARATOR.'Sample.php');
+
+        ModelGenerator::make(
+            new Table('samples', [
+                Column::make('play_code', 'varchar', unsigned: false, autoIncrement: false, primaryKey: true),
+            ]),
+            destination: Path::testgen()
+        )->run();
+
+        $file = File::system()->read(Path::testgen().DIRECTORY_SEPARATOR.'Sample.php');
+
+        $this->assertStringContainsString('protected $primaryKey = \'play_code\';', $file);
+    }
 }

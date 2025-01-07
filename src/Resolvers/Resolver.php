@@ -63,6 +63,10 @@ abstract class Resolver implements ResolverInterface
             $migration .= '->default("'.$this->column->default.'")';
         }
 
+        if ($this->column->primaryKey === true && $this->column->field !== 'id') {
+            $migration .= '->primary()';
+        }
+
         return $migration.';';
     }
 
