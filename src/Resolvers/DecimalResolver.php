@@ -49,6 +49,10 @@ class DecimalResolver extends Resolver
 
     public function cast(): ?string
     {
-        return 'decimal:'.Bracket::of($this->column->bracket)->escape();
+        if (empty($this->column->bracket)) {
+            return null;
+        }
+
+        return 'decimal:'.trim(preg_replace('/.+,/', '', $this->column->bracket));
     }
 }
