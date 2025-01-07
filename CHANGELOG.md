@@ -1,5 +1,14 @@
 # Release Notes
 
+## v1.6.10 - 2025-01-07
+
+### What's Changed
+
+* Fix DateTime field must cast to 'datetime' in Eloquent model error #97 by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/98
+* Fix SQLSTATE[42S22]1054 Unknown column... .id #99 by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/100
+
+**Full Changelog**: https://github.com/cable8mm/xeed/compare/v1.6.9...v1.6.10
+
 ## v1.6.9 - 2025-01-06
 
 ### What's Changed
