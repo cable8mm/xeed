@@ -1,5 +1,14 @@
 # Release Notes
 
+## v1.6.11 - 2025-01-07
+
+### What's Changed
+
+* Apply `->primary()` in migration files by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/101
+* Fix a decimal error in models by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/102
+
+**Full Changelog**: https://github.com/cable8mm/xeed/compare/v1.6.10...v1.6.11
+
 ## v1.6.10 - 2025-01-07
 
 ### What's Changed
