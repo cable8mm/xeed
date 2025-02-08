@@ -8,5 +8,4 @@ composer.lock
 /.env
 /build
 /cache
-/doctum.php
 /.phpunit.cache
