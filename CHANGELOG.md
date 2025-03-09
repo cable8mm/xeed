@@ -1,5 +1,14 @@
 # Release Notes
 
+## v1.6.12 - 2025-03-09
+
+### What's Changed
+
+* Improve `deploy-to-github-pages` action by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/103
+* Update packages by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/104
+
+**Full Changelog**: https://github.com/cable8mm/xeed/compare/v1.6.11...v1.6.12
+
 ## v1.6.11 - 2025-01-07
 
 ### What's Changed
