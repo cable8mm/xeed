@@ -2,16 +2,16 @@
 
 namespace Cable8mm\Xeed\Laravel;
 
-use Cable8mm\Xeed\Laravel\Commands\CleanCommand;
-use Cable8mm\Xeed\Laravel\Commands\GenerateDatabaseSeederCommand;
-use Cable8mm\Xeed\Laravel\Commands\GenerateFactoriesCommand;
-use Cable8mm\Xeed\Laravel\Commands\GenerateFakerSeedersCommand;
-use Cable8mm\Xeed\Laravel\Commands\GenerateMigrationsCommand;
-use Cable8mm\Xeed\Laravel\Commands\GenerateModelsCommand;
-use Cable8mm\Xeed\Laravel\Commands\GenerateNovaCommand;
-use Cable8mm\Xeed\Laravel\Commands\GenerateRelationsCommand;
-use Cable8mm\Xeed\Laravel\Commands\GenerateSeedersCommand;
-use Cable8mm\Xeed\Laravel\Commands\ImportXeedCommand;
+use Cable8mm\Xeed\Commands\CleanCommand;
+use Cable8mm\Xeed\Commands\GenerateDatabaseSeederCommand;
+use Cable8mm\Xeed\Commands\GenerateFactoriesCommand;
+use Cable8mm\Xeed\Commands\GenerateFakerSeedersCommand;
+use Cable8mm\Xeed\Commands\GenerateMigrationsCommand;
+use Cable8mm\Xeed\Commands\GenerateModelsCommand;
+use Cable8mm\Xeed\Commands\GenerateNovaCommand;
+use Cable8mm\Xeed\Commands\GenerateRelationsCommand;
+use Cable8mm\Xeed\Commands\GenerateSeedersCommand;
+use Cable8mm\Xeed\Commands\ImportXeedCommand;
 use Cable8mm\Xeed\Xeed;
 use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
