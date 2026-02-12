@@ -1,6 +1,6 @@
 <?php
 
-namespace Cable8mm\Xeed\Laravel\Commands;
+namespace Cable8mm\Xeed\Commands;
 
 use Cable8mm\Xeed\Generators\DatabaseSeederGenerator;
 use Cable8mm\Xeed\Xeed;

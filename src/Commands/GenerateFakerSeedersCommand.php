@@ -1,6 +1,6 @@
 <?php
 
-namespace Cable8mm\Xeed\Laravel\Commands;
+namespace Cable8mm\Xeed\Commands;
 
 use Cable8mm\Xeed\Generators\FakerSeederGenerator;
 use Cable8mm\Xeed\Xeed;
@@ -14,9 +14,9 @@ class GenerateFakerSeedersCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'xeed:faker-seeders
-                            {--f|force : Are files forcibly deleted even if they exist?}
-                            {--t|table= : Are you generating the specific table with the faker seeder?}';
+    protected $signature = 'xeed:faker-seeder
+                            {table? : Are you generating the specific table with the faker seeder?}
+                            {--f|force : Are files forcibly deleted even if they exist?}';
 
     /**
      * The console command description.
@@ -40,9 +40,9 @@ class GenerateFakerSeedersCommand extends Command
      */
     public function handle(Xeed $xeed)
     {
-        $force = $this->option('force') ?? false;
+        $table = $this->argument('table') ?? null;
 
-        $table = $this->option('table');
+        $force = $this->option('force') ?? false;
 
         $tables = is_null($table)
             ? $xeed->addPdo(DB::connection()->getPDO())->attach()->getTables()

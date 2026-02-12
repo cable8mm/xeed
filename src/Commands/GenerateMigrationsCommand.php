@@ -1,6 +1,6 @@
 <?php
 
-namespace Cable8mm\Xeed\Laravel\Commands;
+namespace Cable8mm\Xeed\Commands;
 
 use Cable8mm\Xeed\Generators\MigrationGenerator;
 use Cable8mm\Xeed\Mergers\MergerContainer;
@@ -15,9 +15,9 @@ class GenerateMigrationsCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'xeed:migrations
-                            {--f|force : Are files forcibly deleted even if they exist?}
-                            {--t|table= : Are you generating the specific table with the migration?}';
+    protected $signature = 'xeed:migration
+                            {table? : The name of the table you want to generate a migration for.}
+                            {--f|force : Are files forcibly deleted even if they exist?}';
 
     /**
      * The console command description.
@@ -31,9 +31,9 @@ class GenerateMigrationsCommand extends Command
      */
     public function handle(Xeed $xeed)
     {
-        $force = $this->option('force') ?? false;
+        $table = $this->argument('table') ?? null;
 
-        $table = $this->option('table');
+        $force = $this->option('force') ?? false;
 
         $tables = is_null($table)
             ? $xeed->addPdo(DB::connection()->getPDO())->attach()->getTables()

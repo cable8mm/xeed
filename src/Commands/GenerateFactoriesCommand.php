@@ -1,38 +1,38 @@
 <?php
 
-namespace Cable8mm\Xeed\Laravel\Commands;
+namespace Cable8mm\Xeed\Commands;
 
-use Cable8mm\Xeed\Generators\SeederGenerator;
+use Cable8mm\Xeed\Generators\FactoryGenerator;
 use Cable8mm\Xeed\Xeed;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 
-class GenerateSeedersCommand extends Command
+class GenerateFactoriesCommand extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'xeed:seeders
-                            {--f|force : Are files forcibly deleted even if they exist?}
-                            {--t|table= : Are you generating the specific table with the seeder?}';
+    protected $signature = 'xeed:factory
+                            {table? : Are you generating the specific table with the factory?}
+                            {--f|force : Are files forcibly deleted even if they exist?}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Generate seeders from your own database tables';
+    protected $description = 'Generate factories from your own database tables';
 
     /**
      * Execute the console command.
      */
     public function handle(Xeed $xeed)
     {
-        $force = $this->option('force') ?? false;
+        $table = $this->argument('table') ?? null;
 
-        $table = $this->option('table');
+        $force = $this->option('force') ?? false;
 
         $tables = is_null($table)
             ? $xeed->addPdo(DB::connection()->getPDO())->attach()->getTables()
@@ -44,17 +44,15 @@ class GenerateSeedersCommand extends Command
 
         foreach ($tables as $table) {
             try {
-                SeederGenerator::make(
+                FactoryGenerator::make(
                     $table,
-                    destination: database_path('seeders')
+                    destination: database_path('factories')
                 )->run(force: $force);
 
-                $this->info(database_path('seeders').DIRECTORY_SEPARATOR.$table->seeder().'.php has been generated.');
+                $this->info(database_path('factories').DIRECTORY_SEPARATOR.$table->factory().'.php seeder have been generated.');
             } catch (\Exception $e) {
-                $this->error(database_path('seeders').DIRECTORY_SEPARATOR.$table->seeder().'.php file already exists.');
+                $this->error(database_path('factories').DIRECTORY_SEPARATOR.$table->factory().'.php seeder file already exists.');
             }
         }
-
-        return Command::SUCCESS;
     }
 }

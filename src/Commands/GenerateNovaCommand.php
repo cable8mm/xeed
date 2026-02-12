@@ -1,6 +1,6 @@
 <?php
 
-namespace Cable8mm\Xeed\Laravel\Commands;
+namespace Cable8mm\Xeed\Commands;
 
 use Cable8mm\Xeed\Generators\NovaResourceGenerator;
 use Cable8mm\Xeed\Xeed;
@@ -15,8 +15,8 @@ class GenerateNovaCommand extends Command
      * @var string
      */
     protected $signature = 'xeed:nova
-                            {--f|force : Are files forcibly deleted even if they exist?}
-                            {--t|table= : Are you generating the specific table with the Nova resource?}';
+                            {table? : Are you generating the specific table with the Nova resource?}
+                            {--f|force : Are files forcibly deleted even if they exist?}';
 
     /**
      * The console command description.
@@ -30,9 +30,9 @@ class GenerateNovaCommand extends Command
      */
     public function handle(Xeed $xeed)
     {
-        $force = $this->option('force') ?? false;
+        $table = $this->argument('table') ?? null;
 
-        $table = $this->option('table');
+        $force = $this->option('force') ?? false;
 
         $tables = is_null($table)
             ? $xeed->addPdo(DB::connection()->getPDO())->attach()->getTables()

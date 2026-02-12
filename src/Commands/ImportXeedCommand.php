@@ -1,6 +1,6 @@
 <?php
 
-namespace Cable8mm\Xeed\Laravel\Commands;
+namespace Cable8mm\Xeed\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Cable8mm\Xeed\Laravel\Commands;
+namespace Cable8mm\Xeed\Commands;
 
 use Cable8mm\Xeed\Xeed;
 use Illuminate\Console\Command;
@@ -15,7 +15,9 @@ class CleanCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'xeed:clean {--question}';
+    protected $signature = 'xeed:wipe';
+
+    protected $aliases = ['xeed:clean'];
 
     /**
      * The console command description.

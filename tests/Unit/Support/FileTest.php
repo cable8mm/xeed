@@ -2,7 +2,7 @@
 
 namespace Cable8mm\Xeed\Tests\Unit\Support;
 
-use Cable8mm\Xeed\Command\ImportXeedCommand;
+use Cable8mm\Xeed\Commands\ImportXeedCommand;
 use Cable8mm\Xeed\Support\File;
 use Cable8mm\Xeed\Support\Path;
 use Cable8mm\Xeed\Xeed;

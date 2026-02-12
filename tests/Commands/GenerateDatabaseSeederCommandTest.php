@@ -1,6 +1,6 @@
 <?php
 
-namespace Cable8mm\Xeed\Tests\Laravel\Commands;
+namespace Cable8mm\Xeed\Tests\Commands;
 
 class GenerateDatabaseSeederCommandTest extends \Orchestra\Testbench\TestCase
 {

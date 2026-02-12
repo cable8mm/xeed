@@ -1,17 +1,17 @@
 <?php
 
-namespace Cable8mm\Xeed\Tests\Laravel\Commands;
+namespace Cable8mm\Xeed\Tests\Commands;
 
-class GenerateModelsCommandTest extends \Orchestra\Testbench\TestCase
+class GenerateNovaCommandTest extends \Orchestra\Testbench\TestCase
 {
     public function test_execute_xeed_database_command()
     {
-        $this->artisan('xeed:models')->assertSuccessful();
+        $this->artisan('xeed:nova')->assertSuccessful();
     }
 
     public function test_execute_xeed_database_command_with_table()
     {
-        $this->artisan('xeed:models -t xeeds')->assertSuccessful();
+        $this->artisan('xeed:nova')->assertSuccessful();
     }
 
     protected function getPackageProviders($app)
