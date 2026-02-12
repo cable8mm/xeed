@@ -3,31 +3,10 @@
 
 require __DIR__.'/../vendor/autoload.php';
 
-use Cable8mm\Xeed\Command\CleanCommand;
-use Cable8mm\Xeed\Command\GenerateDatabaseSeederCommand;
-use Cable8mm\Xeed\Command\GenerateFactoriesCommand;
-use Cable8mm\Xeed\Command\GenerateFakerSeedersCommand;
-use Cable8mm\Xeed\Command\GenerateMigrationsCommand;
-use Cable8mm\Xeed\Command\GenerateModelsCommand;
-use Cable8mm\Xeed\Command\GenerateNovaCommand;
-use Cable8mm\Xeed\Command\GenerateRelationsCommand;
-use Cable8mm\Xeed\Command\GenerateSeedersCommand;
-use Cable8mm\Xeed\Command\ImportXeedCommand;
 use Symfony\Component\Console\Application;
 
 $application = new Application();
 
 // ... register commands
-
-$application->add(new GenerateModelsCommand());
-$application->add(new GenerateSeedersCommand());
-$application->add(new GenerateDatabaseSeederCommand());
-$application->add(new ImportXeedCommand());
-$application->add(new CleanCommand());
-$application->add(new GenerateFactoriesCommand());
-$application->add(new GenerateMigrationsCommand());
-$application->add(new GenerateFakerSeedersCommand());
-$application->add(new GenerateRelationsCommand());
-$application->add(new GenerateNovaCommand());
 
 $application->run();
