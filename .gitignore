@@ -4,6 +4,7 @@ composer.lock
 .phpunit.result.cache
 /.vscode
 /test.php
+/database/database.sqlite
 /.env
 /build
 /cache

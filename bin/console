@@ -3,10 +3,13 @@
 
 require __DIR__.'/../vendor/autoload.php';
 
+use Cable8mm\Xeed\Commands\SymfonyImportXeedCommand;
 use Symfony\Component\Console\Application;
 
 $application = new Application();
 
 // ... register commands
+
+$application->addCommand(new SymfonyImportXeedCommand());
 
 $application->run();
