@@ -10,6 +10,6 @@ $application = new Application();
 
 // ... register commands
 
-$application->addCommand(new SymfonyImportXeedCommand());
+$application->add(new SymfonyImportXeedCommand());
 
 $application->run();
