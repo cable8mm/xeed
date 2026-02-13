@@ -1,5 +1,13 @@
 # Release Notes
 
+## v2.0.1 - 2026-02-13
+
+### What's Changed
+
+* Set php min version to 8.1.0 by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/107
+
+**Full Changelog**: https://github.com/cable8mm/xeed/compare/v2.0.0...v2.0.1
+
 ## v2.0.0 - 2026-02-13
 
 ### What's Changed
