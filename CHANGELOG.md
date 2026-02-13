@@ -1,5 +1,14 @@
 # Release Notes
 
+## v2.0.0 - 2026-02-13
+
+### What's Changed
+
+* Change laravel commands by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/105
+* Fix readme for usage and php version by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/xeed/pull/106
+
+**Full Changelog**: https://github.com/cable8mm/xeed/compare/v1.6.12...v2.0.0
+
 ## v1.6.12 - 2025-03-09
 
 ### What's Changed
