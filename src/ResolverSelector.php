@@ -18,8 +18,8 @@ use Cable8mm\Xeed\Resolvers\FloatResolver;
 use Cable8mm\Xeed\Resolvers\GeometryResolver;
 use Cable8mm\Xeed\Resolvers\IdResolver;
 use Cable8mm\Xeed\Resolvers\InetResolver;
-use Cable8mm\Xeed\Resolvers\IntegerResolver;
 use Cable8mm\Xeed\Resolvers\IntResolver;
+use Cable8mm\Xeed\Resolvers\IntegerResolver;
 use Cable8mm\Xeed\Resolvers\JsonbResolver;
 use Cable8mm\Xeed\Resolvers\JsonResolver;
 use Cable8mm\Xeed\Resolvers\LongtextResolver;
@@ -32,8 +32,8 @@ use Cable8mm\Xeed\Resolvers\RemembertokenResolver;
 use Cable8mm\Xeed\Resolvers\SmallintResolver;
 use Cable8mm\Xeed\Resolvers\TextResolver;
 use Cable8mm\Xeed\Resolvers\TimeResolver;
-use Cable8mm\Xeed\Resolvers\TimestampResolver;
 use Cable8mm\Xeed\Resolvers\TimeTzResolver;
+use Cable8mm\Xeed\Resolvers\TimestampResolver;
 use Cable8mm\Xeed\Resolvers\TinyintResolver;
 use Cable8mm\Xeed\Resolvers\TinytextResolver;
 use Cable8mm\Xeed\Resolvers\UlidResolver;
@@ -59,154 +59,116 @@ final class ResolverSelector
      */
     public static function of(Column $column): ResolverInterface
     {
-        if ($column->field == 'id') {
+        if ($column->field === 'id') {
             return new IdResolver($column);
         }
 
-        if ($column->type == 'bigint' || $column->type == 'biginteger' || $column->type == 'bigInteger') {
-            return new BigintResolver($column);
-        }
+        foreach (self::rules() as $rule) {
+            if ($rule['matches']($column)) {
+                $resolver = $rule['resolver'];
 
-        if ($column->type == 'binary' || $column->type == 'bytea') {
-            return new BinaryResolver($column);
-        }
-
-        if ($column->type == 'blob') {
-            return new BlobResolver($column);
-        }
-
-        if (($column->type == 'tinyint' && $column->bracket == '1') || $column->type == 'boolean') {
-            return new BoolResolver($column);
-        }
-
-        if ($column->type == 'char' && $column->bracket == '26') {
-            return new UlidResolver($column);
-        }
-
-        if (($column->type == 'char' && $column->bracket == '36') || $column->type == 'uuid') {
-            return new UuidResolver($column);
-        }
-
-        if ($column->type == 'char') {
-            return new CharResolver($column);
-        }
-
-        if ($column->type == 'timestamp with time zone') {
-            return new DateTimeTzResolver($column);
-        }
-
-        if ($column->type == 'datetime' || $column->type == 'timestamp without time zone') {
-            return new DatetimeResolver($column);
-        }
-
-        if ($column->type == 'date') {
-            return new DateResolver($column);
-        }
-
-        if ($column->type == 'decimal') {
-            return new DecimalResolver($column);
-        }
-
-        if ($column->type == 'numeric') {
-            return new NumericResolver($column);
-        }
-
-        if ($column->type == 'double' || $column->type == 'double precision') {
-            return new DoubleResolver($column);
-        }
-
-        if ($column->type == 'float' || $column->type == 'real') {
-            return new FloatResolver($column);
-        }
-
-        if ($column->type == 'geometry' || $column->type == 'user-defined') {
-            return new GeometryResolver($column);
-        }
-
-        if ($column->type == 'int') {
-            return new IntResolver($column);
-        }
-
-        if ($column->type == 'integer' || $column->type == 'integer unsigned') {
-            return new IntegerResolver($column);
-        }
-
-        if (($column->type == 'varchar' && $column->bracket == '45') || $column->type == 'inet') {
-            return new InetResolver($column);
-        }
-
-        if ($column->type == 'json') {
-            return new JsonResolver($column);
-        }
-
-        if ($column->type == 'jsonb') {
-            return new JsonbResolver($column);
-        }
-
-        if ($column->type == 'longtext') {
-            return new LongtextResolver($column);
-        }
-
-        if (($column->type == 'varchar' && $column->bracket == '17') || $column->type == 'macaddr') {
-            return new MacaddressResolver($column);
-        }
-
-        if ($column->type == 'mediumint') {
-            return new MediumintResolver($column);
-        }
-
-        if ($column->type == 'mediumtext') {
-            return new MediumtextResolver($column);
-        }
-
-        if ($column->field == 'remember_token') {
-            return new RemembertokenResolver($column);
-        }
-
-        if ($column->type == 'smallint') {
-            return new SmallintResolver($column);
-        }
-
-        if ($column->type == 'varchar' || $column->type == 'character varying' || $column->type == 'character') {
-            return new VarcharResolver($column);
-        }
-
-        if ($column->type == 'text') {
-            return new TextResolver($column);
-        }
-
-        if ($column->type == 'time' || $column->type == 'time without time zone') {
-            return new TimeResolver($column);
-        }
-
-        if ($column->type == 'time with time zone') {
-            return new TimeTzResolver($column);
-        }
-
-        if ($column->type == 'timestamp') {
-            return new TimestampResolver($column);
-        }
-
-        if ($column->type == 'tinyint') {
-            return new TinyintResolver($column);
-        }
-
-        if ($column->type == 'tinytext') {
-            return new TinytextResolver($column);
-        }
-
-        if ($column->type == 'year') {
-            return new YearResolver($column);
-        }
-
-        if ($column->type == 'enum') {
-            return new EnumResolver($column);
-        }
-
-        if ($column->type == 'multilinestring') {
-            return new MultilinestringResolver($column);
+                return new $resolver($column);
+            }
         }
 
         throw new InvalidArgumentException($column.' This column cannot be resolved.');
+    }
+
+    /**
+     * @return array<int, array{matches: callable(Column): bool, resolver: class-string<ResolverInterface>}>
+     */
+    private static function rules(): array
+    {
+        return [
+            ['matches' => self::typeIs('bigint', 'biginteger', 'bigInteger'), 'resolver' => BigintResolver::class],
+            ['matches' => self::typeIs('binary', 'bytea'), 'resolver' => BinaryResolver::class],
+            ['matches' => self::typeIs('blob'), 'resolver' => BlobResolver::class],
+            ['matches' => self::any(
+                self::typeAndBracket('tinyint', '1'),
+                self::typeIs('boolean')
+            ), 'resolver' => BoolResolver::class],
+            ['matches' => self::typeAndBracket('char', '26'), 'resolver' => UlidResolver::class],
+            ['matches' => self::any(
+                self::typeAndBracket('char', '36'),
+                self::typeIs('uuid')
+            ), 'resolver' => UuidResolver::class],
+            ['matches' => self::typeIs('char'), 'resolver' => CharResolver::class],
+            ['matches' => self::typeIs('timestamp with time zone'), 'resolver' => DateTimeTzResolver::class],
+            ['matches' => self::typeIs('datetime', 'timestamp without time zone'), 'resolver' => DatetimeResolver::class],
+            ['matches' => self::typeIs('date'), 'resolver' => DateResolver::class],
+            ['matches' => self::typeIs('decimal'), 'resolver' => DecimalResolver::class],
+            ['matches' => self::typeIs('numeric'), 'resolver' => NumericResolver::class],
+            ['matches' => self::typeIs('double', 'double precision'), 'resolver' => DoubleResolver::class],
+            ['matches' => self::typeIs('float', 'real'), 'resolver' => FloatResolver::class],
+            ['matches' => self::typeIs('geometry', 'user-defined'), 'resolver' => GeometryResolver::class],
+            ['matches' => self::typeIs('int'), 'resolver' => IntResolver::class],
+            ['matches' => self::typeIs('integer', 'integer unsigned'), 'resolver' => IntegerResolver::class],
+            ['matches' => self::any(
+                self::typeAndBracket('varchar', '45'),
+                self::typeIs('inet')
+            ), 'resolver' => InetResolver::class],
+            ['matches' => self::typeIs('json'), 'resolver' => JsonResolver::class],
+            ['matches' => self::typeIs('jsonb'), 'resolver' => JsonbResolver::class],
+            ['matches' => self::typeIs('longtext'), 'resolver' => LongtextResolver::class],
+            ['matches' => self::any(
+                self::typeAndBracket('varchar', '17'),
+                self::typeIs('macaddr')
+            ), 'resolver' => MacaddressResolver::class],
+            ['matches' => self::typeIs('mediumint'), 'resolver' => MediumintResolver::class],
+            ['matches' => self::typeIs('mediumtext'), 'resolver' => MediumtextResolver::class],
+            ['matches' => self::fieldIs('remember_token'), 'resolver' => RemembertokenResolver::class],
+            ['matches' => self::typeIs('smallint'), 'resolver' => SmallintResolver::class],
+            ['matches' => self::typeIs('varchar', 'character varying', 'character'), 'resolver' => VarcharResolver::class],
+            ['matches' => self::typeIs('text'), 'resolver' => TextResolver::class],
+            ['matches' => self::typeIs('time', 'time without time zone'), 'resolver' => TimeResolver::class],
+            ['matches' => self::typeIs('time with time zone'), 'resolver' => TimeTzResolver::class],
+            ['matches' => self::typeIs('timestamp'), 'resolver' => TimestampResolver::class],
+            ['matches' => self::typeIs('tinyint'), 'resolver' => TinyintResolver::class],
+            ['matches' => self::typeIs('tinytext'), 'resolver' => TinytextResolver::class],
+            ['matches' => self::typeIs('year'), 'resolver' => YearResolver::class],
+            ['matches' => self::typeIs('enum'), 'resolver' => EnumResolver::class],
+            ['matches' => self::typeIs('multilinestring'), 'resolver' => MultilinestringResolver::class],
+        ];
+    }
+
+    /**
+     * @param  callable(Column): bool  ...$rules
+     * @return callable(Column): bool
+     */
+    private static function any(callable ...$rules): callable
+    {
+        return static function (Column $column) use ($rules): bool {
+            foreach ($rules as $rule) {
+                if ($rule($column)) {
+                    return true;
+                }
+            }
+
+            return false;
+        };
+    }
+
+    /**
+     * @return callable(Column): bool
+     */
+    private static function typeIs(string ...$types): callable
+    {
+        return static fn (Column $column): bool => in_array($column->type, $types, true);
+    }
+
+    /**
+     * @return callable(Column): bool
+     */
+    private static function typeAndBracket(string $type, string $bracket): callable
+    {
+        return static fn (Column $column): bool => $column->type === $type && $column->bracket === $bracket;
+    }
+
+    /**
+     * @return callable(Column): bool
+     */
+    private static function fieldIs(string ...$fields): callable
+    {
+        return static fn (Column $column): bool => in_array($column->field, $fields, true);
     }
 }
