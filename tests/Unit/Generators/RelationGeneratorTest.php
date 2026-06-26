@@ -19,6 +19,9 @@ final class RelationGeneratorTest extends TestCase
 
     protected function setUp(): void
     {
+        File::system()->delete(Path::testgen().DIRECTORY_SEPARATOR.'Sample.php');
+        File::system()->delete(Path::testgen().DIRECTORY_SEPARATOR.'Related.php');
+
         $this->table = new Table('samples', [
             Column::make('id', 'bigInteger', autoIncrement: true, primaryKey: true),
             Column::make('related_id', 'bigInteger'),
@@ -37,26 +40,28 @@ final class RelationGeneratorTest extends TestCase
         ModelGenerator::make(
             $this->table,
             destination: Path::testgen()
-        )->run();
+        )->run(true);
 
         ModelGenerator::make(
             $this->related,
             destination: Path::testgen()
-        )->run();
+        )->run(true);
 
         RelationGenerator::make(
             $this->table,
             destination: Path::testgen()
-        )->run();
+        )->run(true);
 
         RelationGenerator::make(
             $this->related,
             destination: Path::testgen()
-        )->run();
+        )->run(true);
     }
 
     protected function tearDown(): void
     {
+        File::system()->delete(Path::testgen().DIRECTORY_SEPARATOR.'Sample.php');
+        File::system()->delete(Path::testgen().DIRECTORY_SEPARATOR.'Related.php');
         File::system()->deleteDictionary(Path::testgen(), 'php');
     }
 
@@ -70,5 +75,23 @@ final class RelationGeneratorTest extends TestCase
             Path::testExpected().DIRECTORY_SEPARATOR.'Related.sample',
             Path::testgen().DIRECTORY_SEPARATOR.'Related.php'
         );
+    }
+
+    public function test_it_can_force_overwrite_existing_model_files(): void
+    {
+        $filename = Path::testgen().DIRECTORY_SEPARATOR.'Sample.php';
+
+        $file = File::system();
+        $original = $file->read(Path::testExpected().DIRECTORY_SEPARATOR.'Sample.sample');
+        $file->write($filename, str_replace('public function related()', 'original public function related()', $original), true);
+
+        RelationGenerator::make(
+            $this->table,
+            destination: Path::testgen()
+        )->run(true);
+
+        $file = $file->read($filename);
+
+        $this->assertStringContainsString('belongsTo(Related::class, \'related_id\')', $file);
     }
 }

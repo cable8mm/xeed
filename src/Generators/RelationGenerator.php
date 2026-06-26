@@ -10,21 +10,12 @@ use Cable8mm\Xeed\Table;
 /**
  * Generator for `dist/database/migrations/*.php`.
  */
-final class RelationGenerator implements GeneratorInterface
+final class RelationGenerator extends Generator implements GeneratorInterface
 {
-    /**
-     * The left padding for the body of the generated.
-     */
-    public const INTENT = '            ';
-
-    private function __construct(
-        private Table $table,
-        private ?string $namespace = null,
-        private ?string $destination = null
-    ) {
-        if (is_null($destination)) {
-            $this->destination = Path::model();
-        }
+    private function __construct(Table $table, ?string $namespace = null, ?string $destination = null)
+    {
+        parent::__construct($table, $namespace, $destination);
+        $this->defaultDestination(Path::model());
     }
 
     /**
@@ -57,11 +48,7 @@ final class RelationGenerator implements GeneratorInterface
             : PHP_EOL.PHP_EOL.$belongsToRelation
         ).$after;
 
-        File::system()->write(
-            $this->destination.DIRECTORY_SEPARATOR.$this->table->model().'.php',
-            $model,
-            true
-        );
+        $this->write($this->table->model().'.php', $model, $force);
     }
 
     /**
