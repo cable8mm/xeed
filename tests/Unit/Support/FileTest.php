@@ -20,4 +20,18 @@ final class FileTest extends TestCase
 
         $this->assertStringNotContainsString('--', $body);
     }
+
+    public function test_touch_can_force_overwrite_existing_file(): void
+    {
+        $filename = sys_get_temp_dir().DIRECTORY_SEPARATOR.'xeed-file-touch.txt';
+
+        $file = File::system();
+
+        $file->write($filename, 'content', true);
+        $file->touch($filename, true);
+
+        $this->assertSame('', $file->read($filename));
+
+        $file->delete($filename);
+    }
 }

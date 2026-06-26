@@ -56,7 +56,19 @@ class ImportXeedCommand extends Command
         if ($argument === 'drop') {
             $sql = 'DROP TABLE IF EXISTS '.self::TABLE_NAME;
 
-            DB::unprepared($sql);
+            if (DB::unprepared($sql)) {
+                $this->info(self::TABLE_NAME.' was dropped.');
+
+                return Command::SUCCESS;
+            }
+
+            $this->error(self::TABLE_NAME.' was not dropped.');
+
+            return Command::FAILURE;
         }
+
+        $this->error('Unknown argument: '.$argument);
+
+        return Command::FAILURE;
     }
 }

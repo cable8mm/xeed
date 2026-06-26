@@ -72,38 +72,40 @@ final class Xeed implements ArrayAccess
      */
     public function addConnection(array $connection): static
     {
-        // self::$instance = new self($driver, $database, $host, $port, $username, $password);
-
         $options = $connection['options'] ?? [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION];
 
-        $this->provider = new (__NAMESPACE__.'\\Provider\\'.ucfirst($connection['driver']).'Provider');
+        $this->provider = $this->makeProvider($connection['driver']);
 
         $this->driver = $connection['driver'];
 
         switch ($connection['driver']) {
             case 'sqlite':
-                $dns = $connection['driver'].':'.($database ?? Path::database().DIRECTORY_SEPARATOR.'database.sqlite');
+                $database = $connection['database'] ?? Path::database().DIRECTORY_SEPARATOR.'database.sqlite';
+                $dsn = $connection['driver'].':'.$database;
 
-                $this->pdo = new PDO($dns);
+                $this->pdo = new PDO($dsn, null, null, $options);
                 break;
 
             case 'mysql':
-                $dns = $connection['driver'].
+                $dsn = $connection['driver'].
                     ':host='.
                     $connection['host'].
                     ((! empty($connection['port'])) ? (';port='.$connection['port']) : '').';dbname='.$connection['database'];
 
-                $this->pdo = new PDO($dns, $connection['username'], $connection['password'], $options);
+                $this->pdo = new PDO($dsn, $connection['username'], $connection['password'], $options);
                 break;
 
             case 'pgsql':
-                $dns = $connection['driver'].
+                $dsn = $connection['driver'].
                     ':host='.
                     $connection['host'].
                     ((! empty($connection['port'])) ? (';port='.$connection['port']) : '').';dbname='.$connection['database'].';';
 
-                $this->pdo = new PDO($dns, $connection['username'], $connection['password']);
+                $this->pdo = new PDO($dsn, $connection['username'], $connection['password'], $options);
                 break;
+
+            default:
+                throw new InvalidArgumentException($connection['driver'].' is not supported.');
         }
 
         return $this;
@@ -120,7 +122,7 @@ final class Xeed implements ArrayAccess
 
         $this->driver = $pdo->getAttribute(PDO::ATTR_DRIVER_NAME);
 
-        $this->provider = new (__NAMESPACE__.'\\Provider\\'.ucfirst($this->driver).'Provider');
+        $this->provider = $this->makeProvider($this->driver);
 
         return $this;
     }
@@ -193,6 +195,16 @@ final class Xeed implements ArrayAccess
         self::$instance = null;
 
         return self::getInstance();
+    }
+
+    /**
+     * Create a provider for the given driver.
+     */
+    private function makeProvider(string $driver): ProviderInterface
+    {
+        $provider = __NAMESPACE__.'\\Provider\\'.ucfirst($driver).'Provider';
+
+        return new $provider;
     }
 
     /**

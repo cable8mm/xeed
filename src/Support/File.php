@@ -74,7 +74,7 @@ final class File
      */
     public function touch(string $location, bool $force = false): void
     {
-        $this->write($location, '');
+        $this->write($location, '', $force);
     }
 
     /**
