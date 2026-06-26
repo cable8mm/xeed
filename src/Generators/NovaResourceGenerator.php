@@ -14,7 +14,7 @@ final class NovaResourceGenerator extends Generator implements GeneratorInterfac
     /**
      * The left padding for the body of the generated.
      */
-    private const INTENT = '            ';
+    private const INDENT = '            ';
 
     private function __construct(Table $table, ?string $namespace = null, ?string $destination = null)
     {
@@ -28,23 +28,23 @@ final class NovaResourceGenerator extends Generator implements GeneratorInterfac
      */
     public function run(bool $force = false): void
     {
-        $novaFieldsString = '';
+        $novaFieldLines = '';
         foreach ($this->table->getColumns() as $column) {
             if (! in_array($column->field, ['created_at', 'updated_at'])) {
-                $novaFieldsString .= self::INTENT.$column->novaField().PHP_EOL;
+                $novaFieldLines .= self::INDENT.$column->novaField().PHP_EOL;
             }
         }
-        $novaFieldsString = rtrim($novaFieldsString, PHP_EOL.PHP_EOL);
+        $novaFieldLines = rtrim($novaFieldLines, PHP_EOL.PHP_EOL);
 
-        preg_match_all('/([a-zA-Z]+):/m', $novaFieldsString, $classUses);
-        $uniqueClassUses = array_unique($classUses[1]);
-        asort($uniqueClassUses);
+        preg_match_all('/([a-zA-Z]+):/m', $novaFieldLines, $fieldMatches);
+        $uniqueFieldNames = array_unique($fieldMatches[1]);
+        asort($uniqueFieldNames);
 
-        $classUsesString = '';
-        foreach ($uniqueClassUses as $classUse) {
-            $classUsesString .= 'use Laravel\\Nova\\Fields\\'.$classUse.';'.PHP_EOL;
+        $fieldImports = '';
+        foreach ($uniqueFieldNames as $fieldName) {
+            $fieldImports .= 'use Laravel\\Nova\\Fields\\'.$fieldName.';'.PHP_EOL;
         }
-        $classUsesString = rtrim($classUsesString, PHP_EOL);
+        $fieldImports = rtrim($fieldImports, PHP_EOL);
 
         $this->write(
             $this->table->nova('.php'),
@@ -57,11 +57,11 @@ final class NovaResourceGenerator extends Generator implements GeneratorInterfac
                     '{nova_fields}',
                 ],
                 [
-                    $classUsesString,
+                    $fieldImports,
                     $this->table->nova(),
                     $this->table->model(),
                     $this->table->title(),
-                    $novaFieldsString,
+                    $novaFieldLines,
                 ]
             ),
             $force

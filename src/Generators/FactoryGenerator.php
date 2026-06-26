@@ -15,7 +15,7 @@ final class FactoryGenerator extends Generator implements GeneratorInterface
     /**
      * The left padding for the body of the generated.
      */
-    private const INTENT = '            ';
+    private const INDENT = '            ';
 
     private function __construct(Table $table, ?string $namespace = null, ?string $destination = null)
     {
@@ -29,19 +29,19 @@ final class FactoryGenerator extends Generator implements GeneratorInterface
      */
     public function run(bool $force = false): void
     {
-        $fakers = '';
+        $fakeLines = '';
 
         foreach ($this->table->getColumns() as $column) {
             if (! empty($column->fake())) {
-                $fakers .= FactoryGenerator::INTENT.$column->fake().PHP_EOL;
+                $fakeLines .= FactoryGenerator::INDENT.$column->fake().PHP_EOL;
             }
         }
 
-        $fakers = preg_replace('/\n$/', '', $fakers);
+        $fakeLines = preg_replace('/\n$/', '', $fakeLines);
 
         $this->write(
             $this->table->model().'Factory.php',
-            $this->replace(['{model}', '{fakers}'], [$this->table->model(), $fakers]),
+            $this->replace(['{model}', '{fakers}'], [$this->table->model(), $fakeLines]),
             $force
         );
     }

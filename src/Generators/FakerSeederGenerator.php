@@ -15,9 +15,9 @@ final class FakerSeederGenerator extends Generator implements GeneratorInterface
     /**
      * The left padding for the body of the generated.
      */
-    private const INTENT = '                ';
+    private const INDENT = '                ';
 
-    private const SUB_INTENT = '            ';
+    private const SUB_INDENT = '            ';
 
     private int $count = 10;
 
@@ -45,13 +45,13 @@ final class FakerSeederGenerator extends Generator implements GeneratorInterface
      */
     public function run(bool $force = false): void
     {
-        $record = self::SUB_INTENT.'$records[] = ['.PHP_EOL;
+        $record = self::SUB_INDENT.'$records[] = ['.PHP_EOL;
 
         foreach ($this->table->getColumns() as $column) {
-            $record .= self::INTENT.$column->fake().PHP_EOL;
+            $record .= self::INDENT.$column->fake().PHP_EOL;
         }
 
-        $record = preg_replace('/\n$/', '', $record).PHP_EOL.self::SUB_INTENT.'];';
+        $record = preg_replace('/\n$/', '', $record).PHP_EOL.self::SUB_INDENT.'];';
 
         $this->write(
             $this->table->seeder('.php'),

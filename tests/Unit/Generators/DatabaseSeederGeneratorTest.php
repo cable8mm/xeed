@@ -32,7 +32,7 @@ final class DatabaseSeederGeneratorTest extends TestCase
         File::system()->delete(Path::testgen().DIRECTORY_SEPARATOR.'DatabaseSeeder.php');
     }
 
-    public function test_it_can_generate_database_seeder_file(): void
+    public function test_it_generates_database_seeder_file(): void
     {
         $this->assertFileExists(Path::testgen().DIRECTORY_SEPARATOR.'DatabaseSeeder.php');
     }

@@ -29,19 +29,19 @@ final class ModelGeneratorTest extends TestCase
         File::system()->delete(Path::testgen().DIRECTORY_SEPARATOR.'Sample.php');
     }
 
-    public function test_it_can_generate_model_file(): void
+    public function test_it_generates_model_file(): void
     {
         $this->assertFileExists(Path::testgen().DIRECTORY_SEPARATOR.'Sample.php');
     }
 
-    public function test_it_can_generate_timestamps(): void
+    public function test_it_omits_timestamps_when_present(): void
     {
         $file = File::system()->read(Path::testgen().DIRECTORY_SEPARATOR.'Sample.php');
 
         $this->assertStringNotContainsString('timestamps', $file);
     }
 
-    public function test_it_can_generate_without_timestamps(): void
+    public function test_it_adds_timestamps_when_missing(): void
     {
         File::system()->delete(Path::testgen().DIRECTORY_SEPARATOR.'Sample.php');
 
@@ -57,7 +57,7 @@ final class ModelGeneratorTest extends TestCase
         $this->assertStringContainsString('timestamps', $file);
     }
 
-    public function test_it_is_needed_to_properties(): void
+    public function test_it_adds_timestamps_for_simple_models(): void
     {
         File::system()->delete(Path::testgen().DIRECTORY_SEPARATOR.'Sample.php');
 
@@ -73,7 +73,7 @@ final class ModelGeneratorTest extends TestCase
         $this->assertStringContainsString('timestamps', $file);
     }
 
-    public function test_primary_key_is_null(): void
+    public function test_it_sets_primary_key_to_null_when_missing(): void
     {
         File::system()->delete(Path::testgen().DIRECTORY_SEPARATOR.'Sample.php');
 
@@ -89,7 +89,7 @@ final class ModelGeneratorTest extends TestCase
         $this->assertStringContainsString('primaryKey = null', $file);
     }
 
-    public function test_primary_key_is_empty_when_field_name_is_id(): void
+    public function test_it_omits_primary_key_for_default_id(): void
     {
         File::system()->delete(Path::testgen().DIRECTORY_SEPARATOR.'Sample.php');
 
@@ -105,7 +105,7 @@ final class ModelGeneratorTest extends TestCase
         $this->assertStringNotContainsString('primaryKey', $file);
     }
 
-    public function test_primary_key_is_empty_when_field_name_is_not_id(): void
+    public function test_it_sets_custom_primary_key_when_needed(): void
     {
         File::system()->delete(Path::testgen().DIRECTORY_SEPARATOR.'Sample.php');
 

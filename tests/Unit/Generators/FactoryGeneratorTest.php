@@ -32,7 +32,7 @@ final class FactoryGeneratorTest extends TestCase
         File::system()->delete(Path::testgen().DIRECTORY_SEPARATOR.'SampleFactory.php');
     }
 
-    public function test_it_can_generate_factory_file(): void
+    public function test_it_generates_factory_file(): void
     {
         $this->assertFileExists(Path::testgen().DIRECTORY_SEPARATOR.'SampleFactory.php');
     }
