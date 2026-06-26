@@ -25,10 +25,7 @@ final class FakerSeederGenerator extends Generator implements GeneratorInterface
     {
         parent::__construct($table, $namespace, $destination);
         $this->defaultDestination(Path::seeder());
-
-        if (is_null($this->namespace)) {
-            $this->namespace = '\App\Models';
-        }
+        $this->defaultNamespace('\App\Models');
 
         $this->loadStub('FakerSeeder.stub');
     }

@@ -9,12 +9,15 @@ use Cable8mm\Xeed\Table;
 abstract class Generator
 {
     protected string $stub;
+    protected ?string $namespace;
 
     protected function __construct(
         protected Table $table,
-        protected ?string $namespace = null,
+        ?string $namespace = null,
         protected ?string $destination = null
-    ) {}
+    ) {
+        $this->namespace = $namespace;
+    }
 
     protected function loadStub(string $filename): void
     {
@@ -26,6 +29,18 @@ abstract class Generator
         if (is_null($this->destination)) {
             $this->destination = $path;
         }
+    }
+
+    protected function defaultNamespace(string $namespace): void
+    {
+        if (is_null($this->namespace)) {
+            $this->namespace = $namespace;
+        }
+    }
+
+    protected function namespaceClass(string $class): string
+    {
+        return $this->namespace.'\\'.$class;
     }
 
     protected function write(string $filename, string $content, bool $force = false): void

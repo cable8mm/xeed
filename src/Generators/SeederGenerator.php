@@ -16,10 +16,7 @@ final class SeederGenerator extends Generator implements GeneratorInterface
     {
         parent::__construct($table, $namespace, $destination);
         $this->defaultDestination(Path::seeder());
-
-        if (is_null($this->namespace)) {
-            $this->namespace = '\App\Models';
-        }
+        $this->defaultNamespace('\App\Models');
 
         $this->loadStub('Seeder.stub');
     }
@@ -33,7 +30,7 @@ final class SeederGenerator extends Generator implements GeneratorInterface
             $this->table->seeder('.php'),
             $this->replace(
                 ['{class}', '{namespace_class}'],
-                [$this->table->model('Seeder'), $this->namespace.'\\'.$this->table->model()]
+                [$this->table->model('Seeder'), $this->namespaceClass($this->table->model())]
             ),
             $force
         );
