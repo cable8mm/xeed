@@ -16,6 +16,7 @@ final class NovaResourceGeneratorTest extends TestCase
         NovaResourceGenerator::make(
             new Table('samples', [
                 Column::make('id', 'bigint'),
+                Column::make('name', 'varchar'),
                 Column::make('created_at', 'timestamp'),
                 Column::make('updated_at', 'timestamp'),
             ]),
@@ -39,5 +40,17 @@ final class NovaResourceGeneratorTest extends TestCase
 
         $this->assertStringNotContainsString('Created At', $file);
         $this->assertStringNotContainsString('Updated At', $file);
+    }
+
+    public function test_it_can_generate_class_uses_and_fields(): void
+    {
+        $file = File::system()->read(Path::testgen().DIRECTORY_SEPARATOR.'Sample.php');
+
+        $this->assertStringContainsString('use Laravel\\Nova\\Fields\\ID;', $file);
+        $this->assertStringContainsString('use Laravel\\Nova\\Fields\\Text;', $file);
+        $this->assertStringContainsString('public function fields(NovaRequest $request)', $file);
+        $this->assertStringContainsString('Text::make(\'Name\')', $file);
+        $this->assertStringContainsString('ID::make()->sortable()', $file);
+        $this->assertStringContainsString('public static $title = \'Samples\';', $file);
     }
 }

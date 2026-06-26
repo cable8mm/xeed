@@ -49,7 +49,7 @@ final class DatabaseSeederGenerator
         File::system()->write(
             $this->destination.DIRECTORY_SEPARATOR.'DatabaseSeeder.php',
             str_replace(['{seeder_classes}'], [$seeder_classes], $this->stub),
-            true
+            $force
         );
     }
 

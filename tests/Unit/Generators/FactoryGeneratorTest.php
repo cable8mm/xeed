@@ -7,6 +7,7 @@ use Cable8mm\Xeed\Generators\FactoryGenerator;
 use Cable8mm\Xeed\Support\File;
 use Cable8mm\Xeed\Support\Path;
 use Cable8mm\Xeed\Table;
+use RuntimeException;
 use PHPUnit\Framework\TestCase;
 
 final class FactoryGeneratorTest extends TestCase
@@ -34,5 +35,35 @@ final class FactoryGeneratorTest extends TestCase
     public function test_it_can_generate_factory_file(): void
     {
         $this->assertFileExists(Path::testgen().DIRECTORY_SEPARATOR.'SampleFactory.php');
+    }
+
+    public function test_it_respects_force_when_overwriting_existing_files(): void
+    {
+        $filename = Path::testgen().DIRECTORY_SEPARATOR.'SampleFactory.php';
+
+        $file = File::system();
+        $file->write($filename, 'original', true);
+
+        $this->expectException(RuntimeException::class);
+
+        FactoryGenerator::make(
+            $this->table,
+            destination: Path::testgen()
+        )->run();
+    }
+
+    public function test_it_can_force_overwrite_existing_files(): void
+    {
+        $filename = Path::testgen().DIRECTORY_SEPARATOR.'SampleFactory.php';
+
+        $file = File::system();
+        $file->write($filename, 'original', true);
+
+        FactoryGenerator::make(
+            $this->table,
+            destination: Path::testgen()
+        )->run(true);
+
+        $this->assertStringNotContainsString('original', $file->read($filename));
     }
 }
