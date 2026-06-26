@@ -30,7 +30,7 @@ final class SeederGenerator extends Generator implements GeneratorInterface
             $this->table->seeder('.php'),
             $this->replace(
                 ['{class}', '{namespace_class}'],
-                [$this->table->model('Seeder'), $this->namespaceClass($this->table->model())]
+                [$this->table->model('Seeder'), $this->qualifyModel($this->table->model())]
             ),
             $force
         );

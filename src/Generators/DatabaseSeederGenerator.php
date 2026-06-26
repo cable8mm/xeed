@@ -13,7 +13,7 @@ final class DatabaseSeederGenerator
     /**
      * The left padding for the body of the generated.
      */
-    private const INTENT = '            ';
+    private const INDENT = '            ';
 
     /**
      * @var string Stub string from the stubs folder file.
@@ -38,17 +38,17 @@ final class DatabaseSeederGenerator
      */
     public function run(bool $force = false): void
     {
-        $seeder_classes = '';
+        $seederClasses = '';
 
         foreach ($this->tables as $table) {
-            $seeder_classes .= DatabaseSeederGenerator::INTENT.$table->model().'Seeder::class,'.PHP_EOL;
+            $seederClasses .= DatabaseSeederGenerator::INDENT.$table->model().'Seeder::class,'.PHP_EOL;
         }
 
-        $seeder_classes = preg_replace('/\n$/', '', $seeder_classes);
+        $seederClasses = preg_replace('/\n$/', '', $seederClasses);
 
         File::system()->write(
             $this->destination.DIRECTORY_SEPARATOR.'DatabaseSeeder.php',
-            str_replace(['{seeder_classes}'], [$seeder_classes], $this->stub),
+            str_replace(['{seeder_classes}'], [$seederClasses], $this->stub),
             $force
         );
     }

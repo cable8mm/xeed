@@ -77,7 +77,7 @@ final class RelationGeneratorTest extends TestCase
         );
     }
 
-    public function test_it_can_force_overwrite_existing_model_files(): void
+    public function test_it_can_force_overwrite_related_model_files(): void
     {
         $filename = Path::testgen().DIRECTORY_SEPARATOR.'Sample.php';
 

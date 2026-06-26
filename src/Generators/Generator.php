@@ -38,7 +38,7 @@ abstract class Generator
         }
     }
 
-    protected function namespaceClass(string $class): string
+    protected function qualifyModel(string $class): string
     {
         return $this->namespace.'\\'.$class;
     }

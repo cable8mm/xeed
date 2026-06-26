@@ -28,7 +28,7 @@ final class SeederGeneratorTest extends TestCase
         File::system()->delete(Path::testgen().DIRECTORY_SEPARATOR.'SampleSeeder.php');
     }
 
-    public function test_it_can_can_generate_seeder_file(): void
+    public function test_it_generates_seeder_file(): void
     {
         $this->assertFileExists(Path::testgen().DIRECTORY_SEPARATOR.'SampleSeeder.php');
     }

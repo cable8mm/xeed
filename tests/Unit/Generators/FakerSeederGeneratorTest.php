@@ -26,12 +26,12 @@ final class FakerSeederGeneratorTest extends TestCase
         File::system()->delete(Path::testgen().DIRECTORY_SEPARATOR.'SampleSeeder.php');
     }
 
-    public function test_it_can_can_generate_seeder_file(): void
+    public function test_it_generates_faker_seeder_file(): void
     {
         $this->assertFileExists(Path::testgen().DIRECTORY_SEPARATOR.'SampleSeeder.php');
     }
 
-    public function test_it_uses_default_model_namespace(): void
+    public function test_it_generates_default_content(): void
     {
         $file = File::system()->read(Path::testgen().DIRECTORY_SEPARATOR.'SampleSeeder.php');
 
