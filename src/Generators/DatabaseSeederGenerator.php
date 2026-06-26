@@ -11,27 +11,24 @@ use Cable8mm\Xeed\Support\Path;
 final class DatabaseSeederGenerator
 {
     /**
+     * The left padding for the body of the generated.
+     */
+    private const INTENT = '            ';
+
+    /**
      * @var string Stub string from the stubs folder file.
      */
     private string $stub;
 
-    /**
-     * The left padding for the body of the generated.
-     */
-    public const INTENT = '            ';
+    private array $tables;
 
-    private function __construct(
-        private array $tables,
-        private ?string $namespace = null,
-        private ?string $destination = null
-    ) {
-        if (is_null($destination)) {
-            $this->destination = Path::seeder();
-        }
+    private string $destination;
 
-        if (is_null($namespace)) {
-            $this->namespace = '\App\Models';
-        }
+    private function __construct(array $tables, ?string $namespace = null, ?string $destination = null)
+    {
+        $this->tables = $tables;
+        $this->destination = $destination ?? Path::seeder();
+        unset($namespace);
 
         $this->stub = File::system()->read(Path::stub().DIRECTORY_SEPARATOR.'DatabaseSeeder.stub');
     }
@@ -49,16 +46,10 @@ final class DatabaseSeederGenerator
 
         $seeder_classes = preg_replace('/\n$/', '', $seeder_classes);
 
-        $seederClass = str_replace(
-            ['{seeder_classes}'],
-            [$seeder_classes],
-            $this->stub
-        );
-
         File::system()->write(
             $this->destination.DIRECTORY_SEPARATOR.'DatabaseSeeder.php',
-            $seederClass,
-            $force
+            str_replace(['{seeder_classes}'], [$seeder_classes], $this->stub),
+            true
         );
     }
 
