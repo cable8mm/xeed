@@ -4,6 +4,7 @@ namespace Cable8mm\Xeed\Generators;
 
 use Cable8mm\Xeed\Support\File;
 use Cable8mm\Xeed\Support\Path;
+use Cable8mm\Xeed\Table;
 
 /**
  * Generator for `dist/database/seeders/DatabaseSeeder.php`.
@@ -65,7 +66,7 @@ final class DatabaseSeederGenerator
     /**
      * Create a instance.
      *
-     * @param  array<\Cable8mm\Xeed\Table>  $tables  The model class name
+     * @param  array<Table>  $tables  The model class name
      * @param  string  $namespace  The model namespace
      * @param  string  $destination  The path to the dist folder
      */

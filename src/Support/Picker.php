@@ -3,6 +3,7 @@
 namespace Cable8mm\Xeed\Support;
 
 use Cable8mm\Xeed\Column;
+use Cable8mm\Xeed\Table;
 use InvalidArgumentException;
 
 /**
@@ -79,7 +80,7 @@ final class Picker
      * @param  string  $driver  The driver.
      * @param  string  $field  The field.
      * @param  string  $type  The type.
-     * @return \Cable8mm\Xeed\Column|null The Column instance
+     * @return Column|null The Column instance
      *
      * @throws InvalidArgumentException When the driver is invalid or the field type is not supported
      *
@@ -122,7 +123,7 @@ final class Picker
     /**
      * Get an array of An array of `Table` instances.
      *
-     * @return array<\Cable8mm\Xeed\Column> An array of An array of `\Cable8mm\Xeed\Table` instances.
+     * @return array<Column> An array of An array of `\Cable8mm\Xeed\Table` instances.
      */
     public function toArray(): array
     {
@@ -132,7 +133,7 @@ final class Picker
     /**
      * Create a instance.
      *
-     * @param  array<\Cable8mm\Xeed\Table>  $values  An array of `\Cable8mm\Xeed\Table` instances.
+     * @param  array<Table>  $values  An array of `\Cable8mm\Xeed\Table` instances.
      * @return static The Picker instance.
      *
      * @example Picker::of($xeed->attach()->getTable('xeeds')->getColumns())->driver($xeed->driver)->field('string')->get()

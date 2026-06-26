@@ -2,7 +2,9 @@
 
 namespace Cable8mm\Xeed\Tests\Laravel\Commands;
 
-class GenerateFactoriesCommandTest extends \Orchestra\Testbench\TestCase
+use Orchestra\Testbench\TestCase;
+
+class GenerateFactoriesCommandTest extends TestCase
 {
     public function test_execute_xeed_database_command()
     {

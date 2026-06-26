@@ -6,6 +6,7 @@ use Cable8mm\Xeed\Generators\ModelGenerator;
 use Cable8mm\Xeed\Generators\RelationGenerator;
 use Cable8mm\Xeed\Support\Path;
 use Cable8mm\Xeed\Xeed;
+use Dotenv\Dotenv;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -30,7 +31,7 @@ class GenerateRelationsCommand extends Command
      */
     protected function configure(): void
     {
-        $dotenv = \Dotenv\Dotenv::createImmutable(getcwd());
+        $dotenv = Dotenv::createImmutable(getcwd());
         $dotenv->safeLoad();
 
         $this

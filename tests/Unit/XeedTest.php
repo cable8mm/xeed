@@ -14,7 +14,7 @@ final class XeedTest extends TestCase
 
         $xeed = Xeed::getNewInstance();
 
-        $this->assertInstanceOf(\Cable8mm\Xeed\Xeed::class, $xeed);
+        $this->assertInstanceOf(Xeed::class, $xeed);
 
         $seeder->dropTables();
     }

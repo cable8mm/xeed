@@ -3,13 +3,14 @@
 namespace Cable8mm\Xeed\Tests\Feature;
 
 use Cable8mm\Xeed\Xeed;
+use Dotenv\Dotenv;
 use PHPUnit\Framework\TestCase;
 
 final class PhpunitTest extends TestCase
 {
     protected function setUp(): void
     {
-        $dotenv = \Dotenv\Dotenv::createImmutable(getcwd());
+        $dotenv = Dotenv::createImmutable(getcwd());
         $dotenv->safeLoad();
     }
 

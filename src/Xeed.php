@@ -5,6 +5,7 @@ namespace Cable8mm\Xeed;
 use ArrayAccess;
 use Cable8mm\Xeed\Interfaces\ProviderInterface;
 use Cable8mm\Xeed\Support\Path;
+use Dotenv\Dotenv;
 use Exception;
 use InvalidArgumentException;
 use PDO;
@@ -52,7 +53,7 @@ final class Xeed implements ArrayAccess
     ];
 
     /**
-     * @var array<\Cable8mm\Xeed\Table> Table array.
+     * @var array<Table> Table array.
      */
     private array $tables = [];
 
@@ -133,7 +134,7 @@ final class Xeed implements ArrayAccess
     public static function getInstance(): static
     {
         if (self::$instance === null) {
-            $dotenv = \Dotenv\Dotenv::createImmutable(getcwd());
+            $dotenv = Dotenv::createImmutable(getcwd());
             $dotenv->safeLoad();
 
             $driver = $_ENV['DB_CONNECTION'];
@@ -211,7 +212,7 @@ final class Xeed implements ArrayAccess
     /**
      * Get attached tables.
      *
-     * @return \Cable8mm\Xeed\Table[] The method returns the attached tables
+     * @return Table[] The method returns the attached tables
      */
     public function getTables(): array
     {
@@ -221,7 +222,7 @@ final class Xeed implements ArrayAccess
     /**
      * Get a specific attached table.
      *
-     * @return \Cable8mm\Xeed\Table|null The method returns the table instance or null
+     * @return Table|null The method returns the table instance or null
      */
     public function getTable(string $table): ?Table
     {

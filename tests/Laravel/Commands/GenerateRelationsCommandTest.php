@@ -2,7 +2,9 @@
 
 namespace Cable8mm\Xeed\Tests\Laravel\Commands;
 
-class GenerateRelationsCommandTest extends \Orchestra\Testbench\TestCase
+use Orchestra\Testbench\TestCase;
+
+class GenerateRelationsCommandTest extends TestCase
 {
     public function test_execute_xeed_relations_command()
     {

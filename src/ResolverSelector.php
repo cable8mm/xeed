@@ -50,7 +50,7 @@ final class ResolverSelector
     /**
      * Select the resolver for the given column.
      *
-     * @param  \Cable8mm\Xeed\Column  $column  The column to select the resolver for
+     * @param  Column  $column  The column to select the resolver for
      * @return ResolverInterface The method returns the correct resolver
      *
      * @throws InvalidArgumentException

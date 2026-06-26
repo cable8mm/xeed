@@ -14,7 +14,7 @@ abstract class Resolver implements ResolverInterface
     /**
      * Constructor.
      *
-     * @param  \Cable8mm\Xeed\Column  $column  The column.
+     * @param  Column  $column  The column.
      */
     public function __construct(
         protected Column $column

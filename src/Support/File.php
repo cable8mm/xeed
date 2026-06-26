@@ -3,7 +3,9 @@
 namespace Cable8mm\Xeed\Support;
 
 use League\Flysystem\Filesystem;
+use League\Flysystem\FilesystemException;
 use League\Flysystem\Local\LocalFilesystemAdapter;
+use League\Flysystem\UnableToWriteFile;
 
 /**
  * The wrapper of `League\Flysystem\Filesystem`.
@@ -20,8 +22,8 @@ final class File
      *
      * @return string The method returns the string representation.
      *
-     * @throws \League\Flysystem\UnableToWriteFile
-     * @throws \League\Flysystem\FilesystemException
+     * @throws UnableToWriteFile
+     * @throws FilesystemException
      */
     public function read(string $location): string
     {
@@ -33,8 +35,8 @@ final class File
      *
      * @return string The method returns the string representation without comments.
      *
-     * @throws \League\Flysystem\UnableToWriteFile
-     * @throws \League\Flysystem\FilesystemException
+     * @throws UnableToWriteFile
+     * @throws FilesystemException
      */
     public function readSql(string $location): string
     {
@@ -51,8 +53,8 @@ final class File
      * @param  bool  $force  Whether to force writing of the file or not (default false)
      *
      * @throws \RuntimeException
-     * @throws \League\Flysystem\UnableToWriteFile
-     * @throws \League\Flysystem\FilesystemException
+     * @throws UnableToWriteFile
+     * @throws FilesystemException
      */
     public function write(string $location, string $content, bool $force = false): void
     {
@@ -69,8 +71,8 @@ final class File
      * @param  bool  $force  Whether to force writing of the file or not (default false)
      *
      * @throws \RuntimeException
-     * @throws \League\Flysystem\UnableToWriteFile
-     * @throws \League\Flysystem\FilesystemException
+     * @throws UnableToWriteFile
+     * @throws FilesystemException
      */
     public function touch(string $location, bool $force = false): void
     {
@@ -80,8 +82,8 @@ final class File
     /**
      * Delete a file.
      *
-     * @throws \League\Flysystem\UnableToWriteFile
-     * @throws \League\Flysystem\FilesystemException
+     * @throws UnableToWriteFile
+     * @throws FilesystemException
      */
     public function delete(string $location): void
     {

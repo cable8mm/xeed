@@ -19,7 +19,7 @@ interface GeneratorInterface
     /**
      * Create a instance.
      *
-     * @param  \Cable8mm\Xeed\Table  $class  The name of the class for replacing with stub file
+     * @param  Table  $class  The name of the class for replacing with stub file
      * @param  string|null  $namespace  The namespace to be applied to the class
      * @param  string|null  $destination  The path to the dist folder
      * @return void

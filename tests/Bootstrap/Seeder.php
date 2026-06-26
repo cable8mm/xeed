@@ -3,10 +3,12 @@
 namespace Cable8mm\Xeed\Tests\Bootstrap;
 
 use Cable8mm\Xeed\Xeed;
+use Faker\Factory;
+use Faker\Generator;
 
 class Seeder
 {
-    private \Faker\Generator $faker;
+    private Generator $faker;
 
     public const TOTAL = 100;
 
@@ -14,7 +16,7 @@ class Seeder
 
     public function __construct()
     {
-        $this->faker = \Faker\Factory::create();
+        $this->faker = Factory::create();
     }
 
     public function run(): void

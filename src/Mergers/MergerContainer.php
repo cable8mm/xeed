@@ -3,6 +3,7 @@
 namespace Cable8mm\Xeed\Mergers;
 
 use Cable8mm\Xeed\Generators\MigrationGenerator;
+use Cable8mm\Xeed\Interfaces\MergerInstance;
 use Cable8mm\Xeed\Interfaces\MergerInterface;
 use Cable8mm\Xeed\Support\File;
 use InvalidArgumentException;
@@ -15,7 +16,7 @@ use Stringable;
 class MergerContainer implements Stringable
 {
     /**
-     * @var array<\Cable8mm\Xeed\Interfaces\MergerInterface>
+     * @var array<MergerInterface>
      */
     private array $engines = [];
 
@@ -46,7 +47,7 @@ class MergerContainer implements Stringable
     /**
      * Add a engine.
      *
-     * @param  \Cable8mm\Xeed\Mergers\Merger  $merger  An engine to be added.
+     * @param  Merger  $merger  An engine to be added.
      * @return static The method returns the current instance that enables method chaining.
      */
     public function engine(Merger $merger): static
@@ -59,7 +60,7 @@ class MergerContainer implements Stringable
     /**
      * Add engines.
      *
-     * @param  array<\Cable8mm\Xeed\Interfaces\MergerInstance>  $mergers  An array of engines to be added.
+     * @param  array<MergerInstance>  $mergers  An array of engines to be added.
      * @return static The method returns the current instance that enables methods chaining.
      */
     public function engines(array $mergers): static
