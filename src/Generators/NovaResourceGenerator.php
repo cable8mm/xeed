@@ -3,35 +3,24 @@
 namespace Cable8mm\Xeed\Generators;
 
 use Cable8mm\Xeed\Interfaces\GeneratorInterface;
-use Cable8mm\Xeed\Support\File;
 use Cable8mm\Xeed\Support\Path;
 use Cable8mm\Xeed\Table;
 
 /**
  * Generator for `dist/database/migrations/*.php`.
  */
-final class NovaResourceGenerator implements GeneratorInterface
+final class NovaResourceGenerator extends Generator implements GeneratorInterface
 {
-    /**
-     * @var string Stub string from the stubs folder file.
-     */
-    private string $stub;
-
     /**
      * The left padding for the body of the generated.
      */
-    public const INTENT = '            ';
+    private const INTENT = '            ';
 
-    private function __construct(
-        private Table $table,
-        private ?string $namespace = null,
-        private ?string $destination = null
-    ) {
-        if (is_null($destination)) {
-            $this->destination = Path::nova();
-        }
-
-        $this->stub = File::system()->read(Path::stub().DIRECTORY_SEPARATOR.'NovaResource.stub');
+    private function __construct(Table $table, ?string $namespace = null, ?string $destination = null)
+    {
+        parent::__construct($table, $namespace, $destination);
+        $this->defaultDestination(Path::nova());
+        $this->loadStub('NovaResource.stub');
     }
 
     /**
@@ -57,27 +46,24 @@ final class NovaResourceGenerator implements GeneratorInterface
         }
         $classUsesString = rtrim($classUsesString, PHP_EOL);
 
-        $seederClass = str_replace(
-            [
-                '{class_uses}',
-                '{nova_class_name}',
-                '{model_class_name}',
-                '{table_title}',
-                '{nova_fields}',
-            ],
-            [
-                $classUsesString,
-                $this->table->nova(),
-                $this->table->model(),
-                $this->table->title(),
-                $novaFieldsString,
-            ],
-            $this->stub
-        );
-
-        File::system()->write(
-            $this->destination.DIRECTORY_SEPARATOR.$this->table->nova('.php'),
-            $seederClass,
+        $this->write(
+            $this->table->nova('.php'),
+            $this->replace(
+                [
+                    '{class_uses}',
+                    '{nova_class_name}',
+                    '{model_class_name}',
+                    '{table_title}',
+                    '{nova_fields}',
+                ],
+                [
+                    $classUsesString,
+                    $this->table->nova(),
+                    $this->table->model(),
+                    $this->table->title(),
+                    $novaFieldsString,
+                ]
+            ),
             $force
         );
     }
