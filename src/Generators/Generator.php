@@ -21,7 +21,7 @@ abstract class Generator
 
     protected function loadStub(string $filename): void
     {
-        $this->stub = File::system()->read(Path::stub().DIRECTORY_SEPARATOR.$filename);
+        $this->stub = $this->read(Path::stub().DIRECTORY_SEPARATOR.$filename);
     }
 
     protected function defaultDestination(string $path): void
@@ -46,6 +46,11 @@ abstract class Generator
     protected function write(string $filename, string $content, bool $force = false): void
     {
         File::system()->write($this->destination.DIRECTORY_SEPARATOR.$filename, $content, $force);
+    }
+
+    protected function read(string $filename): string
+    {
+        return File::system()->read($filename);
     }
 
     protected function replace(array $search, array $replace): string

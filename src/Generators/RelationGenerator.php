@@ -3,7 +3,6 @@
 namespace Cable8mm\Xeed\Generators;
 
 use Cable8mm\Xeed\Interfaces\GeneratorInterface;
-use Cable8mm\Xeed\Support\File;
 use Cable8mm\Xeed\Support\Path;
 use Cable8mm\Xeed\Table;
 
@@ -23,23 +22,19 @@ final class RelationGenerator extends Generator implements GeneratorInterface
      */
     public function run(bool $force = false): void
     {
-        $model = File::system()->read($this->destination.DIRECTORY_SEPARATOR.$this->table->model().'.php');
+        $model = $this->read($this->destination.DIRECTORY_SEPARATOR.$this->table->model().'.php');
         [$before, $after] = explode('use HasFactory;', $model);
         $belongsToRelation = '';
 
         foreach ($this->table->getForeignKeys() as $key) {
             $belongsTo = $key->belongsTo();
             $belongsToRelation .= $belongsTo;
-            $relatedModel = File::system()->read($this->destination.DIRECTORY_SEPARATOR.$key->referenced_table.'.php');
+            $relatedModel = $this->read($this->destination.DIRECTORY_SEPARATOR.$key->referenced_table.'.php');
             [$relatedBefore, $relatedAfter] = explode('use HasFactory;', $relatedModel);
 
             $hasManyRelation = $key->hasMany();
             $relatedModel = $relatedBefore.'use HasFactory;'.PHP_EOL.PHP_EOL.$hasManyRelation.$relatedAfter;
-            File::system()->write(
-                $this->destination.DIRECTORY_SEPARATOR.$key->referenced_table.'.php',
-                $relatedModel,
-                true
-            );
+            $this->write($key->referenced_table.'.php', $relatedModel, true);
         }
 
         $model = $before.'use HasFactory;'.(
