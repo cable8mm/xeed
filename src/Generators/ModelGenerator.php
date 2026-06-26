@@ -3,7 +3,6 @@
 namespace Cable8mm\Xeed\Generators;
 
 use Cable8mm\Xeed\Interfaces\GeneratorInterface;
-use Cable8mm\Xeed\Support\File;
 use Cable8mm\Xeed\Support\Path;
 use Cable8mm\Xeed\Table;
 
@@ -13,23 +12,16 @@ use Cable8mm\Xeed\Table;
  * @throws Exception \League\Flysystem\FilesystemException
  * @throws Exception \League\Flysystem\UnableToReadFile
  */
-final class ModelGenerator implements GeneratorInterface
+final class ModelGenerator extends Generator implements GeneratorInterface
 {
-    /**
-     * @var string Stub string from the stubs folder file.
-     */
-    private string $stub;
-
     private function __construct(
-        private Table $table,
-        private ?string $namespace_class,
-        private ?string $destination = null
+        Table $table,
+        ?string $namespace = null,
+        ?string $destination = null
     ) {
-        if (is_null($destination)) {
-            $this->destination = Path::model();
-        }
-
-        $this->stub = File::system()->read(Path::stub().DIRECTORY_SEPARATOR.'Model.stub');
+        parent::__construct($table, $namespace, $destination);
+        $this->defaultDestination(Path::model());
+        $this->loadStub('Model.stub');
     }
 
     /**
@@ -66,7 +58,7 @@ final class ModelGenerator implements GeneratorInterface
             }
         }
 
-        $seederClass = str_replace(
+        $modelClass = $this->replace(
             [
                 '{model}',
                 '{timestamps}',
@@ -79,12 +71,11 @@ final class ModelGenerator implements GeneratorInterface
                 $castString,
                 $primaryKeyString,
             ],
-            $this->stub
         );
 
-        File::system()->write(
-            $this->destination.DIRECTORY_SEPARATOR.$this->table->model().'.php',
-            $seederClass,
+        $this->write(
+            $this->table->model().'.php',
+            $modelClass,
             $force
         );
     }
