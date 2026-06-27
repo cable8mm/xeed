@@ -2,7 +2,7 @@
 
 namespace Cable8mm\Xeed\Commands;
 
-use Cable8mm\Xeed\Generators\ModelGenerator;
+use Cable8mm\Xeed\Generators\RelationGenerator;
 use Cable8mm\Xeed\Xeed;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
@@ -39,7 +39,7 @@ class GenerateRelationsCommand extends Command
 
         foreach ($tables as $table) {
             try {
-                ModelGenerator::make(
+                RelationGenerator::make(
                     $table,
                     destination: app_path('Models')
                 )->run($force);

@@ -34,7 +34,7 @@ final class RelationGenerator extends Generator implements GeneratorInterface
 
             $hasManyRelation = $key->hasMany();
             $relatedModel = $relatedBefore.'use HasFactory;'.PHP_EOL.PHP_EOL.$hasManyRelation.$relatedAfter;
-            $this->write($key->referenced_table.'.php', $relatedModel, true);
+            $this->write($key->referenced_table.'.php', $relatedModel, $force);
         }
 
         $model = $before.'use HasFactory;'.(
