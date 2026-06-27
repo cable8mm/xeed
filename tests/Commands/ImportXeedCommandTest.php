@@ -2,7 +2,9 @@
 
 namespace Cable8mm\Xeed\Tests\Commands;
 
-class ImportXeedCommandTest extends \Orchestra\Testbench\TestCase
+use Orchestra\Testbench\TestCase;
+
+class ImportXeedCommandTest extends TestCase
 {
     protected $enablesPackageDiscoveries = true;
 

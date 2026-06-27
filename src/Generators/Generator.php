@@ -9,6 +9,7 @@ use Cable8mm\Xeed\Table;
 abstract class Generator
 {
     protected string $stub;
+
     protected ?string $namespace;
 
     protected function __construct(

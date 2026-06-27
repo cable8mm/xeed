@@ -37,5 +37,4 @@ final class FakerSeederGeneratorTest extends TestCase
 
         $this->assertStringContainsString('DB::table(\'samples\')->truncate();', $file);
     }
-
 }

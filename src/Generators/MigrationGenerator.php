@@ -3,6 +3,7 @@
 namespace Cable8mm\Xeed\Generators;
 
 use Cable8mm\Xeed\Interfaces\GeneratorInterface;
+use Cable8mm\Xeed\Mergers\Merger;
 use Cable8mm\Xeed\Mergers\MergerContainer;
 use Cable8mm\Xeed\Support\Path;
 use Cable8mm\Xeed\Table;
@@ -20,7 +21,7 @@ final class MigrationGenerator extends Generator implements GeneratorInterface
     /**
      * Engines for MergerContainer.
      *
-     * @var ?array<\Cable8mm\Xeed\Mergers\Merger>
+     * @var ?array<Merger>
      */
     private ?array $mergerEngines = null;
 
@@ -59,7 +60,7 @@ final class MigrationGenerator extends Generator implements GeneratorInterface
     /**
      * Set merger engines.
      *
-     * @param  array<\Cable8mm\Xeed\Mergers\Merger>  $engines  An array of merger engines.
+     * @param  array<Merger>  $engines  An array of merger engines.
      * @return static The method returns the current instance that enables methods chaining.
      */
     public function merging(array $engines): static

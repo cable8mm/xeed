@@ -5,6 +5,7 @@ namespace Cable8mm\Xeed\Commands;
 use Cable8mm\Xeed\Support\File;
 use Cable8mm\Xeed\Support\Path;
 use Cable8mm\Xeed\Xeed;
+use Dotenv\Dotenv;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -32,7 +33,7 @@ class SymfonyImportXeedCommand extends Command
      */
     protected function configure(): void
     {
-        $dotenv = \Dotenv\Dotenv::createImmutable(getcwd());
+        $dotenv = Dotenv::createImmutable(getcwd());
         $dotenv->safeLoad();
 
         $this

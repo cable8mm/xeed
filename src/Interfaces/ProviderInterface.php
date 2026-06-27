@@ -12,7 +12,7 @@ interface ProviderInterface
     /**
      * Attach child provider to DB instance.
      *
-     * @param  \Cable8mm\Xeed\Xeed  $xeed  Xeed instance
+     * @param  Xeed  $xeed  Xeed instance
      * @param  string  $table  The table name to attach child provider
      */
     public function attach(Xeed $xeed, ?string $table = null): void;

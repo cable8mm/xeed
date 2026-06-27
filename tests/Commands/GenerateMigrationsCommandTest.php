@@ -2,7 +2,9 @@
 
 namespace Cable8mm\Xeed\Tests\Commands;
 
-class GenerateMigrationsCommandTest extends \Orchestra\Testbench\TestCase
+use Orchestra\Testbench\TestCase;
+
+class GenerateMigrationsCommandTest extends TestCase
 {
     public function test_execute_xeed_database_command()
     {

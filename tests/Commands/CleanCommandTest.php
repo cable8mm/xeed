@@ -2,7 +2,9 @@
 
 namespace Cable8mm\Xeed\Tests\Commands;
 
-class CleanCommandTest extends \Orchestra\Testbench\TestCase
+use Orchestra\Testbench\TestCase;
+
+class CleanCommandTest extends TestCase
 {
     public function test_execute_xeed_clean_command()
     {

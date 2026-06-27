@@ -2,10 +2,11 @@
 
 namespace Cable8mm\Xeed\Laravel;
 
+use Cable8mm\Xeed\Xeed;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \Cable8mm\Xeed\Xeed
+ * @see Xeed
  */
 class XeedFacade extends Facade
 {

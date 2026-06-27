@@ -19,14 +19,14 @@ final class Table implements Stringable
     /**
      * Column array.
      *
-     * @var array<\Cable8mm\Xeed\Column>
+     * @var array<Column>
      */
     private array $columns = [];
 
     /**
      * Foreign key array.
      *
-     * @var array<\Cable8mm\Xeed\ForeignKey>
+     * @var array<ForeignKey>
      */
     private array $foreignKeys = [];
 
@@ -34,8 +34,8 @@ final class Table implements Stringable
      * Constructor.
      *
      * @param  string  $name  Table name
-     * @param  array<\Cable8mm\Xeed\Table>|null  $columns  Column array[Table]
-     * @param  array<\Cable8mm\Xeed\ForeignKey>|null  $foreignKeys  Foreign key array
+     * @param  array<Table>|null  $columns  Column array[Table]
+     * @param  array<ForeignKey>|null  $foreignKeys  Foreign key array
      */
     public function __construct(string $name, ?array $columns = [], ?array $foreignKeys = [])
     {
@@ -51,7 +51,7 @@ final class Table implements Stringable
     /**
      * Get column array.
      *
-     * @return array<\Cable8mm\Xeed\Column> The method returns `\Cable8mm\Xeed\Column` array
+     * @return array<Column> The method returns `\Cable8mm\Xeed\Column` array
      */
     public function getColumns(): array
     {
@@ -61,7 +61,7 @@ final class Table implements Stringable
     /**
      * Get key array.
      *
-     * @return array<\Cable8mm\Xeed\ForeignKey> The method returns `\Cable8mm\Xeed\Key` array
+     * @return array<ForeignKey> The method returns `\Cable8mm\Xeed\Key` array
      */
     public function getForeignKeys(): array
     {

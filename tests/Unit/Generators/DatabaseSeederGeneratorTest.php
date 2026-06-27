@@ -7,8 +7,8 @@ use Cable8mm\Xeed\Generators\DatabaseSeederGenerator;
 use Cable8mm\Xeed\Support\File;
 use Cable8mm\Xeed\Support\Path;
 use Cable8mm\Xeed\Table;
-use RuntimeException;
 use PHPUnit\Framework\TestCase;
+use RuntimeException;
 
 final class DatabaseSeederGeneratorTest extends TestCase
 {
