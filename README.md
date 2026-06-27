@@ -115,9 +115,14 @@ php artisan xeed:migration
 
 Relations:
 
+> `xeed:relation` updates existing models, so generate models first if they do not already exist.
+
 ```shell
-# Add the relation function to all models from database in `app/Models` folder
+# Add relation functions to existing models in `app/Models` folder
 php artisan xeed:relation
+
+# Force overwrite existing model files while adding relation functions
+php artisan xeed:relation -f
 ```
 
 Nova:
