@@ -25,7 +25,7 @@ class GenerateFakerSeedersCommand extends Command
      */
     protected $description = 'Generate faker seeders from your own database tables';
 
-    protected function configure()
+    protected function configure(): void
     {
         $this->setAliases([
             'xeed:fakers',

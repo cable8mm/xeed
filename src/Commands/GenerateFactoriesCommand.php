@@ -28,7 +28,7 @@ class GenerateFactoriesCommand extends Command
     /**
      * Execute the console command.
      */
-    public function handle(Xeed $xeed)
+    public function handle(Xeed $xeed): void
     {
         $table = $this->argument('table') ?? null;
 

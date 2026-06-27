@@ -26,7 +26,7 @@ class GenerateDatabaseSeederCommand extends Command
     /**
      * Execute the console command.
      */
-    public function handle(Xeed $xeed)
+    public function handle(Xeed $xeed): int
     {
         $force = $this->option('force') ?? false;
 
