@@ -6,14 +6,23 @@
 [![Packagist Version](https://img.shields.io/packagist/v/cable8mm/xeed)](https://packagist.org/packages/cable8mm/xeed)
 [![Packagist Dependency Version](https://img.shields.io/packagist/dependency-v/cable8mm/xeed/php?logo=PHP&logoColor=white&color=777BB4
 )](https://packagist.org/packages/cable8mm/xeed)
-![Laravel Version](https://img.shields.io/badge/Laravel-8.0%2B-FF2D20?logo=laravel&labelColor=white)
+![Laravel Version](https://img.shields.io/badge/Laravel-9.0%2B-FF2D20?logo=laravel&labelColor=white)
 ![Static Badge](https://img.shields.io/badge/Laravel%20Nova-4.0%2B-4BA2E4?logo=laravel%20nova&logoColor=00E9F0&labelColor=white)
-![Packagist Dependency Version](https://img.shields.io/packagist/dependency-v/cable8mm/xeed/symfony%2Fconsole)
 [![Packagist Downloads](https://img.shields.io/packagist/dt/cable8mm/xeed)](https://packagist.org/packages/cable8mm/xeed/stats)
 [![Packagist Stars](https://img.shields.io/packagist/stars/cable8mm/xeed)](https://github.com/cable8mm/xeed/stargazers)
 [![Packagist License](https://img.shields.io/packagist/l/cable8mm/xeed)](https://github.com/cable8mm/xeed/blob/main/LICENSE.md)
 
-The Xeed is to generate new model, seed, Nova resources, database seed, factory and migration files for Laravel & Nova based on data from the existing database table.
+Xeed generates new model, seed, Nova resources, database seed, factory and migration files for Laravel & Nova based on data from the existing database table.
+
+## Why Xeed?
+
+Laravel already has migrations and factories, but:
+
+- It cannot reverse-engineer existing databases
+- It is repetitive for legacy projects
+- Nova resources are manual and slow to maintain
+
+Xeed solves this by generating everything from your real schema.
 
 > [!TIP]
 > It can function as both `php artisan xeed:*` commands for Laravel & Nova providing 100% identical functionality. Therefore, you can use it within your own Laravel & Nova project.
@@ -39,9 +48,10 @@ We have provided the API Documentation on the web. For more information, please 
 ![MySQL Supported](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white)
 ![SQLite Supported](https://img.shields.io/badge/SQLite-07405e?logo=sqlite&logoColor=white)
 ![PostgreSQL Supported](https://img.shields.io/badge/PostgreSQL-Beta-316192?&logo=postgresql&logoColor=white)
-![PHP 8.1.0+ Supported](https://img.shields.io/badge/PHP-8.1.0%2B-777BB4?logo=php&logoColor=white)
 ![PHP 8.2.0+ Supported](https://img.shields.io/badge/PHP-8.2.0%2B-777BB4?logo=php&logoColor=white)
 ![PHP 8.3.0+ Supported](https://img.shields.io/badge/PHP-8.3.0%2B-777BB4?logo=php&logoColor=white)
+![PHP 8.4.0+ Supported](https://img.shields.io/badge/PHP-8.4.0%2B-777BB4?logo=php&logoColor=white)
+![PHP 8.5.0+ Supported](https://img.shields.io/badge/PHP-8.5.0%2B-777BB4?logo=php&logoColor=white)
 
 ### Preview
 
@@ -55,51 +65,71 @@ composer require cable8mm/xeed --dev
 
 ## Usage
 
-`-f` option make it forced, and `xeeds` is the table make.
+All commands use the current database connection to generate files automatically.
+
+Global options:
+
+`-f` Force overwrite existing files
+
+### Generators
+
+Models:
 
 ```shell
 # Generate all models from database in `app/Models` folder
 php artisan xeed:model
 
-# Force to generate a model from `xeeds` table in `app/Models` folder
-php artisan xeed:model xeeds -f
+php artisan xeed:model -f
+```
 
+Factories:
+
+```shell
 # Generate all factories from database in `database/factories' folder
 php artisan xeed:factory
+```
 
-# Force to generate a factory from `xeeds` table in `database/factories' folder
-php artisan xeed:factory xeeds -f
+Seeders:
 
+```shell
 # Generate all seeds from database in `database/seeders` folder
 php artisan xeed:seeder
 
-# Force to generate a seeder from `xeeds` table in `database/seeders` folder
-php artisan xeed:seeder xeeds -f
-
 # Generate all seeds from database in `database/seeders` folder
 php artisan xeed:faker-seeder
+```
 
-# Force to generate a seeder from `xeeds` table in `database/seeders` folder
-php artisan xeed:faker-seeder xeeds -f
+Migrations:
 
+```shell
 # Generate a database seed from database in `database/seeders` folder
 php artisan xeed:database
+```
 
+Migrations:
+
+```shell
 # Generate all migrations from database in `database/migrations' folder
 php artisan xeed:migration
+```
 
-# Force to generate a migration from `xeeds` table in `database/migrations' folder
-php artisan xeed:migration xeeds -f
+Relations:
 
+```shell
 # Add the relation function to all models from database in `app/Models` folder
 php artisan xeed:relation
+```
 
-# Runs xeed:models before running xeed:relations. Add -f to force to generate
-php artisan xeed:relation -f
+Nova:
 
+```shell
 # Add the Laravel Nova resources to all tables in `app/Nova` folder
 php artisan xeed:nova
+```
 
+Cleanup:
+
+```shell
 # Clean generated files, seeders, models, factories and migration files.
 php artisan xeed:wipe
 ```
@@ -116,7 +146,7 @@ composer inspect
 
 ### Testing
 
-It uses the built-in SQLite database, not your own database. It will never cause harm to your data. You don't need to worry about that.
+`Xeed` uses an isolated SQLite database during tests, ensuring your real database is never affected.
 
 ```shell tab=Laravel
 # Run `vendor/bin/testbench package:test tests`
