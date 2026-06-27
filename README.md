@@ -152,6 +152,7 @@ composer inspect
 ### Testing
 
 `Xeed` uses an isolated SQLite database during tests, ensuring your real database is never affected.
+The test bootstrap recreates `tests/Generate/database.sqlite` when needed and loads the `xeeds` table automatically from `database/xeeds.sqlite.sql`.
 
 ```shell tab=Laravel
 # Run `vendor/bin/testbench package:test tests`
@@ -174,10 +175,11 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 The below can help you contribute.
 
 The Xeed has a built-in SQLite database, allowing you to contribute easily without needing your own database. Simply create a new file for testing purposes and utilize it.
+You do not need to commit `tests/Generate/database.sqlite`; the test bootstrap recreates it automatically when you run the test suite.
 
 ```shell
 # Create a new empty file for SQLite database
-touch database/database.sqlite
+touch tests/Generate/database.sqlite
 ```
 
 And then,
