@@ -39,7 +39,6 @@ jobs:
         run: |
           cp .env.example .env
           touch tests/Bootstrap/database.sqlite
-          bin/console xeed
 
       - name: Execute tests
         run: composer test
